@@ -554,17 +554,96 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(ss);
       }
 
-      // Simulate async send (replace with real fetch/FormSubmit if needed)
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = `Enviar solicitud <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-        // Hide step 3, show success
-        document.getElementById('diagStep3').classList.add('diag-step--hidden');
-        const success = document.getElementById('diagSuccess');
-        success.classList.remove('diag-step--hidden');
-        progressBar.style.width = '100%';
-        document.querySelector('.diag-modal-scroll').scrollTop = 0;
-      }, 1400);
+      // ── Recopilar todos los datos del formulario ──
+      const country = document.getElementById('diag-country');
+      const name = document.getElementById('diag-name');
+      const email = document.getElementById('diag-email');
+      const phone = document.getElementById('diag-phone');
+      const company = document.getElementById('diag-company');
+      const biztype = document.getElementById('diag-biztype');
+      const biztypeOther = document.getElementById('diag-biztype-other');
+      const teamChecked = document.querySelector('input[name="equipo"]:checked');
+      const goal = document.getElementById('diag-goal');
+      const stageChecked = document.querySelector('input[name="etapa"]:checked');
+
+      const selectedCountry = country.options[country.selectedIndex];
+      const dialCode = selectedCountry?.getAttribute('data-dial') || '';
+      const countryLabel = selectedCountry?.textContent?.trim() || country.value;
+
+      const problemas = [...document.querySelectorAll('input[name="problema"]:checked')].map(cb => cb.value);
+      const herramientas = [...document.querySelectorAll('input[name="herramientas"]:checked')].map(cb => cb.value);
+
+      const payload = {
+        // ── Paso 1: Contacto ──
+        pais: country.value,
+        pais_nombre: countryLabel,
+        nombre: name.value.trim(),
+        email: email.value.trim(),
+        telefono: `${dialCode}${phone.value.replace(/\s/g, '')}`,
+        empresa: company ? company.value.trim() : '',
+
+        // ── Paso 2: Negocio ──
+        tipo_negocio: biztype.value === 'otros'
+          ? (biztypeOther ? biztypeOther.value.trim() || 'otros' : 'otros')
+          : biztype.value,
+        tamano_equipo: teamChecked ? teamChecked.value : '',
+        problemas_principales: problemas,
+        herramientas_actuales: herramientas,
+
+        // ── Paso 3: Objetivos ──
+        objetivo_diagnostico: goal.value.trim(),
+        etapa_negocio: stageChecked ? stageChecked.value : '',
+
+        // ── Metadatos ──
+        fecha_envio: new Date().toISOString(),
+        origen: window.location.href
+      };
+
+      // ── Enviar GET al webhook de n8n ──
+      const WEBHOOK_URL = 'https://aimachristian-n8n.ajcxjb.easypanel.host/webhook/form-diagnostico';
+
+      // Convertir el payload a parámetros de URL
+      const params = new URLSearchParams();
+      for (const key in payload) {
+        if (Array.isArray(payload[key])) {
+          params.append(key, payload[key].join(', '));
+        } else {
+          params.append(key, payload[key]);
+        }
+      }
+
+      const finalUrl = `${WEBHOOK_URL}?${params.toString()}`;
+
+      fetch(finalUrl, { method: 'GET' })
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res;
+        })
+        .then(() => {
+          // Éxito — ambos webhooks respondieron bien
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `Enviar solicitud <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+          document.getElementById('diagStep3').classList.add('diag-step--hidden');
+          const success = document.getElementById('diagSuccess');
+          success.classList.remove('diag-step--hidden');
+          progressBar.style.width = '100%';
+          document.querySelector('.diag-modal-scroll').scrollTop = 0;
+        })
+        .catch(err => {
+          // Error en alguno de los webhooks
+          console.error('Webhook error:', err);
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `Enviar solicitud <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+          let errBanner = document.getElementById('diagSubmitError');
+          if (!errBanner) {
+            errBanner = document.createElement('p');
+            errBanner.id = 'diagSubmitError';
+            errBanner.style.cssText = 'color:#ff4d4d;font-size:.85rem;margin-top:.75rem;text-align:center;';
+            submitBtn.insertAdjacentElement('afterend', errBanner);
+          }
+          errBanner.textContent = 'Ocurrió un error al enviar. Por favor intenta de nuevo.';
+          setTimeout(() => { if (errBanner) errBanner.textContent = ''; }, 5000);
+        });
     });
   }
 
