@@ -570,8 +570,38 @@ document.addEventListener('DOMContentLoaded', () => {
       const dialCode = selectedCountry?.getAttribute('data-dial') || '';
       const countryLabel = selectedCountry?.textContent?.trim() || country.value;
 
-      const problemas = [...document.querySelectorAll('input[name="problema"]:checked')].map(cb => cb.value);
-      const herramientas = [...document.querySelectorAll('input[name="herramientas"]:checked')].map(cb => cb.value);
+      // Obtener el texto de las herramientas seleccionadas
+      const problemas = [...document.querySelectorAll('input[name="problema"]:checked')].map(cb => {
+        const span = cb.parentElement.querySelector('span');
+        return span ? span.textContent.trim() : cb.value;
+      });
+
+      const herramientas = [...document.querySelectorAll('input[name="herramientas"]:checked')].map(cb => {
+        const span = cb.parentElement.querySelector('span');
+        return span ? span.textContent.trim() : cb.value;
+      });
+
+      // Obtener el texto del tamaño del equipo
+      let teamLabel = '';
+      if (teamChecked) {
+        const span = teamChecked.parentElement.querySelector('span');
+        teamLabel = span ? span.textContent.trim() : teamChecked.value;
+      }
+
+      // Obtener el texto de la etapa del negocio
+      let stageLabel = '';
+      if (stageChecked) {
+        const titleEl = stageChecked.parentElement.querySelector('.diag-radio-title');
+        stageLabel = titleEl ? titleEl.textContent.trim() : stageChecked.value;
+      }
+
+      // Obtener el texto del tipo de negocio
+      let biztypeLabel = '';
+      if (biztype.value === 'otros') {
+        biztypeLabel = biztypeOther ? biztypeOther.value.trim() || 'Otros' : 'Otros';
+      } else {
+        biztypeLabel = biztype.options[biztype.selectedIndex].text;
+      }
 
       const payload = {
         // ── Paso 1: Contacto ──
@@ -583,16 +613,14 @@ document.addEventListener('DOMContentLoaded', () => {
         empresa: company ? company.value.trim() : '',
 
         // ── Paso 2: Negocio ──
-        tipo_negocio: biztype.value === 'otros'
-          ? (biztypeOther ? biztypeOther.value.trim() || 'otros' : 'otros')
-          : biztype.value,
-        tamano_equipo: teamChecked ? teamChecked.value : '',
+        tipo_negocio: biztypeLabel,
+        tamano_equipo: teamLabel,
         problemas_principales: problemas,
         herramientas_actuales: herramientas,
 
         // ── Paso 3: Objetivos ──
         objetivo_diagnostico: goal.value.trim(),
-        etapa_negocio: stageChecked ? stageChecked.value : '',
+        etapa_negocio: stageLabel,
 
         // ── Metadatos ──
         fecha_envio: new Date().toISOString(),
