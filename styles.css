@@ -2976,6 +2976,7 @@ details[open] .noinclude-chevron {
 .diag-success-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 20px;
@@ -3075,11 +3076,14 @@ details[open] .noinclude-chevron {
 
   .diag-success-actions {
     flex-direction: column;
+    align-items: center;
   }
 
   .diag-success-actions .btn {
     width: 100%;
     justify-content: center;
+    white-space: normal;
+    text-align: center;
   }
 
   .diag-calendly-container {
@@ -3584,6 +3588,8 @@ details[open] .faq-chevron {
 .diag-agendar-container {
   margin-top: 1.5rem;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .diag-agendar-btn {
