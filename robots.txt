@@ -1,0 +1,22 @@
+# robots.txt para E Beats Perú
+# https://www.ebeatspe.com
+
+# Agentes permitidos
+User-agent: *
+
+# Permite el indexado de todas las páginas públicas
+Allow: /
+
+# Reglas específicas
+ Disallow: /image/*.mp4
+Disallow: /cgi-bin/
+Disallow: /?.gif
+
+# Sitemap
+Sitemap: https://www.ebeatspe.com/sitemap.xml
+
+# Información adicional para motores de búsqueda
+Host: https://www.ebeatspe.com
+
+# Crawl-delay (opcional, para no sobrecargar el servidor)
+Crawl-delay: 1

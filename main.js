@@ -13,6 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       navbar.classList.remove('scrolled');
     }
+    
+    // Hide navbar when in video section
+    const videoSection = document.getElementById('video');
+    if (videoSection) {
+      const videoRect = videoSection.getBoundingClientRect();
+      const isInVideoSection = videoRect.top <= 100 && videoRect.bottom >= 100;
+      if (isInVideoSection) {
+        navbar.classList.add('navbar--hidden');
+      } else {
+        navbar.classList.remove('navbar--hidden');
+      }
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -34,6 +46,244 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.remove('open');
     });
   });
+
+  /* ─── HERO ENTRANCE ANIMATION ─── */
+  function initHeroEntrance() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      // Show everything immediately
+      document.querySelectorAll('.hero-item, .trust-item').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    const heroItems = document.querySelectorAll('.hero-item');
+    const trustItems = document.querySelectorAll('.trust-item');
+
+    // Stagger hero items
+    heroItems.forEach((item, index) => {
+      const delay = parseFloat(item.dataset.heroDelay || index) * 80;
+      setTimeout(() => {
+        item.classList.add('hero-item--visible');
+      }, 150 + delay);
+    });
+
+    // Stagger trust items after hero items
+    const heroDelay = heroItems.length * 80 + 400;
+    trustItems.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.add('trust-item--visible');
+      }, heroDelay + index * 100);
+    });
+  }
+
+  // Run hero entrance on load
+  initHeroEntrance();
+
+  /* ─── HERO DOT GRID ANIMATION (anime.js) ─── */
+  function initDotGrid() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || typeof anime === 'undefined') return;
+
+    const dotGrid = document.getElementById('heroDotGrid');
+    if (!dotGrid) return;
+
+    // Create dots
+    const totalDots = 13 * 13;
+    for (let i = 0; i < totalDots; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      dotGrid.appendChild(dot);
+    }
+
+    // Animate dots with staggered scale from center
+    anime({
+      targets: '.dot',
+      scale: [
+        { value: 1.2, duration: 800, delay: anime.stagger(50, { grid: [13, 13], from: 'center' }) },
+        { value: 0.7, duration: 1200, delay: anime.stagger(50, { grid: [13, 13], from: 'center' }) },
+        { value: 1, duration: 1000, delay: anime.stagger(50, { grid: [13, 13], from: 'center' }) }
+      ],
+      easing: 'easeInOutQuad',
+      loop: true
+    });
+
+    // Mouse interaction - subtle pulse near cursor
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        anime({
+          targets: '.dot',
+          scale: (el, i) => {
+            const col = i % 13;
+            const row = Math.floor(i / 13);
+            const dotX = (col / 12) * rect.width;
+            const dotY = (row / 12) * rect.height;
+            const dist = Math.sqrt(Math.pow(x - dotX, 2) + Math.pow(y - dotY, 2));
+            const maxDist = 150;
+            if (dist < maxDist) {
+              return 1 + (1 - dist / maxDist) * 0.8;
+            }
+            return 1;
+          },
+          backgroundColor: (el, i) => {
+            const col = i % 13;
+            const row = Math.floor(i / 13);
+            const dotX = (col / 12) * rect.width;
+            const dotY = (row / 12) * rect.height;
+            const dist = Math.sqrt(Math.pow(x - dotX, 2) + Math.pow(y - dotY, 2));
+            const maxDist = 150;
+            if (dist < maxDist) {
+              const intensity = 1 - dist / maxDist;
+              return `rgba(229, 62, 62, ${0.5 + intensity * 0.5})`;
+            }
+            return 'rgba(255, 255, 255, 0.5)';
+          },
+          duration: 200,
+          easing: 'easeOutQuad'
+        });
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        anime({
+          targets: '.dot',
+          scale: 1,
+          backgroundColor: 'rgba(255, 255, 255, 0.5)',
+          duration: 400,
+          easing: 'easeOutQuad'
+        });
+      });
+    }
+  }
+
+  initDotGrid();
+
+  /* ─── ENHANCED SCROLL REVEALS ─── */
+  function initScrollReveals() {
+    // Return early if reduced motion is preferred
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Staggered reveal for grid items
+    const staggerContainers = [
+      { selector: '.problems-grid', childSelector: '.problem-card', stagger: 80 },
+      { selector: '.paradigm-grid', childSelector: '.paradigm-card', stagger: 100 },
+      { selector: '.includes-grid', childSelector: '.include-card', stagger: 80 },
+      { selector: '.method-steps', childSelector: '.method-step', stagger: 120 },
+      { selector: '.forwhom-grid', childSelector: '.forwhom-card', stagger: 120 },
+      { selector: '.faq-grid', childSelector: '.faq-item', stagger: 60 }
+    ];
+
+    staggerContainers.forEach(({ selector, childSelector, stagger }) => {
+      const container = document.querySelector(selector);
+      if (!container) return;
+
+      const children = container.querySelectorAll(childSelector);
+      if (!children.length) return;
+
+      // Set initial state
+      children.forEach(child => {
+        child.style.opacity = '0';
+        child.style.transform = 'translateY(18px)';
+        child.style.transition = 'opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+      });
+
+      // Create and configure observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const allChildren = container.querySelectorAll(childSelector);
+            allChildren.forEach((child, i) => {
+              setTimeout(() => {
+                child.style.opacity = '1';
+                child.style.transform = 'translateY(0)';
+              }, i * stagger);
+            });
+            observer.unobserve(container);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      // Start observing
+      observer.observe(container);
+    });
+
+    // Fade-in for section headers and key elements
+    const fadeSections = [
+      '.section-header',
+      '.hero-content',
+      '.video-container',
+      '.diagnostic-content',
+      '.diagnostic-card-wrap',
+      '.final-cta-inner'
+    ];
+
+    fadeSections.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      if (!elements.length) return;
+
+      // Set initial state
+      elements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+
+      // Create and configure observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      // Start observing
+      elements.forEach(el => observer.observe(el));
+    });
+  }
+
+  initScrollReveals();
+
+  /* ─── METHOD STEPS LINE FILL ANIMATION ─── */
+  function initMethodStepsAnimation() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const methodSteps = document.querySelectorAll('.method-step');
+    if (!methodSteps.length) return;
+
+    methodSteps.forEach(step => {
+      const line = step.querySelector('.method-step-line');
+      if (line) {
+        line.style.transition = 'background 0.6s var(--ease)';
+        line.style.background = 'var(--gray-200)';
+      }
+    });
+
+    const methodObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const line = entry.target.querySelector('.method-step-line');
+          if (line) {
+            line.style.background = 'linear-gradient(to bottom, var(--red), var(--red) 80%, transparent)';
+          }
+          methodObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5, rootMargin: '0px 0px -20% 0px' });
+
+    methodSteps.forEach(step => methodObserver.observe(step));
+  }
+
+  initMethodStepsAnimation();
 
   /* ─── AOS SCROLL ANIMATIONS ─── */
   const aosElements = document.querySelectorAll('[data-aos]');
@@ -119,27 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ─── PROBLEM CARDS STAGGER ─── */
-  const problemCards = document.querySelectorAll('.problem-card');
-  const problemObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }, i * 80);
-        problemObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  problemCards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity .5s ease, transform .5s ease';
-    problemObserver.observe(card);
-  });
-
   /* ─── ACTIVE NAV LINK ON SCROLL ─── */
   const sections = document.querySelectorAll('section[id]');
   const navLinksList = document.querySelectorAll('.nav-link');
@@ -203,8 +432,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('diagSubmitBtn');
   const successWA = document.getElementById('diagSuccessWA');
   const closeSuccess = document.getElementById('diagCloseSuccess');
-  const biztypeSelect = document.getElementById('diag-biztype');
-  const biztypeOtro = document.getElementById('diagBiztypeOtro');
+  const calendlySection = document.getElementById('diagCalendlySection');
+  const calendlyContainer = document.getElementById('diagCalendlyContainer');
+  const closeCalendly = document.getElementById('diagCloseCalendly');
   const countrySelect = document.getElementById('diag-country');
   const phonePrefix = document.getElementById('diagPhonePrefix');
   const phoneGroup = document.getElementById('diagPhoneGroup');
@@ -235,6 +465,81 @@ document.addEventListener('DOMContentLoaded', () => {
     OTHER: { regex: /^\d{6,15}$/, placeholder: '1234567890', hint: 'Solo números' }
   };
 
+  // ─ Calendly integration ─
+  let calendlyLoaded = false;
+
+  function loadCalendlyAssets() {
+    return new Promise((resolve, reject) => {
+      if (calendlyLoaded || window.Calendly) {
+        resolve();
+        return;
+      }
+
+      // Load CSS
+      const cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.href = 'https://assets.calendly.com/assets/external/widget.css';
+      document.head.appendChild(cssLink);
+
+      // Load JS
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      script.onload = () => {
+        calendlyLoaded = true;
+        resolve();
+      };
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+
+  function showCalendly(name, email) {
+    if (!calendlyContainer) return;
+
+    // Build Calendly URL with pre-filled data
+    let calendlyUrl = 'https://calendly.com/anchillo00/diagnostico-de-automatizacion';
+    
+    // Add pre-fill parameters if name and email are provided
+    const params = new URLSearchParams();
+    if (name) params.append('name', name);
+    if (email) params.append('email', email);
+    
+    if (params.toString()) {
+      calendlyUrl += '?' + params.toString();
+    }
+
+    // Load Calendly assets and initialize widget
+    loadCalendlyAssets().then(() => {
+      // Clear any existing content
+      calendlyContainer.innerHTML = '';
+      
+      // Create Calendly inline widget
+      if (window.Calendly) {
+        window.Calendly.initInlineWidget({
+          url: calendlyUrl,
+          parentElement: calendlyContainer,
+          prefill: {
+            name: name || '',
+            email: email || ''
+          },
+          utm: {
+            utmSource: 'website',
+            utmMedium: 'form'
+          }
+        });
+      }
+    }).catch(err => {
+      console.error('Error loading Calendly:', err);
+      calendlyContainer.innerHTML = '<p style="text-align:center; padding: 40px;">Error al cargar el calendario. Por favor, recarga la página o contacta por WhatsApp.</p>';
+    });
+  }
+
+  // ─ Event: Close Calendly section ─
+  if (closeCalendly) {
+    closeCalendly.addEventListener('click', closeModal);
+  }
+
   let currentStep = 1;
   const TOTAL_STEPS = 3;
 
@@ -249,12 +554,17 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => el.checked = false);
     modal.querySelectorAll('select').forEach(el => el.selectedIndex = 0);
     hideAllErrors();
-    biztypeOtro.style.display = 'none';
     // Reset phone prefix to Peru default
     if (phonePrefix) phonePrefix.textContent = '+51';
     // Hide success, show step 1
     document.getElementById('diagSuccess').classList.add('diag-step--hidden');
     document.getElementById('diagStep1').classList.remove('diag-step--hidden');
+    // Ocultar mensaje de resultado
+    const resultMessage = document.getElementById('diagResultMessage');
+    if (resultMessage) {
+      resultMessage.classList.add('diag-result-message--hidden');
+      resultMessage.textContent = '';
+    }
   }
 
   function closeModal() {
@@ -296,6 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function hideAllErrors() {
     modal.querySelectorAll('.diag-field-error').forEach(e => e.classList.remove('diag-error--visible'));
     modal.querySelectorAll('.diag-input--error').forEach(e => e.classList.remove('diag-input--error'));
+    modal.querySelectorAll('.diag-privacy-error').forEach(e => e.classList.remove('diag-error--visible'));
   }
 
   function validateStep1() {
@@ -339,25 +650,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function validateStep2() {
     let valid = true;
-    const biztype = document.getElementById('diag-biztype');
-    const team = document.querySelector('input[name="equipo"]:checked');
+    const ventas = document.querySelector('input[name="ventas"]:checked');
+    const facturacion = document.querySelector('input[name="facturacion"]:checked');
     const problema = document.querySelectorAll('input[name="problema"]:checked');
     const herramientas = document.querySelectorAll('input[name="herramientas"]:checked');
 
-    if (!biztype.value) {
-      biztype.classList.add('diag-input--error');
-      document.getElementById('err-biztype').classList.add('diag-error--visible');
+    if (!ventas) {
+      document.getElementById('err-ventas').classList.add('diag-error--visible');
       valid = false;
     } else {
-      biztype.classList.remove('diag-input--error');
-      document.getElementById('err-biztype').classList.remove('diag-error--visible');
+      document.getElementById('err-ventas').classList.remove('diag-error--visible');
     }
 
-    if (!team) {
-      document.getElementById('err-team').classList.add('diag-error--visible');
+    if (!facturacion) {
+      document.getElementById('err-facturacion').classList.add('diag-error--visible');
       valid = false;
     } else {
-      document.getElementById('err-team').classList.remove('diag-error--visible');
+      document.getElementById('err-facturacion').classList.remove('diag-error--visible');
     }
 
     if (problema.length === 0) {
@@ -379,23 +688,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function validateStep3() {
     let valid = true;
-    const goal = document.getElementById('diag-goal');
     const stage = document.querySelector('input[name="etapa"]:checked');
-
-    if (!goal.value.trim()) {
-      goal.classList.add('diag-input--error');
-      document.getElementById('err-goal').classList.add('diag-error--visible');
-      valid = false;
-    } else {
-      goal.classList.remove('diag-input--error');
-      document.getElementById('err-goal').classList.remove('diag-error--visible');
-    }
+    const implementar = document.querySelector('input[name="implementar"]:checked');
+    const tiempo = document.querySelector('input[name="tiempo"]:checked');
+    const privacyCheck = document.getElementById('diag-privacy-check');
 
     if (!stage) {
       document.getElementById('err-stage').classList.add('diag-error--visible');
       valid = false;
     } else {
       document.getElementById('err-stage').classList.remove('diag-error--visible');
+    }
+
+    if (!implementar) {
+      document.getElementById('err-implementar').classList.add('diag-error--visible');
+      valid = false;
+    } else {
+      document.getElementById('err-implementar').classList.remove('diag-error--visible');
+    }
+
+    if (!tiempo) {
+      document.getElementById('err-tiempo').classList.add('diag-error--visible');
+      valid = false;
+    } else {
+      document.getElementById('err-tiempo').classList.remove('diag-error--visible');
+    }
+
+    if (!privacyCheck || !privacyCheck.checked) {
+      document.getElementById('err-privacy').classList.add('diag-error--visible');
+      valid = false;
+    } else {
+      document.getElementById('err-privacy').classList.remove('diag-error--visible');
     }
 
     return valid;
@@ -455,29 +778,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ─ Event: Biztype "Otros" reveal ─
-  if (biztypeSelect) {
-    biztypeSelect.addEventListener('change', () => {
-      if (biztypeSelect.value === 'otros') {
-        biztypeOtro.style.display = 'block';
-        // Auto-scroll the modal to reveal the field and focus it
-        requestAnimationFrame(() => {
-          const otroInput = document.getElementById('diag-biztype-other');
-          if (otroInput) {
-            setTimeout(() => {
-              otroInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-              otroInput.focus();
-            }, 50);
-          }
-        });
-      } else {
-        biztypeOtro.style.display = 'none';
-        const otroInput = document.getElementById('diag-biztype-other');
-        if (otroInput) otroInput.value = '';
-      }
-    });
-  }
-
   // ─ Event: Country → phone prefix + placeholder ─
   if (countrySelect && phonePrefix) {
     countrySelect.addEventListener('change', () => {
@@ -530,9 +830,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ─ Event: Submit ─
-  if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
+  // ─ Privacy checkbox: clear error when checked ─
+  const privacyCheckbox = document.getElementById('diag-privacy-check');
+  const privacyError = document.getElementById('err-privacy');
+  if (privacyCheckbox && privacyError) {
+    privacyCheckbox.addEventListener('change', () => {
+      if (privacyCheckbox.checked) {
+        privacyError.classList.remove('diag-error--visible');
+      }
+    });
+  }
+
+  // ─ Event: Submit form ─
+  const diagForm = document.getElementById('diagForm');
+  if (diagForm) {
+    diagForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
       // Validate step 3 before submitting
       if (!validateStep3()) return;
 
@@ -554,17 +868,18 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(ss);
       }
 
-      // ── Recopilar todos los datos del formulario ──
+      // ── Recopilar datos del formulario ──
       const country = document.getElementById('diag-country');
       const name = document.getElementById('diag-name');
       const email = document.getElementById('diag-email');
       const phone = document.getElementById('diag-phone');
       const company = document.getElementById('diag-company');
-      const biztype = document.getElementById('diag-biztype');
-      const biztypeOther = document.getElementById('diag-biztype-other');
-      const teamChecked = document.querySelector('input[name="equipo"]:checked');
-      const goal = document.getElementById('diag-goal');
+      const ventasChecked = document.querySelector('input[name="ventas"]:checked');
+      const facturacionChecked = document.querySelector('input[name="facturacion"]:checked');
       const stageChecked = document.querySelector('input[name="etapa"]:checked');
+      const implementarChecked = document.querySelector('input[name="implementar"]:checked');
+      const tiempoChecked = document.querySelector('input[name="tiempo"]:checked');
+      const gestion = document.getElementById('diag-gestion');
 
       const selectedCountry = country.options[country.selectedIndex];
       const dialCode = selectedCountry?.getAttribute('data-dial') || '';
@@ -573,34 +888,47 @@ document.addEventListener('DOMContentLoaded', () => {
       // Obtener el texto de las herramientas seleccionadas
       const problemas = [...document.querySelectorAll('input[name="problema"]:checked')].map(cb => {
         const span = cb.parentElement.querySelector('span');
-        return span ? span.textContent.trim() : cb.value;
+        return span ? span.textContent.replace(/\s+/g, ' ').trim() : cb.value;
       });
 
       const herramientas = [...document.querySelectorAll('input[name="herramientas"]:checked')].map(cb => {
         const span = cb.parentElement.querySelector('span');
-        return span ? span.textContent.trim() : cb.value;
+        return span ? span.textContent.replace(/\s+/g, ' ').trim() : cb.value;
       });
 
-      // Obtener el texto del tamaño del equipo
-      let teamLabel = '';
-      if (teamChecked) {
-        const span = teamChecked.parentElement.querySelector('span');
-        teamLabel = span ? span.textContent.trim() : teamChecked.value;
+      // Obtener el texto de ventas
+      let ventasLabel = '';
+      if (ventasChecked) {
+        const span = ventasChecked.parentElement.querySelector('span');
+        ventasLabel = span ? span.textContent.replace(/\s+/g, ' ').trim() : ventasChecked.value;
       }
 
-      // Obtener el texto de la etapa del negocio
+      // Obtener el texto de facturación
+      let facturacionLabel = '';
+      if (facturacionChecked) {
+        const span = facturacionChecked.parentElement.querySelector('span');
+        facturacionLabel = span ? span.textContent.replace(/\s+/g, ' ').trim() : facturacionChecked.value;
+      }
+
+      // Obtener el texto de etapa
       let stageLabel = '';
       if (stageChecked) {
-        const titleEl = stageChecked.parentElement.querySelector('.diag-radio-title');
-        stageLabel = titleEl ? titleEl.textContent.trim() : stageChecked.value;
+        const span = stageChecked.parentElement.querySelector('span');
+        stageLabel = span ? span.textContent.replace(/\s+/g, ' ').trim() : stageChecked.value;
       }
 
-      // Obtener el texto del tipo de negocio
-      let biztypeLabel = '';
-      if (biztype.value === 'otros') {
-        biztypeLabel = biztypeOther ? biztypeOther.value.trim() || 'Otros' : 'Otros';
-      } else {
-        biztypeLabel = biztype.options[biztype.selectedIndex].text;
+      // Obtener el texto de implementar
+      let implementarLabel = '';
+      if (implementarChecked) {
+        const span = implementarChecked.parentElement.querySelector('span');
+        implementarLabel = span ? span.textContent.replace(/\s+/g, ' ').trim() : implementarChecked.value;
+      }
+
+      // Obtener el texto de tiempo
+      let tiempoLabel = '';
+      if (tiempoChecked) {
+        const span = tiempoChecked.parentElement.querySelector('span');
+        tiempoLabel = span ? span.textContent.replace(/\s+/g, ' ').trim() : tiempoChecked.value;
       }
 
       const payload = {
@@ -610,67 +938,118 @@ document.addEventListener('DOMContentLoaded', () => {
         nombre: name.value.trim(),
         email: email.value.trim(),
         telefono: `${dialCode}${phone.value.replace(/\s/g, '')}`,
-        empresa: company ? company.value.trim() : '',
+        tienda: company ? company.value.trim() : '',
 
         // ── Paso 2: Negocio ──
-        tipo_negocio: biztypeLabel,
-        tamano_equipo: teamLabel,
+        tienda_vendiendo: ventasLabel,
+        facturacion_mensual: facturacionLabel,
         problemas_principales: problemas,
         herramientas_actuales: herramientas,
 
-        // ── Paso 3: Objetivos ──
-        objetivo_diagnostico: goal.value.trim(),
-        etapa_negocio: stageLabel,
+        // ── Paso 3: Preferencias ──
+        etapa_actual: stageLabel,
+        dispuesto_implementar: implementarLabel,
+        tiempo_implementacion: tiempoLabel,
+        gestion_clientes: gestion ? gestion.value.trim() : '',
 
         // ── Metadatos ──
         fecha_envio: new Date().toISOString(),
         origen: window.location.href
       };
 
-      // ── Enviar GET al webhook de n8n ──
-      const WEBHOOK_URL = 'https://aimachristian-n8n.ajcxjb.easypanel.host/webhook/form-diagnostico';
+      // ── Enviar POST al webhook de n8n ──
+      const WEBHOOK_URL = 'https://aimachristian-n8n.ajcxjb.easypanel.host/webhook/ce321d03-b62e-4972-970d-d169776c9f8b';
+      
+      console.log('Enviando payload:', payload);
 
-      // Convertir el payload a parámetros de URL
-      const params = new URLSearchParams();
-      for (const key in payload) {
-        if (Array.isArray(payload[key])) {
-          params.append(key, payload[key].join(', '));
-        } else {
-          params.append(key, payload[key]);
-        }
-      }
-
-      const finalUrl = `${WEBHOOK_URL}?${params.toString()}`;
-
-      fetch(finalUrl, { method: 'GET' })
-        .then(res => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res;
+      fetch(WEBHOOK_URL, { 
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(async res => {
+          if (!res.ok) {
+            const errorText = await res.text().catch(() => '');
+            throw new Error(`HTTP ${res.status} ${res.statusText} - ${errorText}`);
+          }
+          return res.json();
         })
-        .then(() => {
-          // Éxito — ambos webhooks respondieron bien
+        .then(result => {
+          console.log('Respuesta del webhook:', result);
+          
+          // Restaurar botón
           submitBtn.disabled = false;
           submitBtn.innerHTML = `Enviar solicitud <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+          
+          // Mostrar resultado en el contenedor
+          const resultMessage = document.getElementById('diagResultMessage');
+          if (resultMessage) {
+            if (result.success === true) {
+              // El webhook procesó correctamente
+              if (result.califica === true) {
+                // Califica: mostrar mensaje positivo
+                resultMessage.textContent = result.mensaje || '¡Felicidades! Calificas para nuestra oferta.';
+                resultMessage.className = 'diag-result-message diag-result-message--success';
+                
+                // Mostrar botón de agendar
+                const agendarContainer = document.createElement('div');
+                agendarContainer.className = 'diag-agendar-container';
+                
+                const agendarBtn = document.createElement('button');
+                agendarBtn.type = 'button';
+                agendarBtn.className = 'btn btn-primary btn-lg diag-agendar-btn';
+                agendarBtn.textContent = 'Agendar diagnóstico';
+                agendarBtn.addEventListener('click', () => {
+                  // Mostrar Calendly
+                  document.getElementById('diagStep3').classList.add('diag-step--hidden');
+                  document.getElementById('diagSuccess').classList.add('diag-step--hidden');
+                  const calendlySection = document.getElementById('diagCalendlySection');
+                  calendlySection.classList.remove('diag-step--hidden');
+                  progressBar.style.width = '100%';
+                  // Obtener nombre y email del formulario
+                  const nameInput = document.getElementById('diag-name');
+                  const emailInput = document.getElementById('diag-email');
+                  showCalendly(nameInput.value.trim(), emailInput.value.trim());
+                });
+                
+                agendarContainer.appendChild(agendarBtn);
+                resultMessage.appendChild(agendarContainer);
+              } else {
+                // No califica: mostrar mensaje empático
+                resultMessage.textContent = result.mensaje || 'Gracias por tu interés. En este momento no cumples con los requisitos para nuestra oferta.';
+                resultMessage.className = 'diag-result-message diag-result-message--error';
+              }
+            } else {
+              // El webhook devolvió success: false
+              resultMessage.textContent = result.mensaje || 'No fue procesado tu formulario. Por favor, intenta de nuevo.';
+              resultMessage.className = 'diag-result-message diag-result-message--error';
+            }
+          }
+          
+          // Ocultar paso 3 y Calendly
           document.getElementById('diagStep3').classList.add('diag-step--hidden');
-          const success = document.getElementById('diagSuccess');
-          success.classList.remove('diag-step--hidden');
-          progressBar.style.width = '100%';
-          document.querySelector('.diag-modal-scroll').scrollTop = 0;
+          document.getElementById('diagSuccess').classList.add('diag-step--hidden');
+          document.getElementById('diagCalendlySection').classList.add('diag-step--hidden');
         })
         .catch(err => {
-          // Error en alguno de los webhooks
+          // Error en el envío
           console.error('Webhook error:', err);
+          console.error('Error details:', err.message, err.stack);
+          
+          // Restaurar botón
           submitBtn.disabled = false;
           submitBtn.innerHTML = `Enviar solicitud <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-          let errBanner = document.getElementById('diagSubmitError');
-          if (!errBanner) {
-            errBanner = document.createElement('p');
-            errBanner.id = 'diagSubmitError';
-            errBanner.style.cssText = 'color:#ff4d4d;font-size:.85rem;margin-top:.75rem;text-align:center;';
-            submitBtn.insertAdjacentElement('afterend', errBanner);
+          
+          // Mostrar mensaje de error
+          const resultMessage = document.getElementById('diagResultMessage');
+          if (resultMessage) {
+            resultMessage.textContent = 'Error al enviar el formulario, intenta nuevamente.';
+            resultMessage.className = 'diag-result-message diag-result-message--error';
           }
-          errBanner.textContent = 'Ocurrió un error al enviar. Por favor intenta de nuevo.';
-          setTimeout(() => { if (errBanner) errBanner.textContent = ''; }, 5000);
         });
     });
   }
@@ -700,10 +1079,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const typewriterEl = document.getElementById('hero-typewriter');
   if (typewriterEl) {
     const phrases = [
-      'más rápido',
-      'con menos esfuerzo',
-      'con inteligencia artificial',
-      'sin contratar más personal'
+      'dejar de perder ventas',
+      'aumentar conversiones',
+      'escalar sin caos',
+      'ordenar tu operación'
     ];
 
     let phraseIndex = 0;
@@ -745,8 +1124,178 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Arrancar casi de inmediato
-    setTimeout(tick, 400);
+  // Arrancar casi de inmediato
+  setTimeout(tick, 400);
   }
+
+  /* ─── VIDEO: Vimeo custom controls ─── */
+  (function initVideoControls() {
+    const iframe = document.querySelector('#videoPlayer iframe');
+    const controlsEl = document.getElementById('videoControls');
+    const bigPlayEl = document.getElementById('vcBigPlay');
+    const playPauseBtn = document.getElementById('vcPlayPause');
+    const muteBtn = document.getElementById('vcMute');
+    const fullscreenBtn = document.getElementById('vcFullscreen');
+    if (!iframe || !controlsEl || !bigPlayEl || !playPauseBtn || !muteBtn || !fullscreenBtn) return;
+
+    const iconPause = playPauseBtn.querySelector('.vc-icon-pause');
+    const iconPlay = playPauseBtn.querySelector('.vc-icon-play');
+    const iconSoundOn = muteBtn.querySelector('.vc-icon-sound-on');
+    const iconSoundOff = muteBtn.querySelector('.vc-icon-sound-off');
+    let isPlaying = false;
+    let isMuted = false;
+
+    const player = new Vimeo.Player(iframe);
+
+    function startPlayback() {
+      player.setVolume(1);
+      player.play();
+      isPlaying = true;
+      bigPlayEl.classList.add('vc-hidden');
+      controlsEl.classList.add('vc-visible');
+      iconPause.style.display = 'block';
+      iconPlay.style.display = 'none';
+      playPauseBtn.setAttribute('aria-label', 'Pausar video');
+    }
+
+    bigPlayEl.addEventListener('click', startPlayback);
+
+    playPauseBtn.addEventListener('click', function () {
+      if (isPlaying) {
+        player.pause();
+        iconPause.style.display = 'none';
+        iconPlay.style.display = 'block';
+        playPauseBtn.setAttribute('aria-label', 'Reproducir video');
+      } else {
+        player.play();
+        iconPause.style.display = 'block';
+        iconPlay.style.display = 'none';
+        playPauseBtn.setAttribute('aria-label', 'Pausar video');
+      }
+      isPlaying = !isPlaying;
+    });
+
+    muteBtn.addEventListener('click', function () {
+      if (isMuted) {
+        player.setVolume(1);
+        iconSoundOn.style.display = 'block';
+        iconSoundOff.style.display = 'none';
+        muteBtn.setAttribute('aria-label', 'Silenciar audio');
+      } else {
+        player.setVolume(0);
+        iconSoundOn.style.display = 'none';
+        iconSoundOff.style.display = 'block';
+        muteBtn.setAttribute('aria-label', 'Activar audio');
+      }
+      isMuted = !isMuted;
+    });
+
+    fullscreenBtn.addEventListener('click', function () {
+      const wrapper = document.getElementById('videoPlayer');
+      if (!document.fullscreenElement) {
+        (wrapper.requestFullscreen || wrapper.webkitRequestFullscreen || wrapper.msRequestFullscreen).call(wrapper);
+      } else {
+        (document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen).call(document);
+      }
+    });
+  })();
+
+  /* ─── PREMIUM MICRO-ANIMATIONS (anime.js createAnimatable) ─── */
+  function initMicroAnimations() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || typeof anime === 'undefined') return;
+
+    // Animate diagnostic system card badge pulse
+    const dscBadge = document.querySelector('.dsc-header');
+    if (dscBadge) {
+      anime({
+        targets: '.pulse-dot',
+        scale: [1, 1.3, 1],
+        opacity: [1, 0.6, 1],
+        duration: 2000,
+        easing: 'easeInOutQuad',
+        loop: true
+      });
+    }
+
+    // Subtle rotation on paradigm icons on hover
+    const paradigmCards = document.querySelectorAll('.paradigm-card');
+    paradigmCards.forEach(card => {
+      const icon = card.querySelector('.paradigm-icon svg');
+      if (icon) {
+        card.addEventListener('mouseenter', () => {
+          anime({
+            targets: icon,
+            rotate: 10,
+            scale: 1.1,
+            duration: 300,
+            easing: 'easeOutQuad'
+          });
+        });
+        card.addEventListener('mouseleave', () => {
+          anime({
+            targets: icon,
+            rotate: 0,
+            scale: 1,
+            duration: 300,
+            easing: 'easeOutQuad'
+          });
+        });
+      }
+    });
+
+    // Animate method step icons on hover
+    const methodSteps = document.querySelectorAll('.method-step');
+    methodSteps.forEach(step => {
+      const icon = step.querySelector('.method-icon-wrap svg');
+      if (icon) {
+        step.addEventListener('mouseenter', () => {
+          anime({
+            targets: icon,
+            translateY: -2,
+            duration: 250,
+            easing: 'easeOutQuad'
+          });
+        });
+        step.addEventListener('mouseleave', () => {
+          anime({
+            targets: icon,
+            translateY: 0,
+            duration: 250,
+            easing: 'easeOutQuad'
+          });
+        });
+      }
+    });
+  }
+
+  /* ─── FAQ SPARKLE EFFECT ─── */
+  function initFaqSparkle() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(item => {
+      item.addEventListener('mouseenter', function(e) {
+        // Create sparkle elements
+        for (let i = 0; i < 3; i++) {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.style.left = `${Math.random() * 100}%`;
+          sparkle.style.top = `${Math.random() * 100}%`;
+          sparkle.style.animationDelay = `${i * 0.1}s`;
+          this.appendChild(sparkle);
+
+          // Remove sparkle after animation
+          setTimeout(() => {
+            sparkle.remove();
+          }, 600);
+        }
+      });
+    });
+  }
+
+  initFaqSparkle();
+
+  initMicroAnimations();
 
 });
