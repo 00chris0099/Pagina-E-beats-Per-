@@ -13,38 +13,47 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       navbar.classList.remove('scrolled');
     }
-    
-    // Hide navbar when in video section
-    const videoSection = document.getElementById('video');
-    if (videoSection) {
-      const videoRect = videoSection.getBoundingClientRect();
-      const isInVideoSection = videoRect.top <= 100 && videoRect.bottom >= 100;
-      if (isInVideoSection) {
-        navbar.classList.add('navbar--hidden');
-      } else {
-        navbar.classList.remove('navbar--hidden');
-      }
-    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
   /* ─── MOBILE HAMBURGER ─── */
   const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
+  const sidebarNav = document.getElementById('sidebarNav');
+  const sidebarClose = document.getElementById('sidebarClose');
 
-  hamburger.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('mobile-open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
+  const toggleSidebar = (forceState) => {
+    if (!sidebarNav) return;
+    const isOpen = typeof forceState === 'boolean' ? forceState : !sidebarNav.classList.contains('sidebar-nav--open');
+    sidebarNav.classList.toggle('sidebar-nav--open', isOpen);
+    sidebarNav.setAttribute('aria-hidden', (!isOpen).toString());
+    hamburger?.classList.toggle('open', isOpen);
+    hamburger?.setAttribute('aria-expanded', isOpen);
+    document.body.classList.toggle('sidebar-open', isOpen);
+  };
+
+  hamburger?.addEventListener('click', () => {
+    toggleSidebar();
   });
 
-  // Close mobile menu when clicking a link
-  document.querySelectorAll('.nav-link').forEach(link => {
+  sidebarClose?.addEventListener('click', () => toggleSidebar(false));
+
+  sidebarNav?.addEventListener('click', (event) => {
+    if (event.target === sidebarNav) {
+      toggleSidebar(false);
+    }
+  });
+
+  document.querySelectorAll('.sidebar-nav .nav-link, .nav-links .nav-link').forEach(link => {
     link.addEventListener('click', () => {
-      navLinks.classList.remove('mobile-open');
-      hamburger.classList.remove('open');
+      toggleSidebar(false);
     });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && sidebarNav?.classList.contains('sidebar-nav--open')) {
+      toggleSidebar(false);
+    }
   });
 
   /* ─── HERO ENTRANCE ANIMATION ─── */
@@ -1075,14 +1084,49 @@ document.addEventListener('DOMContentLoaded', () => {
     waObserver.observe(finalWaBtn);
   }
 
+  /* ─── URGENCY BAR VISIBILITY ─── */
+  const urgencyBar = document.getElementById('urgencyBar');
+  const finalSection = document.getElementById('aplicar');
+  if (urgencyBar && finalSection) {
+    const urgencyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          urgencyBar.classList.add('urgency-bar--hidden');
+        } else {
+          urgencyBar.classList.remove('urgency-bar--hidden');
+        }
+      });
+    }, { threshold: 0.4 });
+
+    urgencyObserver.observe(finalSection);
+  }
+
   /* ─── HERO TYPEWRITER ─── */
+  const heroTypeTitle = document.getElementById('heroTypeTitle');
+  if (heroTypeTitle) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fullTitle = heroTypeTitle.textContent.trim();
+    if (!prefersReduced) {
+      let titleIndex = 0;
+      heroTypeTitle.textContent = '';
+      const typeTitle = () => {
+        if (titleIndex <= fullTitle.length) {
+          heroTypeTitle.textContent = fullTitle.slice(0, titleIndex);
+          titleIndex += 1;
+          setTimeout(typeTitle, 45);
+        }
+      };
+      typeTitle();
+    }
+  }
+
   const typewriterEl = document.getElementById('hero-typewriter');
   if (typewriterEl) {
     const phrases = [
-      'dejar de perder ventas',
-      'aumentar conversiones',
-      'escalar sin caos',
-      'ordenar tu operación'
+      'operar sin planillas eternas',
+      'responder en minutos y no en horas',
+      'tomar decisiones con datos vivos',
+      'escalar con control y seguimiento'
     ];
 
     let phraseIndex = 0;
@@ -1128,78 +1172,63 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(tick, 400);
   }
 
-  /* ─── VIDEO: Vimeo custom controls ─── */
-  (function initVideoControls() {
-    const iframe = document.querySelector('#videoPlayer iframe');
-    const controlsEl = document.getElementById('videoControls');
-    const bigPlayEl = document.getElementById('vcBigPlay');
-    const playPauseBtn = document.getElementById('vcPlayPause');
-    const muteBtn = document.getElementById('vcMute');
-    const fullscreenBtn = document.getElementById('vcFullscreen');
-    if (!iframe || !controlsEl || !bigPlayEl || !playPauseBtn || !muteBtn || !fullscreenBtn) return;
+  /* ─── SECTION TYPING ON SCROLL ─── */
+  function initScrollTyping() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
 
-    const iconPause = playPauseBtn.querySelector('.vc-icon-pause');
-    const iconPlay = playPauseBtn.querySelector('.vc-icon-play');
-    const iconSoundOn = muteBtn.querySelector('.vc-icon-sound-on');
-    const iconSoundOff = muteBtn.querySelector('.vc-icon-sound-off');
-    let isPlaying = false;
-    let isMuted = false;
+    const selectors = ['.section-title', '.mockup-headline h3'];
+    const targets = selectors.reduce((acc, sel) => {
+      const found = document.querySelectorAll(sel);
+      if (found.length) acc.push(...found);
+      return acc;
+    }, []);
+    if (!targets.length) return;
 
-    const player = new Vimeo.Player(iframe);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startTyping(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.65, rootMargin: '0px 0px -10% 0px' });
 
-    function startPlayback() {
-      player.setVolume(1);
-      player.play();
-      isPlaying = true;
-      bigPlayEl.classList.add('vc-hidden');
-      controlsEl.classList.add('vc-visible');
-      iconPause.style.display = 'block';
-      iconPlay.style.display = 'none';
-      playPauseBtn.setAttribute('aria-label', 'Pausar video');
+    targets.forEach(el => {
+      if (!el.textContent.trim()) return;
+      el.dataset.typingFull = el.textContent.trim();
+      el.dataset.typingDone = 'false';
+      el.textContent = '';
+      el.classList.add('typing-waiting');
+      observer.observe(el);
+    });
+
+    function startTyping(el) {
+      if (el.dataset.typingDone === 'true') return;
+      el.dataset.typingDone = 'true';
+      el.classList.add('typing-active');
+      const full = el.dataset.typingFull || '';
+      const speed = Number(el.dataset.typingSpeed) || 38;
+      let index = 0;
+
+      const step = () => {
+        el.textContent = full.slice(0, index);
+        index += 1;
+        if (index <= full.length) {
+          setTimeout(step, speed);
+        } else {
+          el.classList.remove('typing-active');
+          el.classList.add('typing-complete');
+        }
+      };
+
+      step();
     }
+  }
 
-    bigPlayEl.addEventListener('click', startPlayback);
+  initScrollTyping();
 
-    playPauseBtn.addEventListener('click', function () {
-      if (isPlaying) {
-        player.pause();
-        iconPause.style.display = 'none';
-        iconPlay.style.display = 'block';
-        playPauseBtn.setAttribute('aria-label', 'Reproducir video');
-      } else {
-        player.play();
-        iconPause.style.display = 'block';
-        iconPlay.style.display = 'none';
-        playPauseBtn.setAttribute('aria-label', 'Pausar video');
-      }
-      isPlaying = !isPlaying;
-    });
-
-    muteBtn.addEventListener('click', function () {
-      if (isMuted) {
-        player.setVolume(1);
-        iconSoundOn.style.display = 'block';
-        iconSoundOff.style.display = 'none';
-        muteBtn.setAttribute('aria-label', 'Silenciar audio');
-      } else {
-        player.setVolume(0);
-        iconSoundOn.style.display = 'none';
-        iconSoundOff.style.display = 'block';
-        muteBtn.setAttribute('aria-label', 'Activar audio');
-      }
-      isMuted = !isMuted;
-    });
-
-    fullscreenBtn.addEventListener('click', function () {
-      const wrapper = document.getElementById('videoPlayer');
-      if (!document.fullscreenElement) {
-        (wrapper.requestFullscreen || wrapper.webkitRequestFullscreen || wrapper.msRequestFullscreen).call(wrapper);
-      } else {
-        (document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen).call(document);
-      }
-    });
-  })();
-
+  
   /* ─── PREMIUM MICRO-ANIMATIONS (anime.js createAnimatable) ─── */
   function initMicroAnimations() {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
