@@ -14,7 +14,7 @@
             </p>
         </div>
         <nav class="max-w-7xl mx-auto px-4 md:px-16 h-16 flex items-center justify-between">
-            <a href="${root}inicio.html" class="flex items-center shrink-0">
+            <a href="${root}index.html" class="flex items-center shrink-0">
                 <img src="${root}image/logonormal.png" alt="E Beats Peru" class="h-10 w-10 object-cover rounded-sm" />
             </a>
             <div class="hidden lg:flex items-center gap-8">
@@ -70,7 +70,7 @@
         </nav>
         <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-on-surface/10">
             <div class="px-4 py-6 space-y-4">
-                <a href="${root}inicio.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Inicio</a>
+                <a href="${root}index.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Inicio</a>
                 <a href="${root}servicios.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Soluciones</a>
                 <a href="${root}blogprincipal.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Centro de Recursos</a>
                 <a href="${root}contacto.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Contacto</a>
