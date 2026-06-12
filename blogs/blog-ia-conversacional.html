@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IA Conversacional: Más allá de los Chatbots | E-Beats Perú</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-surface": "#1a1c1c",
+                    "primary": "#000000",
+                    "on-primary": "#ffffff",
+                    "background": "#f9f9f9",
+                    "surface": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "surface-container": "#eeeeee",
+                    "surface-container-low": "#f3f3f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary-container": "#ff291a",
+                    "secondary": "#5d5f5f",
+                    "outline": "#7e7576",
+                    "outline-variant": "#cfc4c5",
+                    "error": "#ba1a1a",
+                    "accent-red": "#ff311c"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+                "spacing": {
+                    "xl": "80px",
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "xs": "4px",
+                    "md": "24px"
+                },
+                "fontFamily": {
+                    "display-lg": ["Anton"],
+                    "headline-xl": ["Anton"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Source Serif 4"],
+                    "body-lg": ["Source Serif 4"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "subheading-md": ["Hanken Grotesk"]
+                },
+                "fontSize": {
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "subheading-md": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    body { background-color: #ffffff; color: #1a1c1c; -webkit-font-smoothing: antialiased; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    .text-accent-red { color: #ff291a; }
+    html { scroll-behavior: smooth; }
+    h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+    h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    p { margin-bottom: 1.25rem; }
+</style>
+</head>
+<body class="font-body-md text-body-md">
+<div id="site-header"></div>
+
+<header class="w-full pt-24 md:pt-32 border-b border-primary">
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<h1 class="font-display-lg text-headline-xl md:text-display-lg uppercase mb-md leading-tight text-primary">
+    IA Conversacional: <span class="text-accent-red">Más allá de los Chatbots</span> para flujos CRM.
+</h1>
+<div class="flex items-center gap-sm mb-lg">
+    <div class="h-10 w-10 bg-primary flex items-center justify-center text-on-primary font-bold">CE</div>
+    <div class="font-label-sm text-label-sm uppercase tracking-widest">
+        Por <span class="text-primary font-bold">Christian Elias, CEO</span> | Publicado: Sep 15, 2024
+    </div>
+</div>
+<div class="relative w-full aspect-[21/9] bg-surface-container overflow-hidden border border-primary mb-xl">
+    <img alt="Interfaz de IA conversacional avanzada" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNr_HK7Cf56B3y7QqkmNiX6s_-265PgXX8ym7pC6dmXt6M1LVmJs3_GsM-EjmkyLHRUy2iFnXnkEYW_DQ2wnQp4p1FdWUCwyEcq9xIblihFKK35GKlRPBLZ0xXxrcGgObdi3hoYjYq_5_SR3QtIAjAkwJrwGK7GA4DHKSrV5y2OO3wnKp_U9c2qGEWWUdhBEzZW1Sek9vtsRlbK_7G13Gtg7sSATRwanuI0bsQYpbMnXcZhwXhMt9-ADaJiT4RRC_01JFHATJkBw"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+</div>
+</header>
+
+<main class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8">
+    <nav class="p-md border border-primary mb-xl md:hidden">
+        <h4 class="font-label-sm text-label-sm uppercase mb-sm text-accent-red tracking-widest">Índice de Contenido</h4>
+        <ul class="space-y-base font-label-sm text-label-sm uppercase underline">
+            <li><a href="#evolucion">Evolución de Chatbots</a></li>
+            <li><a href="#agentes">Agentes de IA</a></li>
+            <li><a href="#crm">Integración CRM</a></li>
+            <li><a href="#resultados">Resultados</a></li>
+        </ul>
+    </nav>
+
+    <article class="prose max-w-none">
+        <h2 class="font-headline-lg text-headline-lg uppercase border-b border-primary pb-base" id="evolucion">De Chatbots a Agentes de IA Autónomos</h2>
+        <p class="font-body-lg text-body-lg">
+            La evolución de la IA conversacional ha pasado de respuestas predefinidas a sistemas capaces de comprender contexto, tomar decisiones y ejecutar acciones complejas. Los agentes de IA actuales pueden navegar bases de datos, procesar pagos y gestionar inventarios en tiempo real.
+        </p>
+
+        <div class="my-lg p-md border border-primary flex items-center gap-md">
+            <span class="font-display-lg text-headline-xl text-accent-red">0.2s</span>
+            <div>
+                <p class="font-label-sm text-label-sm uppercase font-bold m-0">Tiempo de Respuesta</p>
+                <p class="font-body-md text-body-md m-0">Latencia promedio de nuestros agentes IA en producción.</p>
+            </div>
+        </div>
+
+        <h2 class="font-headline-lg text-headline-lg uppercase border-b border-primary pb-base" id="agentes">Arquitectura de Agentes IA</h2>
+        <p class="font-body-lg text-body-lg">
+            Un agente de IA efectivo requiere una arquitectura de múltiples capas: procesamiento de lenguaje natural, acceso a bases de datos en tiempo real, y capacidades de ejecución de acciones a través de APIs seguras.
+        </p>
+
+        <h3 class="font-subheading-md text-subheading-md font-bold uppercase">Componentes Clave</h3>
+        <ol class="list-decimal pl-md space-y-base mb-lg">
+            <li class="pl-base font-body-lg text-body-lg"><strong>Motor de LLM:</strong> Modelos de lenguaje fine-tuneados para el sector específico del cliente.</li>
+            <li class="pl-base font-body-lg text-body-lg"><strong>Capa de Memoria:</strong> Almacenamiento de contexto conversacional para interacciones personalizadas.</li>
+            <li class="pl-base font-body-lg text-body-lg"><strong>Integraciones:</strong> Conexión directa con CRM, ERP y sistemas de gestión.</li>
+            <li class="pl-base font-body-lg text-body-lg"><strong>Seguridad:</strong> Cifrado end-to-end y cumplimiento con GDPR/Ley 29733.</li>
+        </ol>
+
+        <blockquote class="my-xl px-lg py-md border-l-8 border-primary bg-surface-container-low italic font-body-lg text-body-lg">
+            "Un chatbot responde preguntas. Un agente de IA cierra ventas. La diferencia está en la capacidad de ejecución autónoma."
+            <cite class="block mt-sm font-label-sm text-label-sm uppercase not-italic font-bold">— Christian Elias, CEO</cite>
+        </blockquote>
+
+        <h2 class="font-headline-lg text-headline-lg uppercase border-b border-primary pb-base" id="crm">Integración con CRMs Existentes</h2>
+        <p class="font-body-lg text-body-lg">
+            La clave del éxito es la integración fluida con los sistemas que ya uses. Nuestros agentes se conectan con Salesforce, HubSpot, Monday.com y CRMs propietarios mediante APIs REST y webhooks en tiempo real.
+        </p>
+
+        <div class="overflow-x-auto mb-xl border border-primary">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-primary text-on-primary">
+                        <th class="p-md font-label-sm text-label-sm uppercase">Función</th>
+                        <th class="p-md font-label-sm text-label-sm uppercase">Chatbot Tradicional</th>
+                        <th class="p-md font-label-sm text-label-sm uppercase">Agente IA</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-primary">
+                    <tr class="hover:bg-surface-container transition-colors">
+                        <td class="p-md font-bold uppercase text-label-sm">Calificación de Leads</td>
+                        <td class="p-md">Manual / Formulario</td>
+                        <td class="p-md text-accent-red font-bold">Automática 24/7</td>
+                    </tr>
+                    <tr class="hover:bg-surface-container transition-colors">
+                        <td class="p-md font-bold uppercase text-label-sm">Agendamiento</td>
+                        <td class="p-md">Requiere humano</td>
+                        <td class="p-md text-accent-red font-bold">Integración directa</td>
+                    </tr>
+                    <tr class="hover:bg-surface-container transition-colors">
+                        <td class="p-md font-bold uppercase text-label-sm">Seguimiento</td>
+                        <td class="p-md">Email genérico</td>
+                        <td class="p-md text-accent-red font-bold">Personalizado + IA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="font-headline-lg text-headline-lg uppercase border-b border-primary pb-base" id="resultados">Resultados Medibles</h2>
+        <p class="font-body-lg text-body-lg">
+            Nuestros clientes reportan mejoras significativas en sus métricas de ventas después de implementar agentes de IA: reducción del 60% en tiempo de respuesta, aumento del 40% en tasa de conversión, y eliminación del 90% de tareas repetitivas para el equipo comercial.
+        </p>
+    </article>
+
+    <div class="mt-xl pt-xl border-t-2 border-primary">
+        <section class="bg-primary text-on-primary p-lg text-center mb-xl">
+            <h2 class="font-display-lg text-headline-xl uppercase mb-base m-0">Implementa tu Agente de IA Hoy</h2>
+            <p class="font-body-md text-body-md mb-md opacity-80">Automatiza tu proceso de ventas con inteligencia artificial.</p>
+            <button class="bg-accent-red text-on-primary px-lg py-md font-label-sm text-label-sm uppercase font-bold hover:bg-white hover:text-primary transition-all duration-300">Agendar Demo</button>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+            <a href="blog-ciberseguridad-mype.html" class="border border-primary p-md group hover:bg-primary hover:text-on-primary transition-all">
+                <span class="material-symbols-outlined text-accent-red group-hover:text-white mb-base" style="font-size: 32px;">security</span>
+                <h4 class="font-label-sm text-label-sm uppercase font-bold mb-xs">Ciberseguridad MYPE</h4>
+                <p class="text-sm opacity-70">Blindando activos digitales en Perú.</p>
+            </a>
+            <a href="blog-automatizacion-n8n.html" class="border border-primary p-md group hover:bg-primary hover:text-on-primary transition-all">
+                <span class="material-symbols-outlined text-accent-red group-hover:text-white mb-base" style="font-size: 32px;">webhook</span>
+                <h4 class="font-label-sm text-label-sm uppercase font-bold mb-xs">Automatización n8n</h4>
+                <p class="text-sm opacity-70">Conectando bases de datos legacy.</p>
+            </a>
+            <a href="blog1.html" class="border border-primary p-md group hover:bg-primary hover:text-on-primary transition-all">
+                <span class="material-symbols-outlined text-accent-red group-hover:text-white mb-base" style="font-size: 32px;">database</span>
+                <h4 class="font-label-sm text-label-sm uppercase font-bold mb-xs">Automatización B2B</h4>
+                <p class="text-sm opacity-70">Guía definitiva sobre n8n y SQL Server.</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<aside class="md:col-span-4 space-y-xl">
+    <nav class="hidden md:block p-md border border-primary">
+        <h4 class="font-label-sm text-label-sm uppercase mb-sm text-accent-red tracking-widest">En este articulo</h4>
+        <ul class="space-y-base font-label-sm text-label-sm uppercase">
+            <li><a href="#evolucion">01. Evolucion</a></li>
+            <li><a href="#agentes">02. Agentes IA</a></li>
+            <li><a href="#crm">03. Integracion CRM</a></li>
+            <li><a href="#resultados">04. Resultados</a></li>
+        </ul>
+    </nav>
+    <div class="p-md bg-surface-container-low border border-primary">
+        <h4 class="font-label-sm text-label-sm uppercase font-bold mb-md border-b border-primary pb-xs">Sobre el Autor</h4>
+        <div class="flex flex-col gap-sm">
+            <div class="h-24 w-24 bg-primary grayscale overflow-hidden mb-sm">
+                <img alt="Christian Elias" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1te8Zfndmis8AW-EHHr_fgJq4Oq0ex7R9ymhteUCApfF1BeniNDuKP9nYF7zpu9XeVKmNQHX5Gl25L7nYgVU1cYpbWLRzcXrcG6pzMuPtTWJVmHi51Ujhev3K7TZFLjb-1gHs6HcHEibhgW0VjvX2euEcT_uGHWnROo7A-GCxJN8a8htnZQqqzYuVKn_h-rXxW8c7VfRn4HIaYa5sDLDSw2jmZX6d_XIDGCkNH00l1Cv8tEuFm1kLpCIKBMwHe-8c4HStZ0R7qA"/>
+            </div>
+            <p class="font-label-sm text-label-sm uppercase font-bold">Christian Elias</p>
+            <p class="text-xs font-body-md">CEO en E-Beats Peru. Especialista en IA Conversacional y automatizacion de ventas B2B.</p>
+        </div>
+    </div>
+    <div class="p-md border border-primary bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h4 class="font-headline-lg text-headline-lg uppercase leading-none mb-sm">Demo Gratuita</h4>
+        <p class="font-label-sm text-label-sm uppercase mb-md opacity-70">Prueba nuestro agente IA en vivo.</p>
+        <form class="space-y-md">
+            <div>
+                <label class="block font-label-sm text-label-sm uppercase mb-xs">Email Corporativo</label>
+                <input class="w-full border-0 border-b border-primary focus:border-accent-red focus:ring-0 p-xs text-sm" placeholder="ejemplo@empresa.com" type="email"/>
+            </div>
+            <button class="w-full bg-primary text-on-primary py-sm font-label-sm text-label-sm uppercase font-bold hover:bg-accent-red transition-colors">Solicitar Demo</button>
+        </form>
+    </div>
+</aside>
+</div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../components/header.js"></script>
+<script src="../components/footer.js"></script>
+</body>
+</html>

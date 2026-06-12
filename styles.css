@@ -329,24 +329,17 @@ section {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 18px 0;
-  transition: all .3s var(--ease), transform .3s ease, opacity .3s ease;
+  padding: 0;
+  transition: background .3s var(--ease), box-shadow .3s var(--ease);
   background: transparent;
 }
 
 .navbar.scrolled {
-  padding: 12px 0;
   background: rgba(8, 8, 12, .8);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(255, 255, 255, .04);
   box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
-}
-
-.navbar.navbar--hidden {
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
 }
 
 .nav-inner {

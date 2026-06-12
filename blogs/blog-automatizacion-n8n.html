@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Automatización de Procesos con n8n | E-Beats Perú</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-surface": "#1a1c1c",
+                    "primary": "#000000",
+                    "on-primary": "#ffffff",
+                    "background": "#f9f9f9",
+                    "surface": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "surface-container": "#eeeeee",
+                    "surface-container-low": "#f3f3f3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary-container": "#ff291a",
+                    "secondary": "#5d5f5f",
+                    "outline": "#7e7576",
+                    "outline-variant": "#cfc4c5",
+                    "error": "#ba1a1a",
+                    "accent-red": "#ff311c"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+                "spacing": {
+                    "xl": "80px",
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "xs": "4px",
+                    "md": "24px"
+                },
+                "fontFamily": {
+                    "display-lg": ["Anton"],
+                    "headline-xl": ["Anton"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Source Serif 4"],
+                    "body-lg": ["Source Serif 4"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "subheading-md": ["Hanken Grotesk"]
+                },
+                "fontSize": {
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "subheading-md": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    body { background-color: #ffffff; color: #1a1c1c; -webkit-font-smoothing: antialiased; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    .text-accent-red { color: #ff291a; }
+    html { scroll-behavior: smooth; }
+    h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+    h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    p { margin-bottom: 1.25rem; }
+</style>
+</head>
+<body class="font-body-md text-body-md">
+<div id="site-header"></div>
+
+<header class="w-full pt-24 md:pt-32 border-b border-primary">
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<h1 class="font-display-lg text-headline-xl md:text-display-lg uppercase mb-md leading-tight text-primary">
+    Automatización de Procesos con n8n: <span class="text-accent-red">Conectando Bases de Datos Legacy</span> con Flujos Modernos.
+</h1>
+<div class="flex items-center gap-sm mb-lg">
+    <div class="h-10 w-10 bg-primary flex items-center justify-center text-on-primary font-bold">CE</div>
+    <div class="font-label-sm text-label-sm uppercase tracking-widest">
+        Por <span class="text-primary font-bold">Christian Elias, CEO</span> | Publicado: Ago 30, 2024
+    </div>
+</div>
+<div class="relative w-full aspect-[21/9] bg-surface-container overflow-hidden border border-primary mb-xl">
+    <img alt="Automatización de procesos con n8n" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYUi66ThmbbtxNzgzhtZGSEfT0RsBwcoHaV3CojtnMQYkdOS-wytIFu930lf0K-KfBFwxx6wGCRRYxMjWyReryGEE9PwuTomKT5cKIHDgBlG26sT6370LHglbmvI_0PgNWY0nQZf6Cwp61dj_Y1H3N_InqGOZGNX4y6jNocMPEa3LWzxSfufaccvNkeUYCMuhv_fBHpSkTE1TADxrW855w5F0Rfwrz2pi3-00dYeGL3iIPZxCR7hTRj70_An9ZGEJOUJxq6xSolg"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+</div>
+</header>
+
+<main class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8">
+    <nav class="p-md border border-primary mb-xl md:hidden">
+        <h4 class="font-label-sm text-label-sm uppercase mb-sm text-accent-red tracking-widest">Índice de Contenido</h4>
+        <ul class="space-y-base font-label-sm text-label-sm uppercase underline">
+            <li><a href="#que-es">Qué es n8n</a></li>
+            <li><a href="#webhooks">Webhooks y APIs</a></li>
+            <li><a href="#implementacion">Implementación</a></li>
+            <li><a href="#casos">Casos de Uso</a></li>
+        </ul>
+    </nav>
+
+    <article class="prose max-w-none">
+        <h2 class="font-headline-lg text-headline-lg uppercase border-b border-primary pb-base" id="que-es">Qué es n8n y por qué importa</h2>
+        <p class="font-body-lg text-body-lg">
+            n8n es una plataforma de automatización de workflows de código abierto que permite conectar cualquier aplicación con cualquier API. A diferencia de Zapier o Make, n8n se auto-hospeda, lo que significa que tus datos sensibles nunca salen de tu infraestructura.
+        </p>
+
+        <div class="my-lg p-md border border-primary flex items-center gap-md">
+            <span class="font-display-lg text-headline-xl text-accent-red">94%</span>
+            <div>
+                <p class="font-label-sm text-label-sm uppercase font-bold m-0">Reducción de Errores</p>
+                <p class="font-body-md text-body-md m-0">En procesos de conciliación bancaria tras implementar n8n.</p>
+            </div>
+        </div>
+
+        <h2 class="font-headline-lg text-headline-lg uppercase border-b border-primary pb-base" id="webhooks">Webhooks y Conexiones Seguras</h2>
+        <p class="font-body-lg text-body-lg">
+            Los webhooks son el corazón de la automatización moderna. Permiten que una aplicación notifique a otra en tiempo real cuando ocurre un evento. Con n8n, puedes crear flujos que se activan automáticamente cuando llega un lead, se procesa un pago o se actualiza un registro en tu base de datos.
+        </p>
+
+        <h3 class="font-subheading-md text-subheading-md font-bold uppercase">Tipos de Webhooks</h3>
+        <ol class="list-decimal pl-md space-y-base mb-lg">
+            <li class="pl-base font-body-lg text-body-lg"><strong>Incoming Webhooks:</strong> Reciben datos de sistemas externos (CRM, e-commerce, formularios).</li>
+            <li class="pl-base font-body-lg text-body-lg"><strong>Outgoing Webhooks:</strong> Envían datos a sistemas destinos (email, SMS, bases de datos).</li>
+            <li class="pl-base font-body-lg text-body-lg"><strong>Webhooks con Firma:</strong> Validación de autenticidad mediante HMAC para máxima seguridad.</li>
+        </ol>
+
+        <blockquote class="my-xl px-lg py-md border-l-8 border-primary bg-surface-container-low italic font-body-lg text-body-lg">
+            "La verdadera automatización no es solo conectar dos aplicaciones, sino crear lógica de negocio que se ejecute sin supervisión humana, con cero errores y en milisegundos."
+            <cite class="block mt-sm font-label-sm text-label-sm uppercase not-italic font-bold">— Christian Elias, CEO</cite>
+        </blockquote>
+
+        <h2 class="font-headline-lg text-headline-lg uppercase border-b border-primary pb-base" id="implementacion">Guía de Implementación en 4 Pasos</h2>
+        <p class="font-body-lg text-body-lg">
+            Implementar n8n en tu empresa es un proceso estructurado que puede completarse en 2-4 semanas dependiendo de la complejidad de tus sistemas actuales.
+        </p>
+
+        <div class="overflow-x-auto mb-xl border border-primary">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-primary text-on-primary">
+                        <th class="p-md font-label-sm text-label-sm uppercase">Paso</th>
+                        <th class="p-md font-label-sm text-label-sm uppercase">Descripción</th>
+                        <th class="p-md font-label-sm text-label-sm uppercase">Tiempo</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-primary">
+                    <tr class="hover:bg-surface-container transition-colors">
+                        <td class="p-md font-bold uppercase text-label-sm">01. Despliegue</td>
+                        <td class="p-md">Instalación de n8n en Docker con SSL</td>
+                        <td class="p-md text-accent-red font-bold">1-2 días</td>
+                    </tr>
+                    <tr class="hover:bg-surface-container transition-colors">
+                        <td class="p-md font-bold uppercase text-label-sm">02. Conexión</td>
+                        <td class="p-md">Integración con bases de datos y APIs</td>
+                        <td class="p-md text-accent-red font-bold">3-5 días</td>
+                    </tr>
+                    <tr class="hover:bg-surface-container transition-colors">
+                        <td class="p-md font-bold uppercase text-label-sm">03. Flujos</td>
+                        <td class="p-md">Diseño de workflows de negocio</td>
+                        <td class="p-md text-accent-red font-bold">5-7 días</td>
+                    </tr>
+                    <tr class="hover:bg-surface-container transition-colors">
+                        <td class="p-md font-bold uppercase text-label-sm">04. Pruebas</td>
+                        <td class="p-md">Validación y monitoreo en producción</td>
+                        <td class="p-md text-accent-red font-bold">2-3 días</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="font-headline-lg text-headline-lg uppercase border-b border-primary pb-base" id="casos">Casos de Uso Reales</h2>
+        <p class="font-body-lg text-body-lg">
+            Hemos implementado n8n en múltiples sectores: desde conciliación bancaria automatizada hasta sincronización masiva de inventarios para e-commerce. Cada caso demuestra el poder de la automatización low-code para escalar operaciones sin incrementar costos operativos.
+        </p>
+    </article>
+
+    <div class="mt-xl pt-xl border-t-2 border-primary">
+        <section class="bg-primary text-on-primary p-lg text-center mb-xl">
+            <h2 class="font-display-lg text-headline-xl uppercase mb-base m-0">Automatiza tus Procesos Hoy</h2>
+            <p class="font-body-md text-body-md mb-md opacity-80">Conecta tus sistemas legacy con flujos modernos de n8n.</p>
+            <button class="bg-accent-red text-on-primary px-lg py-md font-label-sm text-label-sm uppercase font-bold hover:bg-white hover:text-primary transition-all duration-300">Agendar Consultoría</button>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+            <a href="blog-ciberseguridad-mype.html" class="border border-primary p-md group hover:bg-primary hover:text-on-primary transition-all">
+                <span class="material-symbols-outlined text-accent-red group-hover:text-white mb-base" style="font-size: 32px;">security</span>
+                <h4 class="font-label-sm text-label-sm uppercase font-bold mb-xs">Ciberseguridad MYPE</h4>
+                <p class="text-sm opacity-70">Blindando activos digitales en Perú.</p>
+            </a>
+            <a href="blog-ia-conversacional.html" class="border border-primary p-md group hover:bg-primary hover:text-on-primary transition-all">
+                <span class="material-symbols-outlined text-accent-red group-hover:text-white mb-base" style="font-size: 32px;">smart_toy</span>
+                <h4 class="font-label-sm text-label-sm uppercase font-bold mb-xs">IA Conversacional</h4>
+                <p class="text-sm opacity-70">Más allá de los chatbots.</p>
+            </a>
+            <a href="blog1.html" class="border border-primary p-md group hover:bg-primary hover:text-on-primary transition-all">
+                <span class="material-symbols-outlined text-accent-red group-hover:text-white mb-base" style="font-size: 32px;">database</span>
+                <h4 class="font-label-sm text-label-sm uppercase font-bold mb-xs">Automatización B2B</h4>
+                <p class="text-sm opacity-70">Guía definitiva sobre n8n y SQL Server.</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<aside class="md:col-span-4 space-y-xl">
+    <nav class="hidden md:block p-md border border-primary">
+        <h4 class="font-label-sm text-label-sm uppercase mb-sm text-accent-red tracking-widest">En este articulo</h4>
+        <ul class="space-y-base font-label-sm text-label-sm uppercase">
+            <li><a href="#que-es">01. Que es n8n</a></li>
+            <li><a href="#webhooks">02. Webhooks</a></li>
+            <li><a href="#implementacion">03. Implementacion</a></li>
+            <li><a href="#casos">04. Casos de Uso</a></li>
+        </ul>
+    </nav>
+    <div class="p-md bg-surface-container-low border border-primary">
+        <h4 class="font-label-sm text-label-sm uppercase font-bold mb-md border-b border-primary pb-xs">Sobre el Autor</h4>
+        <div class="flex flex-col gap-sm">
+            <div class="h-24 w-24 bg-primary grayscale overflow-hidden mb-sm">
+                <img alt="Christian Elias" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1te8Zfndmis8AW-EHHr_fgJq4Oq0ex7R9ymhteUCApfF1BeniNDuKP9nYF7zpu9XeVKmNQHX5Gl25L7nYgVU1cYpbWLRzcXrcG6pzMuPtTWJVmHi51Ujhev3K7TZFLjb-1gHs6HcHEibhgW0VjvX2euEcT_uGHWnROo7A-GCxJN8a8htnZQqqzYuVKn_h-rXxW8c7VfRn4HIaYa5sDLDSw2jmZX6d_XIDGCkNH00l1Cv8tEuFm1kLpCIKBMwHe-8c4HStZ0R7qA"/>
+            </div>
+            <p class="font-label-sm text-label-sm uppercase font-bold">Christian Elias</p>
+            <p class="text-xs font-body-md">CEO en E-Beats Peru. Especialista en automatizacion B2B y arquitecturas de workflows con n8n.</p>
+        </div>
+    </div>
+    <div class="p-md border border-primary bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h4 class="font-headline-lg text-headline-lg uppercase leading-none mb-sm">Guia n8n Gratuita</h4>
+        <p class="font-label-sm text-label-sm uppercase mb-md opacity-70">Plan de implementacion de 30 dias.</p>
+        <form class="space-y-md">
+            <div>
+                <label class="block font-label-sm text-label-sm uppercase mb-xs">Email Corporativo</label>
+                <input class="w-full border-0 border-b border-primary focus:border-accent-red focus:ring-0 p-xs text-sm" placeholder="ejemplo@empresa.com" type="email"/>
+            </div>
+            <button class="w-full bg-primary text-on-primary py-sm font-label-sm text-label-sm uppercase font-bold hover:bg-accent-red transition-colors">Descargar PDF</button>
+        </form>
+    </div>
+    <div class="p-md border border-accent-red bg-accent-red text-on-primary">
+        <h4 class="font-label-sm text-label-sm uppercase font-bold mb-xs">Tus procesos son manuales?</h4>
+        <p class="text-sm mb-md">Automatiza flujos criticos y reduce errores humanos a cero.</p>
+        <a href="../index.html#audit" class="w-full bg-white text-primary py-md font-label-sm text-label-sm uppercase font-bold hover:bg-black hover:text-white transition-all block text-center">Automatizar Ahora</a>
+    </div>
+</aside>
+</div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../components/header.js"></script>
+<script src="../components/footer.js"></script>
+</body>
+</html>

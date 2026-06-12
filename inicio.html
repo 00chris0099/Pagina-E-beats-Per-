@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CYBER_CORE AI | Automatización y Ciberseguridad de Alto Rendimiento</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;500;700&amp;family=Source+Serif+4:wght@400;500;700&amp;family=Hanken+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#000000", "on-primary-container": "#848484", "on-error-container": "#93000a", "on-error": "#ffffff", background: "#f9f9f9", "surface-bright": "#f9f9f9", "on-background": "#1a1c1c", "secondary-fixed-dim": "#c6c6c7", "tertiary-fixed-dim": "#ffb4a8", "surface-container-highest": "#e2e2e2", error: "#ba1a1a", "on-primary": "#ffffff", "outline-variant": "#cfc4c5", "on-tertiary-fixed": "#410000", "on-secondary-fixed": "#1a1c1c", surface: "#f9f9f9", "primary-fixed": "#e2e2e2", "on-tertiary-fixed-variant": "#930100", "inverse-surface": "#2f3131", "surface-dim": "#dadada", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#454747", "tertiary-fixed": "#ffdad4", "surface-tint": "#5e5e5e", "surface-container-high": "#e8e8e8", "on-secondary": "#ffffff", "on-primary-fixed-variant": "#474747", secondary: "#5d5f5f", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#1b1b1b", "on-tertiary-container": "#ff291a", "on-secondary-container": "#616363", "secondary-container": "#dfe0e0", "primary-fixed-dim": "#c6c6c6", "primary-container": "#1b1b1b", outline: "#7e7576", "surface-container-low": "#f3f3f3", "surface-variant": "#e2e2e2", "surface-container": "#eeeeee", "on-surface": "#1a1c1c", "on-tertiary": "#ffffff", tertiary: "#000000", "inverse-on-surface": "#f1f1f1", "tertiary-container": "#410000", "on-surface-variant": "#4c4546", "secondary-fixed": "#e2e2e2", "inverse-primary": "#c6c6c6"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {md: "24px", xl: "80px", sm: "12px", gutter: "24px", "margin-desktop": "64px", lg: "48px", base: "8px", xs: "4px", "margin-mobile": "16px"}, fontFamily: {"display-lg": ["Anton"], "headline-lg": ["Hanken Grotesk"], "body-lg": ["Source Serif 4"], "headline-xl": ["Anton"], "label-sm": ["Hanken Grotesk"], "headline-lg-mobile": ["Hanken Grotesk"], "body-md": ["Source Serif 4"], "subheading-md": ["Hanken Grotesk"]}, fontSize: {"display-lg": ["72px", {lineHeight: "1.1", letterSpacing: "0.02em", fontWeight: "400"}], "headline-lg": ["32px", {lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "700"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "headline-xl": ["48px", {lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "400"}], "label-sm": ["14px", {lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "600"}], "headline-lg-mobile": ["24px", {lineHeight: "1.3", fontWeight: "700"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "subheading-md": ["20px", {lineHeight: "1.5", fontWeight: "500"}]}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(249,249,249,1) 100%);
+        }
+        .border-tech {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #1a1c1c;
+        }
+        .red-accent-hover:hover {
+            background-color: #000000;
+            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 41, 26, 0.3);
+        }
+        .faq-accordion[open] .material-symbols-outlined {
+            transform: rotate(180deg);
+        }
+
+        /* Typewriter & Glow Effect */
+        #hero-headline {
+            display: inline;
+            text-shadow: 0 0 0px transparent;
+            transition: text-shadow 0.5s ease;
+        }
+        .headline-glow {
+            text-shadow: 0 0 15px rgba(255, 41, 26, 0.4);
+        }
+        .cursor-active::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+            color: #ff291a;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Scroll Transitions */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Button Glow & Sweep */
+        .btn-interactive {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-interactive:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+        .btn-interactive::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        .btn-interactive:hover::before {
+            left: 100%;
+        }
+
+        /* Pulse Animations */
+        @keyframes color-pulse {
+            0% { color: inherit; }
+            50% { color: #ff291a; text-shadow: 0 0 8px rgba(255, 41, 26, 0.4); }
+            100% { color: inherit; }
+        }
+        .tech-pulse {
+            animation: color-pulse 3s infinite;
+        }
+
+        /* Writing Animation */
+        .writing-animation {
+            background: linear-gradient(to right, #1a1c1c 50%, transparent 50%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            transition: background-position 1.5s ease-out;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        .reveal.active .writing-animation {
+            background-position: 0 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 640px) {
+            .font-headline-xl { font-size: 1.75rem; }
+            .text-headline-xl { font-size: 1.75rem; }
+            .font-headline-lg { font-size: 1.25rem; }
+            .text-headline-lg { font-size: 1.25rem; }
+            .text-2xl { font-size: 1.25rem; }
+            .text-6xl { font-size: 2.5rem; }
+            .counter { font-size: 1.5rem !important; }
+            #prefijo { max-width: 90px; font-size: 12px; }
+            #prefijo option { font-size: 12px; }
+            select { font-size: 13px; }
+        }
+    </style>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "CYBER_CORE AI",
+      "image": "image-logo-placeholder.png",
+      "@id": "https://cybercore.ai",
+      "url": "https://cybercore.ai",
+      "telephone": "+51900000000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "San Juan de Lurigancho",
+        "addressLocality": "Lima",
+        "addressRegion": "Lima",
+        "postalCode": "15401",
+        "addressCountry": "PE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -12.0263,
+        "longitude": -77.0016
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "taxID": "MYPE Tributario SUNAT"
+    }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-on-tertiary-container selection:text-white overflow-x-hidden">
+<div id="site-header"></div>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-32 pb-xl px-margin-mobile md:px-margin-desktop overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-white/40 z-10"></div>
+<img class="w-full h-full object-cover" data-alt="A high-tech server room background with glowing fiber optic cables and digital circuitry motifs. The scene is dominated by a minimalist aesthetic, using a clean white and deep black color palette with sharp, surgical red lighting accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxtiHU3KRigJgvizS8j__LVVdWXRT2MFNnKDY4HepWbTHW-Tj8tX23RtfMp31gSbldrNO2P4XVpYgeVwgIAhxJL4OB4DsbP0YQUdTEDC1Opm5A1M4n6AiDTJ4N9GGPLSb3eN3C9outZlUKSHPQVC535CHkDUQpUdhOs4bAevAQGiIRsxKMx_SjrAk1AkS0P2wLyWiiRyhW8SFJRw5h2-J6zc1WdcSkpGS-LAjPqMHZbO0XZ93Xd6RAFj1F2EAX6_dps7ohEqdeHg"/>
+</div>
+<div class="relative z-20 max-w-5xl text-center">
+<span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-widest mb-base block reveal">SISTEMAS AUTÓNOMOS DE ÉLITE</span>
+<h1 class="font-headline-xl text-[32px] sm:text-[64px] md:text-[84px] leading-tight text-primary mb-lg uppercase cursor-active" data-text="Automatización con Inteligencia Artificial y Ciberseguridad para Escalar tu Empresa" id="hero-headline"></h1>
+<p class="text-lg mb-lg max-w-3xl mx-auto text-primary reveal writing-animation">Transforma horas de trabajo manual en procesos de milisegundos. Implementamos infraestructuras tecnológicas seguras que atienden a tus clientes 24/7, gestionan bases de datos y optimizan tu flujo de ventas sin intervención humana.</p>
+<div class="flex flex-col gap-sm sm:flex-row sm:gap-md justify-center items-center reveal">
+<a class="bg-on-tertiary-container text-white px-sm sm:px-lg py-sm sm:py-md font-label-sm text-[11px] sm:text-label-sm uppercase tracking-wider transition-all duration-300 red-accent-hover btn-interactive text-center" href="#audit">[ Quiero Agendar mi Auditoría Tecnológica Ahora ]</a>
+<a class="bg-on-tertiary-container text-white px-sm sm:px-lg py-sm sm:py-md font-label-sm text-[11px] sm:text-label-sm uppercase tracking-wider transition-all duration-300 red-accent-hover btn-interactive text-center" href="https://glistening-empanada-904ac2.netlify.app/" target="_blank">[ Descubrir las 3 Fugas de mi Negocio ]</a>
+</div>
+</div>
+</section>
+<!-- Social Proof & Quote -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-white border-y border-on-surface reveal">
+<h2 class="font-headline-xl text-headline-xl mb-xl text-center uppercase">Respaldados por Datos y Resultados Tangibles</h2>
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div class="relative">
+<span class="material-symbols-outlined text-on-tertiary-container text-6xl absolute -top-base -left-base opacity-20 tech-pulse">format_quote</span>
+<p class="font-body-md italic text-2xl md:text-3xl leading-relaxed text-primary relative z-10 writing-animation">"La implementación de flujos de trabajo inteligentes en herramientas de gestión reduce la fricción operativa comercial hasta en un 40%." – Christian Elias, CEO de E-Beats Perú.</p>
+<cite class="block mt-lg font-headline-lg text-headline-lg not-italic">— Christian Elias, CEO</cite>
+</div>
+<div class="space-y-lg">
+<div class="border-l-4 border-on-tertiary-container pl-md">
+<h3 class="font-headline-xl text-headline-xl text-primary counter" data-suffix=" SEGUNDOS" data-target="0.2">0 SEGUNDOS</h3>
+<p class="font-headline-lg text-headline-lg text-primary mb-xs">Cierre de ventas en caliente</p>
+<p class="font-label-sm text-label-sm text-outline">Tu cliente pregunta y la IA responde antes de que se vaya con la competencia. Filtramos a los curiosos y agendamos a los compradores reales en tu calendario, todo en tiempo récord.</p>
+</div>
+<div class="border-l-4 border-primary pl-md">
+<h3 class="font-headline-xl text-headline-xl text-primary counter" data-suffix="/7" data-target="24">0/7</h3>
+<p class="font-headline-lg text-headline-lg text-primary mb-xs">Tu empresa nunca duerme</p>
+<p class="font-label-sm text-label-sm text-outline">Olvídate de los "horarios de atención". Tu operación sigue procesando solicitudes, enviando correos y atendiendo clientes domingos y madrugadas, sin pagar horas extras.</p>
+</div>
+<div class="border-l-4 border-primary pl-md">
+<h3 class="font-headline-xl text-headline-xl text-primary counter" data-suffix="% MÁS RÁPIDO" data-target="40">0% MÁS RÁPIDO</h3>
+<p class="font-headline-lg text-headline-lg text-primary mb-xs">Decisiones con datos en tiempo real</p>
+<p class="font-label-sm text-label-sm text-outline">Adiós al trabajo manual y a los Excel desactualizados. Tu inventario, finanzas y ventas se sincronizan automáticamente para que tomes decisiones con números exactos, no con intuición.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Bento Grid -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-background reveal">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-xl text-center uppercase">Soluciones de Alta Ingeniería para tu Negocio</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<div class="bg-white border-tech p-lg flex flex-col justify-between group hover:bg-on-surface transition-all duration-300 reveal">
+<div>
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl mb-md tech-pulse">terminal</span>
+<h3 class="font-headline-lg text-headline-lg mb-md group-hover:text-white transition-colors">Desarrollo de Software y Apps</h3>
+<p class="group-hover:text-surface-variant transition-colors">Creación de aplicaciones móviles dedicadas, como plataformas de adopción de mascotas, integrando interfaces fluidas y bases de datos en tiempo real.</p>
+</div>
+<span class="text-on-tertiary-container font-bold mt-xl inline-flex items-center gap-xs group-hover:translate-x-2 transition-transform">
+                    [ Conoce nuestro desarrollo en Flutter y Firebase ] <span class="material-symbols-outlined">arrow_forward</span>
+</span>
+</div>
+<!-- Card 2 -->
+<div class="bg-white border-tech p-lg flex flex-col justify-between group hover:bg-on-surface transition-all duration-300 md:row-span-2 reveal">
+<div>
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl mb-md tech-pulse">robot_2</span>
+<h3 class="font-headline-lg text-headline-lg mb-md group-hover:text-white transition-colors">Chatbots de Ventas Especializados</h3>
+<p class="group-hover:text-surface-variant transition-colors">Agentes de inteligencia artificial (sistemas de cualificación) entrenados para rubros específicos, desde firmas legales hasta empresas de seguridad, capaces de cerrar el ciclo de venta.</p>
+</div>
+<span class="text-on-tertiary-container font-bold mt-xl inline-flex items-center gap-xs group-hover:translate-x-2 transition-transform">
+                    [ Implementa un Agente de Ventas IA ] <span class="material-symbols-outlined">arrow_forward</span>
+</span>
+</div>
+<!-- Card 3 -->
+<div class="bg-on-tertiary-container p-lg text-white flex flex-col justify-between reveal">
+<div>
+<span class="material-symbols-outlined text-white text-4xl mb-md">dns</span>
+<h3 class="font-headline-lg text-headline-lg mb-md">Arquitectura de Contenidos y Flujos Automáticos</h3>
+<p class="text-white/80">Ingesta de datos, conexión de bases estructuradas y generación masiva de activos visuales mediante IA para marketing autónomo.</p>
+</div>
+<a class="border border-white/30 p-base text-center font-label-sm hover:bg-white hover:text-on-tertiary-container transition-all btn-interactive" href="#">[ Descubre la automatización integral de procesos ]</a>
+</div>
+<!-- Card 4 -->
+<div class="bg-white border-tech p-lg flex flex-col justify-between group hover:bg-on-surface transition-all duration-300 reveal">
+<div>
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl mb-md tech-pulse">security</span>
+<h3 class="font-headline-lg text-headline-lg mb-md group-hover:text-white transition-colors">Auditoría B2B</h3>
+<p class="group-hover:text-surface-variant transition-colors">Protección integral para firmas legales y sectores críticos. Compliance y blindaje de datos.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- E-E-A-T / Transparency -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-on-surface text-white reveal">
+<div class="max-w-6xl mx-auto">
+<div class="mb-xl">
+<span class="text-on-tertiary-container font-label-sm uppercase tracking-widest block mb-base">Aliados Estratégicos del Sector Corporativo</span>
+<h2 class="font-headline-xl text-headline-xl uppercase mb-md">Expertise Sectorial Verificado</h2>
+<p class="text-surface-variant max-w-4xl writing-animation">Operamos formalmente bajo el régimen MYPE Tributario, garantizando transparencia y seguridad jurídica a todos nuestros clientes. Desde nuestra sede operativa en San Juan de Lurigancho, dotamos de infraestructura tecnológica avanzada a centros de especialización como CODEA, estudios de abogados, centros de bienestar y el sector inmobiliario en Lima, Cusco y Piura.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<div class="space-y-lg">
+<div class="flex items-start gap-md border-b border-white/10 pb-lg group hover:border-on-tertiary-container transition-colors">
+<span class="font-headline-xl text-on-tertiary-container group-hover:scale-110 transition-transform inline-block">01</span>
+<div>
+<h4 class="font-headline-lg text-headline-lg">Legal Tech: CODEA</h4>
+<p class="text-surface-variant">Digitalización completa para firmas de abogados, asegurando la trazabilidad y seguridad de expedientes confidenciales.</p>
+</div>
+</div>
+<div class="flex items-start gap-md border-b border-white/10 pb-lg group hover:border-on-tertiary-container transition-colors">
+<span class="font-headline-xl text-on-tertiary-container group-hover:scale-110 transition-transform inline-block">02</span>
+<div>
+<h4 class="font-headline-lg text-headline-lg">Real Estate &amp; Health</h4>
+<p class="text-surface-variant">Sistemas de reserva inteligente para Spas y gestión de inventarios para inmobiliarias en Lima.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-lg border-l-4 border-on-tertiary-container text-primary hover:shadow-lg transition-all">
+<h4 class="font-headline-lg text-headline-lg mb-md">Transparencia Fiscal</h4>
+<p class="mb-lg">Operamos bajo el régimen <strong>MYPE Tributario ante SUNAT</strong>, garantizando operaciones legales y facturación electrónica para todas nuestras cuentas corporativas.</p>
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-on-tertiary-container tech-pulse">verified</span>
+<span class="font-label-sm uppercase font-bold">Entidad Registrada en Perú</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stack Tecnológico -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-white border-b border-on-surface reveal">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-xl text-center uppercase">Stack Tecnológico e Integraciones</h2>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-lg items-center justify-items-center opacity-80">
+<div class="flex flex-col items-center gap-base group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-125 group-hover:text-on-tertiary-container transition-all">database</span>
+<span class="font-label-sm text-[12px] uppercase">MS SQL Server</span>
+</div>
+<div class="flex flex-col items-center gap-base group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-125 group-hover:text-on-tertiary-container transition-all">webhook</span>
+<span class="font-label-sm text-[12px] uppercase">n8n (Webhooks)</span>
+</div>
+<div class="flex flex-col items-center gap-base group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-125 group-hover:text-on-tertiary-container transition-all">visibility</span>
+<span class="font-label-sm text-[12px] uppercase">Veo</span>
+</div>
+<div class="flex flex-col items-center gap-base group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-125 group-hover:text-on-tertiary-container transition-all">psychology</span>
+<span class="font-label-sm text-[12px] uppercase">Kling AI</span>
+</div>
+<div class="flex flex-col items-center gap-base group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-125 group-hover:text-on-tertiary-container transition-all">face</span>
+<span class="font-label-sm text-[12px] uppercase">HeyGen</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Arquitecturas en Acción -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-background reveal">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-xl text-center uppercase">Arquitecturas en Acción</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-white border-tech p-lg group hover:border-on-tertiary-container transition-all reveal">
+<div class="flex justify-between items-start mb-md">
+<h3 class="font-headline-lg text-headline-lg uppercase transition-colors group-hover:text-on-tertiary-container">Automatización de Contenido RRSS</h3>
+<span class="material-symbols-outlined text-on-tertiary-container tech-pulse">play_circle</span>
+</div>
+<p class="mb-lg">Sincronización masiva entre Airtable y motores de video IA para eliminar la edición manual.</p>
+<div class="flex gap-xs flex-wrap">
+<span class="px-xs py-[2px] bg-surface-container-high font-label-sm text-[10px] uppercase">Airtable</span>
+<span class="px-xs py-[2px] bg-surface-container-high font-label-sm text-[10px] uppercase">Video Engines</span>
+<span class="px-xs py-[2px] bg-on-tertiary-container text-white font-label-sm text-[10px] uppercase">ROI 300%</span>
+</div>
+</div>
+<div class="bg-white border-tech p-lg group hover:border-on-tertiary-container transition-all reveal">
+<div class="flex justify-between items-start mb-md">
+<h3 class="font-headline-lg text-headline-lg uppercase transition-colors group-hover:text-on-tertiary-container">Pipeline Inmobiliario Autónomo</h3>
+<span class="material-symbols-outlined text-on-tertiary-container tech-pulse">domain</span>
+</div>
+<p class="mb-lg">Clasificación automática de leads mediante procesamiento de lenguaje natural y agendamiento directo.</p>
+<div class="flex gap-xs flex-wrap">
+<span class="px-xs py-[2px] bg-surface-container-high font-label-sm text-[10px] uppercase">NLP</span>
+<span class="px-xs py-[2px] bg-surface-container-high font-label-sm text-[10px] uppercase">Calendar Sync</span>
+<span class="px-xs py-[2px] bg-on-tertiary-container text-white font-label-sm text-[10px] uppercase">24/7 Ops</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Centro de Recursos -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-white reveal">
+<div class="max-w-7xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-xl text-center uppercase">Centro de Recursos</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<article class="group cursor-pointer reveal" onclick="window.location.href='blogs/blog-ciberseguridad-mype.html'">
+<div class="aspect-video bg-surface-container-high mb-md overflow-hidden relative">
+<div class="absolute inset-0 bg-on-tertiary-container/0 group-hover:bg-on-tertiary-container/10 transition-all duration-500 z-10"></div>
+<img alt="Cybersecurity protocol" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB11m6xWXzqgWr_vV4yCXhkQSBM9X88EyEpYLzLTjQDAgBb0owR_G5Tayl78AlmRUWHmxQsvdlpt-WAmzF57U1BmF6gbqZ4G30d_IRSvgo4Gdlyhz2Cl9GOodQaaKPoPTKhBYgGrajSw5eA9LConrTIN9NzczifNlXM3Sz0rzF5Cqbm-517pUQnMuJzzLnRodUDgqcqDV5mwYGQEv4jWanLz4poBqrsoyTZQ-bws5XwY7vQBOv4BzxYEZEnddEgDM86vYiZ2404vg"/>
+</div>
+<time class="font-label-sm text-outline uppercase text-[12px] block mb-xs">Octubre 24, 2024</time>
+<h3 class="font-headline-lg text-2xl mb-sm group-hover:text-on-tertiary-container transition-colors">Ciberseguridad B2B en el Régimen MYPE</h3>
+<p class="text-body-md text-secondary line-clamp-3">Exploramos cómo las pequeñas y medianas empresas en Perú pueden blindar sus activos digitales.</p>
+</article>
+<article class="group cursor-pointer reveal" onclick="window.location.href='blogs/blog-ia-conversacional.html'">
+<div class="aspect-video bg-surface-container-high mb-md overflow-hidden relative">
+<div class="absolute inset-0 bg-on-tertiary-container/0 group-hover:bg-on-tertiary-container/10 transition-all duration-500 z-10"></div>
+<img alt="AI Interface" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNr_HK7Cf56B3y7QqkmNiX6s_-265PgXX8ym7pC6dmXt6M1LVmJs3_GsM-EjmkyLHRUy2iFnXnkEYW_DQ2wnQp4p1FdWUCwyEcq9xIblihFKK35GKlRPBLZ0xXxrcGgObdi3hoYjYq_5_SR3QtIAjAkwJrwGK7GA4DHKSrV5y2OO3wnKp_U9c2qGEWWUdhBEzZW1Sek9vtsRlbK_7G13Gtg7sSATRwanuI0bsQYpbMnXcZhwXhMt9-ADaJiT4RRC_01JFHATJkBw"/>
+</div>
+<time class="font-label-sm text-outline uppercase text-[12px] block mb-xs">Septiembre 15, 2024</time>
+<h3 class="font-headline-lg text-2xl mb-sm group-hover:text-on-tertiary-container transition-colors">IA Conversacional: Más allá de los Chatbots</h3>
+<p class="text-body-md text-secondary line-clamp-3">Cómo integrar motores de IA avanzados en flujos de trabajo CRM existentes para calificar prospectos.</p>
+</article>
+<article class="group cursor-pointer reveal" onclick="window.location.href='blogs/blog-automatizacion-n8n.html'">
+<div class="aspect-video bg-surface-container-high mb-md overflow-hidden relative">
+<div class="absolute inset-0 bg-on-tertiary-container/0 group-hover:bg-on-tertiary-container/10 transition-all duration-500 z-10"></div>
+<img alt="Hardware circuitry" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYUi66ThmbbtxNzgzhtZGSEfT0RsBwcoHaV3CojtnMQYkdOS-wytIFu930lf0K-KfBFwxx6wGCRRYxMjWyReryGEE9PwuTomKT5cKIHDgBlG26sT6370LHglbmvI_0PgNWY0nQZf6Cwp61dj_Y1H3N_InqGOZGNX4y6jNocMPEa3LWzxSfufaccvNkeUYCMuhv_fBHpSkTE1TADxrW855w5F0Rfwrz2pi3-00dYeGL3iIPZxCR7hTRj70_An9ZGEJOUJxq6xSolg"/>
+</div>
+<time class="font-label-sm text-outline uppercase text-[12px] block mb-xs">Agosto 30, 2024</time>
+<h3 class="font-headline-lg text-2xl mb-sm group-hover:text-on-tertiary-container transition-colors">Automatización de Procesos con n8n</h3>
+<p class="text-body-md text-secondary line-clamp-3">Guía técnica sobre el uso de webhooks y nodos de procesamiento para conectar bases de datos legacy.</p>
+</article>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-on-surface text-white reveal">
+<div class="max-w-4xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-xl text-center uppercase">Preguntas Frecuentes (FAQ)</h2>
+<div class="space-y-sm">
+<details class="faq-accordion group border-b border-white/20 pb-md">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<h3 class="font-headline-lg text-xl md:text-2xl uppercase transition-colors group-hover:text-on-tertiary-container">¿Cómo se integra un chatbot de IA en mi actual CRM de ventas?</h3>
+<span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</summary>
+<div class="mt-md text-surface-variant font-body-md">
+                    Utilizamos arquitecturas basadas en webhooks y APIs REST para conectar nuestros agentes de IA directamente con CRMs como Salesforce, HubSpot o soluciones propietarias.
+                </div>
+</details>
+<details class="faq-accordion group border-b border-white/20 pb-md">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<h3 class="font-headline-lg text-xl md:text-2xl uppercase transition-colors group-hover:text-on-tertiary-container">¿Qué tan segura es la automatización de datos confidenciales?</h3>
+<span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+</summary>
+<div class="mt-md text-surface-variant font-body-md">
+                    Toda nuestra infraestructura sigue protocolos de encriptación AES-256. Implementamos auditorías de seguridad en cada nodo de automatización.
+                </div>
+</details>
+</div>
+</div>
+</section>
+<!-- CRO Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-white reveal" id="audit">
+<div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-xl">
+<div class="flex-1">
+<h2 class="font-headline-xl text-headline-xl uppercase mb-lg">¿Listo para modernizar tu infraestructura B2B?</h2>
+<p class="text-lg mb-xl max-w-md writing-animation">Déjanos tus datos y un especialista diseñará la arquitectura de tu próximo ecosistema digital.</p>
+<div class="space-y-base">
+<div class="flex items-center gap-sm group">
+<span class="material-symbols-outlined tech-pulse">location_on</span>
+<span class="group-hover:translate-x-2 transition-transform">San Juan de Lurigancho, Lima, Perú</span>
+</div>
+<div class="flex items-center gap-sm group">
+<span class="material-symbols-outlined tech-pulse">mail</span>
+<span class="group-hover:translate-x-2 transition-transform">contact@cybercore.ai</span>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-background p-lg border-tech hover:shadow-2xl transition-shadow">
+<form class="space-y-md" id="contactForm" novalidate>
+<div>
+<label class="font-label-sm uppercase block mb-xs">Nombre Completo</label>
+<input class="w-full border-b border-on-surface bg-transparent focus:border-on-tertiary-container focus:ring-0 px-0 py-base placeholder:text-outline-variant transition-all" id="nombre" placeholder="Tu nombre" type="text"/>
+<span class="text-red-600 text-xs mt-1 hidden" id="nombre-error"></span>
+</div>
+<div>
+<label class="font-label-sm uppercase block mb-xs">Correo Electrónico</label>
+<input class="w-full border-b border-on-surface bg-transparent focus:border-on-tertiary-container focus:ring-0 px-0 py-base placeholder:text-outline-variant transition-all" id="correo" placeholder="tu@empresa.com" type="email"/>
+<span class="text-red-600 text-xs mt-1 hidden" id="correo-error"></span>
+</div>
+<div>
+<label class="font-label-sm uppercase block mb-xs">Empresa</label>
+<input class="w-full border-b border-on-surface bg-transparent focus:border-on-tertiary-container focus:ring-0 px-0 py-base placeholder:text-outline-variant transition-all" id="empresa" placeholder="Nombre de tu organización" type="text"/>
+<span class="text-red-600 text-xs mt-1 hidden" id="empresa-error"></span>
+</div>
+<div>
+<label class="font-label-sm uppercase block mb-xs">WhatsApp Business</label>
+<div class="flex items-center border-b border-on-surface focus-within:border-on-tertiary-container transition-all">
+<select class="bg-transparent border-r border-on-surface pr-sm py-base text-sm focus:outline-none max-w-[100px] sm:max-w-none" id="prefijo">
+<option value="+51" selected>🇵🇪 +51 (Perú)</option>
+<option value="+52">🇲🇽 +52 (México)</option>
+<option value="+57">🇨🇴 +57 (Colombia)</option>
+<option value="+56">🇨🇱 +56 (Chile)</option>
+<option value="+54">🇦🇷 +54 (Argentina)</option>
+<option value="+593">🇪🇨 +593 (Ecuador)</option>
+<option value="+591">🇧🇴 +591 (Bolivia)</option>
+<option value="+598">🇺🇾 +598 (Uruguay)</option>
+<option value="+595">🇵🇾 +595 (Paraguay)</option>
+<option value="+506">🇨🇷 +506 (Costa Rica)</option>
+<option value="+507">🇵🇦 +507 (Panamá)</option>
+<option value="+502">🇬🇹 +502 (Guatemala)</option>
+<option value="+504">🇭🇳 +504 (Honduras)</option>
+<option value="+503">🇸🇻 +503 (El Salvador)</option>
+<option value="+505">🇳🇮 +505 (Nicaragua)</option>
+<option value="+1">🇺🇸 +1 (USA/Canadá)</option>
+<option value="+44">🇬🇧 +44 (Reino Unido)</option>
+<option value="+49">🇩🇪 +49 (Alemania)</option>
+<option value="+33">🇫🇷 +33 (Francia)</option>
+<option value="+39">🇮🇹 +39 (Italia)</option>
+<option value="+34">🇪🇸 +34 (España)</option>
+<option value="+351">🇵🇹 +351 (Portugal)</option>
+<option value="+31">🇳🇱 +31 (Países Bajos)</option>
+<option value="+46">🇸🇪 +46 (Suecia)</option>
+<option value="+47">🇳🇴 +47 (Noruega)</option>
+<option value="+48">🇵🇱 +48 (Polonia)</option>
+<option value="+7">🇷🇺 +7 (Rusia)</option>
+<option value="+41">🇨🇭 +41 (Suiza)</option>
+<option value="+32">🇧🇪 +32 (Bélgica)</option>
+<option value="+30">🇬🇷 +30 (Grecia)</option>
+<option value="+353">🇮🇪 +353 (Irlanda)</option>
+<option value="+420">🇨🇿 +420 (Chequia)</option>
+<option value="+380">🇺🇦 +380 (Ucrania)</option>
+<option value="+86">🇨🇳 +86 (China)</option>
+<option value="+81">🇯🇵 +81 (Japón)</option>
+<option value="+82">🇰🇷 +82 (Corea del Sur)</option>
+<option value="+91">🇮🇳 +91 (India)</option>
+<option value="+61">🇦🇺 +61 (Australia)</option>
+<option value="+62">🇮🇩 +62 (Indonesia)</option>
+<option value="+60">🇲🇾 +60 (Malasia)</option>
+<option value="+65">🇸🇬 +65 (Singapur)</option>
+<option value="+66">🇹🇭 +66 (Tailandia)</option>
+<option value="+84">🇻🇳 +84 (Vietnam)</option>
+<option value="+63">🇵🇭 +63 (Filipinas)</option>
+<option value="+92">🇵🇰 +92 (Pakistán)</option>
+<option value="+90">🇹🇷 +90 (Turquía)</option>
+<option value="+971">🇦🇪 +971 (EAU)</option>
+<option value="+972">🇮🇱 +972 (Israel)</option>
+<option value="+852">🇭🇰 +852 (Hong Kong)</option>
+<option value="+886">🇹🇼 +886 (Taiwán)</option>
+<option value="+20">🇪🇬 +20 (Egipto)</option>
+<option value="+27">🇿🇦 +27 (Sudáfrica)</option>
+<option value="+234">🇳🇬 +234 (Nigeria)</option>
+<option value="+254">🇰🇪 +254 (Kenia)</option>
+<option value="+233">🇬🇭 +233 (Ghana)</option>
+<option value="+212">🇲🇦 +212 (Marruecos)</option>
+<option value="+216">🇹🇳 +216 (Túnez)</option>
+<option value="+213">🇩🇿 +213 (Argelia)</option>
+<option value="+221">🇸🇳 +221 (Senegal)</option>
+<option value="+231">🇱🇷 +231 (Liberia)</option>
+<option value="+230">🇲🇺 +230 (Mauricio)</option>
+<option value="+263">🇿🇼 +263 (Zimbabue)</option>
+<option value="+260">🇿🇲 +260 (Zambia)</option>
+<option value="+267">🇧🇼 +267 (Botsuana)</option>
+<option value="+264">🇳🇦 +264 (Namibia)</option>
+</select>
+<input class="flex-1 bg-transparent focus:ring-0 px-sm py-base placeholder:text-outline-variant transition-all" id="whatsapp" placeholder="9XX XXX XXX" type="tel"/>
+</div>
+<span class="text-red-600 text-xs mt-1 hidden" id="whatsapp-error"></span>
+</div>
+<button class="w-full bg-primary text-white font-label-sm py-md uppercase tracking-widest hover:bg-on-tertiary-container transition-all btn-interactive" type="submit">[ Solicitar mi Propuesta Tecnológica ]</button>
+</form>
+<p class="text-[10px] uppercase text-outline mt-md text-center">Protegido por protocolos de encriptación AES-256</p>
+</div>
+</div>
+</section>
+<!-- Location Context -->
+<div class="w-full h-64 grayscale opacity-50 contrast-125 overflow-hidden reveal">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-[2000ms]" data-alt="A cinematic urban landscape in Lima, Peru during blue hour, reflecting high-performance precision." data-location="San Juan de Lurigancho, Lima" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeG848O6IgeifamlAf_EpPTlE_x6fTFvrAtWHNSuH9ohdcgVuuc2a6G1hHNjKTKTKx8SUpdchTq6qUr5ZTQNOPbIAcN5ZUjRc0q45SD6zHSztSDqIAF6cdYlBb-Ub-RlH3z9QkR97G_Y3P0DUu28ehCluLucZKUv8Q6AqdNUluhr1zfxCjSGcrpLaVmDdYVAZsHf3v9Sr-hRIsjduBM5eW5FgkWIxoSqll_LaG_LTE9gmnrbU390ubML3pJRblM_M0ML6CUDe5GQ"/>
+</div>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script>
+    // 1. Typewriter Effect
+    function typeWriter(element, text, i = 0) {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            setTimeout(() => typeWriter(element, text, i + 1), 50);
+        } else {
+            element.classList.remove('cursor-active');
+            element.classList.add('headline-glow');
+        }
+    }
+
+    // 2. Scroll Reveal & Counters
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                
+                // If it's a counter, start counting
+                if (entry.target.classList.contains('counter')) {
+                    startCounter(entry.target);
+                }
+            }
+        });
+    }, observerOptions);
+
+    function startCounter(el) {
+        const target = parseFloat(el.getAttribute('data-target'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        let current = 0;
+        const duration = 1500;
+        const steps = 60;
+        const increment = target / steps;
+        let stepCount = 0;
+
+        const interval = setInterval(() => {
+            current += increment;
+            stepCount++;
+            if (stepCount >= steps) {
+                el.innerText = target + suffix;
+                clearInterval(interval);
+            } else {
+                el.innerText = (target % 1 === 0 ? Math.floor(current) : current.toFixed(1)) + suffix;
+            }
+        }, duration / steps);
+    }
+
+    // Initialize scripts on load
+    window.addEventListener('DOMContentLoaded', () => {
+        // Start Typewriter
+        const headline = document.getElementById('hero-headline');
+        const text = headline.getAttribute('data-text');
+        setTimeout(() => typeWriter(headline, text), 800);
+
+        // Setup Observers
+        document.querySelectorAll('.reveal, .counter').forEach(el => revealObserver.observe(el));
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Form validation & submission
+        const form = document.getElementById('contactForm');
+        if(form) {
+            const nombre = document.getElementById('nombre');
+            const correo = document.getElementById('correo');
+            const empresa = document.getElementById('empresa');
+            const whatsapp = document.getElementById('whatsapp');
+            const prefijo = document.getElementById('prefijo');
+
+            const PHONE_RULES = {
+                '+51':  { regex: /^9\d{8}$/,            digits: 9,  starts: '9',   hint: '9 dígitos, empieza con 9 (ej: 912345678)' },
+                '+52':  { regex: /^[1-9]\d{9}$/,        digits: 10, starts: '1-9', hint: '10 dígitos (ej: 5512345678)' },
+                '+57':  { regex: /^3\d{9}$/,            digits: 10, starts: '3',   hint: '10 dígitos, empieza con 3 (ej: 3101234567)' },
+                '+56':  { regex: /^9\d{8}$/,            digits: 9,  starts: '9',   hint: '9 dígitos, empieza con 9 (ej: 912345678)' },
+                '+54':  { regex: /^[1-9]\d{9}$/,        digits: 10, starts: '1-9', hint: '10 dígitos (ej: 1123456789)' },
+                '+593': { regex: /^9\d{8}$/,            digits: 9,  starts: '9',   hint: '9 dígitos, empieza con 9 (ej: 991234567)' },
+                '+591': { regex: /^[67]\d{7}$/,         digits: 8,  starts: '6-7', hint: '8 dígitos, empieza con 6 o 7 (ej: 71234567)' },
+                '+598': { regex: /^9\d{7}$/,            digits: 8,  starts: '9',   hint: '8 dígitos, empieza con 9 (ej: 91234567)' },
+                '+595': { regex: /^9\d{8}$/,            digits: 9,  starts: '9',   hint: '9 dígitos, empieza con 9 (ej: 912345678)' },
+                '+506': { regex: /^[67]\d{7}$/,         digits: 8,  starts: '6-7', hint: '8 dígitos, empieza con 6 o 7 (ej: 81234567)' },
+                '+507': { regex: /^[6-8]\d{7}$/,        digits: 8,  starts: '6-8', hint: '8 dígitos, empieza con 6, 7 u 8 (ej: 61234567)' },
+                '+502': { regex: /^[1-7]\d{7}$/,        digits: 8,  starts: '1-7', hint: '8 dígitos (ej: 51234567)' },
+                '+504': { regex: /^[78]\d{7}$/,         digits: 8,  starts: '7-8', hint: '8 dígitos, empieza con 7 u 8 (ej: 91234567)' },
+                '+503': { regex: /^[67]\d{7}$/,         digits: 8,  starts: '6-7', hint: '8 dígitos, empieza con 6 o 7 (ej: 71234567)' },
+                '+505': { regex: /^[5-8]\d{7}$/,        digits: 8,  starts: '5-8', hint: '8 dígitos, empieza con 5-8 (ej: 81234567)' },
+                '+1':   { regex: /^[2-9]\d{9}$/,        digits: 10, starts: '2-9', hint: '10 dígitos, empieza con 2-9 (ej: 2025551234)' },
+                '+44':  { regex: /^7\d{9}$/,            digits: 10, starts: '7',   hint: '10 dígitos, empieza con 7 (ej: 7123456789)' },
+                '+49':  { regex: /^[1-9]\d{9,10}$/,     digits: '10-11', starts: '1-9', hint: '10-11 dígitos (ej: 15123456789)' },
+                '+33':  { regex: /^[1-9]\d{8}$/,        digits: 9,  starts: '1-9', hint: '9 dígitos (ej: 612345678)' },
+                '+39':  { regex: /^3\d{8,9}$/,          digits: '9-10', starts: '3', hint: '9-10 dígitos, empieza con 3 (ej: 3123456789)' },
+                '+34':  { regex: /^[6-9]\d{8}$/,        digits: 9,  starts: '6-9', hint: '9 dígitos, empieza con 6-9 (ej: 612345678)' },
+                '+351': { regex: /^9\d{8}$/,            digits: 9,  starts: '9',   hint: '9 dígitos, empieza con 9 (ej: 912345678)' },
+                '+31':  { regex: /^6\d{8}$/,            digits: 9,  starts: '6',   hint: '9 dígitos, empieza con 6 (ej: 612345678)' },
+                '+46':  { regex: /^[7-8]\d{8}$/,        digits: 9,  starts: '7-8', hint: '9 dígitos, empieza con 7 u 8 (ej: 701234567)' },
+                '+47':  { regex: /^[4-9]\d{7}$/,        digits: 8,  starts: '4-9', hint: '8 dígitos, empieza con 4-9 (ej: 41234567)' },
+                '+48':  { regex: /^[5-8]\d{8}$/,        digits: 9,  starts: '5-8', hint: '9 dígitos, empieza con 5-8 (ej: 501234567)' },
+                '+7':   { regex: /^9\d{9}$/,            digits: 10, starts: '9',   hint: '10 dígitos, empieza con 9 (ej: 9123456789)' },
+                '+41':  { regex: /^7[0-9]\d{7}$/,       digits: 9,  starts: '7',   hint: '9 dígitos, empieza con 7 (ej: 712345678)' },
+                '+32':  { regex: /^4\d{8}$/,            digits: 9,  starts: '4',   hint: '9 dígitos, empieza con 4 (ej: 412345678)' },
+                '+30':  { regex: /^6\d{9}$/,            digits: 10, starts: '6',   hint: '10 dígitos, empieza con 6 (ej: 6123456789)' },
+                '+353': { regex: /^8[36-9]\d{7}$/,      digits: 9,  starts: '8',   hint: '9 dígitos, empieza con 8 (ej: 861234567)' },
+                '+420': { regex: /^[67]\d{8}$/,         digits: 9,  starts: '6-7', hint: '9 dígitos, empieza con 6 o 7 (ej: 601234567)' },
+                '+380': { regex: /^6[7-9]\d{7}$/,       digits: 9,  starts: '6',   hint: '9 dígitos, empieza con 67-69 (ej: 671234567)' },
+                '+86':  { regex: /^1[3-9]\d{9}$/,       digits: 11, starts: '1',   hint: '11 dígitos, empieza con 13-19 (ej: 13812345678)' },
+                '+81':  { regex: /^[7-9]0\d{8}$/,       digits: 10, starts: '7-9', hint: '10 dígitos, empieza con 70/80/90 (ej: 9012345678)' },
+                '+82':  { regex: /^1[0-9]\d{7,8}$/,     digits: '9-10', starts: '1', hint: '9-10 dígitos, empieza con 10-19 (ej: 1012345678)' },
+                '+91':  { regex: /^[6-9]\d{9}$/,        digits: 10, starts: '6-9', hint: '10 dígitos, empieza con 6-9 (ej: 9876543210)' },
+                '+61':  { regex: /^4\d{8}$/,            digits: 9,  starts: '4',   hint: '9 dígitos, empieza con 4 (ej: 412345678)' },
+                '+62':  { regex: /^8[1-9]\d{7,8}$/,     digits: '9-11', starts: '8', hint: '9-11 dígitos, empieza con 81-89 (ej: 81234567890)' },
+                '+60':  { regex: /^1\d{8,9}$/,          digits: '9-10', starts: '1', hint: '9-10 dígitos, empieza con 1 (ej: 123456789)' },
+                '+65':  { regex: /^[89]\d{7}$/,         digits: 8,  starts: '8-9', hint: '8 dígitos, empieza con 8 o 9 (ej: 81234567)' },
+                '+66':  { regex: /^[689]\d{8}$/,        digits: 9,  starts: '6-9', hint: '9 dígitos, empieza con 6, 8 o 9 (ej: 812345678)' },
+                '+84':  { regex: /^[3-9]\d{8,9}$/,      digits: '9-10', starts: '3-9', hint: '9-10 dígitos (ej: 912345678)' },
+                '+63':  { regex: /^9\d{9}$/,            digits: 10, starts: '9',   hint: '10 dígitos, empieza con 9 (ej: 9123456789)' },
+                '+92':  { regex: /^3[0-5]\d{8}$/,       digits: 10, starts: '3',   hint: '10 dígitos, empieza con 30-35 (ej: 3012345678)' },
+                '+90':  { regex: /^[5-9]\d{9}$/,        digits: 10, starts: '5-9', hint: '10 dígitos, empieza con 5-9 (ej: 5321234567)' },
+                '+971': { regex: /^5[0-9]\d{7}$/,       digits: 9,  starts: '5',   hint: '9 dígitos, empieza con 5 (ej: 501234567)' },
+                '+972': { regex: /^5[0-9]\d{7}$/,       digits: 9,  starts: '5',   hint: '9 dígitos, empieza con 5 (ej: 501234567)' },
+                '+852': { regex: /^[5-9]\d{7}$/,        digits: 8,  starts: '5-9', hint: '8 dígitos, empieza con 5-9 (ej: 51234567)' },
+                '+886': { regex: /^9\d{8}$/,            digits: 9,  starts: '9',   hint: '9 dígitos, empieza con 9 (ej: 912345678)' },
+                '+20':  { regex: /^1[0-2,5]\d{8}$/,     digits: 10, starts: '1',   hint: '10 dígitos, empieza con 10/11/12/15 (ej: 1012345678)' },
+                '+27':  { regex: /^6\d{8}$/,            digits: 9,  starts: '6',   hint: '9 dígitos, empieza con 6 (ej: 612345678)' },
+                '+234': { regex: /^[7-9]0[1-9]\d{7}$/,  digits: 10, starts: '7-9', hint: '10 dígitos, empieza con 70-90 (ej: 8012345678)' },
+                '+254': { regex: /^7\d{8}$/,            digits: 9,  starts: '7',   hint: '9 dígitos, empieza con 7 (ej: 712345678)' },
+                '+233': { regex: /^[25]\d{8}$/,         digits: 9,  starts: '2-5', hint: '9 dígitos, empieza con 2 o 5 (ej: 201234567)' },
+                '+212': { regex: /^[6-7]\d{8}$/,        digits: 9,  starts: '6-7', hint: '9 dígitos, empieza con 6 o 7 (ej: 612345678)' },
+                '+216': { regex: /^[2-9]\d{7}$/,        digits: 8,  starts: '2-9', hint: '8 dígitos (ej: 21234567)' },
+                '+213': { regex: /^[5-7]\d{8}$/,        digits: 9,  starts: '5-7', hint: '9 dígitos, empieza con 5-7 (ej: 551234567)' },
+                '+221': { regex: /^[7-9]\d{7}$/,        digits: 8,  starts: '7-9', hint: '8 dígitos, empieza con 7-9 (ej: 77123456)' },
+                '+231': { regex: /^[7-9]\d{7}$/,        digits: 8,  starts: '7-9', hint: '8 dígitos, empieza con 7-9 (ej: 77123456)' },
+                '+230': { regex: /^[5-9]\d{7}$/,        digits: 8,  starts: '5-9', hint: '8 dígitos, empieza con 5-9 (ej: 51234567)' },
+                '+263': { regex: /^7[1-9]\d{7}$/,       digits: 9,  starts: '7',   hint: '9 dígitos, empieza con 71-79 (ej: 712345678)' },
+                '+260': { regex: /^9[5-7]\d{7}$/,       digits: 9,  starts: '9',   hint: '9 dígitos, empieza con 95-97 (ej: 951234567)' },
+                '+267': { regex: /^7[1-6]\d{6}$/,       digits: 8,  starts: '7',   hint: '8 dígitos, empieza con 71-76 (ej: 7123456)' },
+                '+264': { regex: /^8[1-5]\d{6}$/,       digits: 8,  starts: '8',   hint: '8 dígitos, empieza con 81-85 (ej: 81123456)' }
+            };
+
+            function showError(id, msg) {
+                const el = document.getElementById(id + '-error');
+                const input = document.getElementById(id);
+                if (el) { el.textContent = msg; el.classList.remove('hidden'); }
+                if (input) input.classList.add('border-red-600');
+            }
+
+            function clearError(id) {
+                const el = document.getElementById(id + '-error');
+                const input = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+                if (input) input.classList.remove('border-red-600');
+            }
+
+            function validateNombre() {
+                clearError('nombre');
+                const val = nombre.value.trim();
+                if (val.length < 2) { showError('nombre', 'Mínimo 2 caracteres'); return false; }
+                if (!/^[a-zA-ZáéíóúñüÁÉÍÓÚÑÜ\s]+$/.test(val)) { showError('nombre', 'Solo letras y espacios'); return false; }
+                return true;
+            }
+
+            function validateCorreo() {
+                clearError('correo');
+                const val = correo.value.trim();
+                if (!val) { showError('correo', 'El correo es obligatorio'); return false; }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) { showError('correo', 'Formato de correo inválido'); return false; }
+                return true;
+            }
+
+            function validateEmpresa() {
+                clearError('empresa');
+                const val = empresa.value.trim();
+                if (val.length < 2) { showError('empresa', 'Mínimo 2 caracteres'); return false; }
+                return true;
+            }
+
+            function validateWhatsapp() {
+                clearError('whatsapp');
+                const val = whatsapp.value.replace(/\s|-/g, '');
+                const code = prefijo.value;
+                const rule = PHONE_RULES[code];
+                if (!val) { showError('whatsapp', 'El número es obligatorio'); return false; }
+                if (!/^\d+$/.test(val)) { showError('whatsapp', 'Solo se permiten números'); return false; }
+                if (!rule) { showError('whatsapp', 'País no soportado'); return false; }
+                if (!rule.regex.test(val)) { showError('whatsapp', rule.hint); return false; }
+                return true;
+            }
+
+            function updatePlaceholder() {
+                const rule = PHONE_RULES[prefijo.value];
+                whatsapp.placeholder = rule ? rule.digits + ' dígitos' : 'Número';
+                clearError('whatsapp');
+            }
+
+            prefijo.addEventListener('change', updatePlaceholder);
+            nombre.addEventListener('blur', validateNombre);
+            correo.addEventListener('blur', validateCorreo);
+            empresa.addEventListener('blur', validateEmpresa);
+            whatsapp.addEventListener('blur', validateWhatsapp);
+            whatsapp.addEventListener('input', () => { whatsapp.value = whatsapp.value.replace(/[^0-9\s-]/g, ''); });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const valid = [validateNombre(), validateCorreo(), validateEmpresa(), validateWhatsapp()].every(Boolean);
+                if (!valid) return;
+
+                const btn = form.querySelector('button');
+                const originalText = btn.innerText;
+                btn.innerText = 'PROCESANDO SOLICITUD...';
+                btn.disabled = true;
+                btn.classList.add('opacity-50');
+
+                const payload = [
+                    {
+                        id: crypto.randomUUID(),
+                        fields: {
+                            Nombre_Completo: nombre.value.trim(),
+                            Correo_Electronico: correo.value.trim(),
+                            Empresa: empresa.value.trim(),
+                            WhatsApp_Business: prefijo.value + ' ' + whatsapp.value.trim(),
+                            Formulario: 'Solicitud_Propuesta_Tecnologica',
+                            Fecha_Envio: new Date().toISOString(),
+                            URL_Origen: window.location.href
+                        }
+                    }
+                ];
+
+                try {
+                    const res = await fetch('https://aimachristian-n8n.ajcxjb.easypanel.host/webhook/formularioPGweb', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (res.ok) {
+                        btn.innerText = 'SOLICITUD ENVIADA';
+                        btn.classList.remove('bg-primary');
+                        btn.classList.add('bg-green-600');
+                        form.reset();
+                        setTimeout(() => {
+                            window.location.href = 'landingpage%20video/index.html#video-section';
+                        }, 1500);
+                    } else {
+                        throw new Error('Respuesta no válida del servidor');
+                    }
+                } catch (err) {
+                    console.error('Error al enviar formulario:', err);
+                    btn.innerText = 'ERROR, INTENTA DE NUEVO';
+                    btn.classList.remove('bg-primary');
+                    btn.classList.add('bg-red-600');
+                } finally {
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50', 'bg-green-600', 'bg-red-600');
+                        btn.classList.add('bg-primary');
+                    }, 3000);
+                }
+            });
+        }
+    });
+</script>
+</body></html>

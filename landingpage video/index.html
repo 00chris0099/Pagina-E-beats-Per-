@@ -1,0 +1,1551 @@
+<!DOCTYPE html><html class="dark" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>E-Beats | Automatización e IA para Operaciones Ejecutivas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&amp;family=Peace+Sans&amp;family=Open+Sans:wght@400;600&amp;family=Anybody:wght@700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#D00000",
+                    "on-primary": "#FFFFFF",
+                    "secondary": "#D00000",
+                    "background": "#000000",
+                    "surface": "#000000",
+                    "surface-container": "#0a0a0a",
+                    "surface-container-high": "#121212",
+                    "surface-container-low": "#050505",
+                    "on-surface": "#FFFFFF",
+                    "on-surface-variant": "#E0E0E0",
+                    "outline": "#D00000",
+                    "error": "#FF0000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "2px",
+                    "xl": "4px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "20px",
+                    "stack-sm": "12px",
+                    "container-padding-desktop": "80px",
+                    "gutter": "16px",
+                    "base": "8px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Anybody", "sans-serif"],
+                    "display-lg": ["Anybody", "sans-serif"],
+                    "subtitle": ["Peace Sans", "sans-serif"],
+                    "body": ["Open Sans", "sans-serif"],
+                    "button": ["Anybody", "sans-serif"],
+                    "label-caps": ["Anybody", "sans-serif"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "700"}],
+                    "button": ["16px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "800"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["22px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            cursor: none; /* Hide default cursor for custom cursor */
+        }
+        @media (max-width: 1024px) {
+            body { cursor: auto; }
+            #custom-cursor { display: none; }
+        }
+        .peace-sans { font-family: 'Peace Sans', sans-serif; }
+        .sharp-card {
+            background: #000000;
+            border: 1px solid #D00000;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sharp-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 15px rgba(208, 0, 0, 0.1);
+            pointer-events: none;
+        }
+        .sharp-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(208, 0, 0, 0.3);
+            border-color: #FF0000;
+            z-index: 10;
+        }
+        .red-glow {
+            box-shadow: 0 0 30px rgba(208, 0, 0, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .aggressive-border {
+            border-left: 4px solid #D00000;
+        }
+
+        /* Custom Cursor */
+        #custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: #D00000;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: transform 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+        #custom-cursor-blur {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(208,0,0,0.15) 0%, rgba(208,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-out;
+        }
+
+        /* Entrance Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #000000;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease-in-out;
+        }
+        .preloader-bar {
+            width: 200px;
+            height: 2px;
+            background: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            margin-top: 24px;
+        }
+        .preloader-progress {
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            background: #D00000;
+            transition: width 0.4s ease;
+        }
+        .pulse-logo {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(0.95); }
+        }
+
+        /* Scroll Progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #D00000;
+            width: 0%;
+            z-index: 10001;
+            transition: width 0.1s ease;
+        }
+
+        /* Text Blur-In Effect */
+        .blur-in {
+            animation: blurIn 1.2s forwards;
+            filter: blur(10px);
+            opacity: 0;
+        }
+        @keyframes blurIn {
+            to { filter: blur(0); opacity: 1; }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .sharp-card, .blur-in, #custom-cursor, #custom-cursor-blur {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+                filter: none !important;
+            }
+            #preloader { display: none; }
+        }
+
+        /* Step card loading animation on hover */
+        .step-card .step-content {
+            position: relative;
+            overflow: hidden;
+        }
+        .step-card .step-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+        .step-card .step-progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #D00000, #FF0000, #D00000);
+            background-size: 200% 100%;
+            transition: width 0s;
+        }
+        .step-card:hover .step-progress-fill {
+            width: 100%;
+            transition: width 1.5s ease-in-out;
+            animation: shimmer 1.5s linear infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .step-card:hover .step-number {
+            animation: stepPulse 0.6s ease-in-out infinite alternate;
+        }
+        @keyframes stepPulse {
+            0% { box-shadow: 0 0 0 0 rgba(208, 0, 0, 0.4); }
+            100% { box-shadow: 0 0 20px 8px rgba(208, 0, 0, 0.6); }
+        }
+        .step-card:hover .step-content {
+            border-color: rgba(208, 0, 0, 0.4) !important;
+            box-shadow: 0 0 30px rgba(208, 0, 0, 0.15), inset 0 0 30px rgba(208, 0, 0, 0.05);
+        }
+        .step-card .step-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(208, 0, 0, 0.08), transparent);
+            transition: left 0s;
+            pointer-events: none;
+        }
+        .step-card:hover .step-content::before {
+            left: 100%;
+            transition: left 1.5s ease-in-out;
+        }
+
+        /* Step numbers scroll activation */
+        .step-number {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .step-card .step-number {
+            background: transparent !important;
+            color: #D00000 !important;
+            border: 2px solid #D00000 !important;
+            box-shadow: none;
+        }
+        .step-card.step-active .step-number {
+            background: #D00000 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 0 25px rgba(208, 0, 0, 0.7), 0 0 50px rgba(208, 0, 0, 0.3);
+            animation: numberGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes numberGlow {
+            0% { box-shadow: 0 0 20px rgba(208, 0, 0, 0.5), 0 0 40px rgba(208, 0, 0, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(208, 0, 0, 0.8), 0 0 60px rgba(208, 0, 0, 0.4); }
+        }
+        .step-card .step-number::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: inherit;
+            border: 2px solid transparent;
+            transition: border-color 0.6s;
+        }
+        .step-card.step-active .step-number::after {
+            border-color: rgba(208, 0, 0, 0.3);
+            animation: ringPulse 1.5s ease-in-out infinite;
+        }
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.5; }
+        }
+        /* Line connector fills as steps activate */
+        .step-card.step-active ~ .step-card .step-number {
+            border-color: #D00000 !important;
+        }
+
+        /* ========== FORM MODAL STYLES ========== */
+        #form-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        #form-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        #form-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        #form-modal-container {
+            position: relative;
+            z-index: 1;
+            width: 95%;
+            max-width: 820px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #0a0a0a;
+            border: 1px solid rgba(208, 0, 0, 0.15);
+            transform: translateY(30px) scale(0.97);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #form-modal.active #form-modal-container {
+            transform: translateY(0) scale(1);
+        }
+        #form-modal-container::-webkit-scrollbar { width: 4px; }
+        #form-modal-container::-webkit-scrollbar-track { background: #0a0a0a; }
+        #form-modal-container::-webkit-scrollbar-thumb { background: #D00000; }
+
+        .form-step { display: none; }
+        .form-step.active { display: block; }
+
+        .fm-kinetic-accent {
+            border-left: 4px solid #D00000;
+        }
+        .fm-glass-panel {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(208, 0, 0, 0.1);
+        }
+        .fm-selectable-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #1A1A1A;
+            cursor: pointer;
+        }
+        .fm-selectable-card:hover {
+            background: rgba(208, 0, 0, 0.05);
+            border-color: rgba(208, 0, 0, 0.3);
+        }
+        .fm-selectable-card.active {
+            border-color: #D00000;
+            background: rgba(208, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(208, 0, 0, 0.2);
+        }
+        .fm-progress-track {
+            height: 4px;
+            background: #1A1A1A;
+        }
+        .fm-progress-fill {
+            height: 100%;
+            background: #D00000;
+            transition: width 0.8s ease-in-out;
+        }
+        .fm-input {
+            width: 100% !important;
+            background: transparent !important;
+            border: 0 !important;
+            border-bottom: 1px solid #1A1A1A !important;
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            font-family: 'Open Sans', sans-serif !important;
+            font-size: 16px !important;
+            padding: 12px 0 !important;
+            outline: none !important;
+            transition: border-color 0.3s !important;
+            caret-color: #D00000 !important;
+            opacity: 1 !important;
+        }
+        .fm-input:focus {
+            border-color: #D00000 !important;
+        }
+        .fm-input::placeholder {
+            color: #555 !important;
+            -webkit-text-fill-color: #555 !important;
+        }
+        .fm-select {
+            width: 100% !important;
+            background: transparent !important;
+            border: 0 !important;
+            border-bottom: 1px solid #1A1A1A !important;
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            font-family: 'Open Sans', sans-serif !important;
+            font-size: 16px !important;
+            padding: 12px 0 !important;
+            outline: none !important;
+            transition: border-color 0.3s !important;
+            cursor: pointer !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            opacity: 1 !important;
+        }
+        .fm-select:focus {
+            border-color: #D00000 !important;
+        }
+        .fm-select option {
+            background: #0a0a0a !important;
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+        }
+        .fm-error {
+            border-bottom-color: #FF0000 !important;
+        }
+        .fm-error-msg {
+            color: #FF0000;
+            font-size: 11px;
+            margin-top: 4px;
+            display: none;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .fm-error-msg.visible {
+            display: block;
+        }
+        .fm-label {
+            display: block;
+            font-family: 'Peace Sans', sans-serif;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #988e90;
+            margin-bottom: 8px;
+        }
+        .fm-label-focus {
+            color: #D00000;
+        }
+        .fm-radio-card:checked + label {
+            border-color: #D00000;
+            background-color: rgba(208, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(208, 0, 0, 0.2);
+        }
+        .fm-radio-card {
+            display: none;
+        }
+        .fm-pill {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #1A1A1A;
+            cursor: pointer;
+        }
+        .fm-pill:hover {
+            border-color: rgba(208, 0, 0, 0.3);
+        }
+        .fm-pill.active {
+            border-color: #D00000;
+            background: rgba(208, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(208, 0, 0, 0.2);
+        }
+        .fm-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 1px solid #1A1A1A;
+            color: #988e90;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .fm-close-btn:hover {
+            border-color: #D00000;
+            color: #D00000;
+        }
+        .fm-step-enter {
+            animation: fmStepIn 0.5s ease forwards;
+        }
+        @keyframes fmStepIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .fm-card-reveal {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .fm-card-reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.4s ease-out;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        @media (max-width: 640px) {
+            .peace-sans { font-size: 1.1rem !important; }
+            .text-headline-md { font-size: 1.25rem !important; line-height: 1.3 !important; }
+            .text-headline-sm { font-size: 1rem !important; }
+            .text-display-lg { font-size: 2.25rem !important; }
+            .text-display-lg-mobile { font-size: 2rem !important; }
+            .font-button.text-2xl { font-size: 1.125rem !important; }
+            .px-container-padding-desktop { padding-left: 20px; padding-right: 20px; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+<div id="preloader" style="opacity: 0; display: none;">
+<div class="flex items-center gap-3 pulse-logo"><img alt="E-Beats Logo" class="h-16 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDESgM-JjGZD0qf6aSqAeMeOZpOJ0VYyNEdXkstaXLuvs6wOYc7XaLFcvtFUOspf31q2WywAJF-c3ZOy6lAMJQMTTH2E_r9vnLqq6j0yu95JF5JU7sPYKU7vpNr98EdD33ZyeydQjbyMlWj_Tk1D9FKY-btTT9PAjsQFAM0z5vLt4Q-emhU3cSOKihM0bix6_OC1mp4cwSQoZq7rAyhl3giOS9SMXIB2fBV717tpe5msngRuLhSK5HGsEwloGYYPfNbY5xJvs2Hd5A"></div>
+<div class="preloader-bar">
+<div class="preloader-progress" id="loader-progress" style="width: 100%;"></div>
+</div>
+</div>
+<div id="scroll-progress" style="width: 0%;"></div>
+<div id="custom-cursor" style="left: 382px; top: 7504px; transform: translate(-50%, -50%) scale(1); background-color: rgb(208, 0, 0);"></div>
+<div id="custom-cursor-blur" style="left: 382px; top: 7504px;"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-primary/30 h-20 opacity-0 transition-all duration-700 ease-out" id="main-header" style="opacity: 1;">
+<div class="flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto h-full">
+<div class="flex items-center gap-3"><img alt="E-Beats Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDESgM-JjGZD0qf6aSqAeMeOZpOJ0VYyNEdXkstaXLuvs6wOYc7XaLFcvtFUOspf31q2WywAJF-c3ZOy6lAMJQMTTH2E_r9vnLqq6j0yu95JF5JU7sPYKU7vpNr98EdD33ZyeydQjbyMlWj_Tk1D9FKY-btTT9PAjsQFAM0z5vLt4Q-emhU3cSOKihM0bix6_OC1mp4cwSQoZq7rAyhl3giOS9SMXIB2fBV717tpe5msngRuLhSK5HGsEwloGYYPfNbY5xJvs2Hd5A"></div>
+<button class="hidden md:flex font-button text-button bg-primary text-white px-8 py-3 uppercase hover:bg-white hover:text-black transition-all active:scale-95">
+            Solicitar Diagnóstico
+        </button>
+</div>
+</header>
+<main class="pt-20 opacity-0 transition-opacity duration-1000" id="main-content" style="opacity: 1;">
+<!-- Section 1: Hero -->
+<section id="video-section" class="relative px-container-padding-mobile pt-stack-lg pb-stack-lg text-center overflow-hidden border-b border-primary/20">
+<div class="max-w-5xl mx-auto">
+<span class="reveal inline-block font-label-caps text-label-caps text-primary mb-6 uppercase tracking-[0.2em] border-b-2 border-primary pb-1 active">
+            Diagnóstico Ejecutivo de Automatización
+        </span>
+<h1 class="blur-in font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-8 leading-none uppercase italic">Menos <span class="underline decoration-primary">fricción</span>. Más control. <br><span class="text-white bg-primary px-2 not-italic underline decoration-white">Automatización e IA</span> para operar mejor.</h1>
+<p class="reveal font-body text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto opacity-80 active" style="transition-delay: 0.2s;">
+            Solo para negocios que necesitan tomar decisiones con datos. Audita tus procesos, valida la inversión y define tu hoja de ruta técnica antes de automatizar.
+        </p>
+<!-- Video Centerpiece -->
+<div id="video-wrapper" class="reveal relative group mx-auto max-w-4xl aspect-video bg-black border-2 border-primary/50 overflow-hidden mb-12 transition-all hover:border-primary red-glow active" style="transition-delay: 0.4s;">
+<video id="hero-video" class="w-full h-full object-cover" playsinline preload="none" muted>
+<source src="video/WhatsApp%20Video%202026-06-08%20at%209.16.18%20PM.mp4" type="video/mp4">
+</video>
+<div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+<!-- Fullscreen button -->
+<button id="fs-btn" class="absolute bottom-4 right-4 z-20 w-10 h-10 bg-black/60 border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary hover:border-primary pointer-events-auto" title="Pantalla completa">
+<span class="material-symbols-outlined text-white text-xl">fullscreen</span>
+</button>
+<!-- Play overlay -->
+<div id="video-play-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black/60 cursor-pointer z-10 transition-opacity duration-500">
+<div class="w-20 h-20 bg-primary flex items-center justify-center mb-6 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-5xl leading-none ml-1" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<p class="font-button text-button text-white uppercase tracking-widest px-4 text-center">El Método E-Beats: Cómo construimos infraestructura digital</p>
+<span class="font-label-caps text-[10px] mt-2 text-primary">CLICK PARA REPRODUCIR</span>
+</div>
+<!-- End Screen: Replay + Arrows to CTA -->
+<div id="video-end-screen" class="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-10 transition-opacity duration-500" style="opacity:0; display:none;">
+<div class="flex flex-col items-center gap-6">
+<button id="replay-btn" class="w-20 h-20 bg-primary flex items-center justify-center hover:scale-110 transition-transform mb-4" title="Ver de nuevo">
+<span class="material-symbols-outlined text-white text-5xl leading-none" style="font-variation-settings: 'FILL' 1;">replay</span>
+</button>
+<p class="font-button text-button text-white uppercase tracking-widest text-center mb-2">¿Te quedaste con la duda?</p>
+<p class="font-label-caps text-[11px] text-primary mb-6">REPRODUCIR DE NUEVO</p>
+<div id="arrow-anim" class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary text-4xl animate-bounce" style="animation-delay: 0s;">expand_more</span>
+<span class="material-symbols-outlined text-primary text-3xl animate-bounce" style="animation-delay: 0.15s;">expand_more</span>
+<span class="material-symbols-outlined text-primary text-2xl animate-bounce" style="animation-delay: 0.3s;">expand_more</span>
+</div>
+<a href="#fm-form" class="mt-4 font-button text-sm bg-primary text-white px-8 py-3 uppercase tracking-widest hover:bg-white hover:text-black transition-all text-center" onclick="openFormModal(); return false;">Aplicar Ahora</a>
+</div>
+</div>
+</div>
+<script>
+(function() {
+    const video = document.getElementById('hero-video');
+    const overlay = document.getElementById('video-play-overlay');
+    const endScreen = document.getElementById('video-end-screen');
+    const replayBtn = document.getElementById('replay-btn');
+    const fsBtn = document.getElementById('fs-btn');
+    const wrapper = document.getElementById('video-wrapper');
+    if (!video) return;
+
+    video.muted = true;
+    video.volume = 1;
+
+    const fromForm = window.location.hash === '#video-section';
+
+    window.addEventListener('load', function() {
+        video.load();
+        video.currentTime = 0;
+        video.pause();
+        endScreen.style.display = 'none';
+        endScreen.style.opacity = '0';
+        overlay.style.display = 'flex';
+        overlay.style.opacity = '1';
+
+        video.addEventListener('loadeddata', function onLoaded() {
+            video.removeEventListener('loadeddata', onLoaded);
+            video.currentTime = 0;
+            video.pause();
+            setTimeout(() => {
+                const videoSection = document.getElementById('video-section');
+                if (videoSection) {
+                    videoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                if (fromForm) {
+                    video.muted = false;
+                    video.play();
+                    overlay.style.opacity = '0';
+                    setTimeout(() => { overlay.style.display = 'none'; }, 500);
+                    history.replaceState(null, '', window.location.pathname);
+                }
+            }, 300);
+        });
+    });
+
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            video.muted = false;
+            video.play();
+            overlay.style.opacity = '0';
+            setTimeout(() => { overlay.style.display = 'none'; }, 500);
+        });
+    }
+
+    video.addEventListener('ended', function() {
+        endScreen.style.display = 'flex';
+        setTimeout(() => { endScreen.style.opacity = '1'; }, 50);
+    });
+
+    if (replayBtn) {
+        replayBtn.addEventListener('click', function() {
+            endScreen.style.opacity = '0';
+            setTimeout(() => {
+                endScreen.style.display = 'none';
+                video.currentTime = 0;
+                video.muted = false;
+                video.play().catch(() => {});
+            }, 500);
+        });
+    }
+
+    video.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+
+    if (fsBtn) {
+        fsBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (!document.fullscreenElement) {
+                wrapper.requestFullscreen().catch(function() {});
+            } else {
+                document.exitFullscreen();
+            }
+        });
+    }
+
+    document.addEventListener('fullscreenchange', function() {
+        if (!fsBtn) return;
+        const icon = fsBtn.querySelector('.material-symbols-outlined');
+        if (document.fullscreenElement) {
+            icon.textContent = 'fullscreen_exit';
+        } else {
+            icon.textContent = 'fullscreen';
+        }
+    });
+})();
+</script>
+<button class="reveal font-button text-xl bg-primary text-white px-12 py-6 uppercase red-glow hover:bg-white hover:text-black hover:red-glow transition-all w-full md:w-auto active" style="transition-delay: 0.6s;">
+            Agendar Diagnóstico Ejecutivo
+        </button>
+</div>
+</section>
+<!-- Section 2: Chaos Signals (Bento Grid) -->
+<section class="px-container-padding-mobile py-stack-lg bg-black border-b border-primary/20">
+<div class="max-w-7xl mx-auto">
+<h2 class="reveal peace-sans text-headline-md mb-16 text-center uppercase tracking-wider text-white active">Dónde estás perdiendo dinero hoy.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="reveal sharp-card p-stack-md flex flex-col h-full aggressive-border active" style="transition-delay: 0.1s;">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">chat_error</span>
+<h3 class="peace-sans text-headline-sm mb-4 uppercase text-white">Seguimiento invisible</h3>
+<p class="font-body text-on-surface-variant">Leads en WhatsApp y Excel sin responsables claros. Ventas que mueren en el silencio.</p>
+</div>
+<!-- Card 2 -->
+<div class="reveal sharp-card p-stack-md flex flex-col h-full aggressive-border active" style="transition-delay: 0.2s;">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">query_stats</span>
+<h3 class="peace-sans text-headline-sm mb-4 uppercase text-white">Datos inconexos</h3>
+<p class="font-body text-on-surface-variant">Reportes manuales y gerencias operando a ciegas. Decisiones basadas en intuición, no en realidad.</p>
+</div>
+<!-- Card 3 -->
+<div class="reveal sharp-card p-stack-md flex flex-col h-full aggressive-border active" style="transition-delay: 0.3s;">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">hourglass_empty</span>
+<h3 class="peace-sans text-headline-sm mb-4 uppercase text-white">Talento desperdiciado</h3>
+<p class="font-body text-on-surface-variant">Equipos de alto valor respondiendo las mismas 20 preguntas a mano una y otra vez.</p>
+</div>
+<!-- Card 4 -->
+<div class="reveal sharp-card p-stack-md flex flex-col h-full aggressive-border active" style="transition-delay: 0.4s;">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">money_off</span>
+<h3 class="peace-sans text-headline-sm mb-4 uppercase text-white">Tecnología sin adopción</h3>
+<p class="font-body text-on-surface-variant">Pagas licencias (CRM, Bots) que nadie usa ni alimenta correctamente. Deuda técnica creciente.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Packaged Solution -->
+<section class="px-container-padding-mobile py-stack-lg border-b border-primary/20">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="flex-1">
+<h2 class="reveal peace-sans text-headline-md mb-10 uppercase tracking-widest leading-tight active">Sistemas operativos con IA.<br><span class="text-primary">Lo que construimos para ti.</span></h2>
+<div class="space-y-8">
+<div class="reveal flex gap-6 p-4 border border-transparent hover:border-primary/40 transition-colors active" style="transition-delay: 0.1s;">
+<div class="shrink-0 w-14 h-14 flex items-center justify-center bg-primary text-white">
+<span class="material-symbols-outlined text-3xl">hub</span>
+</div>
+<div>
+<h4 class="peace-sans text-xl mb-2 uppercase text-white">CRM Inteligente y Gestión de Leads</h4>
+<p class="font-body text-on-surface-variant">Calificación BANT automática en WhatsApp y asignación en tiempo real a tu mejor vendedor.</p>
+</div>
+</div>
+<div class="reveal flex gap-6 p-4 border border-transparent hover:border-primary/40 transition-colors active" style="transition-delay: 0.2s;">
+<div class="shrink-0 w-14 h-14 flex items-center justify-center bg-primary text-white">
+<span class="material-symbols-outlined text-3xl">monitoring</span>
+</div>
+<div>
+<h4 class="peace-sans text-xl mb-2 uppercase text-white">Dashboard Vivo (Panel Central)</h4>
+<p class="font-body text-on-surface-variant">KPIs de ventas y atención sincronizados sin abrir planillas. Visualiza tu <span class="underline decoration-primary font-bold">ROI</span> en tiempo real.</p>
+</div>
+</div>
+<div class="reveal flex gap-6 p-4 border border-transparent hover:border-primary/40 transition-colors active" style="transition-delay: 0.3s;">
+<div class="shrink-0 w-14 h-14 flex items-center justify-center bg-primary text-white">
+<span class="material-symbols-outlined text-3xl">notification_important</span>
+</div>
+<div>
+<h4 class="peace-sans text-xl mb-2 uppercase text-white">Seguimiento Proactivo</h4>
+<p class="font-body text-on-surface-variant">Alertas y recordatorios automatizados en WhatsApp/Slack para que nada se pierda.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal flex-1 w-full relative active" style="transition-delay: 0.5s;">
+<div class="aspect-square bg-black border-2 border-primary p-12 flex items-center justify-center overflow-hidden">
+<div class="w-full h-px bg-primary/20 absolute top-1/4"></div>
+<div class="w-full h-px bg-primary/20 absolute top-2/4"></div>
+<div class="w-full h-px bg-primary/20 absolute top-3/4"></div>
+<div class="h-full w-px bg-primary/20 absolute left-1/4"></div>
+<div class="h-full w-px bg-primary/20 absolute left-2/4"></div>
+<div class="h-full w-px bg-primary/20 absolute left-3/4"></div>
+<div class="relative z-10 sharp-card p-10 bg-black border-2 border-primary red-glow transform rotate-2">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-4 h-4 bg-primary"></div>
+<div class="w-24 h-3 bg-white/20"></div>
+</div>
+<div class="peace-sans text-5xl font-bold text-white mb-2">ROI +42%</div>
+<div class="font-label-caps text-xs text-primary tracking-widest">OPTIMIZACIÓN IA</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: The Method (Workflow) -->
+<section class="px-container-padding-mobile py-stack-lg bg-black border-b border-primary/20">
+<div class="max-w-5xl mx-auto">
+<h2 class="reveal peace-sans text-headline-md mb-16 text-center uppercase tracking-widest active">Flujo estratégico: Primero <span class="font-display-lg-mobile" style="font-family:'Anybody',sans-serif; text-decoration:underline; text-decoration-color:#D00000; text-underline-offset:6px; text-decoration-thickness:3px;">diagnosticamos</span>, luego construimos.</h2>
+<div class="relative space-y-12">
+<!-- Line connector for desktop -->
+<div class="hidden md:block absolute left-[31px] top-8 bottom-8 w-1 bg-primary/30"></div>
+<!-- Step 1 -->
+<div class="reveal relative flex gap-8 md:gap-12 active step-card" style="transition-delay: 0.1s;">
+<div class="shrink-0 z-10 w-16 h-16 flex items-center justify-center peace-sans text-2xl step-number">1</div>
+<div class="sharp-card p-stack-md flex-1 aggressive-border step-content">
+<h3 class="peace-sans text-headline-sm text-primary mb-3 uppercase italic">Paso 1: Diagnóstico Ejecutivo (2-4 días)</h3>
+<p class="font-body text-on-surface-variant">Analizamos procesos y herramientas actuales. Entregamos el <span class="underline decoration-primary font-bold">Blueprint</span> técnico y el backlog de prioridades. <span class="font-bold text-white underline decoration-primary decoration-2">Requisito obligatorio.</span></p>
+<div class="step-progress"><div class="step-progress-fill"></div></div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="reveal relative flex gap-8 md:gap-12 active step-card" style="transition-delay: 0.2s;">
+<div class="shrink-0 z-10 w-16 h-16 border-2 border-primary bg-black flex items-center justify-center peace-sans text-2xl text-primary step-number">2</div>
+<div class="sharp-card p-stack-md flex-1 aggressive-border step-content">
+<h3 class="peace-sans text-headline-sm text-white mb-3 uppercase italic">Paso 2: Implementación Modular (14-21 días)</h3>
+<p class="font-body text-on-surface-variant">Construimos el sistema aprobado (<span class="underline decoration-primary font-bold">n8n</span>, <span class="underline decoration-primary font-bold">CRM</span>, <span class="underline decoration-primary font-bold">IA</span>). Despliegue rápido por módulos para generar <span class="underline decoration-primary font-bold">ROI</span> inmediato desde la primera semana.</p>
+<div class="step-progress"><div class="step-progress-fill"></div></div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="reveal relative flex gap-8 md:gap-12 active step-card" style="transition-delay: 0.3s;">
+<div class="shrink-0 z-10 w-16 h-16 border-2 border-primary bg-black flex items-center justify-center peace-sans text-2xl text-primary step-number">3</div>
+<div class="sharp-card p-stack-md flex-1 aggressive-border step-content">
+<h3 class="peace-sans text-headline-sm text-white mb-3 uppercase italic">Paso 3: Gobierno y Optimización</h3>
+<p class="font-body text-on-surface-variant">Capacitación profunda al equipo y soporte recurrente para escalar la infraestructura. La <span class="underline decoration-primary font-bold">IA</span> no sirve si tu equipo no sabe operarla.</p>
+<div class="step-progress"><div class="step-progress-fill"></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Deliverables -->
+<section class="px-container-padding-mobile py-stack-lg border-b border-primary/20">
+<div class="reveal max-w-4xl mx-auto sharp-card p-10 md:p-16 border-2 border-primary overflow-hidden relative active" style="transition-delay: 0.2s;">
+<div class="absolute -top-10 -right-10 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[200px] text-white">assignment_turned_in</span>
+</div>
+<h2 class="peace-sans text-headline-md mb-12 uppercase italic tracking-widest border-l-8 border-primary pl-6">Qué recibes en tu Diagnóstico Pagado.</h2>
+<ul class="space-y-8 mb-12">
+<li class="reveal flex items-start gap-6 active" style="transition-delay: 0.3s;">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+<p class="font-body text-body-lg text-white">Entrevista profunda de operación (45 min) con nuestros ingenieros senior.</p>
+</li>
+<li class="reveal flex items-start gap-6 active" style="transition-delay: 0.4s;">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+<p class="font-body text-body-lg text-white"><span class="underline decoration-primary font-bold">Blueprint</span> técnico de flujos, integraciones y arquitectura de datos.</p>
+</li>
+<li class="reveal flex items-start gap-6 active" style="transition-delay: 0.5s;">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+<p class="font-body text-body-lg text-white">Plan de implementación con inversión cerrada (sin costos ocultos ni sorpresas).</p>
+</li>
+</ul>
+<div class="bg-primary/10 p-6 border-l-4 border-primary flex items-center gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">info</span>
+<p class="peace-sans text-sm text-primary uppercase tracking-widest">El costo del diagnóstico es 100% deducible de la implementación final.</p>
+</div>
+</div>
+</section>
+<!-- Section 6: Qualification & Close -->
+<section class="px-container-padding-mobile py-stack-lg text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="reveal peace-sans text-headline-md mb-6 uppercase text-white italic active">Solo 3 proyectos de implementación por mes.</h2>
+<p class="reveal font-body text-body-lg text-on-surface-variant mb-16 italic active" style="transition-delay: 0.1s;">No vendemos formularios vacíos. Revisa nuestros requisitos y postula a tu diagnóstico.</p>
+<div class="reveal bg-black p-8 md:p-12 border-2 border-primary mb-16 text-left max-w-xl mx-auto relative overflow-hidden active" style="transition-delay: 0.2s;">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary transform translate-x-12 -translate-y-12 rotate-45"></div>
+<h4 class="peace-sans text-xl text-primary mb-10 uppercase tracking-[0.2em] text-center">Requisitos de Elegibilidad</h4>
+<div class="space-y-4">
+<div class="reveal flex items-center gap-4 p-4 border border-white/10 hover:border-primary/50 transition-all bg-white/5 active" style="transition-delay: 0.3s;">
+<span class="text-primary text-2xl font-bold">×</span>
+<span class="font-body text-white uppercase text-sm font-bold tracking-wider">Negocio formal y operando con tracción validada.</span>
+</div>
+<div class="reveal flex items-center gap-4 p-4 border border-white/10 hover:border-primary/50 transition-all bg-white/5 active" style="transition-delay: 0.4s;">
+<span class="text-primary text-2xl font-bold">×</span>
+<span class="font-body text-white uppercase text-sm font-bold tracking-wider">Equipo mínimo de 3 personas directas en operación.</span>
+</div>
+<div class="reveal flex items-center gap-4 p-4 border border-white/10 hover:border-primary/50 transition-all bg-white/5 active" style="transition-delay: 0.5s;">
+<span class="text-primary text-2xl font-bold">×</span>
+<span class="font-body text-white uppercase text-sm font-bold tracking-wider">Presupuesto mínimo de inversión tecnológica disponible.</span>
+</div>
+</div>
+</div>
+<button class="reveal font-button text-2xl bg-primary text-white px-16 py-8 uppercase red-glow hover:bg-white hover:text-black hover:red-glow transition-all w-full md:w-auto italic active" style="transition-delay: 0.6s;">
+            Solicitar Diagnóstico
+        </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black py-stack-lg border-t-2 border-primary">
+<div class="w-full px-container-padding-mobile md:px-container-padding-desktop py-stack-lg flex flex-col md:flex-row justify-between items-center gap-12 max-w-7xl mx-auto">
+<div class="flex flex-col items-center md:items-start gap-6">
+<div class="flex items-center gap-4"><img alt="E-Beats Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDESgM-JjGZD0qf6aSqAeMeOZpOJ0VYyNEdXkstaXLuvs6wOYc7XaLFcvtFUOspf31q2WywAJF-c3ZOy6lAMJQMTTH2E_r9vnLqq6j0yu95JF5JU7sPYKU7vpNr98EdD33ZyeydQjbyMlWj_Tk1D9FKY-btTT9PAjsQFAM0z5vLt4Q-emhU3cSOKihM0bix6_OC1mp4cwSQoZq7rAyhl3giOS9SMXIB2fBV717tpe5msngRuLhSK5HGsEwloGYYPfNbY5xJvs2Hd5A"></div>
+<p class="font-body text-sm text-on-surface-variant uppercase tracking-widest opacity-60">© 2024 E-Beats AI Automation. Todos los derechos reservados.</p>
+</div>
+<div class="flex gap-12">
+<a class="peace-sans text-xs text-white uppercase tracking-widest hover:text-primary transition-colors" href="#">Privacidad</a>
+<a class="peace-sans text-xs text-white uppercase tracking-widest hover:text-primary transition-colors" href="#">Terminos y condiciones</a>
+
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const preloader = document.getElementById('preloader');
+        const loaderProgress = document.getElementById('loader-progress');
+        const mainContent = document.getElementById('main-content');
+        const header = document.getElementById('main-header');
+        const mobileNav = document.getElementById('mobile-nav');
+        const scrollBar = document.getElementById('scroll-progress');
+        const cursor = document.getElementById('custom-cursor');
+        const cursorBlur = document.getElementById('custom-cursor-blur');
+
+        // 1. Loading Animation
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 30;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        revealPage();
+                    }, 600);
+                }, 400);
+            }
+            loaderProgress.style.width = `${progress}%`;
+        }, 150);
+
+        function revealPage() {
+            mainContent.style.opacity = '1';
+            header.style.opacity = '1';
+            header.classList.remove('-translate-y-full');
+            if (mobileNav) {
+                mobileNav.classList.remove('translate-y-full');
+            }
+            // Trigger intersection observer initial check
+            handleScroll();
+        }
+
+        // 2. Custom Cursor
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorBlur.style.left = e.clientX + 'px';
+            cursorBlur.style.top = e.clientY + 'px';
+        });
+
+        // Scale cursor on interactive elements
+        document.querySelectorAll('a, button, .sharp-card, .group').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+                cursor.style.backgroundColor = 'white';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursor.style.backgroundColor = '#D00000';
+            });
+        });
+
+        // 3. Scroll Progress & Header Effect
+        window.addEventListener('scroll', () => {
+            handleScroll();
+        });
+
+        function handleScroll() {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollBar.style.width = scrolled + '%';
+
+            if (window.scrollY > 20) {
+                header.classList.add('bg-black', 'border-primary');
+                header.classList.remove('bg-black/90');
+            } else {
+                header.classList.remove('bg-black', 'border-primary');
+                header.classList.add('bg-black/90');
+            }
+        }
+
+        // 4. Intersection Observer for Entrance Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    });
+    </script>
+
+<!-- ========== UNIFIED FORM MODAL ========== -->
+<div id="form-modal">
+    <div id="form-modal-backdrop" onclick="closeFormModal()"></div>
+    <div id="form-modal-container">
+        <button class="fm-close-btn" onclick="closeFormModal()">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+
+        <!-- Header -->
+        <div class="px-8 pt-10 pb-6 border-b border-white/5">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+                <span class="font-subtitle text-lg text-primary uppercase tracking-widest">E-BEATS COMMAND</span>
+            </div>
+            <div class="flex justify-between items-end mb-3">
+                <h2 id="fm-step-title" class="peace-sans text-2xl uppercase italic text-white">Información básica</h2>
+                <span id="fm-step-label" class="font-label-caps text-xs text-[#988e90] tracking-widest">PASO 1 DE 3</span>
+            </div>
+            <div class="fm-progress-track">
+                <div id="fm-progress-fill" class="fm-progress-fill" style="width: 33.3%"></div>
+            </div>
+        </div>
+
+        <form id="fm-form" class="p-8 space-y-10" onsubmit="event.preventDefault();">
+
+            <!-- ===== STEP 1: Basic Info ===== -->
+            <div class="form-step active" data-step="1">
+                <div class="space-y-8 fm-step-enter">
+                    <!-- Country -->
+                    <div>
+                        <label class="fm-label">País*</label>
+                        <select id="fm-country" class="fm-select">
+                            <option value="PE">Perú 🇵🇪</option>
+                            <option value="MX">México 🇲🇽</option>
+                            <option value="CO">Colombia 🇨🇴</option>
+                            <option value="CL">Chile 🇨🇱</option>
+                            <option value="AR">Argentina 🇦🇷</option>
+                        </select>
+                    </div>
+                    <!-- Full Name -->
+                    <div>
+                        <label class="fm-label">Nombre completo*</label>
+                        <input id="fm-name" class="fm-input" placeholder="EJ. COMMANDER DATA" type="text">
+                        <div id="fm-name-error" class="fm-error-msg">Ingresa tu nombre completo (mínimo 2 palabras).</div>
+                    </div>
+                    <!-- Email -->
+                    <div>
+                        <label class="fm-label">Correo electrónico*</label>
+                        <input id="fm-email" class="fm-input" placeholder="OPS@E-BEATS.AI" type="email">
+                        <div id="fm-email-error" class="fm-error-msg">Ingresa un correo electrónico válido (ejemplo@dominio.com).</div>
+                    </div>
+                    <!-- WhatsApp + Store -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="fm-label">WhatsApp*</label>
+                            <div class="flex items-center">
+                                <span id="fm-phone-prefix" class="text-primary text-base pr-2 border-b border-[#1A1A1A] pb-3 font-body" style="min-width:42px;">+51</span>
+                                <input id="fm-phone" class="fm-input" placeholder="999 999 999" type="tel" maxlength="12">
+                            </div>
+                            <div id="fm-phone-hint" class="text-[11px] text-[#555] mt-1 font-body">9 dígitos, empieza con 9</div>
+                            <div id="fm-phone-error" class="fm-error-msg">Número inválido para este país.</div>
+                        </div>
+                        <div>
+                            <label class="fm-label">Nombre de la tienda*</label>
+                            <input id="fm-store" class="fm-input" placeholder="CENTRAL-HQ" type="text">
+                            <div id="fm-store-error" class="fm-error-msg">Ingresa el nombre de tu tienda.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== STEP 2: Business Config ===== -->
+            <div class="form-step" data-step="2">
+                <div class="space-y-10 fm-step-enter">
+                    <!-- Q1: Sales Status -->
+                    <section class="space-y-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-8 bg-primary"></div>
+                            <h3 class="peace-sans text-lg uppercase tracking-wide text-white">¿Tu tienda actualmente está vendiendo?</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label class="fm-selectable-card p-5 bg-[#1c1b1b] flex flex-col gap-2 relative overflow-hidden" onclick="fmSelectSingle(this,'sales_status')">
+                                <input class="hidden" name="sales_status" type="radio" value="daily">
+                                <span class="peace-sans text-base uppercase text-primary">Sí, ventas diarias</span>
+                                <span class="text-[#988e90] text-sm">Operación activa y constante.</span>
+                                <div class="absolute bottom-2 right-2 opacity-0 group-[.active]:opacity-100 transition-opacity">
+                                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                </div>
+                            </label>
+                            <label class="fm-selectable-card p-5 bg-[#1c1b1b] flex flex-col gap-2 relative overflow-hidden" onclick="fmSelectSingle(this,'sales_status')">
+                                <input class="hidden" name="sales_status" type="radio" value="weekly">
+                                <span class="peace-sans text-base uppercase text-primary">Sí, algunas por semana</span>
+                                <span class="text-[#988e90] text-sm">Ritmo intermitente con potencial.</span>
+                            </label>
+                            <label class="fm-selectable-card p-5 bg-[#1c1b1b] flex flex-col gap-2 relative overflow-hidden" onclick="fmSelectSingle(this,'sales_status')">
+                                <input class="hidden" name="sales_status" type="radio" value="low">
+                                <span class="peace-sans text-base uppercase text-primary">Muy pocas ventas</span>
+                                <span class="text-[#988e90] text-sm">Necesita optimización urgente.</span>
+                            </label>
+                            <label class="fm-selectable-card p-5 bg-[#1c1b1b] flex flex-col gap-2 relative overflow-hidden" onclick="fmSelectSingle(this,'sales_status')">
+                                <input class="hidden" name="sales_status" type="radio" value="not_yet">
+                                <span class="peace-sans text-base uppercase text-primary">Aún no vendo</span>
+                                <span class="text-[#988e90] text-sm">En fase de lanzamiento técnico.</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Q2: Revenue -->
+                    <section class="space-y-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-8 bg-primary"></div>
+                            <h3 class="peace-sans text-lg uppercase tracking-wide text-white">¿Cuánto facturas aproximadamente al mes?</h3>
+                        </div>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                            <label class="fm-selectable-card p-4 bg-[#1c1b1b] text-center" onclick="fmSelectSingle(this,'revenue')">
+                                <input class="hidden" name="revenue" type="radio" value="1000-2500">
+                                <span class="peace-sans text-base text-white">S/1.000 - S/2.500</span>
+                            </label>
+                            <label class="fm-selectable-card p-4 bg-[#1c1b1b] text-center" onclick="fmSelectSingle(this,'revenue')">
+                                <input class="hidden" name="revenue" type="radio" value="2500-8000">
+                                <span class="peace-sans text-base text-white">S/2.500 - S/8.000</span>
+                            </label>
+                            <label class="fm-selectable-card p-4 bg-[#1c1b1b] text-center" onclick="fmSelectSingle(this,'revenue')">
+                                <input class="hidden" name="revenue" type="radio" value="8000-15000">
+                                <span class="peace-sans text-base text-white">S/8.000 - S/15.000</span>
+                            </label>
+                            <label class="fm-selectable-card p-4 bg-[#1c1b1b] text-center" onclick="fmSelectSingle(this,'revenue')">
+                                <input class="hidden" name="revenue" type="radio" value="15000+">
+                                <span class="peace-sans text-base text-white">+S/15.000</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Q3: Pain Points (Multi) -->
+                    <section class="space-y-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-8 bg-primary"></div>
+                            <h3 class="peace-sans text-lg uppercase tracking-wide text-white">¿Cuál es tu principal problema ahora mismo?</h3>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="fm-selectable-card p-4 bg-[#1c1b1b] flex items-center gap-3" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-lg group-[:active]:text-primary">person_cancel</span>
+                                <span class="text-sm uppercase text-white">Pierdo leads</span>
+                            </div>
+                            <div class="fm-selectable-card p-4 bg-[#1c1b1b] flex items-center gap-3" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-lg group-[:active]:text-primary">trending_down</span>
+                                <span class="text-sm uppercase text-white">No convierto</span>
+                            </div>
+                            <div class="fm-selectable-card p-4 bg-[#1c1b1b] flex items-center gap-3" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-lg group-[:active]:text-primary">schedule</span>
+                                <span class="text-sm uppercase text-white">Respondo tarde</span>
+                            </div>
+                            <div class="fm-selectable-card p-4 bg-[#1c1b1b] flex items-center gap-3" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-lg group-[:active]:text-primary">no_accounts</span>
+                                <span class="text-sm uppercase text-white">Tráfico sin venta</span>
+                            </div>
+                            <div class="fm-selectable-card p-4 bg-[#1c1b1b] flex items-center gap-3" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-lg group-[:active]:text-primary">touch_app</span>
+                                <span class="text-sm uppercase text-white">Todo manual</span>
+                            </div>
+                            <div class="fm-selectable-card p-4 bg-[#1c1b1b] flex items-center gap-3" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-lg group-[:active]:text-primary">error</span>
+                                <span class="text-sm uppercase text-white">No tengo sistema</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Q4: Tools (Pills) -->
+                    <section class="space-y-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-8 bg-primary"></div>
+                            <h3 class="peace-sans text-lg uppercase tracking-wide text-white">¿Qué herramientas usas actualmente?</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="fm-pill px-5 py-2.5 bg-[#1c1b1b] rounded-full flex items-center gap-2" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-base">chat</span>
+                                <span class="text-sm uppercase text-white">WhatsApp Business</span>
+                            </div>
+                            <div class="fm-pill px-5 py-2.5 bg-[#1c1b1b] rounded-full flex items-center gap-2" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-base">hub</span>
+                                <span class="text-sm uppercase text-white">CRM</span>
+                            </div>
+                            <div class="fm-pill px-5 py-2.5 bg-[#1c1b1b] rounded-full flex items-center gap-2" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-base">shopping_cart</span>
+                                <span class="text-sm uppercase text-white">Shopify/WooCommerce</span>
+                            </div>
+                            <div class="fm-pill px-5 py-2.5 bg-[#1c1b1b] rounded-full flex items-center gap-2" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-base">table_chart</span>
+                                <span class="text-sm uppercase text-white">Excel/Airtable</span>
+                            </div>
+                            <div class="fm-pill px-5 py-2.5 bg-[#1c1b1b] rounded-full flex items-center gap-2" onclick="fmToggleMulti(this)">
+                                <span class="material-symbols-outlined text-[#988e90] text-base">block</span>
+                                <span class="text-sm uppercase text-white">Ninguno</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ===== STEP 3: Final Details ===== -->
+            <div class="form-step" data-step="3">
+                <div class="space-y-8 fm-step-enter">
+                    <!-- Stage -->
+                    <div class="fm-glass-panel p-7 rounded transition-all duration-300 hover:border-primary/40">
+                        <label class="peace-sans text-base text-white block mb-5">¿En qué etapa estás actualmente?</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div><input class="fm-radio-card" id="fstage1" name="stage" type="radio" value="exploring"><label class="flex items-center p-4 border border-[#4c4546] rounded cursor-pointer transition-all hover:bg-primary/5 text-white text-sm" for="fstage1">Solo explorando</label></div>
+                            <div><input class="fm-radio-card" id="fstage2" name="stage" type="radio" value="improving"><label class="flex items-center p-4 border border-[#4c4546] rounded cursor-pointer transition-all hover:bg-primary/5 text-white text-sm" for="fstage2">Quiero mejorar procesos</label></div>
+                            <div><input class="fm-radio-card" id="fstage3" name="stage" type="radio" value="soon"><label class="flex items-center p-4 border border-[#4c4546] rounded cursor-pointer transition-all hover:bg-primary/5 text-white text-sm" for="fstage3">Busco implementar pronto</label></div>
+                            <div><input class="fm-radio-card" id="fstage4" name="stage" type="radio" value="urgent"><label class="flex items-center p-4 border border-[#4c4546] rounded cursor-pointer transition-all hover:bg-primary/5 text-white text-sm" for="fstage4">Necesito una solución Urgente</label></div>
+                        </div>
+                    </div>
+
+                    <!-- Willingness -->
+                    <div class="fm-glass-panel p-7 rounded transition-all duration-300 hover:border-primary/40">
+                        <label class="peace-sans text-base text-white block mb-5">Si encontramos una solución... ¿estarías dispuesto a implementarla?</label>
+                        <div class="flex flex-wrap gap-4">
+                            <div><input class="fm-radio-card" id="fwill1" name="willingness" type="radio" value="yes"><label class="flex items-center px-8 py-3 border border-[#4c4546] rounded cursor-pointer transition-all text-white text-sm" for="fwill1">Sí</label></div>
+                            <div><input class="fm-radio-card" id="fwill2" name="willingness" type="radio" value="depends"><label class="flex items-center px-8 py-3 border border-[#4c4546] rounded cursor-pointer transition-all text-white text-sm" for="fwill2">Depende del costo</label></div>
+                            <div><input class="fm-radio-card" id="fwill3" name="willingness" type="radio" value="not_sure"><label class="flex items-center px-8 py-3 border border-[#4c4546] rounded cursor-pointer transition-all text-white text-sm" for="fwill3">No estoy seguro</label></div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="fm-glass-panel p-7 rounded transition-all duration-300 hover:border-primary/40">
+                        <label class="peace-sans text-base text-white block mb-5">¿En cuánto tiempo te gustaría implementar?</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div><input class="fm-radio-card" id="ftime1" name="timeline" type="radio" value="immediate"><label class="flex flex-col items-center justify-center py-5 border border-[#4c4546] rounded cursor-pointer transition-all text-center" for="ftime1"><span class="material-symbols-outlined mb-2 text-primary">bolt</span><span class="font-label-caps text-xs text-white">Inmediatamente</span></label></div>
+                            <div><input class="fm-radio-card" id="ftime2" name="timeline" type="radio" value="1month"><label class="flex flex-col items-center justify-center py-5 border border-[#4c4546] rounded cursor-pointer transition-all text-center" for="ftime2"><span class="material-symbols-outlined mb-2 text-primary">calendar_month</span><span class="font-label-caps text-xs text-white">En 1 mes</span></label></div>
+                            <div><input class="fm-radio-card" id="ftime3" name="timeline" type="radio" value="3months"><label class="flex flex-col items-center justify-center py-5 border border-[#4c4546] rounded cursor-pointer transition-all text-center" for="ftime3"><span class="material-symbols-outlined mb-2 text-primary">event_note</span><span class="font-label-caps text-xs text-white">En 3 meses</span></label></div>
+                            <div><input class="fm-radio-card" id="ftime4" name="timeline" type="radio" value="browsing"><label class="flex flex-col items-center justify-center py-5 border border-[#4c4546] rounded cursor-pointer transition-all text-center" for="ftime4"><span class="material-symbols-outlined mb-2 text-primary">visibility</span><span class="font-label-caps text-xs text-white">Solo estoy viendo</span></label></div>
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="fm-glass-panel p-7 rounded transition-all duration-300 hover:border-primary/40">
+                        <label class="peace-sans text-base text-white block mb-4">Cuéntame brevemente cómo estás gestionando tus clientes actualmente:</label>
+                        <textarea id="fm-comments" class="w-full bg-transparent border-b border-[#1A1A1A] focus:border-primary text-white outline-none transition-all text-sm py-3" style="caret-color: #D00000; color: #FFFFFF;" placeholder="Escribe aquí tu situación actual..." rows="4"></textarea>
+                    </div>
+
+                    <!-- Privacy -->
+                    <div class="flex items-start gap-4 px-2">
+                        <input class="mt-1 w-5 h-5 rounded border-[#4c4546] bg-transparent accent-[#D00000]" id="fm-privacy" name="privacy" required type="checkbox">
+                        <label class="text-sm text-[#cfc4c5] leading-tight" for="fm-privacy">
+                            He leído y acepto la <a class="text-primary hover:underline" href="#">Política de Privacidad</a> y los términos de servicio para el manejo de datos ejecutivos.
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== NAV BUTTONS ===== -->
+            <div class="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/5">
+                <button id="fm-btn-back" class="hidden flex-1 py-4 bg-transparent border-2 border-white text-white font-label-caps text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all" type="button" onclick="fmGoStep(currentStep - 1)">
+                    Atrás
+                </button>
+                <button id="fm-btn-next" class="flex-[2] py-4 bg-primary text-white font-label-caps text-xs uppercase tracking-widest hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(208,0,0,0.3)]" type="button" onclick="fmNextStep()">
+                    Siguiente
+                </button>
+                <button id="fm-btn-submit" class="hidden flex-[2] py-4 bg-primary text-white font-label-caps text-xs uppercase tracking-widest hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(208,0,0,0.3)]" type="submit">
+                    Enviar solicitud
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // ========== FORM MODAL LOGIC ==========
+    let currentStep = 1;
+    const totalSteps = 3;
+
+    const stepTitles = {
+        1: 'Información básica',
+        2: 'Configuración estratégica',
+        3: 'Detalles finales'
+    };
+
+    // Country phone rules
+    const phoneRules = {
+        PE: { prefix: '+51', digits: 9, startsWith: ['9'], hint: '9 dígitos, empieza con 9', example: '999 999 999' },
+        MX: { prefix: '+52', digits: 10, startsWith: ['1','2','3','4','5','6','7','8','9'], hint: '10 dígitos', example: '55 1234 5678' },
+        CO: { prefix: '+57', digits: 10, startsWith: ['3'], hint: '10 dígitos, empieza con 3', example: '300 123 4567' },
+        CL: { prefix: '+56', digits: 9, startsWith: ['9'], hint: '9 dígitos, empieza con 9', example: '9 1234 5678' },
+        AR: { prefix: '+54', digits: 10, startsWith: ['1','2','3','4','5','6','7','8','9'], hint: '10 dígitos', example: '11 1234 5678' }
+    };
+
+    function openFormModal() {
+        document.getElementById('form-modal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.style.cursor = 'auto';
+        const cursor = document.getElementById('custom-cursor');
+        const cursorBlur = document.getElementById('custom-cursor-blur');
+        if (cursor) cursor.style.display = 'none';
+        if (cursorBlur) cursorBlur.style.display = 'none';
+        currentStep = 1;
+        fmUpdateUI();
+        fmAnimateCards();
+        fmUpdatePhoneRules();
+    }
+
+    function closeFormModal() {
+        document.getElementById('form-modal').classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.cursor = '';
+        const cursor = document.getElementById('custom-cursor');
+        const cursorBlur = document.getElementById('custom-cursor-blur');
+        if (cursor) cursor.style.display = '';
+        if (cursorBlur) cursorBlur.style.display = '';
+    }
+
+    function fmGoStep(step) {
+        if (step < 1 || step > totalSteps) return;
+        // Validate step 1 before advancing
+        if (step > currentStep && currentStep === 1) {
+            if (!fmValidateStep1()) return;
+        }
+        currentStep = step;
+        fmUpdateUI();
+        fmAnimateCards();
+    }
+
+    function fmNextStep() {
+        if (currentStep < totalSteps) {
+            fmGoStep(currentStep + 1);
+        }
+    }
+
+    function fmUpdateUI() {
+        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+        const activeStep = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+        if (activeStep) activeStep.classList.add('active');
+
+        document.getElementById('fm-step-title').textContent = stepTitles[currentStep];
+        document.getElementById('fm-step-label').textContent = `PASO ${currentStep} DE ${totalSteps}`;
+        document.getElementById('fm-progress-fill').style.width = `${(currentStep / totalSteps) * 100}%`;
+
+        const backBtn = document.getElementById('fm-btn-back');
+        const nextBtn = document.getElementById('fm-btn-next');
+        const submitBtn = document.getElementById('fm-btn-submit');
+
+        backBtn.classList.toggle('hidden', currentStep === 1);
+        nextBtn.classList.toggle('hidden', currentStep === totalSteps);
+        submitBtn.classList.toggle('hidden', currentStep !== totalSteps);
+    }
+
+    function fmAnimateCards() {
+        const step = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+        if (!step) return;
+        const cards = step.querySelectorAll('.fm-selectable-card, .fm-pill');
+        cards.forEach((card, i) => {
+            card.classList.remove('show');
+            setTimeout(() => card.classList.add('show'), 60 * i);
+        });
+    }
+
+    function fmSelectSingle(el, name) {
+        document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+            r.closest('.fm-selectable-card').classList.remove('active');
+        });
+        el.classList.add('active');
+        const radio = el.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+    }
+
+    function fmToggleMulti(el) {
+        el.classList.toggle('active');
+    }
+
+    // ========== PHONE & COUNTRY LOGIC ==========
+    function fmUpdatePhoneRules() {
+        const country = document.getElementById('fm-country').value;
+        const rules = phoneRules[country];
+        if (!rules) return;
+
+        document.getElementById('fm-phone-prefix').textContent = rules.prefix;
+        document.getElementById('fm-phone-hint').textContent = rules.hint;
+        document.getElementById('fm-phone').placeholder = rules.example;
+        document.getElementById('fm-phone').value = '';
+        fmClearError('fm-phone');
+    }
+
+    document.getElementById('fm-country').addEventListener('change', fmUpdatePhoneRules);
+
+    // ========== VALIDATION ==========
+    function fmShowError(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.add('fm-error');
+        const err = document.getElementById(id + '-error');
+        if (err) err.classList.add('visible');
+    }
+
+    function fmClearError(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove('fm-error');
+        const err = document.getElementById(id + '-error');
+        if (err) err.classList.remove('visible');
+    }
+
+    function fmValidateStep1() {
+        let valid = true;
+
+        // Name: at least 2 words
+        const name = document.getElementById('fm-name');
+        fmClearError('fm-name');
+        if (!name.value.trim() || name.value.trim().split(/\s+/).length < 2) {
+            fmShowError('fm-name');
+            valid = false;
+        }
+
+        // Email: basic pattern
+        const email = document.getElementById('fm-email');
+        fmClearError('fm-email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value.trim())) {
+            fmShowError('fm-email');
+            valid = false;
+        }
+
+        // Phone: per country rules
+        const country = document.getElementById('fm-country').value;
+        const rules = phoneRules[country];
+        const phone = document.getElementById('fm-phone');
+        fmClearError('fm-phone');
+        const digits = phone.value.replace(/\D/g, '');
+        if (digits.length !== rules.digits || !rules.startsWith.includes(digits[0])) {
+            fmShowError('fm-phone');
+            valid = false;
+        }
+
+        // Store name
+        const store = document.getElementById('fm-store');
+        fmClearError('fm-store');
+        if (!store.value.trim()) {
+            fmShowError('fm-store');
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    // Live validation on blur
+    document.getElementById('fm-name').addEventListener('blur', function() {
+        fmClearError('fm-name');
+        if (!this.value.trim() || this.value.trim().split(/\s+/).length < 2) {
+            fmShowError('fm-name');
+        }
+    });
+
+    document.getElementById('fm-email').addEventListener('blur', function() {
+        fmClearError('fm-email');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim())) {
+            fmShowError('fm-email');
+        }
+    });
+
+    document.getElementById('fm-phone').addEventListener('blur', function() {
+        fmClearError('fm-phone');
+        const country = document.getElementById('fm-country').value;
+        const rules = phoneRules[country];
+        const digits = this.value.replace(/\D/g, '');
+        if (digits.length !== rules.digits || !rules.startsWith.includes(digits[0])) {
+            fmShowError('fm-phone');
+        }
+    });
+
+    document.getElementById('fm-phone').addEventListener('input', function() {
+        this.value = this.value.replace(/[^\d\s]/g, '');
+        fmClearError('fm-phone');
+    });
+
+    document.getElementById('fm-store').addEventListener('blur', function() {
+        fmClearError('fm-store');
+        if (!this.value.trim()) {
+            fmShowError('fm-store');
+        }
+    });
+
+    // Submit handler
+    document.getElementById('fm-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('fm-btn-submit');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-lg align-middle mr-2">sync</span> PROCESANDO...';
+        btn.classList.add('opacity-80', 'cursor-not-allowed');
+        setTimeout(() => {
+            btn.innerHTML = '<span class="material-symbols-outlined text-lg align-middle mr-2">done_all</span> SOLICITUD ENVIADA';
+            btn.classList.remove('bg-primary');
+            btn.classList.add('bg-green-600');
+            setTimeout(() => {
+                alert('Solicitud enviada correctamente al comando central.');
+                btn.innerHTML = original;
+                btn.classList.remove('bg-green-600', 'opacity-80', 'cursor-not-allowed');
+                btn.classList.add('bg-primary');
+                closeFormModal();
+            }, 1500);
+        }, 2000);
+    });
+
+    // Radio card scale effect
+    document.querySelectorAll('.fm-radio-card').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            const name = e.target.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                r.parentElement.classList.remove('scale-105');
+            });
+            if (e.target.checked) e.target.parentElement.classList.add('scale-105');
+        });
+    });
+
+    // Input focus label color
+    document.querySelectorAll('.fm-input, .fm-select').forEach(input => {
+        input.addEventListener('focus', () => {
+            const label = input.parentElement.querySelector('.fm-label');
+            if (label) label.classList.add('fm-label-focus');
+        });
+        input.addEventListener('blur', () => {
+            const label = input.parentElement.querySelector('.fm-label');
+            if (label) label.classList.remove('fm-label-focus');
+        });
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeFormModal();
+    });
+
+    // Wire up ALL CTA buttons to open the form
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('button').forEach(btn => {
+            const text = btn.textContent.trim().toLowerCase();
+            if (text.includes('solicitar') || text.includes('diagnóstico') || text.includes('agendar')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openFormModal();
+                });
+            }
+        });
+
+        // Step cards: activate number on scroll
+        const stepCards = document.querySelectorAll('.step-card');
+        if (stepCards.length > 0) {
+            const stepObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('step-active');
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            stepCards.forEach(card => stepObserver.observe(card));
+        }
+    });
+</script>
+
+</body></html>

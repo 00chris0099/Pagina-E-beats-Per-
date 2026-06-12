@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>E-BEATS COMMAND | Tu Negocio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@700;800&amp;family=Peace+Sans&amp;family=Open+Sans:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@100..900&amp;family=Open+Sans:wght@100..900&amp;family=Peace+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Peace Sans';
+            src: url('https://fonts.cdnfonts.com/s/15454/PeaceSans.woff') format('woff');
+        }
+        
+        body {
+            background-color: #000000;
+            color: #e5e2e1;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .kinetic-accent {
+            border-left: 4px solid #D00000;
+        }
+
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(208, 0, 0, 0.1);
+        }
+
+        .selectable-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #1A1A1A;
+            cursor: pointer;
+        }
+
+        .selectable-card:hover {
+            background: rgba(208, 0, 0, 0.05);
+            border-color: rgba(208, 0, 0, 0.3);
+        }
+
+        .selectable-card.active {
+            border-color: #D00000;
+            background: rgba(208, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(208, 0, 0, 0.2);
+        }
+
+        .progress-track {
+            height: 4px;
+            background: #1A1A1A;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #D00000;
+            width: 66.6%;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Material Symbols Scaling */
+        .material-symbols-outlined {
+            font-size: 24px;
+            vertical-align: middle;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D00000;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#e2e2e2",
+                      "outline-variant": "#4c4546",
+                      "on-tertiary": "#2f3131",
+                      "secondary-fixed-dim": "#ffb4a8",
+                      "background": "#131313",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-secondary-fixed": "#410000",
+                      "on-secondary-container": "#ffe2dd",
+                      "on-tertiary-container": "#747576",
+                      "surface-bright": "#393939",
+                      "error-container": "#93000a",
+                      "surface-tint": "#c6c6c6",
+                      "surface-container-highest": "#353535",
+                      "surface-container": "#20201f",
+                      "surface-variant": "#353535",
+                      "primary-container": "#000000",
+                      "on-background": "#e5e2e1",
+                      "surface": "#131313",
+                      "secondary": "#ffb4a8",
+                      "outline": "#988e90",
+                      "surface-dim": "#131313",
+                      "inverse-primary": "#5e5e5e",
+                      "on-surface": "#e5e2e1",
+                      "tertiary-container": "#000000",
+                      "on-primary-container": "#757575",
+                      "on-primary": "#303030",
+                      "on-primary-fixed": "#1b1b1b",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "primary": "#c6c6c6",
+                      "on-secondary": "#690000",
+                      "inverse-surface": "#e5e2e1",
+                      "on-surface-variant": "#cfc4c5",
+                      "secondary-container": "#d20402",
+                      "primary-fixed": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#930000",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-high": "#2a2a2a",
+                      "on-error": "#690005",
+                      "on-primary-fixed-variant": "#474747",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "secondary-fixed": "#ffdad4",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "surface-container-low": "#1c1b1b",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "inverse-on-surface": "#313030",
+                      "tertiary": "#c6c6c7",
+                      "error": "#ffb4ab"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "20px",
+                      "container-max": "1440px",
+                      "gutter": "24px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Anybody"],
+                      "headline-lg": ["Anybody"],
+                      "subtitle-lg": ["Peace Sans"],
+                      "subtitle-md": ["Peace Sans"],
+                      "label-caps": ["Peace Sans"],
+                      "body-md": ["Open Sans"],
+                      "body-lg": ["Open Sans"],
+                      "headline-xl": ["Anybody"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-lg": ["42px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "subtitle-lg": ["24px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "subtitle-md": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-xl": ["60px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- Top Navigation Anchor (Manual for Onboarding focused screen) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 md:px-margin-desktop bg-background border-b border-secondary-container/20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">terminal</span>
+<span class="font-subtitle-lg text-subtitle-lg text-secondary uppercase tracking-widest">E-BEATS COMMAND</span>
+</div>
+<div class="hidden md:flex gap-8">
+<span class="font-label-caps text-label-caps text-outline-variant hover:text-secondary transition-colors cursor-pointer">OPERATIONS</span>
+<span class="font-label-caps text-label-caps text-outline-variant hover:text-secondary transition-colors cursor-pointer">PROTOCOL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">account_circle</span>
+</div>
+</header>
+<main class="pt-24 pb-32 min-h-screen px-margin-mobile md:px-margin-desktop max-w-screen-xl mx-auto">
+<!-- Progress Section -->
+<div class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase italic">
+                    Configuración <span class="text-secondary">Estratégica</span>
+</h1>
+<span class="font-subtitle-md text-subtitle-md text-secondary tracking-tighter">PASO 2 DE 3</span>
+</div>
+<div class="progress-track">
+<div class="progress-fill"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+<!-- Questions Form Area -->
+<form class="md:col-span-8 space-y-16" id="onboardingForm">
+<!-- Q1: Current Sales Status -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-secondary"></div>
+<h2 class="font-subtitle-lg text-subtitle-lg uppercase tracking-wide">¿Tu tienda actualmente está vendiendo?</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="selectable-card p-6 bg-surface-container-low flex flex-col gap-2 group relative overflow-hidden" onclick="selectSingle(this, 'sales_status')">
+<input class="hidden" name="sales_status" type="radio" value="daily"/>
+<span class="font-subtitle-md text-subtitle-md uppercase text-secondary">si, ventas diarias</span>
+<span class="text-outline-variant font-body-md text-body-md">Operación activa y constante.</span>
+<div class="absolute bottom-0 right-0 p-2 opacity-0 group-[.active]:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+</div>
+</label>
+<label class="selectable-card p-6 bg-surface-container-low flex flex-col gap-2 group relative overflow-hidden" onclick="selectSingle(this, 'sales_status')">
+<input class="hidden" name="sales_status" type="radio" value="weekly"/>
+<span class="font-subtitle-md text-subtitle-md uppercase text-secondary">si, algunas ventas por semana</span>
+<span class="text-outline-variant font-body-md text-body-md">Ritmo intermitente con potencial.</span>
+</label>
+<label class="selectable-card p-6 bg-surface-container-low flex flex-col gap-2 group relative overflow-hidden" onclick="selectSingle(this, 'sales_status')">
+<input class="hidden" name="sales_status" type="radio" value="low"/>
+<span class="font-subtitle-md text-subtitle-md uppercase text-secondary">muy pocas ventas</span>
+<span class="text-outline-variant font-body-md text-body-md">Necesita optimización urgente.</span>
+</label>
+<label class="selectable-card p-6 bg-surface-container-low flex flex-col gap-2 group relative overflow-hidden" onclick="selectSingle(this, 'sales_status')">
+<input class="hidden" name="sales_status" type="radio" value="not_yet"/>
+<span class="font-subtitle-md text-subtitle-md uppercase text-secondary">aún no vendo</span>
+<span class="text-outline-variant font-body-md text-body-md">En fase de lanzamiento técnico.</span>
+</label>
+</div>
+</section>
+<!-- Q2: Monthly Revenue -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-secondary"></div>
+<h2 class="font-subtitle-lg text-subtitle-lg uppercase tracking-wide">¿Cuánto facturas aproximadamente al mes?</h2>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<label class="selectable-card p-4 bg-surface-container-low text-center group" onclick="selectSingle(this, 'revenue')">
+<input class="hidden" name="revenue" type="radio" value="1000-2500"/>
+<span class="font-subtitle-md text-subtitle-md text-on-surface">S/1.000 - S/2.500</span>
+</label>
+<label class="selectable-card p-4 bg-surface-container-low text-center group" onclick="selectSingle(this, 'revenue')">
+<input class="hidden" name="revenue" type="radio" value="2500-8000"/>
+<span class="font-subtitle-md text-subtitle-md text-on-surface">S/2.500 - S/8.000</span>
+</label>
+<label class="selectable-card p-4 bg-surface-container-low text-center group" onclick="selectSingle(this, 'revenue')">
+<input class="hidden" name="revenue" type="radio" value="8000-15000"/>
+<span class="font-subtitle-md text-subtitle-md text-on-surface">S/8.000 - S/15.000</span>
+</label>
+<label class="selectable-card p-4 bg-surface-container-low text-center group" onclick="selectSingle(this, 'revenue')">
+<input class="hidden" name="revenue" type="radio" value="15000+"/>
+<span class="font-subtitle-md text-subtitle-md text-on-surface">+S/15.000</span>
+</label>
+</div>
+</section>
+<!-- Q3: Main Pain Points (Multi-select) -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-secondary"></div>
+<h2 class="font-subtitle-lg text-subtitle-lg uppercase tracking-wide">¿Cuál es tu principal problema ahora mismo?</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="selectable-card p-4 bg-surface-container-low flex items-center gap-3 group" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">person_cancel</span>
+<span class="font-body-md text-body-md uppercase">Pierdo leads</span>
+</div>
+<div class="selectable-card p-4 bg-surface-container-low flex items-center gap-3 group" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">trending_down</span>
+<span class="font-body-md text-body-md uppercase">No convierto</span>
+</div>
+<div class="selectable-card p-4 bg-surface-container-low flex items-center gap-3 group" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">schedule</span>
+<span class="font-body-md text-body-md uppercase">Respondo tarde</span>
+</div>
+<div class="selectable-card p-4 bg-surface-container-low flex items-center gap-3 group" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">no_accounts</span>
+<span class="font-body-md text-body-md uppercase">Tráfico sin venta</span>
+</div>
+<div class="selectable-card p-4 bg-surface-container-low flex items-center gap-3 group" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">touch_app</span>
+<span class="font-body-md text-body-md uppercase">Todo manual</span>
+</div>
+<div class="selectable-card p-4 bg-surface-container-low flex items-center gap-3 group" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">error</span>
+<span class="font-body-md text-body-md uppercase">No tengo sistema</span>
+</div>
+</div>
+</section>
+<!-- Q4: Tools (Multi-select) -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="w-1 h-8 bg-secondary"></div>
+<h2 class="font-subtitle-lg text-subtitle-lg uppercase tracking-wide">¿Qué herramientas usas actualmente?</h2>
+</div>
+<div class="flex flex-wrap gap-4">
+<div class="selectable-card px-6 py-3 bg-surface-container-low rounded-full group flex items-center gap-2" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">chat</span>
+<span class="font-body-md text-body-md uppercase">Whatsapp Business</span>
+</div>
+<div class="selectable-card px-6 py-3 bg-surface-container-low rounded-full group flex items-center gap-2" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">hub</span>
+<span class="font-body-md text-body-md uppercase">CRM</span>
+</div>
+<div class="selectable-card px-6 py-3 bg-surface-container-low rounded-full group flex items-center gap-2" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">shopping_cart</span>
+<span class="font-body-md text-body-md uppercase">Shopify/WooCommerce</span>
+</div>
+<div class="selectable-card px-6 py-3 bg-surface-container-low rounded-full group flex items-center gap-2" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">table_chart</span>
+<span class="font-body-md text-body-md uppercase">Excel/Airtable</span>
+</div>
+<div class="selectable-card px-6 py-3 bg-surface-container-low rounded-full group flex items-center gap-2" onclick="toggleMulti(this)">
+<span class="material-symbols-outlined text-outline group-[.active]:text-secondary">block</span>
+<span class="font-body-md text-body-md uppercase">ninguno</span>
+</div>
+</div>
+</section>
+<!-- CTA Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 pt-12 border-t border-outline-variant/30">
+<button class="flex-1 py-4 bg-transparent border-2 border-on-surface text-on-surface font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface hover:text-background transition-all" type="button">
+                        Atrás
+                    </button>
+<button class="flex-[2] py-4 bg-secondary-container text-white font-label-caps text-label-caps uppercase tracking-widest hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(208,0,0,0.3)]" type="button">
+                        Siguiente
+                    </button>
+</div>
+</form>
+<!-- Sidebar Info/Atmospheric Area -->
+<aside class="md:col-span-4 hidden md:block">
+<div class="sticky top-24 space-y-8">
+<div class="glass-panel p-8 kinetic-accent">
+<h3 class="font-subtitle-md text-subtitle-md text-secondary mb-4 uppercase">Protocolo de Análisis</h3>
+<p class="font-body-md text-body-md text-outline-variant mb-6">
+                            Estamos calibrando su motor de inteligencia. Sus respuestas determinan la profundidad de la arquitectura de automatización que E-BEATS desplegará.
+                        </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-secondary">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-label-caps text-label-caps">Módulo de IA: Activo</span>
+</div>
+<div class="flex items-center gap-4 text-outline">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-caps text-label-caps">Encriptación: Grado Militar</span>
+</div>
+</div>
+</div>
+<div class="relative h-64 w-full bg-surface-container rounded-lg overflow-hidden border border-secondary-container/10">
+
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<span class="font-label-caps text-label-caps text-secondary/30 uppercase tracking-[0.5em] -rotate-90">DATA STREAM</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 border border-outline-variant/10">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-label-caps text-outline">LATENCY</span>
+<span class="font-label-caps text-label-caps text-secondary">12ms</span>
+</div>
+<div class="h-1 bg-outline-variant">
+<div class="h-full bg-secondary w-3/4"></div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Contextual Decorative Elements -->
+<div class="fixed bottom-0 left-0 p-8 pointer-events-none z-0 opacity-10">
+<span class="font-headline-xl text-headline-xl uppercase italic">PRECISION</span>
+</div>
+<!-- Scripts for UI Interactions -->
+<script>
+        function selectSingle(element, name) {
+            // Unselect others in the same group
+            const group = document.querySelectorAll(`input[name="${name}"]`);
+            group.forEach(input => {
+                input.closest('.selectable-card').classList.remove('active');
+            });
+            
+            // Select current
+            element.classList.add('active');
+            const radio = element.querySelector('input[type="radio"]');
+            if(radio) radio.checked = true;
+        }
+
+        function toggleMulti(element) {
+            element.classList.toggle('active');
+        }
+
+        // Simple fade-in animation for cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.selectable-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 50 * index);
+            });
+        });
+    </script>
+</body></html>

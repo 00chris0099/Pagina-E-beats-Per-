@@ -1,650 +1,422 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad | E Beats Perú - Protección de Datos</title>
-  <meta name="description" content="Política de Privacidad de E Beats Perú. Conoce cómo protegemos tus datos personales conforme a la Ley N.° 29733 del Perú. Agencia de Inteligencia Artificial en Perú.">
-  <link rel="canonical" href="https://www.ebeatspe.com/politica-de-privacidad.html" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#E53E3E" />
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Política de Privacidad | E Beats Perú">
-  <meta property="og:description" content="Política de Privacidad de E Beats Perú. Información sobre el tratamiento de datos personales conforme a la legislación peruana.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.ebeatspe.com/politica-de-privacidad.html">
-  <meta property="og:locale" content="es_PE" />
-  <meta property="og:site_name" content="E Beats Perú" />
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Política de Privacidad | E Beats Perú" />
-  <meta name="twitter:description" content="Política de Privacidad de E Beats Perú. Conoce cómo protegemos tus datos personales." />
-  
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="16x16" href="image/negativo.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="image/negativo.png" />
-  <link rel="apple-touch-icon" href="image/negativo.png" />
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-    :root{
-      --clr-bg:#fafafa;
-      --clr-surface:#ffffff;
-      --clr-border:#e4e4e7;
-      --clr-border-light:#f4f4f5;
-      --clr-text:#111111;
-      --clr-text-secondary:#4b5563;
-      --clr-text-muted:#6b7280;
-      --clr-primary:#111111;
-      --clr-primary-light:#222222;
-      --clr-red:#E53E3E;
-      --clr-red-dark:#C53030;
-      --clr-red-light:#FFF5F5;
-      --clr-accent:#E53E3E;
-      --clr-accent-bg:#FFF5F5;
-      --clr-highlight-bg:#FFF5F5;
-      --clr-highlight-border:#E53E3E;
-      --clr-footer:#111111;
-      --radius:10px;
-      --radius-sm:6px;
-      --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
-      --shadow-md:0 4px 16px rgba(0,0,0,.08);
-      --max-w:820px;
-      --font-sans:'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
-    }
-
-    html{scroll-behavior:smooth;font-size:16px}
-    body{
-      font-family:var(--font-sans);
-      color:var(--clr-text);
-      background:var(--clr-bg);
-      line-height:1.7;
-      -webkit-font-smoothing:antialiased;
-    }
-
-    /* ── TOP NAVBAR ── */
-    .topbar{
-      background:#fff;
-      border-bottom:1px solid var(--clr-border);
-      padding:.75rem 1.5rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      position:sticky;
-      top:0;
-      z-index:100;
-      box-shadow:0 1px 4px rgba(0,0,0,.04);
-    }
-    .topbar-logo{
-      display:flex;
-      align-items:center;
-      gap:.6rem;
-      text-decoration:none;
-      color:var(--clr-text);
-    }
-    .topbar-logo img{
-      height:32px;
-      width:auto;
-    }
-    .topbar-logo span{
-      font-size:.85rem;
-      font-weight:600;
-      color:var(--clr-text-secondary);
-    }
-    .topbar-link{
-      font-size:.82rem;
-      color:var(--clr-red);
-      text-decoration:none;
-      font-weight:500;
-      transition:color .2s;
-    }
-    .topbar-link:hover{
-      color:var(--clr-red-dark);
-    }
-
-    /* ── HERO ── */
-    .hero{
-      background:linear-gradient(135deg,#111111 0%,#1a1a1a 50%,#2a1010 100%);
-      color:#fff;
-      padding:3.5rem 1.5rem 3rem;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:'';
-      position:absolute;
-      width:400px;height:400px;
-      background:rgba(229,62,62,.08);
-      border-radius:50%;
-      top:-150px;right:-100px;
-      pointer-events:none;
-    }
-    .hero::after{
-      content:'';
-      position:absolute;
-      width:300px;height:300px;
-      background:rgba(229,62,62,.05);
-      border-radius:50%;
-      bottom:-100px;left:-80px;
-      pointer-events:none;
-    }
-    .hero-logo{
-      height:48px;
-      width:auto;
-      margin-bottom:1.2rem;
-      display:inline-block;
-      filter:brightness(1.1);
-    }
-    .hero h1{
-      font-size:clamp(1.4rem,3.8vw,2rem);
-      font-weight:700;
-      letter-spacing:-.02em;
-      margin-bottom:.6rem;
-      position:relative;
-      z-index:1;
-    }
-    .hero .updated{
-      font-size:.82rem;
-      opacity:.65;
-      margin-top:.5rem;
-      position:relative;
-      z-index:1;
-    }
-
-    /* ── MAIN CONTAINER ── */
-    .container{
-      max-width:var(--max-w);
-      margin:0 auto;
-      padding:0 1.25rem 4rem;
-    }
-
-    /* ── NOTICE BOX ── */
-    .notice{
-      margin:2rem 0 2.2rem;
-      padding:1.25rem 1.4rem;
-      background:var(--clr-red-light);
-      border-left:4px solid var(--clr-red);
-      border-radius:var(--radius-sm);
-      font-size:.92rem;
-      color:#991b1b;
-      line-height:1.65;
-    }
-
-    /* ── TABLE OF CONTENTS ── */
-    .toc{
-      background:var(--clr-surface);
-      border:1px solid var(--clr-border);
-      border-radius:var(--radius);
-      padding:1.6rem 1.8rem;
-      margin-bottom:2.5rem;
-      box-shadow:var(--shadow);
-    }
-    .toc h2{
-      font-size:1.05rem;
-      font-weight:600;
-      margin-bottom:1rem;
-      color:var(--clr-text);
-      letter-spacing:.01em;
-    }
-    .toc ol{
-      list-style:none;
-      counter-reset:toc;
-      columns:1;
-    }
-    .toc li{
-      counter-increment:toc;
-      margin-bottom:.35rem;
-    }
-    .toc li a{
-      color:var(--clr-red);
-      text-decoration:none;
-      font-size:.9rem;
-      transition:color .2s;
-      display:inline-block;
-      padding:.15rem 0;
-    }
-    .toc li a::before{
-      content:counter(toc)". ";
-      font-weight:600;
-      color:var(--clr-text-muted);
-    }
-    .toc li a:hover{
-      color:var(--clr-red-dark);
-      text-decoration:underline;
-    }
-
-    /* ── INTRO ── */
-    .intro{
-      font-size:.95rem;
-      color:var(--clr-text-secondary);
-      margin-bottom:2.5rem;
-      line-height:1.75;
-    }
-
-    /* ── SECTIONS ── */
-    .section{
-      background:var(--clr-surface);
-      border:1px solid var(--clr-border-light);
-      border-radius:var(--radius);
-      padding:2rem 2rem 1.8rem;
-      margin-bottom:1.5rem;
-      box-shadow:var(--shadow);
-      transition:box-shadow .3s ease, border-color .3s ease;
-    }
-    .section:hover{
-      box-shadow:var(--shadow-md);
-      border-color:var(--clr-border);
-    }
-    .section h2{
-      font-size:1.15rem;
-      font-weight:700;
-      color:var(--clr-text);
-      margin-bottom:1rem;
-      padding-bottom:.6rem;
-      border-bottom:2px solid var(--clr-border-light);
-      display:flex;
-      align-items:center;
-      gap:.5rem;
-    }
-    .section h2 .num{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:1.7rem;height:1.7rem;
-      border-radius:50%;
-      background:var(--clr-red-light);
-      color:var(--clr-red);
-      font-size:.82rem;
-      font-weight:700;
-      flex-shrink:0;
-    }
-    .section p{
-      font-size:.92rem;
-      color:var(--clr-text-secondary);
-      margin-bottom:.85rem;
-      line-height:1.72;
-    }
-    .section p:last-child{margin-bottom:0}
-    .section ul,.section ol{
-      margin:.5rem 0 1rem 1.3rem;
-      font-size:.92rem;
-      color:var(--clr-text-secondary);
-      line-height:1.72;
-    }
-    .section li{margin-bottom:.35rem}
-    .section a{
-      color:var(--clr-red);
-      text-decoration:none;
-      transition:color .2s;
-    }
-    .section a:hover{
-      color:var(--clr-red-dark);
-      text-decoration:underline;
-    }
-
-    /* ── CONTACT BLOCK ── */
-    .contact-block{
-      background:linear-gradient(135deg,#111111 0%,#1a1a1a 50%,#2a1010 100%);
-      color:#fff;
-      border-radius:var(--radius);
-      padding:2.2rem 2.2rem;
-      margin-top:1rem;
-      box-shadow:var(--shadow-md);
-      position:relative;
-      overflow:hidden;
-    }
-    .contact-block::before{
-      content:'';
-      position:absolute;
-      width:250px;height:250px;
-      background:rgba(229,62,62,.1);
-      border-radius:50%;
-      top:-80px;right:-60px;
-      pointer-events:none;
-    }
-    .contact-block-logo{
-      height:36px;
-      width:auto;
-      margin-bottom:1.2rem;
-      display:block;
-      filter:brightness(1.1);
-    }
-    .contact-block h2{
-      font-size:1.1rem;
-      font-weight:700;
-      margin-bottom:1rem;
-      display:flex;
-      align-items:center;
-      gap:.5rem;
-    }
-    .contact-block h2 .num{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:1.7rem;height:1.7rem;
-      border-radius:50%;
-      background:rgba(255,255,255,.18);
-      color:#fff;
-      font-size:.82rem;
-      font-weight:700;
-      flex-shrink:0;
-    }
-    .contact-item{
-      display:flex;
-      align-items:flex-start;
-      gap:.6rem;
-      margin-bottom:.7rem;
-      font-size:.92rem;
-      line-height:1.6;
-    }
-    .contact-item strong{
-      font-weight:600;
-      min-width:4.5rem;
-    }
-    .contact-item a{
-      color:#fca5a5;
-      text-decoration:none;
-      transition:color .2s;
-    }
-    .contact-item a:hover{
-      color:#fff;
-      text-decoration:underline;
-    }
-
-    /* ── FOOTER ── */
-    footer{
-      background:#111111;
-      color:rgba(255,255,255,.5);
-      text-align:center;
-      padding:2rem 1rem;
-      font-size:.82rem;
-    }
-    .footer-logo{
-      height:28px;
-      width:auto;
-      margin-bottom:.8rem;
-      display:block;
-      margin-left:auto;
-      margin-right:auto;
-      opacity:.7;
-    }
-    .footer-brand{
-      font-size:.85rem;
-      font-weight:600;
-      color:rgba(255,255,255,.65);
-      margin-bottom:.25rem;
-    }
-
-    /* ── BACK TO TOP ── */
-    .back-to-top{
-      position:fixed;
-      bottom:1.5rem;
-      right:1.5rem;
-      width:2.8rem;
-      height:2.8rem;
-      border-radius:50%;
-      background:var(--clr-red);
-      color:#fff;
-      border:none;
-      cursor:pointer;
-      font-size:1.15rem;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 2px 8px rgba(229,62,62,.3);
-      transition:background .2s,transform .2s;
-      z-index:999;
-    }
-    .back-to-top:hover{
-      background:var(--clr-red-dark);
-      transform:translateY(-2px);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:600px){
-      .topbar{padding:.6rem 1rem}
-      .topbar-logo img{height:26px}
-      .topbar-logo span{display:none}
-      .hero{padding:2.5rem 1rem 2rem}
-      .hero-logo{height:36px}
-      .container{padding:0 1rem 3rem}
-      .section{padding:1.5rem 1.3rem 1.4rem}
-      .toc{padding:1.3rem}
-      .notice{padding:1rem 1.1rem}
-      .contact-block{padding:1.5rem 1.3rem}
-      .contact-block-logo{height:28px}
-    }
-  </style>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Legal &amp; Compliance | E-BEATS PERÚ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Source+Serif+4:ital,wght@0,400;0,700;1,400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#7e7576",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-bright": "#f9f9f9",
+                        "primary-container": "#1b1b1b",
+                        "secondary-container": "#dfe0e0",
+                        "on-tertiary-fixed-variant": "#930100",
+                        "surface-container-low": "#f3f3f3",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "tertiary": "#000000",
+                        "surface-variant": "#e2e2e2",
+                        "on-background": "#1a1c1c",
+                        "outline-variant": "#cfc4c5",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#454747",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#ff291a",
+                        "secondary": "#5d5f5f",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-fixed": "#ffdad4",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#c6c6c6",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-dim": "#dadada",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#5e5e5e",
+                        "primary-fixed": "#e2e2e2",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#474747",
+                        "inverse-surface": "#2f3131",
+                        "on-secondary-container": "#616363",
+                        "tertiary-container": "#410000",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-fixed": "#410000",
+                        "on-primary-container": "#848484",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "background": "#f9f9f9",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "subheading-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-xl": ["Anton"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Source Serif 4"],
+                        "display-lg": ["Anton"],
+                        "body-md": ["Source Serif 4"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "subheading-md": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .kinetic-border {
+            border-left: 4px solid #ba1a1a;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<div id="site-header"></div>
+<main class="min-h-screen">
+<!-- 1. [Bloque GEO de Apertura / Pirámide Invertida] -->
+<section class="bg-primary text-on-primary pt-32 pb-lg px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+<div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+<h1 class="font-headline-xl text-headline-xl md:text-display-lg uppercase leading-none mb-md">Privacidad Corporativa</h1>
+<p class="font-subheading-md text-subheading-md max-w-3xl leading-relaxed mb-lg">
+                En E-Beats Perú protegemos tu información corporativa bajo estrictos protocolos de ciberseguridad. Como agencia formal registrada en Lima, garantizamos que los datos recopilados para automatización B2B, bases de datos SQL y ecosistemas de Inteligencia Artificial jamás son comercializados ni utilizados para entrenar modelos de lenguaje públicos sin autorización expresa.
+            </p>
+<div class="flex items-center gap-2 font-label-sm text-label-sm opacity-70">
+<span class="material-symbols-outlined text-[18px]">update</span>
+                Última actualización: 10 de junio de 2026.
+            </div>
+</div>
+</section>
+<!-- 2. [Interactive Tabs Section - Integrated from SCREEN_13] -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto border-b border-outline-variant">
+<div class="flex flex-col md:flex-row gap-4 mb-xl justify-center">
+<button class="flex-1 py-4 px-6 bg-error text-white font-headline-xl uppercase tracking-widest transition-colors border-2 border-primary" id="btn-terminos" onclick="switchTab('terminos')">Términos de Servicio</button>
+<button class="flex-1 py-4 px-6 bg-primary text-white font-headline-xl uppercase tracking-widest transition-colors border-2 border-primary" id="btn-privacidad" onclick="switchTab('privacidad')">Políticas de Privacidad</button>
+</div>
+<!-- Tab: Términos -->
+<div class="space-y-md animate-fade-in" id="content-terminos">
+<div class="kinetic-border pl-md mb-lg">
+<h2 class="font-headline-xl text-headline-lg uppercase">Términos y Condiciones de Servicio</h2>
+<p class="font-label-sm opacity-60">Última actualización: 10 de junio de 2026</p>
+</div>
+<div class="font-body-lg text-on-surface leading-relaxed space-y-4">
+<p>Al contratar las soluciones tecnológicas de E-Beats Perú, el cliente acepta operar bajo los presentes términos corporativos. Proveemos servicios de automatización con inteligencia artificial, desarrollo de software avanzado y ciberseguridad, operando formalmente bajo el régimen MYPE Tributario desde San Juan de Lurigancho, Lima. Garantizamos infraestructuras de alto rendimiento, confidencialidad absoluta de datos y cumplimiento normativo B2B estricto en cada despliegue.</p>
+<p>Desarrollamos y orquestamos arquitecturas digitales especializadas y a medida para el sector corporativo. Nuestra oferta técnica abarca la creación de ecosistemas móviles y aplicaciones B2B utilizando frameworks como Flutter y bases de datos en tiempo real con Firebase, permitiendo el despliegue de plataformas de alta concurrencia. Asimismo, nos especializamos en la orquestación de flujos de trabajo empresariales y la conexión de webhooks avanzados mediante n8n, eliminando la fricción de los procesos manuales. A nivel de infraestructura, gestionamos la administración, el diseño y la optimización de bases de datos relacionales, ejecutando consultas DML y DDL de alta precisión en Microsoft SQL Server. Complementamos este ecosistema con la integración de inteligencia artificial, desplegando desde chatbots para la cualificación autónoma de prospectos hasta sistemas de generación de video automatizado mediante plataformas como Veo, Kling AI y HeyGen.</p>
+<p>Para asegurar el crecimiento operativo de su empresa sin interrupciones, nos regimos por Acuerdos de Nivel de Servicio (SLA) con métricas de rendimiento comprobables. Garantizamos una disponibilidad de infraestructura del noventa y nueve punto nueve por ciento en los servidores KVM 2 ó nodos gestionados por nuestra agencia. Asimismo, nuestro soporte técnico especializado asume el compromiso de brindar una respuesta inicial y comenzar la mitigación ante cualquier vulnerabilidad crítica en un plazo máximo de cuatro horas laborables.</p>
+<p>Respecto a la propiedad intelectual y los entregables tecnológicos, establecemos una política de transferencia absoluta de activos. El código fuente, los diagramas de bases de datos y los flujos automatizados pasan a ser propiedad intelectual exclusiva del cliente una vez que se haya liquidado el cien por ciento de los honorarios estipulados en el proyecto. No obstante, E-Beats Perú se reserva el derecho legítimo de mencionar la arquitectura técnica general implementada como parte de nuestro portafolio y casos de éxito corporativos, garantizando en todo momento la omisión y protección de información financiera, bases de datos internas o estrategias comerciales confidenciales del cliente.</p>
+<p>En el ámbito de la facturación, pagos y régimen fiscal, operamos como Persona Natural con Negocio debidamente registrada y formalizada. Emitimos los comprobantes de pago electrónicos oficiales por todos nuestros servicios de programación y consultoría bajo el régimen MYPE Tributario de la SUNAT. Es imperativo establecer que, salvo que el contrato de servicio especifique expresamente lo contrario, los costos derivados del uso de licencias de terceros o el consumo de integraciones mediante APIs externas son asumidos íntegramente por el cliente.</p>
+<p>La transparencia jurídica y la formalidad fiscal son el cimiento innegociable de cualquier infraestructura tecnológica segura en E-Beats Perú. Por consiguiente, toda controversia, diferencia o reclamo derivado de la ejecución, interpretación o liquidación de nuestros servicios tecnológicos se someterá de forma exclusiva a la jurisdicción de los jueces y tribunales competentes de la ciudad de Lima, República del Perú, renunciando expresamente las partes a cualquier otro fuero judicial o territorial.</p>
+</div>
+</div>
+<!-- Tab: Privacidad -->
+<div class="hidden space-y-md animate-fade-in" id="content-privacidad">
+<div class="kinetic-border pl-md mb-lg">
+<h2 class="font-headline-xl text-headline-lg uppercase">Políticas de Privacidad</h2>
+<p class="font-label-sm opacity-60">Protección de Datos B2B</p>
+</div>
+<div class="font-body-lg text-on-surface leading-relaxed space-y-4">
+<p>En E-Beats Perú, agencia tecnológica liderada por Christian Elias y constituida formalmente bajo el régimen MYPE Tributario con sede operativa en San Juan de Lurigancho, Lima, procesamos y protegemos la información corporativa de nuestros clientes bajo los más estrictos estándares de ciberseguridad. Garantizamos que el tratamiento de datos en nuestros ecosistemas de inteligencia artificial, arquitecturas móviles y bases de datos cumple rigurosamente con la confidencialidad técnica y la normativa legal B2B vigente, demostrando en cada etapa nuestra experiencia, autoridad y confiabilidad (E-E-A-T) en la protección de la información.</p>
+<p>Para la ejecución de auditorías y el posterior despliegue de ecosistemas digitales, capturamos exclusivamente los datos operativos estrictamente necesarios mediante formularios diseñados para minimizar la fricción del usuario. Esta recopilación se limita a la información de identificación corporativa, como el nombre del responsable y la empresa, así como los datos de contacto y detalles técnicos de la infraestructura previa. Dejamos expresa constancia de que, bajo ninguna circunstancia, comercializamos esta información, ni la cedemos o compartimos con entidades externas.</p>
+<p>La información proporcionada se utiliza de manera exclusiva para el desarrollo de aplicaciones funcionales, la estructuración de bases de datos y la orquestación de flujos de trabajo empresariales mediante webhooks avanzados en plataformas como n8n. Respecto a la interacción con modelos de inteligencia artificial, garantizamos que los datos inyectados en nuestros agentes conversacionales para la cualificación de leads, o en nuestras plataformas de generación de video IA, operan a través de conexiones API altamente seguras. E-Beats Perú no utiliza el know-how comercial ni la data privada de sus clientes para alimentar o entrenar modelos de lenguaje públicos de terceros.</p>
+<p>Para salvaguardar la integridad absoluta de la información, implementamos rigurosas capas técnicas de protección de datos. La infraestructura es resguardada en servidores de alto rendimiento (KVM 2) dotados con certificados SSL de extremo a extremo, generando un entorno estable y seguro que brinda total confianza. Asimismo, desplegamos filtros avanzados de inyección en todas las consultas DML y DDL ejecutadas sobre nuestros entornos en Microsoft SQL Server, bloqueando de manera proactiva cualquier intento de acceso no autorizado y manteniendo un estricto control de seguridad mediante autenticación multifactor para todo nuestro equipo de ingeniería.</p>
+<p>Reconocemos como principio fundamental que cada corporación es la dueña absoluta de sus datos, y que la tecnología debe actuar como un habilitador seguro en lugar de un factor de riesgo. En estricto cumplimiento de la Ley de Protección de Datos Personales de la República del Perú, usted conserva el pleno derecho de Acceso, Rectificación, Cancelación y Oposición (ARCO) sobre toda su información. Para ejercer dichos derechos, o para solicitar la eliminación permanente y definitiva de sus registros operativos de nuestros servidores, puede comunicarse de manera directa con nuestro equipo, el cual procederá con la ejecución inmediata de sus requerimientos.</p>
+</div>
+</div>
+</section>
+<!-- 3. [Información que Recopilamos] -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<div class="bento-grid">
+<div class="col-span-12 md:col-span-4 kinetic-border pl-md flex flex-col justify-center">
+<h2 class="font-headline-lg text-headline-lg uppercase mb-sm">Recopilación de Datos</h2>
+<p class="font-body-md text-on-surface-variant">Parámetros técnicos y operativos bajo vigilancia constante.</p>
+</div>
+<div class="col-span-12 md:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-white border border-primary p-md flex flex-col">
+<span class="material-symbols-outlined text-error mb-sm text-[32px]">badge</span>
+<h3 class="font-headline-xl text-[24px] mb-2 uppercase">Identificación</h3>
+<p class="font-body-md opacity-80 text-sm">RUC, Razón Social, representantes legales y credenciales corporativas.</p>
+</div>
+<div class="bg-white border border-primary p-md flex flex-col">
+<span class="material-symbols-outlined text-error mb-sm text-[32px]">contact_mail</span>
+<h3 class="font-headline-xl text-[24px] mb-2 uppercase">Contacto</h3>
+<p class="font-body-md opacity-80 text-sm">Correos institucionales, terminales telefónicos y canales de soporte API.</p>
+</div>
+<div class="bg-white border border-primary p-md flex flex-col">
+<span class="material-symbols-outlined text-error mb-sm text-[32px]">lan</span>
+<h3 class="font-headline-xl text-[24px] mb-2 uppercase">Infraestructura</h3>
+<p class="font-body-md opacity-80 text-sm">Endpoints de bases de datos SQL, Webhooks de n8n y esquemas de red.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. [Uso de la Información y Entornos de Inteligencia Artificial] -->
+<section class="bg-surface-container-low py-xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row gap-xl items-center">
+<div class="flex-1">
+<h2 class="font-headline-xl text-headline-xl uppercase mb-md">Entornos de Inteligencia Artificial</h2>
+<div class="space-y-md">
+<p class="font-body-lg text-body-lg leading-relaxed">
+                        Nuestra infraestructura de IA y orquestación con <span class="font-bold text-error">n8n</span> utiliza integraciones seguras con <span class="font-bold">Jorge Chatbot</span>, <span class="font-bold">Veo API</span> y <span class="font-bold">HeyGen</span> bajo un modelo de aislamiento total.
+                    </p>
+<div class="bg-white border-l-4 border-primary p-md italic shadow-sm">
+<p class="font-body-md text-body-md">
+                            Garantizamos un entorno de <span class="font-bold">Zero-Leak</span>. Los datos procesados por nuestros agentes no alimentan modelos globales; se mantienen en infraestructuras privadas y bases SQL encriptadas para asegurar la soberanía de su información corporativa.
+                        </p>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full aspect-video bg-primary flex items-center justify-center relative overflow-hidden">
+<img alt="Secure Data Flow" class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQx6pqO4LmYvgmhmQknsALtu9rP6E-6uSlp0N2EudTqglh8VJRtPQO0wi6AnUG25DtOYY-0PhzXahQRHkBc_ut3tP3NHeg_R9cGlFJ7cc5zAxiF4igMN7LN8k93KUsUlRQ1s6Ztz7G3h7DM_OXbH0VxN3ZrKfgvLVjCD2JuYy9M1IkibAxG150Ug2pKlJD7czhxRIUUYdSrtqp19bmvFKxElH4P0O_VotuVremCYu87yMrg2EP7e1fVNPj7WgkhPZcFfSo4EZReg"/>
+<div class="relative z-10 text-white p-lg text-center bg-primary/40 backdrop-blur-sm border border-white/20">
+<span class="material-symbols-outlined text-[64px] mb-4 text-error">security</span>
+<p class="font-label-sm tracking-widest uppercase">Encryption Standard: AES-256</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. [Arquitectura de Protección de Datos] -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<h2 class="font-headline-xl text-headline-xl uppercase text-center mb-xl">Arquitectura Técnica</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="border border-primary p-lg text-center group hover:bg-primary transition-colors duration-300">
+<div class="font-display-lg text-display-lg text-error mb-2 group-hover:text-white">01</div>
+<h4 class="font-headline-xl text-subheading-md uppercase group-hover:text-white">Ingesta</h4>
+<p class="font-label-sm mt-4 text-on-surface-variant group-hover:text-surface-variant">Tokens &amp; TLS 1.3</p>
+</div>
+<div class="border border-primary p-lg text-center group hover:bg-primary transition-colors duration-300">
+<div class="font-display-lg text-display-lg text-error mb-2 group-hover:text-white">02</div>
+<h4 class="font-headline-xl text-subheading-md uppercase group-hover:text-white">Tránsito</h4>
+<p class="font-label-sm mt-4 text-on-surface-variant group-hover:text-surface-variant">Cifrado n8n Flows</p>
+</div>
+<div class="border border-primary p-lg text-center group hover:bg-primary transition-colors duration-300">
+<div class="font-display-lg text-display-lg text-error mb-2 group-hover:text-white">03</div>
+<h4 class="font-headline-xl text-subheading-md uppercase group-hover:text-white">Reposo</h4>
+<p class="font-label-sm mt-4 text-on-surface-variant group-hover:text-surface-variant">SQL Hardening</p>
+</div>
+<div class="border border-primary p-lg text-center group hover:bg-primary transition-colors duration-300">
+<div class="font-display-lg text-display-lg text-error mb-2 group-hover:text-white">04</div>
+<h4 class="font-headline-xl text-subheading-md uppercase group-hover:text-white">Salida</h4>
+<p class="font-label-sm mt-4 text-on-surface-variant group-hover:text-surface-variant">ARCO Log Audit</p>
+</div>
+</div>
+</section>
+<!-- 6. [Derechos ARCO y Jurisdicción] -->
+<section class="bg-primary text-on-primary py-xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-4xl mx-auto text-center">
+<div class="mb-lg">
+<span class="material-symbols-outlined text-error text-[64px] mb-4">format_quote</span>
+<blockquote class="font-headline-xl text-[28px] md:text-[40px] italic leading-tight mb-md">
+                    "Nuestra filosofía es que el cliente es el dueño absoluto de sus datos. La tecnología debe servirle, no exponerle."
+                </blockquote>
+<cite class="font-label-sm text-label-sm uppercase tracking-widest text-error font-bold">— Christian Elias, CEO E-Beats Perú</cite>
+</div>
+<div class="border-t border-white/20 pt-lg text-left max-w-2xl mx-auto">
+<h3 class="font-headline-xl text-headline-lg mb-sm uppercase">Derechos ARCO</h3>
+<p class="font-body-md mb-md opacity-80">
+                    Usted puede ejercer sus derechos de Acceso, Rectificación, Cancelación y Oposición escribiendo a nuestro DPO. Toda controversia será resuelta exclusivamente bajo la jurisdicción de los tribunales de Lima, Perú.
+                </p>
+</div>
+</div>
+</section>
+<!-- 7. [Acuerdos de Nivel de Servicio (SLA)] -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div>
+<h3 class="font-headline-xl text-[32px] uppercase mb-md border-b-2 border-primary inline-block">Servicios Tecnológicos</h3>
+<ul class="space-y-sm">
+<li class="flex gap-4 items-start border-b border-outline-variant pb-2 group">
+<span class="material-symbols-outlined text-error">database</span>
+<div><span class="font-bold block uppercase font-headline-xl text-lg">SQL Server Optimization</span> Arquitectura y mantenimiento de bases de datos críticas.</div>
+</li>
+<li class="flex gap-4 items-start border-b border-outline-variant pb-2 group">
+<span class="material-symbols-outlined text-error">account_tree</span>
+<div><span class="font-bold block uppercase font-headline-xl text-lg">n8n Workflows</span> Automatización de procesos empresariales complejos.</div>
+</li>
+<li class="flex gap-4 items-start border-b border-outline-variant pb-2 group">
+<span class="material-symbols-outlined text-error">smartphone</span>
+<div><span class="font-bold block uppercase font-headline-xl text-lg">Flutter &amp; Firebase</span> Apps nativas de alto rendimiento multiplataforma.</div>
+</li>
+<li class="flex gap-4 items-start border-b border-outline-variant pb-2 group">
+<span class="material-symbols-outlined text-error">psychology</span>
+<div><span class="font-bold block uppercase font-headline-xl text-lg">AI Integration</span> Despliegue de agentes inteligentes y LLMs privados.</div>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="font-headline-xl text-[32px] uppercase mb-md border-b-2 border-primary inline-block text-right w-full">SLA (Matrix)</h3>
+<div class="overflow-x-auto border-2 border-primary">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-primary text-white">
+<th class="p-4 text-left font-headline-xl uppercase tracking-widest text-sm">Métrica de Servicio</th>
+<th class="p-4 text-left font-headline-xl uppercase tracking-widest text-sm">Compromiso</th>
+</tr>
+</thead>
+<tbody class="font-body-md">
+<tr class="border-b border-primary hover:bg-surface-container-low transition-colors">
+<td class="p-4 font-bold uppercase">Disponibilidad (Uptime)</td>
+<td class="p-4 text-error font-bold">99.9% Mensual</td>
+</tr>
+<tr class="border-b border-primary hover:bg-surface-container-low transition-colors">
+<td class="p-4 font-bold uppercase">Respuesta Soporte</td>
+<td class="p-4">4 Horas (Hábiles)</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4 font-bold uppercase">Mantenimiento</td>
+<td class="p-4 italic">Notificación 48h Anticipación</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- 8. [Propiedad Intelectual] -->
+<section class="bg-primary text-on-primary py-xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-xl">
+<div class="md:col-span-7 flex flex-col justify-center">
+<h3 class="font-headline-xl text-headline-xl uppercase mb-md text-error">Propiedad Intelectual</h3>
+<p class="font-body-lg text-body-lg mb-md leading-relaxed">
+                    Tras la liquidación total del proyecto (100% pago), el cliente adquiere la propiedad absoluta de los entregables: código fuente, flujos de n8n y activos digitales. E-Beats Perú se reserva derechos sobre metodologías base y componentes pre-existentes (módulos <span class="underline decoration-error font-bold">ADOPMEDOG</span>).
+                </p>
+<div class="bg-white/10 p-md border-l-4 border-error">
+<p class="font-label-sm text-sm italic">E-Beats Perú se reserva el derecho de citar el proyecto como 'Caso de Éxito' en su portafolio corporativo, salvo acuerdo de confidencialidad (NDA) explícito.</p>
+</div>
+</div>
+<div class="md:col-span-5 relative h-64 md:h-auto border-4 border-error">
+<img alt="Intellectual Property Assets" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcaqB9j6US00qrUZKJlo1m0rk8XJqxrwZiE_NCXcBURwdZPlOFudE6s6oUtapnCncVfrjNabVczkNZXQvVp-Seqyuw9IyDokmEhErIS50WvDYPmlGaXSl96AwycFRhls821FPC6DQg0CmBxJszqfAvgPuERCvl3hvjq5d2BmoAsdS-BjQBQxyELfiq6861Ueee5dT-g2xKwAf6R_JRUYzV870CS32wVnmpWxK02VAq6rZVTBhwXOnA13kP3IXWWdjm6Q10O75A2Q"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-headline-xl text-white text-3xl uppercase tracking-widest border-2 border-white px-6 py-2 bg-black/40">Ownership Transfer</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. [Pagos, Facturación y Régimen Fiscal] -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-xl">
+<div class="md:col-span-8 bg-surface-container-high p-lg kinetic-border">
+<h3 class="font-headline-xl text-headline-xl uppercase mb-md">Pagos y Régimen Fiscal</h3>
+<div class="space-y-md font-body-md">
+<p>Operamos formalmente bajo el <span class="font-bold">Régimen MYPE Tributario (SUNAT)</span>. Emitimos Facturas y Boletas Electrónicas cumpliendo con la normativa peruana vigente.</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+<div class="bg-white p-4 border border-primary">
+<span class="font-label-sm text-error uppercase block mb-1">Moneda</span>
+<p class="font-headline-xl text-xl">PEN / USD</p>
+</div>
+<div class="bg-white p-4 border border-primary">
+<span class="font-label-sm text-error uppercase block mb-1">Términos</span>
+<p class="font-headline-xl text-xl">Net 07 / 15</p>
+</div>
+<div class="bg-white p-4 border border-primary">
+<span class="font-label-sm text-error uppercase block mb-1">Licencias</span>
+<p class="font-headline-xl text-xl">3rd Party Cost</p>
+</div>
+</div>
+<p class="text-sm opacity-70 mt-4 italic">* Los costos de licencias de terceros (APIs, Hosting, Dominios) no están incluidos en los honorarios de desarrollo salvo pacto contrario.</p>
+</div>
+</div>
+<!-- 10. [Jurisdicción] -->
+<div class="md:col-span-4 flex flex-col justify-center">
+<div class="border-8 border-primary p-lg text-center relative overflow-hidden bg-primary text-white">
+<span class="material-symbols-outlined text-[64px] text-error mb-4">gavel</span>
+<h3 class="font-headline-xl text-headline-xl uppercase mb-sm">Jurisdicción</h3>
+<p class="font-body-md mb-lg text-sm">Cualquier discrepancia será sometida exclusivamente a los jueces y tribunales de la ciudad de <span class="font-bold text-error">Lima, Perú</span>.</p>
+<div class="h-32 w-full grayscale contrast-150 border-t-2 border-error mt-4">
+<img alt="Lima Courts Architecture" class="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA77xdlfsfAFLgRh1-MIrpPvW6mi8A7asz4ddKRKqSdt0OYlTqsn_6imnaXfMI_W_-y8K2YVB59AA60snC69vDzwnibPXxbjYzwTgErK2sECPOp0atwVk_PqDUxap1gu_pPvFvIWbcJlAy3TAaIsqVQ-sNK064cq1UBpzQEi5plZvhnRyJTPO_nhVdPBBJjDCpXn9pzho0HrzbK_G2T27uYzN2OnpAACSNBA-vkzKjtr2TSCjI_fzbJy9axFZ8Wfpy9GpNK9nc6CQ"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+    function switchTab(tab) {
+        const terminosBtn = document.getElementById('btn-terminos');
+        const privacidadBtn = document.getElementById('btn-privacidad');
+        const terminosContent = document.getElementById('content-terminos');
+        const privacidadContent = document.getElementById('content-privacidad');
 
-  <!-- TOP NAVBAR -->
-  <nav class="topbar">
-    <a href="https://xn--ebeatsper-e9a.tech/" class="topbar-logo" target="_blank" rel="noopener">
-      <img src="image/logonormal.png" alt="E Beats Perú Logo">
-      <span>E Beats Perú</span>
-    </a>
-    <a href="https://xn--ebeatsper-e9a.tech/" class="topbar-link" target="_blank" rel="noopener">Volver al sitio web &rarr;</a>
-  </nav>
+        if (tab === 'terminos') {
+            terminosContent.classList.remove('hidden');
+            privacidadContent.classList.add('hidden');
+            terminosBtn.classList.add('bg-error');
+            terminosBtn.classList.remove('bg-primary');
+            privacidadBtn.classList.add('bg-primary');
+            privacidadBtn.classList.remove('bg-error');
+        } else {
+            privacidadContent.classList.remove('hidden');
+            terminosContent.classList.add('hidden');
+            privacidadBtn.classList.add('bg-error');
+            privacidadBtn.classList.remove('bg-primary');
+            terminosBtn.classList.add('bg-primary');
+            terminosBtn.classList.remove('bg-error');
+        }
+    }
 
-  <!-- HERO -->
-  <header class="hero">
-    <img src="image/negativo.png" alt="E Beats Perú" class="hero-logo">
-    <h1>Política de Privacidad y Tratamiento de Datos Personales</h1>
-    <p class="updated">Última actualización: 28 de marzo de 2026</p>
-  </header>
-
-  <main class="container">
-
-    <!-- NOTICE BOX -->
-    <div class="notice">
-      Al utilizar este sitio web o completar cualquiera de nuestros formularios, usted declara haber leído esta Política de Privacidad y, cuando corresponda, autoriza el tratamiento de sus datos personales conforme a las finalidades aquí descritas.
-    </div>
-
-    <!-- TABLE OF CONTENTS -->
-    <nav class="toc" aria-label="Tabla de contenidos">
-      <h2>Contenido</h2>
-      <ol>
-        <li><a href="#identidad">Identidad del responsable del tratamiento</a></li>
-        <li><a href="#datos">Datos personales que recopilamos</a></li>
-        <li><a href="#finalidades">Finalidades del tratamiento</a></li>
-        <li><a href="#base-legal">Base legal para el tratamiento</a></li>
-        <li><a href="#consentimiento">Consentimiento</a></li>
-        <li><a href="#automatizacion">Uso de automatización e inteligencia artificial</a></li>
-        <li><a href="#destinatarios">Destinatarios y encargados de tratamiento</a></li>
-        <li><a href="#transferencia">Transferencia nacional e internacional de datos</a></li>
-        <li><a href="#conservacion">Plazo de conservación</a></li>
-        <li><a href="#seguridad">Seguridad de la información</a></li>
-        <li><a href="#derechos">Derechos del titular de los datos</a></li>
-        <li><a href="#cookies">Cookies y tecnologías similares</a></li>
-        <li><a href="#menores">Menores de edad</a></li>
-        <li><a href="#modificaciones">Modificaciones de la política</a></li>
-        <li><a href="#autoridad">Autoridad competente</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ol>
-    </nav>
-
-    <!-- INTRO -->
-    <p class="intro">
-      En E Beats Perú valoramos la privacidad de nuestros usuarios, clientes potenciales y visitantes. La presente Política de Privacidad describe cómo recopilamos, usamos, almacenamos, protegemos y, en su caso, compartimos los datos personales que tratamos a través de nuestro sitio web, formularios, canales de contacto, herramientas de mensajería y sistemas de automatización.
-    </p>
-    <p class="intro">
-      Esta política se formula en atención a la Ley N.° 29733, Ley de Protección de Datos Personales del Perú, y su nuevo Reglamento aprobado por el Decreto Supremo N.° 016-2024-JUS, vigente desde el 31 de marzo de 2025, así como a la supervisión de la Autoridad Nacional de Protección de Datos Personales.
-    </p>
-
-    <!-- SECTIONS -->
-    <section class="section" id="identidad">
-      <h2><span class="num">1</span> Identidad del responsable del tratamiento</h2>
-      <p>El responsable del tratamiento de los datos personales es <strong>E Beats Perú</strong>, marca dedicada a servicios de diagnóstico, automatización, inteligencia artificial aplicada, optimización comercial y mejora de procesos para negocios.</p>
-      <p><strong>Canales de contacto:</strong></p>
-      <ul>
-        <li>Sitio web: <a href="https://xn--ebeatsper-e9a.tech/" target="_blank" rel="noopener">https://ebeatsperú.tech</a></li>
-        <li>WhatsApp: <a href="https://wa.me/51955250185" target="_blank" rel="noopener">+51 955 250 185</a></li>
-      </ul>
-    </section>
-
-    <section class="section" id="datos">
-      <h2><span class="num">2</span> Datos personales que recopilamos</h2>
-      <p>Podemos recopilar y tratar, según el canal utilizado y la interacción del usuario, las siguientes categorías de datos personales:</p>
-      <ul>
-        <li>Nombres y apellidos</li>
-        <li>Número de teléfono y/o WhatsApp</li>
-        <li>Correo electrónico</li>
-        <li>Nombre de empresa, negocio o marca</li>
-        <li>Cargo o función dentro de la empresa</li>
-        <li>Información comercial y operativa del negocio</li>
-        <li>Respuestas a formularios de diagnóstico, calificación u onboarding</li>
-        <li>Información sobre necesidades, problemas, objetivos, procesos, herramientas o sistemas actuales</li>
-        <li>Historial de contacto, mensajes, interacciones y seguimiento comercial</li>
-        <li>Datos técnicos básicos de navegación, como IP, tipo de dispositivo, navegador, páginas visitadas y cookies, cuando corresponda</li>
-      </ul>
-      <p>No solicitamos deliberadamente datos sensibles, salvo que ello sea estrictamente necesario y el titular los proporcione de manera expresa en el marco de una consulta o requerimiento específico.</p>
-    </section>
-
-    <section class="section" id="finalidades">
-      <h2><span class="num">3</span> Finalidades del tratamiento</h2>
-      <p>Tratamos los datos personales para las siguientes finalidades:</p>
-      <ul>
-        <li>Atender consultas, solicitudes de contacto y requerimientos comerciales</li>
-        <li>Evaluar si un prospecto califica para nuestros servicios</li>
-        <li>Coordinar reuniones, diagnósticos, demostraciones o llamadas comerciales</li>
-        <li>Diseñar propuestas, hojas de ruta, automatizaciones y soluciones personalizadas</li>
-        <li>Gestionar relaciones precontractuales y contractuales</li>
-        <li>Dar seguimiento comercial y operativo</li>
-        <li>Mejorar nuestros procesos internos, formularios, servicios, flujos y experiencia del usuario</li>
-        <li>Realizar comunicaciones vinculadas al servicio solicitado</li>
-        <li>Ejecutar procesos automatizados de clasificación, priorización o asignación de leads</li>
-        <li>Cumplir obligaciones legales o requerimientos de autoridad competente</li>
-      </ul>
-      <p>Cuando corresponda a comunicaciones promocionales o prospección comercial, estas deben contar con el consentimiento aplicable y el titular debe poder negarse, revocar u oponerse por medios sencillos y gratuitos, tal como exige la regulación peruana vigente.</p>
-    </section>
-
-    <section class="section" id="base-legal">
-      <h2><span class="num">4</span> Base legal para el tratamiento</h2>
-      <p>Tratamos datos personales sobre la base de una o más de las siguientes condiciones:</p>
-      <ul>
-        <li>El consentimiento libre, previo, informado, expreso e inequívoco del titular</li>
-        <li>La ejecución de medidas precontractuales solicitadas por el propio titular</li>
-        <li>La ejecución de una relación contractual, cuando exista</li>
-        <li>El cumplimiento de obligaciones legales aplicables</li>
-        <li>El interés legítimo del responsable, cuando resulte compatible con la normativa vigente y no prevalezcan los derechos fundamentales del titular</li>
-      </ul>
-    </section>
-
-    <section class="section" id="consentimiento">
-      <h2><span class="num">5</span> Consentimiento</h2>
-      <p>Al completar un formulario, escribirnos por WhatsApp, agendar una reunión, enviar información de negocio o interactuar con nuestros canales, el titular declara haber sido informado sobre el tratamiento de sus datos personales y, cuando corresponda, otorga su consentimiento para las finalidades descritas en la presente política.</p>
-      <p>El titular podrá revocar su consentimiento en cualquier momento en los casos en los que este sea la base del tratamiento, sin afectar la licitud del tratamiento realizado con anterioridad.</p>
-    </section>
-
-    <section class="section" id="automatizacion">
-      <h2><span class="num">6</span> Uso de automatización e inteligencia artificial</h2>
-      <p>En E Beats Perú utilizamos herramientas tecnológicas, automatizaciones e inteligencia artificial para optimizar procesos de atención, clasificación, análisis y seguimiento.</p>
-      <p>Esto puede incluir:</p>
-      <ul>
-        <li>Respuestas automatizadas iniciales</li>
-        <li>Clasificación de prospectos o leads</li>
-        <li>Análisis de información ingresada en formularios</li>
-        <li>Organización de datos en CRM, bases de datos o flujos automatizados</li>
-        <li>Generación de reportes, borradores, resúmenes o sugerencias operativas</li>
-      </ul>
-      <p>Estas herramientas se utilizan como apoyo operativo y analítico. Cuando corresponda, las decisiones comerciales o de servicio pueden ser revisadas o validadas por una persona.</p>
-    </section>
-
-    <section class="section" id="destinatarios">
-      <h2><span class="num">7</span> Destinatarios y encargados de tratamiento</h2>
-      <p>Para cumplir las finalidades antes descritas, podemos apoyarnos en terceros proveedores tecnológicos que actúan como encargados de tratamiento o proveedores de infraestructura, tales como:</p>
-      <ul>
-        <li>Servicios de hosting o nube</li>
-        <li>CRM y bases de datos</li>
-        <li>Herramientas de automatización</li>
-        <li>Proveedores de correo electrónico</li>
-        <li>Plataformas de formularios</li>
-        <li>APIs de mensajería, incluyendo WhatsApp</li>
-        <li>Herramientas de agenda o videollamadas</li>
-        <li>Plataformas de analítica y monitoreo</li>
-      </ul>
-      <p>Solo compartimos datos en la medida necesaria para la prestación del servicio, la operación del negocio o el cumplimiento legal. <strong>No comercializamos datos personales con terceros.</strong></p>
-    </section>
-
-    <section class="section" id="transferencia">
-      <h2><span class="num">8</span> Transferencia nacional e internacional de datos</h2>
-      <p>Debido al uso de plataformas digitales, algunos datos personales pueden ser almacenados o procesados en servidores ubicados fuera del Perú. En tales casos, procuramos trabajar con proveedores que implementen medidas razonables de seguridad y cumplimiento para resguardar la información.</p>
-    </section>
-
-    <section class="section" id="conservacion">
-      <h2><span class="num">9</span> Plazo de conservación</h2>
-      <p>Los datos personales serán conservados únicamente durante el tiempo que resulte necesario para cumplir con las finalidades informadas, atender requerimientos, mantener la relación comercial o contractual, resolver contingencias y cumplir obligaciones legales o regulatorias.</p>
-      <p>Posteriormente, los datos podrán ser eliminados, anonimizados o conservados bloqueados cuando la normativa lo exija.</p>
-    </section>
-
-    <section class="section" id="seguridad">
-      <h2><span class="num">10</span> Seguridad de la información</h2>
-      <p>Adoptamos medidas técnicas, organizativas y administrativas razonables para proteger los datos personales frente a pérdida, acceso no autorizado, alteración, uso indebido o divulgación no autorizada.</p>
-      <p>No obstante, el usuario reconoce que ningún sistema informático, red o transmisión de datos puede garantizar seguridad absoluta.</p>
-    </section>
-
-    <section class="section" id="derechos">
-      <h2><span class="num">11</span> Derechos del titular de los datos</h2>
-      <p>El titular de los datos personales puede ejercer los derechos de <strong>Acceso, Rectificación, Cancelación y Oposición (ARCO)</strong>, así como aquellos reconocidos por la normativa vigente. Estos derechos permiten conocer el origen, finalidad y comunicación de los datos, así como solicitar correcciones, cancelación u oposición al tratamiento.</p>
-      <p>Asimismo, en materia de publicidad o prospección, el titular puede negarse, revocar u oponerse al tratamiento, y el responsable debe ofrecer un medio sencillo y gratuito para ello. El plazo máximo para atender estas solicitudes es de diez días hábiles.</p>
-      <p>Para ejercer estos derechos, el titular puede comunicarse a través de nuestros canales oficiales, acreditando su identidad y precisando su solicitud.</p>
-    </section>
-
-    <section class="section" id="cookies">
-      <h2><span class="num">12</span> Cookies y tecnologías similares</h2>
-      <p>Nuestro sitio web puede emplear cookies, píxeles o tecnologías similares con fines técnicos, funcionales, estadísticos o de mejora de experiencia.</p>
-      <p>El usuario puede configurar su navegador para bloquear o eliminar cookies, aunque ello podría afectar algunas funcionalidades del sitio.</p>
-    </section>
-
-    <section class="section" id="menores">
-      <h2><span class="num">13</span> Menores de edad</h2>
-      <p>Nuestros servicios están dirigidos principalmente a personas mayores de edad y representantes de negocios. No recopilamos conscientemente datos de menores de edad sin la intervención o autorización que legalmente corresponda.</p>
-    </section>
-
-    <section class="section" id="modificaciones">
-      <h2><span class="num">14</span> Modificaciones de la política</h2>
-      <p>Nos reservamos el derecho de actualizar o modificar esta Política de Privacidad en cualquier momento. Toda modificación será publicada en esta misma sección con su fecha de actualización correspondiente.</p>
-    </section>
-
-    <section class="section" id="autoridad">
-      <h2><span class="num">15</span> Autoridad competente</h2>
-      <p>Si el titular considera que su solicitud no ha sido atendida adecuadamente, puede acudir a la <strong>Autoridad Nacional de Protección de Datos Personales (ANPD)</strong>, entidad encargada de supervisar y hacer cumplir la normativa peruana de protección de datos personales.</p>
-    </section>
-
-    <!-- CONTACT BLOCK -->
-    <div class="contact-block" id="contacto">
-      <img src="image/negativo.png" alt="E Beats Perú" class="contact-block-logo">
-      <h2><span class="num">16</span> Contacto</h2>
-      <div class="contact-item">
-        <strong>Sitio web:</strong>
-        <a href="https://xn--ebeatsper-e9a.tech/" target="_blank" rel="noopener">https://ebeatsperú.tech</a>
-      </div>
-      <div class="contact-item">
-        <strong>WhatsApp:</strong>
-        <a href="https://wa.me/51955250185" target="_blank" rel="noopener">+51 955 250 185</a>
-      </div>
-    </div>
-
-    <!-- DISCLAIMER -->
-    <p class="intro" style="margin-top:2rem;font-size:.82rem;color:var(--clr-text-muted);text-align:center;">
-      Esta página constituye una política de privacidad informativa de E Beats Perú. El contenido puede ser actualizado para reflejar cambios normativos, operativos o tecnológicos. Se recomienda revisar esta página periódicamente.
-    </p>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <img src="image/negativo.png" alt="E Beats Perú" class="footer-logo">
-    <p class="footer-brand">Inteligencia Artificial &amp; Automatización de Procesos</p>
-    <p>&copy; 2026 E Beats Perú. Todos los derechos reservados.</p>
-  </footer>
-
-  <!-- BACK TO TOP -->
-  <button class="back-to-top" onclick="window.scrollTo({top:0})" aria-label="Volver arriba">&#9650;</button>
-
-</body>
-</html>
+    // Micro-interactions for table and list items
+    document.querySelectorAll('tr, li, .bg-white').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            el.style.transform = 'translateX(4px)';
+            el.style.transition = 'transform 0.2s ease-out';
+        });
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = 'translateX(0)';
+        });
+    });
+</script>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+</body></html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html><html class="light" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>E-Beats Perú | Liderazgo en IA &amp; Ciberseguridad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Source+Serif+4:ital,wght@0,400;0,700;1,400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=Source+Serif+4:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1a1c1c",
+                        "primary-container": "#1b1b1b",
+                        "on-tertiary-container": "#ff291a",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#000000",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-surface-variant": "#4c4546",
+                        "inverse-primary": "#c6c6c6",
+                        "secondary": "#5d5f5f",
+                        "inverse-on-surface": "#f1f1f1",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-primary-fixed-variant": "#474747",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-tertiary-fixed": "#410000",
+                        "surface-container-low": "#f3f3f3",
+                        "outline-variant": "#cfc4c5",
+                        "on-background": "#1a1c1c",
+                        "surface": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "secondary-container": "#dfe0e0",
+                        "outline": "#7e7576",
+                        "surface-bright": "#f9f9f9",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#930100",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "inverse-surface": "#2f3131",
+                        "background": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-container": "#616363",
+                        "on-primary-fixed": "#1b1b1b",
+                        "surface-tint": "#5e5e5e",
+                        "error": "#ba1a1a",
+                        "tertiary": "#000000",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#848484",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "tertiary-container": "#410000",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "accent-red": "#ff311c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "md": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Source Serif 4"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Anton"],
+                        "headline-xl": ["Anton"],
+                        "subheading-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "subheading-md": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #ffffff; color: #1a1c1c; }
+        .rigid-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin: 0 64px; }
+        .red-btn { background-color: #ff311c; color: #ffffff; transition: all 0.3s ease; text-transform: uppercase; border: none; font-weight: 700; }
+        .red-btn:hover { background-color: #000000; }
+        .minimal-input { border: none; border-bottom: 1px solid #000000; background: transparent; padding: 12px 0; border-radius: 0; }
+        .minimal-input:focus { outline: none; border-bottom: 1px solid #ff311c; ring: 0; }
+        .section-padding { padding-top: 120px; padding-bottom: 80px; }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<div id="site-header"></div>
+<!-- 1. GEO Opening Block (Inverted Pyramid) -->
+
+<!-- 2. Section 1: Transactional Hero -->
+<section class="section-padding bg-surface-container-lowest relative overflow-hidden">
+
+<div class="rigid-grid relative z-10">
+<div class="col-span-12 md:col-span-8 flex flex-col justify-center">
+<h1 class="font-display-lg text-display-lg text-primary uppercase mb-md max-w-4xl">
+                    Respaldo Tecnológico y Contacto Directo con <span class="text-accent-red">E-Beats Perú.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl mb-lg">E-Beats Perú es una agencia de automatización IA y ciberseguridad liderada por Christian Elias desde Lima. Diseñamos infraestructuras de bases de datos, flujos de trabajo en n8n y ecosistemas de software para corporaciones, despachos legales e inmobiliarias. Aceleramos sus operaciones, garantizando máxima seguridad técnica, y escalamos sus ventas de forma autónoma.</p>
+<div>
+<a class="red-btn inline-block px-lg py-md font-label-sm text-label-sm tracking-widest" href="#audit-form">
+                        [ Agendar Auditoría Ejecutiva Ahora ]
+                    </a>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 hidden md:flex items-center justify-center">
+<div class="w-full aspect-square border border-primary p-base">
+<div class="w-full h-full bg-surface-container-high flex items-center justify-center relative">
+<img alt="Cybersecurity terminal and data streams" class="w-full h-full object-cover grayscale" data-alt="A high-contrast cinematic shot of a modern cybersecurity operations center in Lima. The image features glowing data streams on multiple dark monitors, reflecting off a polished obsidian desk. The lighting is low-key with intense surgical red light accents. The atmosphere is professional, high-stakes, and technologically advanced, echoing the brand's commitment to absolute data security and performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-kkJ_4SDdH-TVWTqTrSknJLw-T0Da0D7tt7r7yxNVux15xLDbqCuAmRAm2rNUCJHDQASmdpKVbInazlTyslkp7Wy0IuFD83xt7Z5p-t1qMBimSqMmY-Xr3vNWDND5nAgwD6FvfMzS6ZrHY_flAb0iIlKqeW8M5RqOus5vBfV8gufHLv6KyqgmnKFJ1eGCk8P-Sbv5DlME1Wj88ZE9Ni_LDhdRWmIuVkboMtcMqNDRjeDbj8czgNqioA5mbXOEVzy70DoCJPtvbg">
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+</div>
+</div>
+</div>
+</section><section class="section-padding bg-primary text-on-primary" id="audit-form">
+<div class="rigid-grid">
+<div class="col-span-12 md:col-span-6 mb-lg md:mb-0 flex flex-col justify-center">
+<h2 class="font-display-lg text-headline-xl text-white uppercase mb-md">Escale su Arquitectura Digital Hoy</h2>
+<p class="font-body-lg text-body-lg text-white/70 max-w-md mb-md">
+                    Elimine los procesos manuales. Un ingeniero de nuestro equipo con base operativa en <span class="text-white font-bold">San Juan de Lurigancho</span> evaluará su infraestructura de forma confidencial.
+                </p>
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-accent-red" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-sm text-label-sm uppercase tracking-tighter">Tratamiento de Datos bajo Ley 29733 (Perú)</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-6 bg-white p-lg border-2 border-accent-red shadow-[10px_10px_0px_0px_rgba(255,49,28,0.1)]">
+<form class="space-y-lg" onsubmit="event.preventDefault(); alert('Iniciando despliegue de diagnóstico...');">
+<div>
+<label class="block font-label-sm text-label-sm text-primary uppercase mb-xs">Nombre Completo / Cargo</label>
+<input class="w-full minimal-input text-primary font-body-md" placeholder="Ej. Juan Pérez - Director TI" required="" type="text">
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-primary uppercase mb-xs">Razón Social de la Empresa</label>
+<input class="w-full minimal-input text-primary font-body-md" placeholder="Corporación S.A.C." required="" type="text">
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-primary uppercase mb-xs">WhatsApp Directo</label>
+<div class="flex">
+<span class="minimal-input flex items-center pr-base text-secondary font-body-md">+51</span>
+<input class="w-full minimal-input text-primary font-body-md" placeholder="999 999 999" required="" type="tel">
+</div>
+</div>
+<button class="w-full red-btn py-md font-label-sm text-label-sm tracking-widest text-white" type="submit">
+                        [ Desplegar mi Ecosistema IA ]
+                    </button>
+<p class="text-[10px] text-secondary text-center uppercase tracking-widest opacity-60">Sistemas verificados por Kinetic Security Logic Protocol</p>
+</form>
+</div>
+</div>
+</section>
+<!-- 3. Section 2: E-E-A-T Validation -->
+<section class="section-padding bg-white border-y border-on-surface/5">
+<div class="rigid-grid">
+<div class="col-span-12 md:col-span-5 mb-lg md:mb-0">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-md">Liderazgo en Ingeniería de la Información</h2>
+<div class="border-l-4 border-accent-red pl-md space-y-md">
+<p class="font-body-lg text-body-lg italic text-on-surface">
+                        "El verdadero valor de la ciberseguridad no es solo proteger datos, sino estructurarlos en bases como SQL Server para que fluyan mediante IA sin intervención manual, reduciendo el margen de error corporativo a cero."
+                    </p>
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-primary">
+                        — Christian Elias, CEO &amp; Fundador
+                    </p>
+</div>
+</div>
+<div class="col-span-12 md:col-span-7 md:pl-lg">
+<div class="bg-surface-container-low p-lg border border-black h-full flex flex-col justify-between">
+<div>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-md">
+                            Dirigida por <strong>Christian Elias</strong>, E-Beats Perú combina el rigor académico de la Ingeniería de la Información con la ejecución técnica avanzada. Operamos como un sujeto de derecho bajo el régimen <strong>MYPE Tributario</strong>, alineados estrictamente con las normativas de <strong>SUNAT</strong> para garantizar transparencia total en cada contrato corporativo.
+                        </p>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-lg">
+                            Nuestra capacidad técnica ha sido validada en el despliegue de infraestructuras para clientes como <strong>CODEA</strong> y diversas firmas legales en <strong>Lima, Cusco y Piura</strong>.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-base">
+<span class="px-sm py-xs border border-primary font-label-sm text-[10px] uppercase">RUC Registrado</span>
+<span class="px-sm py-xs border border-primary font-label-sm text-[10px] uppercase">Cumplimiento SUNAT</span>
+<span class="px-sm py-xs border border-primary font-label-sm text-[10px] uppercase">Seguridad Nivel 4</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Section 3: Operational Capacity (Data Table) -->
+<section class="section-padding bg-surface">
+<div class="rigid-grid">
+<div class="col-span-12 text-center mb-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase">Infraestructura y Proyectos en Producción</h2>
+<p class="font-label-sm text-label-sm text-secondary tracking-widest mt-base">MÉTRICAS TÉCNICAS DE ALTO RENDIMIENTO</p>
+</div>
+<div class="col-span-12 overflow-x-auto">
+<table class="w-full text-left border-collapse border border-primary">
+<thead>
+<tr class="bg-primary text-on-primary">
+<th class="p-md font-label-sm text-label-sm border border-primary uppercase tracking-widest">Descriptor de Sistema</th>
+<th class="p-md font-label-sm text-label-sm border border-primary uppercase tracking-widest">Capacidad de Respuesta</th>
+<th class="p-md font-label-sm text-label-sm border border-primary uppercase tracking-widest">Protocolo de Seguridad</th>
+<th class="p-md font-label-sm text-label-sm border border-primary uppercase tracking-widest">Estado</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-md border border-outline/30 font-bold">Arquitecturas SQL Server</td>
+<td class="p-md border border-outline/30">Lantencia &lt; 5ms (Local)</td>
+<td class="p-md border border-outline/30">AES-256 E2EE</td>
+<td class="p-md border border-outline/30"><span class="text-accent-red font-bold">Activo / Lima</span></td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-md border border-outline/30 font-bold">Nodos de Automatización n8n</td>
+<td class="p-md border border-outline/30">150k+ Ops/Mes</td>
+<td class="p-md border border-outline/30">Validación JWT / TLS 1.3</td>
+<td class="p-md border border-outline/30"><span class="text-accent-red font-bold">Activo / AWS Cloud</span></td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-md border border-outline/30 font-bold">Modelos de IA Predictiva</td>
+<td class="p-md border border-outline/30">Análisis en Tiempo Real</td>
+<td class="p-md border border-outline/30">Sandboxing Aislado</td>
+<td class="p-md border border-outline/30"><span class="text-accent-red font-bold">Activo / Cusco-Piura</span></td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-md border border-outline/30 font-bold">Terminales de Venta IA</td>
+<td class="p-md border border-outline/30">Escalado Autónomo 24/7</td>
+<td class="p-md border border-outline/30">Audit Log Inmutable</td>
+<td class="p-md border border-outline/30"><span class="text-accent-red font-bold">Activo / Global</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+
+<!-- Interactive micro-interactions -->
+<script>
+        document.querySelectorAll('.minimal-input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.style.opacity = '1';
+            });
+            input.addEventListener('blur', () => {
+                if(!input.value) input.parentElement.style.opacity = '0.8';
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+
+</body></html>

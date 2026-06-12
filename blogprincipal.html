@@ -1,0 +1,654 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=Source+Serif+4:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#1a1c1c",
+            "secondary-fixed-dim": "#c6c6c7",
+            "inverse-primary": "#c6c6c6",
+            "on-tertiary-fixed-variant": "#930100",
+            "on-primary-fixed-variant": "#474747",
+            "on-secondary-fixed": "#1a1c1c",
+            "error-container": "#ffdad6",
+            "outline-variant": "#cfc4c5",
+            "surface-dim": "#dadada",
+            "on-secondary-container": "#616363",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#1b1b1b",
+            "primary": "#000000",
+            "on-background": "#1a1c1c",
+            "tertiary": "#000000",
+            "on-surface-variant": "#4c4546",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "on-tertiary-container": "#ff291a",
+            "secondary": "#5d5f5f",
+            "inverse-surface": "#2f3131",
+            "background": "#f9f9f9",
+            "surface-container": "#eeeeee",
+            "primary-container": "#1b1b1b",
+            "primary-fixed": "#e2e2e2",
+            "tertiary-fixed": "#ffdad4",
+            "on-primary-container": "#848484",
+            "inverse-on-surface": "#f1f1f1",
+            "secondary-container": "#dfe0e0",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#e2e2e2",
+            "primary-fixed-dim": "#c6c6c6",
+            "surface-container-highest": "#e2e2e2",
+            "on-tertiary-fixed": "#410000",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#f9f9f9",
+            "surface-tint": "#5e5e5e",
+            "surface": "#f9f9f9",
+            "on-secondary-fixed-variant": "#454747",
+            "surface-variant": "#e2e2e2",
+            "surface-container-low": "#f3f3f3",
+            "surface-container-high": "#e8e8e8",
+            "on-tertiary": "#ffffff",
+            "outline": "#7e7576",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#410000",
+            "accent-red": "#ff311c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xl": "80px",
+            "gutter": "24px",
+            "sm": "12px",
+            "base": "8px",
+            "margin-mobile": "16px",
+            "margin-desktop": "64px",
+            "lg": "48px",
+            "xs": "4px",
+            "md": "24px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Hanken Grotesk"],
+            "label-sm": ["Hanken Grotesk"],
+            "subheading-md": ["Hanken Grotesk"],
+            "display-lg": ["Anton"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "body-md": ["Source Serif 4"],
+            "body-lg": ["Source Serif 4"],
+            "headline-xl": ["Anton"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "subheading-md": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+            "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    }
+    /* Custom button hover inversion */
+    .btn-accent {
+      @apply bg-[#ff311c] text-white font-headline-lg uppercase transition-all duration-300;
+      padding: 12px 32px;
+      border: 1px solid #ff311c;
+    }
+    .btn-accent:hover {
+      @apply bg-black border-black text-white;
+    }
+    .card-border {
+      border: 1px solid #000000;
+    }
+    .divider-gray {
+      border-bottom: 1px solid #cfc4c5;
+    }
+    /* Smooth Scroll and Carousel */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .carousel-container {
+      scroll-behavior: smooth;
+    }
+    .carousel-item {
+      flex: 0 0 100%;
+    }
+    .nav-dot {
+      width: 40px;
+      height: 2px;
+      background-color: #cfc4c5;
+      transition: background-color 0.3s ease;
+    }
+    .nav-dot.active {
+      background-color: #ff311c;
+    }
+    /* Filter Button Styles */
+    .filter-btn {
+      @apply px-md py-xs border border-black font-label-sm uppercase tracking-widest transition-all duration-300;
+    }
+    .filter-btn.active {
+      @apply bg-accent-red border-accent-red text-white;
+    }
+    .filter-btn:not(.active):hover {
+      @apply bg-black text-white;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface selection:bg-accent-red selection:text-white">
+<div id="site-header"></div>
+<!-- HERO SECTION -->
+<header class="relative w-full h-[80vh] flex flex-col justify-center items-center overflow-hidden pt-24">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale opacity-40 brightness-50" data-alt="A sophisticated high-tech background featuring a dense network of glowing server data lines and cybersecurity nodes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo9y3S6O9Ioce5Y4IavUIgvVJX6GRSQ-bS4idTj9sdQANrU0bl90T5ZKPhKJK-sl7dnvNa9B1GT5tC4rcScZ0l6TqOIjL2vHTax8rVdchHLlVB7zKKbBQrTRgU2V2FmRMUWFotcGbig3tvf_3TgO_rbJdojhjqOWiYdVboK8l-F3OI4DqXvlj-zwqlE1w6HMn5dx1naXf5OiyI9iZtAT8H5Xc-K3MeLOjWJXT_sSCAFI7wGHR7FaUK24C5KsptgrzCTS8tJm5CwA" style="transform: translateY(0px);">
+</div>
+<div class="relative z-10 max-w-5xl px-margin-mobile md:px-margin-desktop text-center">
+<h1 class="font-display-lg text-display-lg uppercase leading-none mb-md text-primary">
+        Centro de Recursos Técnicos: <span class="text-accent-red">Inteligencia Artificial</span>, Automatización y Ciberseguridad B2B
+      </h1>
+<div class="flex flex-col items-center mt-lg space-y-md">
+<blockquote class="font-body-lg text-body-lg italic text-secondary-fixed-variant max-w-2xl border-l-4 border-accent-red pl-md">
+          "La convergencia entre la ciberseguridad y la IA no es una tendencia; es el nuevo estándar de inmunidad corporativa."
+        </blockquote>
+<cite class="font-label-sm text-label-sm tracking-widest uppercase">— Christian Elias, CEO de Kinetic Security Logic</cite>
+</div>
+</div>
+</header>
+<main class="w-full max-w-full mx-auto">
+<!-- FEATURED ARTICLES CAROUSEL -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl relative group">
+<div class="relative card-border bg-white overflow-hidden">
+<div class="flex carousel-container overflow-hidden" id="featuredCarousel">
+<!-- Slide 1 -->
+<div class="carousel-item flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 p-lg lg:p-xl space-y-md">
+<span class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest">Caso de Estudio 01</span>
+<h2 class="font-headline-xl text-headline-xl leading-tight uppercase">Cómo nuestro chatbot redujo los tiempos de respuesta a 0.2 segundos</h2>
+<p class="font-body-lg text-body-lg text-secondary">Una inmersión profunda en la arquitectura de baja latencia utilizando infraestructuras Edge y optimización de cuantización de modelos para despliegues masivos.</p>
+<button class="btn-accent mt-md">Leer Arquitectura Ahora</button>
+</div>
+<div class="md:w-1/2 w-full min-h-[400px]">
+<img class="w-full h-full object-cover" data-alt="High-resolution circuit board with neon red light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDFOZlKom5tvSnfI03z5UXTYdnESROYZIJ1MohMVuCz2bAeGlTcMwsa3LY4gnsGQfzCWwF3p4Roa_aJ_2AJtx1bCbbcBtH9mhaRXxyKs8gNOOzgGkBn5rbXS79Cd7RoElRv_KcyIPzVovMnJ4_Cj6u1OWNmSAldCEaPTYa-1nqXBLOA8oqzzrC8zqDauc4xfvlRDCfSzZScZa0BLNTJ5D3rblATdKjs4W7AnFUB3GzhNXBEUVgYJXczWY11RC9_t5wYvtz0_Dk_w">
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="carousel-item flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 p-lg lg:p-xl space-y-md">
+<span class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest">Protocolo Técnico 02</span>
+<h2 class="font-headline-xl text-headline-xl leading-tight uppercase">Blindaje de Infraestructuras Críticas contra Ataques Cuánticos</h2>
+<p class="font-body-lg text-body-lg text-secondary">Implementación de criptografía post-cuántica en servidores transaccionales de alta disponibilidad para prevenir el descifrado futuro de datos.</p>
+<button class="btn-accent mt-md">Ver Protocolo</button>
+</div>
+<div class="md:w-1/2 w-full min-h-[400px]">
+<img class="w-full h-full object-cover" data-alt="Futuristic server encryption visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKCNf0ZokHCyxkog_zNhVq94KBj2kjbkfEnqiIjm3oAlSWBg0ATs5peIvIIuH7ShNWBXoR1Zxk0tTvCssyUTQf1EfEPmYYaVRpEB_Zk5KHyDxjuh5XJ6RVQ6xOQqkhXCoHI6P4JJLPZIjahGaUceTo6HWxycf1ZlJNsAhHfRx1y_RFiJEA09ekAJmtrVmyU406JnxTsfwUBQY4AwT4bcmDIj7sp-yCZtt9WmrKr854kiqddFb6lUizxrKgFvaqC_tsqSy0ryMbvQ">
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="carousel-item flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 p-lg lg:p-xl space-y-md">
+<span class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest">Whitepaper IA 03</span>
+<h2 class="font-headline-xl text-headline-xl leading-tight uppercase">Orquestación de Agentes IA en Entornos Multicloud</h2>
+<p class="font-body-lg text-body-lg text-secondary">Exploración de la comunicación inter-agente descentralizada y protocolos de consenso para la toma de decisiones autónoma en la nube.</p>
+<button class="btn-accent mt-md">Descargar Whitepaper</button>
+</div>
+<div class="md:w-1/2 w-full min-h-[400px]">
+<img class="w-full h-full object-cover" data-alt="Abstract representation of global connectivity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA48P8omgwZzf1sIqqIWORrw5K3t4BAwj5jDQKAH_amiCYHkC5hT8p8-HPqEtYITimL8Ujojb7H-aJyjkMBEQjvM_KCG6xog7S3fCP3dR_LOQ0Ym03vO58ZJLz-SZYFJxMxU3OWwDyU3KpNoW8sbuToOffKUJc_MS5sFwnRPR8nmFyXEM04N0QJ1SqvZRouHRmbgv7pno1N1m-K0k8qf2sGaj9xGnHd6lvRMVqXjc4sa7YUGFeXAAV2hXRT9ChZUiozlFvd58-3ag">
+</div>
+</div>
+</div>
+<!-- Indicators -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-4 z-20">
+<div class="nav-dot" data-index="0"></div>
+<div class="nav-dot" data-index="1"></div>
+<div class="nav-dot active" data-index="2"></div>
+</div>
+</div>
+</section>
+<!-- LATEST POSTS HORIZONTAL SCROLL -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl">
+<div class="flex justify-between items-end mb-xl">
+<h2 class="font-headline-xl text-headline-xl uppercase tracking-tighter">Últimas Publicaciones del Terminal</h2>
+<div class="flex space-x-sm">
+<button class="p-2 card-border hover:bg-black hover:text-white transition-colors" onclick="scrollGrid('prev')">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 card-border hover:bg-black hover:text-white transition-colors" onclick="scrollGrid('next')">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex space-x-gutter overflow-x-auto hide-scrollbar snap-x carousel-container pb-md" id="postsGrid">
+<!-- Post 1 -->
+<article class="flex-none w-[350px] snap-start flex flex-col bg-surface-container-low border border-transparent hover:border-black transition-all group">
+<div class="w-full h-64 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Blockchain and AI security visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPDU5XT2pYMAe1s5H4evGTN6glrHqAMFqPTe00xb-XY-riHjzoCg7Kn8jkaRHekLnVw6lNf4jVq0ixWL_umywsoh4kloiY2TKyhj6rAYDLLvZ5Vw5ho-QR10jdETGbqjEgwpIHeJfUniB5kcf7_9cLTA5LQsc9cpK9EhreRSded8EMRs_yr-M8UrqDvYCXmqOieQrBFKpawtOMyN2gpGWVb8KjC2GL9sl2aJtdiZyvh30QddeVp2Lz6fp4Wgn2F-gd0u6gi_VZlg">
+</div>
+<div class="p-md flex-grow space-y-sm"><span class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest mb-xs block">Desarrollo Móvil y Seguridad</span>
+<h3 class="font-headline-lg text-headline-lg group-hover:text-accent-red transition-colors">Seguridad en LLMs: El riesgo de Prompt Injection</h3>
+<p class="font-body-md text-body-md line-clamp-3">Analizamos las vulnerabilidades emergentes en los modelos de lenguaje masivos y cómo blindar las interfaces de usuario contra ataques de manipulación semántica en entornos de producción crítica...</p>
+<div class="pt-md flex justify-between items-center border-t border-outline-variant">
+<span class="font-label-sm text-label-sm uppercase">Iñaki Rodriguez</span>
+<span class="font-label-sm text-label-sm opacity-60">12 Oct 2024</span>
+</div>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="flex-none w-[350px] snap-start flex flex-col bg-surface-container-low border border-transparent hover:border-black transition-all group">
+<div class="w-full h-64 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Server room with red LEDs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKCNf0ZokHCyxkog_zNhVq94KBj2kjbkfEnqiIjm3oAlSWBg0ATs5peIvIIuH7ShNWBXoR1Zxk0tTvCssyUTQf1EfEPmYYaVRpEB_Zk5KHyDxjuh5XJ6RVQ6xOQqkhXCoHI6P4JJLPZIjahGaUceTo6HWxycf1ZlJNsAhHfRx1y_RFiJEA09ekAJmtrVmyU406JnxTsfwUBQY4AwT4bcmDIj7sp-yCZtt9WmrKr854kiqddFb6lUizxrKgFvaqC_tsqSy0ryMbvQ">
+</div>
+<div class="p-md flex-grow space-y-sm"><span class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest mb-xs block">Automatización B2B</span>
+<h3 class="font-headline-lg text-headline-lg group-hover:text-accent-red transition-colors">Automatización n8n para Finanzas</h3>
+<p class="font-body-md text-body-md line-clamp-3">Implementación de flujos de conciliación bancaria automática reduciendo errores humanos en un 94% mediante el uso de nodos personalizados y webhooks cifrados de alta seguridad...</p>
+<div class="pt-md flex justify-between items-center border-t border-outline-variant">
+<span class="font-label-sm text-label-sm uppercase">Christian Elias</span>
+<span class="font-label-sm text-label-sm opacity-60">08 Oct 2024</span>
+</div>
+</div>
+</article>
+<!-- Post 3 -->
+<article class="flex-none w-[350px] snap-start flex flex-col bg-surface-container-low border border-transparent hover:border-black transition-all group">
+<div class="w-full h-64 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Global connectivity map" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA48P8omgwZzf1sIqqIWORrw5K3t4BAwj5jDQKAH_amiCYHkC5hT8p8-HPqEtYITimL8Ujojb7H-aJyjkMBEQjvM_KCG6xog7S3fCP3dR_LOQ0Ym03vO58ZJLz-SZYFJxMxU3OWwDyU3KpNoW8sbuToOffKUJc_MS5sFwnRPR8nmFyXEM04N0QJ1SqvZRouHRmbgv7pno1N1m-K0k8qf2sGaj9xGnHd6lvRMVqXjc4sa7YUGFeXAAV2hXRT9ChZUiozlFvd58-3ag">
+</div>
+<div class="p-md flex-grow space-y-sm"><span class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest mb-xs block">Bases de Datos</span>
+<h3 class="font-headline-lg text-headline-lg group-hover:text-accent-red transition-colors">T-SQL: Optimizando Procedimientos</h3>
+<p class="font-body-md text-body-md line-clamp-3">Guía definitiva sobre el uso de Common Table Expressions (CTE) y planes de ejecución para acelerar reportes transaccionales de alto volumen en servidores SQL empresariales...</p>
+<div class="pt-md flex justify-between items-center border-t border-outline-variant">
+<span class="font-label-sm text-label-sm uppercase">Elena Vargas</span>
+<span class="font-label-sm text-label-sm opacity-60">01 Oct 2024</span>
+</div>
+</div>
+</article>
+<!-- Extra Post 4 (Scroll) -->
+<article class="flex-none w-[350px] snap-start flex flex-col bg-surface-container-low border border-transparent hover:border-black transition-all group">
+<div class="w-full h-64 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Technical data visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo9y3S6O9Ioce5Y4IavUIgvVJX6GRSQ-bS4idTj9sdQANrU0bl90T5ZKPhKJK-sl7dnvNa9B1GT5tC4rcScZ0l6TqOIjL2vHTax8rVdchHLlVB7zKKbBQrTRgU2V2FmRMUWFotcGbig3tvf_3TgO_rbJdojhjqOWiYdVboK8l-F3OI4DqXvlj-zwqlE1w6HMn5dx1naXf5OiyI9iZtAT8H5Xc-K3MeLOjWJXT_sSCAFI7wGHR7FaUK24C5KsptgrzCTS8tJm5CwA">
+</div>
+<div class="p-md flex-grow space-y-sm">
+<h3 class="font-headline-lg text-headline-lg group-hover:text-accent-red transition-colors">Visión Artificial en Manufactura</h3>
+<p class="font-body-md text-body-md line-clamp-3">Uso de YOLOv8 para la detección de anomalías en líneas de ensamblaje en tiempo real con integración directa a sistemas ERP propietarios...</p>
+<div class="pt-md flex justify-between items-center border-t border-outline-variant">
+<span class="font-label-sm text-label-sm uppercase">Marcos Ruiz</span>
+<span class="font-label-sm text-label-sm opacity-60">28 Sep 2024</span>
+</div>
+</div>
+</article>
+<!-- Extra Post 5 (Scroll) -->
+<article class="flex-none w-[350px] snap-start flex flex-col bg-surface-container-low border border-transparent hover:border-black transition-all group">
+<div class="w-full h-64 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Circuit board detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDFOZlKom5tvSnfI03z5UXTYdnESROYZIJ1MohMVuCz2bAeGlTcMwsa3LY4gnsGQfzCWwF3p4Roa_aJ_2AJtx1bCbbcBtH9mhaRXxyKs8gNOOzgGkBn5rbXS79Cd7RoElRv_KcyIPzVovMnJ4_Cj6u1OWNmSAldCEaPTYa-1nqXBLOA8oqzzrC8zqDauc4xfvlRDCfSzZScZa0BLNTJ5D3rblATdKjs4W7AnFUB3GzhNXBEUVgYJXczWY11RC9_t5wYvtz0_Dk_w">
+</div>
+<div class="p-md flex-grow space-y-sm">
+<h3 class="font-headline-lg text-headline-lg group-hover:text-accent-red transition-colors">Ciberdefensa Proactiva con ML</h3>
+<p class="font-body-md text-body-md line-clamp-3">Modelado de comportamientos de red para identificar exfiltración de datos antes de que se complete el payload mediante análisis de flujo bidireccional...</p>
+<div class="pt-md flex justify-between items-center border-t border-outline-variant">
+<span class="font-label-sm text-label-sm uppercase">Sofía Méndez</span>
+<span class="font-label-sm text-label-sm opacity-60">25 Sep 2024</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- SEARCH AND FILTER MODULE -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl bg-surface-container-lowest">
+<div class="max-w-6xl mx-auto text-center">
+<h2 class="font-headline-xl text-headline-xl mb-lg uppercase">Búsqueda de Artículos</h2>
+<!-- Filter Buttons Row -->
+<div class="flex flex-wrap justify-center gap-base mb-xl gap-4" id="filterBar">
+<button class="filter-btn border-2 border-outline-variant transition-all duration-300 hover:scale-105" data-filter="ALL">TODOS</button>
+<button class="filter-btn active border-2 border-outline-variant transition-all duration-300 hover:scale-105 border-accent-red scale-105" data-filter="AUTOMATIZACIÓN B2B">AUTOMATIZACIÓN B2B</button>
+<button class="filter-btn border-2 border-outline-variant transition-all duration-300 hover:scale-105" data-filter="BASES DE DATOS">BASES DE DATOS</button>
+<button class="filter-btn border-2 border-outline-variant transition-all duration-300 hover:scale-105" data-filter="DESARROLLO MÓVIL Y SEGURIDAD">DESARROLLO MÓVIL Y SEGURIDAD</button>
+<button class="filter-btn border-2 border-outline-variant transition-all duration-300 hover:scale-105" data-filter="GENERACIÓN DE VIDEO IA">GENERACIÓN DE VIDEO IA</button>
+<button class="filter-btn border-2 border-outline-variant transition-all duration-300 hover:scale-105" data-filter="ESTRATEGIA E-COMMERCE Y CHATBOTS">ESTRATEGIA E-COMMERCE Y CHATBOTS</button>
+</div>
+<div class="flex flex-col md:flex-row gap-base items-center card-border p-xs bg-white max-w-3xl mx-auto">
+<div class="flex-grow w-full flex items-center px-md">
+<span class="material-symbols-outlined text-secondary">search</span>
+<input class="w-full border-0 focus:ring-0 font-body-md py-md px-sm placeholder:text-on-primary-fixed-variant" placeholder="Buscar arquitecturas, protocolos o guías..." type="text">
+</div>
+<button class="bg-primary hover:bg-accent-red text-white font-label-sm py-md px-lg transition-all uppercase tracking-widest whitespace-nowrap w-full md:w-auto">
+            Buscar
+          </button>
+</div>
+</div>
+</section>
+<!-- LOAD MORE ARTICLE GRID -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-lg" id="articleGrid">
+<!-- Articles tagged with categories -->
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="DESARROLLO MÓVIL Y SEGURIDAD" style="display: none; opacity: 0; transform: translateY(10px);">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">Desarrollo Móvil y Seguridad</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Gestión de Secretos en CI/CD</h4>
+<p class="font-body-md">Optimización de bóvedas digitales para la inyección de variables de entorno seguras en despliegues automatizados.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="ESTRATEGIA E-COMMERCE Y CHATBOTS" style="opacity: 0; transform: translateY(10px); display: none;">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">Estrategia E-commerce y Chatbots</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Fine-tuning de Llama-3 para B2B</h4>
+<p class="font-body-md">Ajuste fino de modelos de lenguaje para el soporte técnico especializado en el sector industrial.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="BASES DE DATOS" style="opacity: 0; transform: translateY(10px); display: none;">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">Bases de Datos</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Data Lakes: Estructura vs. Agilidad</h4>
+<p class="font-body-md">Debate técnico sobre la gobernanza de datos en arquitecturas de lago de datos modernas.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="DESARROLLO MÓVIL Y SEGURIDAD" style="display: none; opacity: 0; transform: translateY(10px);">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">Desarrollo Móvil y Seguridad</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Kubernetes en el Edge</h4>
+<p class="font-body-md">Despliegue de microservicios en dispositivos IoT con recursos limitados utilizando K3s.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="DESARROLLO MÓVIL Y SEGURIDAD" style="display: none; opacity: 0; transform: translateY(10px);">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">Desarrollo Móvil y Seguridad</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Zero Trust en VPNs Corporativas</h4>
+<p class="font-body-md">Transición de modelos perimetrales a arquitecturas de confianza cero para el trabajo remoto.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="AUTOMATIZACIÓN B2B" style="opacity: 1; transform: translateY(0px); display: flex;">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">Automatización B2B</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Optimización de Costos AWS</h4>
+<p class="font-body-md">Estrategias de Reserved Instances y Savings Plans para reducir la factura mensual en un 30%.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="IA" style="opacity: 0; transform: translateY(10px); display: none;">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">IA</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Agentes Autónomos en Finanzas</h4>
+<p class="font-body-md">Sistemas que auto-corrigen desviaciones presupuestarias mediante análisis predictivo.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="DATOS" style="opacity: 0; transform: translateY(10px); display: none;">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">Datos</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Pipeline de Datos en Rust</h4>
+<p class="font-body-md">Por qué estamos migrando nuestros procesos de alto volumen de Python a Rust.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="DESARROLLO MÓVIL Y SEGURIDAD" style="display: none; opacity: 0; transform: translateY(10px);">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">Seguridad</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Auditoría de Smart Contracts</h4>
+<p class="font-body-md">Manual de revisión de código para vulnerabilidades comunes en entornos EVM.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="DEVOPS" style="opacity: 0; transform: translateY(10px); display: none;">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">DevOps</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Infraestructura Inmutable con Terraform</h4>
+<p class="font-body-md">Patrones de diseño para despliegues que no admiten cambios manuales en caliente.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="AUTOMATIZACIÓN B2B" style="opacity: 1; transform: translateY(0px); display: flex;">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">B2B</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Estrategias de ABM con IA</h4>
+<p class="font-body-md">Personalización masiva de contenidos técnicos para cuentas estratégicas.</p>
+</article>
+<article class="p-lg card-border bg-white flex flex-col space-y-sm group transition-all duration-300" data-category="BASES DE DATOS" style="opacity: 0; transform: translateY(10px); display: none;">
+<span class="font-label-sm text-accent-red uppercase tracking-widest">SQL</span>
+<h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">Índices Columnar en SQL Server</h4>
+<p class="font-body-md">Cuándo y cómo implementarlos para analítica masiva en tiempo real.</p>
+</article>
+</div>
+<div class="flex justify-center mt-lg">
+<button class="flex flex-col items-center group" id="loadMoreBtn" style="display: none;">
+<span class="font-label-sm uppercase tracking-widest mb-2 group-hover:text-accent-red">Cargar más artículos</span>
+<span class="material-symbols-outlined text-4xl group-hover:text-accent-red animate-bounce">expand_more</span>
+</button>
+</div>
+</section>
+<!-- CLUSTERS SECTION -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4 card-border bg-surface-container-lowest p-lg group hover:bg-on-surface transition-colors duration-300">
+<span class="material-symbols-outlined text-accent-red text-4xl mb-md">database</span>
+<h2 class="font-headline-lg text-headline-lg mb-sm group-hover:text-white">Ingeniería de Datos y T-SQL</h2>
+<p class="font-body-md text-body-md mb-md group-hover:text-surface-variant">Arquitecturas robustas para el manejo de Big Data y optimización de consultas críticas en entornos corporativos de alta demanda.</p>
+<a class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest flex items-center gap-base" href="#">
+          Explorar Cluster <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="md:col-span-4 card-border bg-on-surface p-lg group">
+<span class="material-symbols-outlined text-accent-red text-4xl mb-md">account_tree</span>
+<h2 class="font-headline-lg text-headline-lg mb-sm text-white">Automatización de Workflows (n8n)</h2>
+<p class="font-body-md text-body-md mb-md text-surface-variant">Diseño de flujos de trabajo autónomos que eliminan la fricción operativa mediante orquestación low-code y segura.</p>
+<a class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest flex items-center gap-base" href="#">
+          Optimizar Procesos <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="md:col-span-4 card-border bg-surface-container-lowest p-lg group hover:bg-on-surface transition-colors duration-300">
+<span class="material-symbols-outlined text-accent-red text-4xl mb-md">movie_filter</span>
+<h2 class="font-headline-lg text-headline-lg mb-sm group-hover:text-white">IA y Generación Audiovisual</h2>
+<p class="font-body-md text-body-md mb-md group-hover:text-surface-variant">Implementación de modelos generativos para la creación de activos multimedia dinámicos con coherencia de marca total.</p>
+<a class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest flex items-center gap-base" href="#">
+          Ver Casos <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- RESOURCE TABLE -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl bg-surface-container-low">
+<div class="max-w-6xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-lg uppercase">Mapeo de Extracción de Datos IA</h2>
+<div class="overflow-x-auto card-border bg-white">
+<table class="w-full text-left border-collapse">
+<thead class="bg-primary text-on-primary">
+<tr>
+<th class="p-md font-label-sm text-label-sm uppercase tracking-widest">Recurso</th>
+<th class="p-md font-label-sm text-label-sm uppercase tracking-widest">Dificultad</th>
+<th class="p-md font-label-sm text-label-sm uppercase tracking-widest">Enfoque Técnico</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="divider-gray">
+<td class="p-md font-semibold italic">Web Scraping con Agentes IA</td>
+<td class="p-md">
+<span class="inline-block px-sm py-1 border border-primary text-xs uppercase">Avanzado</span>
+</td>
+<td class="p-md">Extracción semántica utilizando LLMs locales para bypass de selectores CSS dinámicos.</td>
+</tr>
+<tr class="divider-gray">
+<td class="p-md font-semibold italic">Análisis Documental PDF</td>
+<td class="p-md">
+<span class="inline-block px-sm py-1 border border-outline text-secondary text-xs uppercase">Intermedio</span>
+</td>
+<td class="p-md">Arquitectura RAG (Retrieval-Augmented Generation) para consultas en lenguaje natural sobre datasets no estructurados.</td>
+</tr>
+<tr>
+<td class="p-md font-semibold italic">OCR en Tiempo Real</td>
+<td class="p-md">
+<span class="inline-block px-sm py-1 border border-accent-red text-accent-red text-xs uppercase">Crítico</span>
+</td>
+<td class="p-md">Pipeline de visión artificial para digitalización instantánea de logs físicos en centros de datos.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- LEAD CAPTURE SECTION -->
+<section class="bg-primary text-on-primary py-xl px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center">
+<div class="max-w-3xl space-y-lg">
+<h2 class="font-headline-xl text-headline-xl uppercase tracking-wider">Recibe Arquitecturas de IA en tu Bandeja</h2>
+<p class="font-body-lg text-body-lg text-surface-variant">Únete a nuestra lista de acceso técnico. Enviamos esquemas de arquitectura, logs de auditoría y análisis de vulnerabilidades una vez a la semana. Sin marketing, solo código y lógica.</p>
+<form class="w-full flex flex-col md:flex-row gap-gutter mt-lg">
+<div class="flex-grow">
+<input class="w-full bg-transparent border-0 border-b-2 border-on-primary-fixed-variant focus:border-accent-red focus:ring-0 text-white font-body-md py-md px-0 placeholder:text-on-primary-fixed-variant transition-all" placeholder="Email Corporativo" required="" type="email">
+</div>
+<button class="bg-accent-red hover:bg-white hover:text-black text-white font-headline-lg py-md px-lg transition-all uppercase tracking-widest text-sm whitespace-nowrap" type="submit">
+            Suscribirme a las Guías Técnicas
+          </button>
+</form>
+<p class="font-label-sm text-label-sm text-on-primary-fixed-variant">Respetamos tu privacidad. Sistemas cifrados de extremo a extremo.</p>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script>
+    // 1. Featured Articles Carousel Logic
+    const carousel = document.getElementById('featuredCarousel');
+    const dots = document.querySelectorAll('.nav-dot');
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    function goToSlide(index) {
+      currentSlide = index;
+      carousel.scrollTo({
+        left: carousel.offsetWidth * index,
+        behavior: 'smooth'
+      });
+      // Update dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function autoSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      goToSlide(currentSlide);
+    }
+
+    let slideInterval = setInterval(autoSlide, 5000);
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        goToSlide(index);
+        slideInterval = setInterval(autoSlide, 5000);
+      });
+    });
+
+    // 2. Latest Posts Horizontal Scroll
+    function scrollGrid(direction) {
+      const grid = document.getElementById('postsGrid');
+      const scrollAmount = 400; // Roughly one card + gap
+      if (direction === 'next') {
+        grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      } else {
+        grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    // 3. Filtering Logic
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articleGrid = document.getElementById('articleGrid');
+    let currentFilter = 'ALL';
+
+    function filterArticles(category) {
+      currentFilter = category;
+      const articles = articleGrid.querySelectorAll('article');
+      
+      articles.forEach(article => {
+        const artCat = article.getAttribute('data-category');
+        if (category === 'ALL' || artCat === category) {
+          article.style.display = 'flex';
+          setTimeout(() => {
+            article.style.opacity = '1';
+            article.style.transform = 'translateY(0)';
+          }, 10);
+        } else {
+          article.style.opacity = '0';
+          article.style.transform = 'translateY(10px)';
+          setTimeout(() => {
+            article.style.display = 'none';
+          }, 300);
+        }
+      });
+
+      // Update button styles
+      filterButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
+      });
+
+      // Check Load More visibility
+      // If we are filtering, we might want to hide it if all items are shown or if it doesn't make sense for that category
+      // For this demo, let's keep it but it will only add items that match or show based on the filter
+      if (category !== 'ALL') {
+        document.getElementById('loadMoreBtn').style.display = 'none';
+      } else {
+        // Only show if not all items are already "loaded" (in our simplified logic)
+        // Check if more items exist
+      }
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterArticles(button.getAttribute('data-filter'));
+      });
+    });
+
+    // 4. Load More Functionality (Updated for Filtering)
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    
+    const moreArticles = [
+      { tag: 'GENERACIÓN DE VIDEO IA', cat: 'GENERACIÓN DE VIDEO IA', title: 'Deepfakes para Marketing B2B', desc: 'Uso ético de avatares sintéticos para la personalización de mensajes comerciales a gran escala.' },
+      { tag: 'ESTRATEGIA E-COMMERCE Y CHATBOTS', cat: 'ESTRATEGIA E-COMMERCE Y CHATBOTS', title: 'Arquitecturas Multi-agente en Venta Directa', desc: 'Cómo coordinar diferentes modelos de IA para gestionar el funnel de ventas completo.' },
+      { tag: 'IA', cat: 'AUTOMATIZACIÓN B2B', title: 'Agentes Autónomos en Finanzas', desc: 'Sistemas que auto-corrigen desviaciones presupuestarias mediante análisis predictivo.' },
+      { tag: 'Datos', cat: 'BASES DE DATOS', title: 'Pipeline de Datos en Rust', desc: 'Por qué estamos migrando nuestros procesos de alto volumen de Python a Rust.' }
+    ];
+
+    loadMoreBtn.addEventListener('click', () => {
+      moreArticles.forEach(art => {
+        const articleHtml = `
+          <article class="p-lg card-border bg-white flex flex-col space-y-sm group opacity-0 translate-y-4 transition-all duration-500" data-category="${art.cat}">
+            <span class="font-label-sm text-accent-red uppercase tracking-widest">${art.tag}</span>
+            <h4 class="font-headline-lg text-headline-lg group-hover:text-accent-red">${art.title}</h4>
+            <p class="font-body-md">${art.desc}</p>
+          </article>
+        `;
+        articleGrid.insertAdjacentHTML('beforeend', articleHtml);
+      });
+
+      // Animate new items and respect current filter
+      const newItems = articleGrid.querySelectorAll('.opacity-0');
+      newItems.forEach((item, index) => {
+        const artCat = item.getAttribute('data-category');
+        if (currentFilter === 'ALL' || artCat === currentFilter) {
+          setTimeout(() => {
+            item.classList.remove('opacity-0', 'translate-y-4');
+          }, index * 100);
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Hide button after loading more (simulating end of feed)
+      loadMoreBtn.style.display = 'none';
+    });
+
+    // Existing micro-interaction for form focus
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.innerText = 'PROCESANDO ACCESO...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      
+      setTimeout(() => {
+        btn.innerText = 'CONEXIÓN ESTABLECIDA';
+        btn.classList.add('!bg-green-600');
+        e.target.reset();
+      }, 1500);
+    });
+
+    // Parallax-lite for hero
+    window.addEventListener('scroll', () => {
+      const scroll = window.pageYOffset;
+      const heroImg = document.querySelector('header img');
+      if (heroImg) {
+        heroImg.style.transform = `translateY(${scroll * 0.4}px)`;
+      }
+    });
+  </script>
+
+
+</body></html>

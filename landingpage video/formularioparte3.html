@@ -1,0 +1,373 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>E-BEATS COMMAND | Detalles Finales</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;700;800&amp;family=Open+Sans:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@100..900&amp;family=Open+Sans:wght@100..900&amp;family=Peace+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        @font-face {
+            font-family: 'Peace Sans';
+            src: url('https://fonts.cdnfonts.com/s/15454/PeaceSans.woff') format('woff');
+        }
+
+        body {
+            background-color: #000000;
+            color: #e5e2e1;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .kinetic-border {
+            position: relative;
+        }
+
+        .kinetic-border::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #d20402;
+        }
+
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(210, 4, 2, 0.1);
+        }
+
+        .radio-card:checked + label {
+            border-color: #d20402;
+            background-color: rgba(210, 4, 2, 0.1);
+            box-shadow: 0 0 15px rgba(210, 4, 2, 0.3);
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #d20402;
+            border-color: #d20402;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d20402;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e2e2e2",
+                        "outline-variant": "#4c4546",
+                        "on-tertiary": "#2f3131",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "background": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-fixed": "#410000",
+                        "on-secondary-container": "#ffe2dd",
+                        "on-tertiary-container": "#747576",
+                        "surface-bright": "#393939",
+                        "error-container": "#93000a",
+                        "surface-tint": "#c6c6c6",
+                        "surface-container-highest": "#353535",
+                        "surface-container": "#20201f",
+                        "surface-variant": "#353535",
+                        "primary-container": "#000000",
+                        "on-background": "#e5e2e1",
+                        "surface": "#131313",
+                        "secondary": "#ffb4a8",
+                        "outline": "#988e90",
+                        "surface-dim": "#131313",
+                        "inverse-primary": "#5e5e5e",
+                        "on-surface": "#e5e2e1",
+                        "tertiary-container": "#000000",
+                        "on-primary-container": "#757575",
+                        "on-primary": "#303030",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "primary": "#c6c6c6",
+                        "on-secondary": "#690000",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface-variant": "#cfc4c5",
+                        "secondary-container": "#d20402",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#930000",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#2a2a2a",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#474747",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "secondary-fixed": "#ffdad4",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "inverse-on-surface": "#313030",
+                        "tertiary": "#c6c6c7",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Anybody"],
+                        "headline-lg": ["Anybody"],
+                        "subtitle-lg": ["Peace Sans"],
+                        "subtitle-md": ["Peace Sans"],
+                        "label-caps": ["Peace Sans"],
+                        "body-md": ["Open Sans"],
+                        "body-lg": ["Open Sans"],
+                        "headline-xl": ["Anybody"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg": ["42px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "subtitle-lg": ["24px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                        "subtitle-md": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["60px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background min-h-screen flex flex-col">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 md:px-margin-desktop bg-background border-b border-secondary-container/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="terminal">terminal</span>
+<h1 class="font-subtitle-lg text-subtitle-lg text-secondary uppercase tracking-widest">E-BEATS COMMAND</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline-variant cursor-pointer hover:text-secondary transition-colors" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-40 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full relative">
+<!-- Background Animation -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-20">
+
+</div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Sidebar Progress (Executive Style) -->
+<aside class="lg:col-span-4 flex flex-col gap-8">
+<div class="kinetic-border pl-6 py-4">
+<p class="font-label-caps text-label-caps text-secondary mb-2 tracking-widest">TRANSACCIÓN EN PROCESO</p>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface uppercase">Detalles finales</h2>
+</div>
+<div class="flex flex-col gap-6 bg-surface-container-low p-8 rounded-lg border border-secondary-container/10">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">PASO 3 DE 3</span>
+<span class="font-subtitle-md text-subtitle-md text-secondary">100%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-full bg-secondary-container w-full shadow-[0_0_10px_#d20402]"></div>
+</div>
+<ul class="space-y-4 mt-4">
+<li class="flex items-center gap-3 text-on-surface-variant opacity-50">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">Configuración de Cuenta</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant opacity-50">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md">Definición de Objetivos</span>
+</li>
+<li class="flex items-center gap-3 text-secondary font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="radio_button_checked">radio_button_checked</span>
+<span class="font-body-md text-body-md">Validación Estratégica</span>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Form Content (Bento Style) -->
+<section class="lg:col-span-8 flex flex-col gap-8">
+<form class="space-y-8" id="final-details-form">
+<!-- Question 1: Etapa Actual -->
+<div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:border-secondary-container/40">
+<label class="font-subtitle-md text-subtitle-md text-on-surface block mb-6">¿En qué etapa estás actualmente?</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="relative">
+<input class="hidden radio-card peer" id="stage1" name="stage" type="radio" value="exploring">
+<label class="flex items-center p-4 border border-outline-variant rounded cursor-pointer transition-all hover:bg-secondary/5 peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="stage1">
+<span class="font-body-md text-body-md">Solo explorando</span>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-card peer" id="stage2" name="stage" type="radio" value="improving">
+<label class="flex items-center p-4 border border-outline-variant rounded cursor-pointer transition-all hover:bg-secondary/5 peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="stage2">
+<span class="font-body-md text-body-md">Quiero mejorar procesos</span>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-card peer" id="stage3" name="stage" type="radio" value="soon">
+<label class="flex items-center p-4 border border-outline-variant rounded cursor-pointer transition-all hover:bg-secondary/5 peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="stage3">
+<span class="font-body-md text-body-md">Busco implementar pronto</span>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-card peer" id="stage4" name="stage" type="radio" value="urgent">
+<label class="flex items-center p-4 border border-outline-variant rounded cursor-pointer transition-all hover:bg-secondary/5 peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="stage4">
+<span class="font-body-md text-body-md">Necesito una solución Urgente</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Question 2: Disposición -->
+<div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:border-secondary-container/40">
+<label class="font-subtitle-md text-subtitle-md text-on-surface block mb-6">Si encontramos una solución... ¿estarías dispuesto a implementarla?</label>
+<div class="flex flex-wrap gap-4">
+<div class="relative">
+<input class="hidden radio-card peer" id="disp1" name="willingness" type="radio" value="yes">
+<label class="flex items-center px-8 py-3 border border-outline-variant rounded cursor-pointer transition-all peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="disp1">
+<span class="font-body-md text-body-md">Si</span>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-card peer" id="disp2" name="willingness" type="radio" value="depends">
+<label class="flex items-center px-8 py-3 border border-outline-variant rounded cursor-pointer transition-all peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="disp2">
+<span class="font-body-md text-body-md">Depende del costo</span>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-card peer" id="disp3" name="willingness" type="radio" value="not_sure">
+<label class="flex items-center px-8 py-3 border border-outline-variant rounded cursor-pointer transition-all peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="disp3">
+<span class="font-body-md text-body-md">No estoy seguro</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Question 3: Tiempo -->
+<div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:border-secondary-container/40">
+<label class="font-subtitle-md text-subtitle-md text-on-surface block mb-6">¿En cuánto tiempo te gustaría implementar...?</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="relative">
+<input class="hidden radio-card peer" id="time1" name="timeline" type="radio" value="immediate">
+<label class="flex flex-col items-center justify-center py-6 border border-outline-variant rounded cursor-pointer transition-all peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="time1">
+<span class="material-symbols-outlined mb-2" data-icon="bolt">bolt</span>
+<span class="font-label-caps text-label-caps">Inmediatamente</span>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-card peer" id="time2" name="timeline" type="radio" value="1month">
+<label class="flex flex-col items-center justify-center py-6 border border-outline-variant rounded cursor-pointer transition-all peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="time2">
+<span class="material-symbols-outlined mb-2" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-caps text-label-caps">En 1 mes</span>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-card peer" id="time3" name="timeline" type="radio" value="3months">
+<label class="flex flex-col items-center justify-center py-6 border border-outline-variant rounded cursor-pointer transition-all peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="time3">
+<span class="material-symbols-outlined mb-2" data-icon="event_note">event_note</span>
+<span class="font-label-caps text-label-caps">En 3 meses</span>
+</label>
+</div>
+<div class="relative">
+<input class="hidden radio-card peer" id="time4" name="timeline" type="radio" value="browsing">
+<label class="flex flex-col items-center justify-center py-6 border border-outline-variant rounded cursor-pointer transition-all peer-checked:border-secondary-container peer-checked:bg-secondary-container/10" for="time4">
+<span class="material-symbols-outlined mb-2" data-icon="visibility">visibility</span>
+<span class="font-label-caps text-label-caps">Solo estoy viendo</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Text Area: Gestión Clientes -->
+<div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:border-secondary-container/40">
+<label class="font-subtitle-md text-subtitle-md text-on-surface block mb-4" for="client_management">Cuéntame brevemente cómo estás gestionando tus clientes actualmente:</label>
+<textarea class="w-full bg-primary-container border-b border-outline focus:border-secondary-container focus:ring-0 text-on-surface transition-all placeholder:text-outline-variant" id="client_management" name="client_management" placeholder="Escribe aquí tu situación actual..." rows="4"></textarea>
+</div>
+<!-- Privacy Checkbox -->
+<div class="flex items-start gap-4 px-2">
+<input class="mt-1 w-5 h-5 rounded border-outline-variant bg-transparent text-secondary-container focus:ring-secondary-container transition-all" id="privacy" name="privacy" required="" type="checkbox">
+<label class="font-body-md text-body-md text-on-surface-variant leading-tight" for="privacy">
+                            He leído y acepto la <a class="text-secondary hover:underline" href="#">Política de Privacidad</a> y los términos de servicio para el manejo de datos ejecutivos.
+                        </label>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-secondary-container/20">
+<button class="order-2 md:order-1 flex items-center gap-2 px-10 py-4 border-2 border-on-surface text-on-surface font-label-caps text-label-caps hover:bg-on-surface hover:text-primary-container transition-all active:scale-95 uppercase" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                            Atrás
+                        </button>
+<button class="order-1 md:order-2 w-full md:w-auto px-16 py-4 bg-secondary-container text-on-surface font-subtitle-md text-subtitle-md hover:bg-red-700 transition-all shadow-[0_0_20px_rgba(210,4,2,0.4)] active:scale-95 uppercase" type="submit">
+                            Enviar solicitud
+                        </button>
+</div>
+</form>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+
+<!-- Footer Desktop Branding -->
+<footer class="hidden md:flex justify-between items-center px-margin-desktop h-12 bg-surface-container-lowest border-t border-secondary-container/10">
+<span class="font-label-caps text-label-caps text-outline-variant">SYSTEM STATUS: OPTIMAL</span>
+<span class="font-label-caps text-label-caps text-outline-variant">© 2024 E-BEATS AI OPS</span>
+</footer>
+<script>
+        // Micro-interactions and Form Handling
+        document.getElementById('final-details-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            // Artificial feedback loop
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> PROCESANDO...';
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined" data-icon="done_all">done_all</span> SOLICITUD ENVIADA';
+                btn.classList.remove('bg-secondary-container');
+                btn.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    alert('Solicitud enviada correctamente al comando central.');
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-green-600', 'opacity-80', 'cursor-not-allowed');
+                    btn.classList.add('bg-secondary-container');
+                }, 1500);
+            }, 2000);
+        });
+
+        // Hover effects for radio cards
+        const radioGroups = document.querySelectorAll('.radio-card');
+        radioGroups.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const groupName = e.target.name;
+                document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
+                    input.parentElement.classList.remove('scale-105');
+                });
+                if(e.target.checked) {
+                    e.target.parentElement.classList.add('scale-105');
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CYBER_CORE AI | Catálogo de Soluciones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=Source+Serif+4:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-border {
+            position: relative;
+            overflow: hidden;
+        }
+        .kinetic-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #ff291a;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .kinetic-border:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#ff291a",
+                        "outline": "#7e7576",
+                        "on-tertiary-fixed-variant": "#930100",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3131",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#cfc4c5",
+                        "inverse-primary": "#c6c6c6",
+                        "on-surface": "#1a1c1c",
+                        "secondary": "#5d5f5f",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-tint": "#5e5e5e",
+                        "background": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-fixed": "#1b1b1b",
+                        "surface-dim": "#dadada",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-surface-variant": "#4c4546",
+                        "on-secondary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container": "#eeeeee",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-tertiary-fixed": "#410000",
+                        "primary-container": "#1b1b1b",
+                        "tertiary-container": "#410000",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-container": "#dfe0e0",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-secondary-container": "#616363",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-primary-container": "#848484",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "surface-bright": "#f9f9f9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "margin-mobile": "16px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "subheading-md": ["Hanken Grotesk"],
+                        "display-lg": ["Anton"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Anton"],
+                        "body-lg": ["Source Serif 4"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Source Serif 4"]
+                    },
+                    "fontSize": {
+                        "subheading-md": ["20px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-on-tertiary-container selection:text-white">
+<div id="site-header"></div>
+<!-- HERO SECTION -->
+<section class="relative min-h-screen flex items-center justify-center bg-primary overflow-hidden pt-24">
+<div class="absolute inset-0 z-0 opacity-40">
+<img class="w-full h-full object-cover grayscale" data-alt="A high-tech digital security landscape with glowing circuit lines and binary data streams overlaid on a dark, minimalist architectural background. The scene is rendered in deep blacks and high-contrast whites, with sharp red laser accents cutting through the frame to suggest cutting-edge cybersecurity and AI automation. The lighting is low-key and dramatic, emphasizing a high-stakes corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc1DK1QR2nlLj_IP5ybdpXphebCh3mmuFRWzNwcsFZDM-LjaCf2EAr89LAOBUz54r3LJKf0_oF5c4fyySP1WF2axGuOw3iMy0NJ00Uy5HPAB2Mz774jqSV72_IZgbU_rZOUyHZpRT6-8Y59yLwT2nDmsskaNA7CApRWbm9FuOw5Rw4vVjZaszKoMhB-oSlqsYdQnJGc2xF2ANWveY0_fs9XSVubTZv_aCaGZLT0MAKcvZnn3W7Oi1o8JDDVQTLmWkPol1tnmetYw"/>
+</div>
+<div class="relative z-10 w-full max-w-7xl px-margin-mobile md:px-margin-desktop text-center md:text-left flex flex-col items-center md:items-start">
+<div class="inline-block border border-on-tertiary-container px-sm py-xs mb-md">
+<span class="font-label-sm text-on-tertiary-container uppercase tracking-widest">Protocolo de Alta Disponibilidad v2.4</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-surface uppercase mb-md max-w-4xl tracking-tighter leading-none">
+                Catálogo de Soluciones en Automatización IA y Ciberseguridad
+            </h1>
+<p class="font-subheading-md text-subheading-md text-surface-variant mb-lg max-w-2xl">
+                Infraestructura tecnológica diseñada para despachos, centros de bienestar y corporaciones que exigen operar al máximo rendimiento.
+            </p>
+<button class="bg-on-tertiary-container text-white px-xl py-md font-label-sm uppercase tracking-widest hover:bg-on-surface transition-all duration-300 transform hover:scale-105 active:scale-95">
+                Auditar mi Infraestructura Ahora
+            </button>
+</div>
+<div class="absolute bottom-base left-1/2 -translate-x-1/2 md:left-margin-desktop md:translate-x-0">
+<span class="material-symbols-outlined text-surface animate-bounce text-4xl">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- SERVICES CLUSTER -->
+<section class="py-xl bg-surface">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="border-l-4 border-on-surface pl-md py-sm">
+<h3 class="font-headline-lg text-headline-lg uppercase mb-sm">Desarrollo de Software y Aplicaciones</h3>
+<p class="font-body-md text-secondary mb-md">Arquitecturas escalables para entornos de alto tráfico.</p>
+<a class="font-label-sm text-on-tertiary-container uppercase underline-offset-4 hover:underline" href="#">[ Explorar arquitectura en Flutter ]</a>
+</div>
+<div class="border-l-4 border-on-surface pl-md py-sm">
+<h3 class="font-headline-lg text-headline-lg uppercase mb-sm">Chatbots B2B y Agentes de Ventas</h3>
+<p class="font-body-md text-secondary mb-md">Conversión automatizada mediante modelos de lenguaje soberanos.</p>
+<a class="font-label-sm text-on-tertiary-container uppercase underline-offset-4 hover:underline" href="#">[ Ver demo de Agente Jorge ]</a>
+</div>
+<div class="border-l-4 border-on-surface pl-md py-sm">
+<h3 class="font-headline-lg text-headline-lg uppercase mb-sm">Ingeniería de Flujos de Trabajo (Workflows)</h3>
+<p class="font-body-md text-secondary mb-md">Interconexión de APIs y automatización de procesos operativos.</p>
+<a class="font-label-sm text-on-tertiary-container uppercase underline-offset-4 hover:underline" href="#">[ Optimizar con n8n ]</a>
+</div>
+<div class="border-l-4 border-on-surface pl-md py-sm">
+<h3 class="font-headline-lg text-headline-lg uppercase mb-sm">Administración de Bases de Datos y Seguridad</h3>
+<p class="font-body-md text-secondary mb-md">Resguardo de integridad y protocolos de encriptación militar.</p>
+<a class="font-label-sm text-on-tertiary-container uppercase underline-offset-4 hover:underline" href="#">[ Auditoría SQL Server ]</a>
+</div>
+</div>
+</div>
+</section>
+<!-- QUANTITATIVE IMPACT -->
+<section class="py-xl bg-on-surface text-surface">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl uppercase mb-lg text-center tracking-tight">Impacto Cuantitativo: El Salto Lógico</h2>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="border-b border-surface-variant">
+<th class="text-left py-md font-label-sm uppercase tracking-wider text-surface-variant">Métrica Operativa</th>
+<th class="text-center py-md font-label-sm uppercase tracking-wider text-surface-variant">Proceso Manual</th>
+<th class="text-right py-md font-label-sm uppercase tracking-wider text-on-tertiary-container">Ecosistema CYBER_CORE</th>
+</tr>
+</thead>
+<tbody class="font-body-lg">
+<tr class="border-b border-outline-variant/30">
+<td class="py-lg">Response Time (Atención)</td>
+<td class="text-center py-lg opacity-60">30 min - 4 hrs</td>
+<td class="text-right py-lg font-bold text-on-tertiary-container">0.2s</td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-lg">Disponibilidad de Servicio (Uptime)</td>
+<td class="text-center py-lg opacity-60">95% (Intermitente)</td>
+<td class="text-right py-lg font-bold text-on-tertiary-container">99.99%</td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-lg">Tasa de Error Humano</td>
+<td class="text-center py-lg opacity-60">12% - 15%</td>
+<td class="text-right py-lg font-bold text-on-tertiary-container">< 0.01%</td>
+</tr>
+<tr>
+<td class="py-lg">Capacidad de Procesamiento Diaria</td>
+<td class="text-center py-lg opacity-60">Limitada (8h/Día)</td>
+<td class="text-right py-lg font-bold text-on-tertiary-container">Ilimitada (24/7)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- METHODOLOGY -->
+<section class="py-xl bg-surface">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl uppercase mb-xl border-b-2 border-on-surface inline-block">Metodología de Despliegue</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md mt-lg">
+<div class="group">
+<span class="font-display-lg text-display-lg text-on-tertiary-container opacity-20 group-hover:opacity-100 transition-opacity duration-300">01</span>
+<h4 class="font-headline-lg text-headline-lg uppercase -mt-base">Auditoría</h4>
+<p class="font-body-md text-secondary mt-sm">Escaneo profundo de vulnerabilidades y cuellos de botella en el stack actual.</p>
+</div>
+<div class="group">
+<span class="font-display-lg text-display-lg text-on-tertiary-container opacity-20 group-hover:opacity-100 transition-opacity duration-300">02</span>
+<h4 class="font-headline-lg text-headline-lg uppercase -mt-base">Diseño Lógico</h4>
+<p class="font-body-md text-secondary mt-sm">Arquitectura de flujos de datos y selección de agentes IA especializados.</p>
+</div>
+<div class="group">
+<span class="font-display-lg text-display-lg text-on-tertiary-container opacity-20 group-hover:opacity-100 transition-opacity duration-300">03</span>
+<h4 class="font-headline-lg text-headline-lg uppercase -mt-base">Despliegue</h4>
+<p class="font-body-md text-secondary mt-sm">Integración en vivo sin interrupción de operaciones críticas.</p>
+</div>
+<div class="group">
+<span class="font-display-lg text-display-lg text-on-tertiary-container opacity-20 group-hover:opacity-100 transition-opacity duration-300">04</span>
+<h4 class="font-headline-lg text-headline-lg uppercase -mt-base">Monitoreo</h4>
+<p class="font-body-md text-secondary mt-sm">Control centralizado KVM 2 para supervisión en tiempo real.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- AUTHORITY QUOTE -->
+<section class="py-xl bg-surface-container-high relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row items-center gap-lg">
+<div class="w-full md:w-1/3 border-4 border-on-surface p-base">
+<img class="w-full grayscale filter contrast-125" data-alt="A professional portrait of a tech CEO in a minimalist white and gray office setting. The individual projects authority and intelligence, looking directly at the camera with a confident yet composed expression. The lighting is sharp and clinical, echoing the high-contrast aesthetic of the brand. The background features subtle digital server rack silhouettes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7j_sDTbRLd1TsbuR008_QfdNNtepfSC3Szl7gdeZcLnZW9UcfrAsdpmclziBfDVsZbEpk-mk3k0PMMxBliKppvYixXE40hjTK1UzuQQtnleyDzTRXgZi5i_-ZXfH1JAyGjfZlO0IzHXEt7iWBOYyvsozbRA71xIe3loA9rrT3VOcjSPqV4w1euurzxc1cKxLHGhqDp9wiIjPmrWJiwChAvDX45ctH0tNzI-EG2c-h6goVHf8w3jAdAKfn4AFGcFHMB1gj77z2pg"/>
+</div>
+<div class="w-full md:w-2/3">
+<h2 class="font-headline-lg text-headline-lg uppercase mb-md">Liderazgo Tecnológico Comprobado</h2>
+<blockquote class="font-body-lg text-body-lg italic relative">
+<span class="material-symbols-outlined absolute -left-lg -top-base opacity-20 text-6xl">format_quote</span>
+                    "La seguridad no es un producto, es un estado de conciencia operacional. En CYBER_CORE AI, no solo automatizamos procesos; blindamos la inteligencia de su organización contra la ineficiencia y la obsolescencia. Nuestro stack es la respuesta para quienes no pueden permitirse fallar."
+                    <footer class="mt-md not-italic">
+<cite class="font-label-sm uppercase tracking-widest text-on-tertiary-container">— Christian Elias, CEO & Chief Architect</cite>
+</footer>
+</blockquote>
+</div>
+</div>
+</section>
+<!-- CASE STUDIES -->
+<section class="py-xl bg-surface">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl uppercase mb-xl tracking-tighter">Arquitecturas en Producción</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Case 1 -->
+<div class="border border-on-surface p-md flex flex-col justify-between hover:bg-on-surface hover:text-surface transition-colors duration-500 group">
+<div>
+<div class="font-label-sm text-on-tertiary-container mb-sm uppercase">[ AGENTE JORGE ]</div>
+<h4 class="font-headline-lg text-headline-lg uppercase mb-md">Ventas B2B Autónomas</h4>
+<p class="font-body-md opacity-80 mb-lg">Implementación de un agente neuro-lingüístico capaz de calificar leads y cerrar reuniones en calendarios ejecutivos sin intervención humana.</p>
+</div>
+<a class="font-label-sm uppercase tracking-tighter group-hover:text-on-tertiary-container" href="#">Ver Protocolo de Cierre →</a>
+</div>
+<!-- Case 2 -->
+<div class="border border-on-surface p-md flex flex-col justify-between hover:bg-on-surface hover:text-surface transition-colors duration-500 group">
+<div>
+<div class="font-label-sm text-on-tertiary-container mb-sm uppercase">[ FLUTTER + FIREBASE ]</div>
+<h4 class="font-headline-lg text-headline-lg uppercase mb-md">Ecosistema de Adopción</h4>
+<p class="font-body-md opacity-80 mb-lg">Plataforma móvil cross-platform para gestión masiva de adopciones, integrando bases de datos en tiempo real y notificaciones push segmentadas.</p>
+</div>
+<a class="font-label-sm uppercase tracking-tighter group-hover:text-on-tertiary-container" href="#">Ecosistemas de adopción de mascotas →</a>
+</div>
+<!-- Case 3 -->
+<div class="border border-on-surface p-md flex flex-col justify-between hover:bg-on-surface hover:text-surface transition-colors duration-500 group">
+<div>
+<div class="font-label-sm text-on-tertiary-container mb-sm uppercase">[ AIRTABLE + IA ]</div>
+<h4 class="font-headline-lg text-headline-lg uppercase mb-md">Generación de Video IA</h4>
+<p class="font-body-md opacity-80 mb-lg">Flujo automatizado que transforma filas de datos en Airtable en campañas de video personalizadas mediante modelos generativos de alta fidelidad.</p>
+</div>
+<a class="font-label-sm uppercase tracking-tighter group-hover:text-on-tertiary-container" href="#">Generación de video IA →</a>
+</div>
+</div>
+</div>
+</section>
+<!-- TECHNICAL STACK -->
+<section class="py-xl bg-surface-container-low">
+<div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-label-sm text-on-tertiary-container text-center uppercase tracking-widest mb-md">Infrastructure specifications</h2>
+<div class="border border-on-surface">
+<div class="bg-on-surface text-surface py-sm px-md font-label-sm uppercase tracking-widest flex justify-between">
+<span>Protocolo</span>
+<span>Herramienta / Motor</span>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="flex justify-between py-sm px-md hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm opacity-60">ORQUESTACIÓN</span>
+<span class="font-bold">n8n (Enterprise)</span>
+</div>
+<div class="flex justify-between py-sm px-md hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm opacity-60">BASE DE DATOS</span>
+<span class="font-bold">SQL Server / PostgreSQL</span>
+</div>
+<div class="flex justify-between py-sm px-md hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm opacity-60">FRONT-END</span>
+<span class="font-bold">Flutter (Multi-platform)</span>
+</div>
+<div class="flex justify-between py-sm px-md hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm opacity-60">DASHBOARD</span>
+<span class="font-bold">KVM 2 (Central Logic)</span>
+</div>
+<div class="flex justify-between py-sm px-md hover:bg-surface-container-high transition-colors">
+<span class="font-label-sm opacity-60">AI MODELS</span>
+<span class="font-bold">LLaMA 3 / GPT-4o Integration</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ (Accordion) -->
+<section class="py-xl bg-surface">
+<div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-xl text-headline-xl uppercase text-center mb-xl">Consultas Frecuentes</h2>
+<div class="space-y-md">
+<details class="group border-b border-on-surface/20 pb-md">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-headline-lg text-headline-lg uppercase text-2xl tracking-tight">¿Tienen cobertura en Lima y Provincias?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-on-tertiary-container">expand_more</span>
+</summary>
+<div class="mt-md font-body-md text-secondary">
+                        Nuestra arquitectura es 100% digital y remota por diseño. Implementamos soluciones en todo el Perú, con soporte síncrono para Lima Metropolitana y protocolos de atención asíncronos de alta prioridad para provincias.
+                    </div>
+</details>
+<details class="group border-b border-on-surface/20 pb-md">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-headline-lg text-headline-lg uppercase text-2xl tracking-tight">¿Aceptan pagos bajo MYPE Tributario?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-on-tertiary-container">expand_more</span>
+</summary>
+<div class="mt-md font-body-md text-secondary">
+                        Afirmativo. Estamos registrados formalmente y operamos bajo el régimen MYPE Tributario. Emitimos facturación electrónica compatible con SUNAT para asegurar la deducibilidad total de su inversión tecnológica.
+                    </div>
+</details>
+<details class="group border-b border-on-surface/20 pb-md">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-headline-lg text-headline-lg uppercase text-2xl tracking-tight">¿Qué sucede con el control de mis datos?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-on-tertiary-container">expand_more</span>
+</summary>
+<div class="mt-md font-body-md text-secondary">
+                        Usted mantiene la soberanía total. A través de nuestro dashboard centralizado, usted tiene acceso a los logs de auditoría y la capacidad de revocar accesos en cualquier momento. Nosotros construimos la tubería, usted es el dueño del flujo.
+                    </div>
+</details>
+</div>
+</div>
+</section>
+<!-- CLOSING & FORM -->
+<section class="py-xl bg-on-surface text-surface">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<div>
+<h2 class="font-headline-xl text-headline-xl uppercase mb-lg tracking-tighter">Inicia la Transformación de tu Ecosistema</h2>
+<p class="font-body-lg text-surface-variant mb-xl leading-relaxed">
+                    El control centralizado mediante <span class="text-on-tertiary-container font-bold">KVM 2</span> garantiza que cada byte de su organización esté bajo su mando directo. No deje la seguridad y eficiencia de su empresa al azar o a sistemas obsoletos.
+                </p>
+<div class="flex items-center gap-md border border-outline-variant p-md">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl" style="font-variation-settings: 'FILL' 1;">security</span>
+<div>
+<h4 class="font-label-sm uppercase text-surface">Soberanía de Datos Garantizada</h4>
+<p class="font-label-sm opacity-60">Encriptación de extremo a extremo en cada implementación.</p>
+</div>
+</div>
+<div class="mt-xl hidden lg:block">
+<button class="bg-on-tertiary-container text-white px-xl py-md font-label-sm uppercase tracking-widest hover:bg-surface hover:text-on-surface transition-all duration-300">
+                        Auditar mi Base de Datos y Procesos Ahora
+                    </button>
+</div>
+</div>
+<div class="bg-surface p-lg border-t-8 border-on-tertiary-container">
+<form class="space-y-lg text-on-surface">
+<div class="space-y-xs">
+<label class="font-label-sm uppercase text-secondary">Nombre Completo</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="Ej. Christian Elias" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm uppercase text-secondary">Dominio de la Empresa</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="empresa.com.pe" type="url"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm uppercase text-secondary">WhatsApp Operativo</label>
+<div class="flex items-center gap-base">
+<span class="font-label-sm text-secondary opacity-50">+51</span>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="999 999 999" type="tel"/>
+</div>
+</div>
+<div class="pt-md">
+<button class="w-full bg-primary text-surface py-md font-label-sm uppercase tracking-widest hover:bg-on-tertiary-container transition-colors duration-300" type="submit">
+                            Desplegar mi Ecosistema Digital
+                        </button>
+</div>
+<p class="text-center font-label-sm text-secondary opacity-40 italic">
+                        Al enviar este formulario, usted autoriza el inicio del protocolo de auditoría preliminar.
+                    </p>
+</form>
+</div>
+</div>
+</section>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+</body></html>
