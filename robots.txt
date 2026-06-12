@@ -8,15 +8,43 @@ User-agent: *
 Allow: /
 
 # Reglas específicas
- Disallow: /image/*.mp4
+Disallow: /image/*.mp4
 Disallow: /cgi-bin/
 Disallow: /?.gif
 
 # Sitemap
 Sitemap: https://www.ebeatspe.com/sitemap.xml
 
+# Archivo para rastreadores de IA
+llms.txt: https://www.ebeatspe.com/llms.txt
+
 # Información adicional para motores de búsqueda
 Host: https://www.ebeatspe.com
 
 # Crawl-delay (opcional, para no sobrecargar el servidor)
 Crawl-delay: 1
+
+# ─── Rastreadores de IA ───────────────────────────────────────────────────────
+
+# Google (Gemini / AI Overview)
+User-agent: Googlebot
+Allow: /
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Common Crawl (base de datos de muchos LLMs)
+User-agent: CCBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /

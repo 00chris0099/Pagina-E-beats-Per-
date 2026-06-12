@@ -564,7 +564,7 @@
 <!-- Video Centerpiece -->
 <div id="video-wrapper" class="reveal relative group mx-auto max-w-4xl aspect-video bg-black border-2 border-primary/50 overflow-hidden mb-12 transition-all hover:border-primary red-glow active" style="transition-delay: 0.4s;">
 <video id="hero-video" class="w-full h-full object-cover" playsinline preload="none" muted>
-<source src="video/WhatsApp%20Video%202026-06-08%20at%209.16.18%20PM.mp4" type="video/mp4">
+<source src="video/video.mp4" type="video/mp4">
 </video>
 <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 <!-- Fullscreen button -->
@@ -609,65 +609,95 @@
     video.muted = true;
     video.volume = 1;
 
+    // Detectar si venimos del formulario con el hash #video-section
     const fromForm = window.location.hash === '#video-section';
 
+    // ── Scroll inmediato a la sección de video ──────────────────────────────
+    function scrollToVideoSection() {
+        const videoSection = document.getElementById('video-section');
+        if (!videoSection) return;
+        const top = videoSection.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+
     window.addEventListener('load', function() {
-        video.load();
-        video.currentTime = 0;
-        video.pause();
+        // Resetear estado visual
         endScreen.style.display = 'none';
         endScreen.style.opacity = '0';
         overlay.style.display = 'flex';
         overlay.style.opacity = '1';
 
-        video.addEventListener('loadeddata', function onLoaded() {
-            video.removeEventListener('loadeddata', onLoaded);
+        if (fromForm) {
+            // 1. Scroll inmediato, sin esperar al video
+            scrollToVideoSection();
+
+            // 2. Activar carga del video (preload era "none")
+            video.preload = 'auto';
+            video.load();
+            video.currentTime = 0;
+
+            let played = false;
+
+            function doPlay() {
+                if (played) return;
+                played = true;
+                video.muted = false;
+                video.volume = 1;
+                video.play().catch(function() {
+                    // Fallback: reproducir muteado si el navegador bloquea el audio
+                    video.muted = true;
+                    video.play().catch(function() {});
+                });
+                overlay.style.opacity = '0';
+                setTimeout(function() { overlay.style.display = 'none'; }, 500);
+                history.replaceState(null, '', window.location.pathname);
+            }
+
+            // Reproducir cuando el video tenga datos suficientes
+            video.addEventListener('canplay', doPlay, { once: true });
+            // Fallback: si en 2.5s no disparó canplay, intentarlo de todas formas
+            setTimeout(doPlay, 2500);
+
+        } else {
+            // Navegación normal: sólo pausar
             video.currentTime = 0;
             video.pause();
-            setTimeout(() => {
-                const videoSection = document.getElementById('video-section');
-                if (videoSection) {
-                    videoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                if (fromForm) {
-                    video.muted = false;
-                    video.play();
-                    overlay.style.opacity = '0';
-                    setTimeout(() => { overlay.style.display = 'none'; }, 500);
-                    history.replaceState(null, '', window.location.pathname);
-                }
-            }, 300);
-        });
+        }
     });
 
+    // Click manual en el overlay de play
     if (overlay) {
         overlay.addEventListener('click', function() {
             video.muted = false;
             video.play();
             overlay.style.opacity = '0';
-            setTimeout(() => { overlay.style.display = 'none'; }, 500);
+            setTimeout(function() { overlay.style.display = 'none'; }, 500);
         });
     }
 
+    // Pantalla de fin de video
     video.addEventListener('ended', function() {
         endScreen.style.display = 'flex';
-        setTimeout(() => { endScreen.style.opacity = '1'; }, 50);
+        setTimeout(function() { endScreen.style.opacity = '1'; }, 50);
     });
 
+    // Botón replay
     if (replayBtn) {
         replayBtn.addEventListener('click', function() {
             endScreen.style.opacity = '0';
-            setTimeout(() => {
+            setTimeout(function() {
                 endScreen.style.display = 'none';
                 video.currentTime = 0;
                 video.muted = false;
-                video.play().catch(() => {});
+                video.play().catch(function() {});
             }, 500);
         });
     }
 
+    // Bloquear menú contextual
     video.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 
+    // Botón fullscreen
     if (fsBtn) {
         fsBtn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -690,10 +720,6 @@
     });
 })();
 </script>
-<button class="reveal font-button text-xl bg-primary text-white px-12 py-6 uppercase red-glow hover:bg-white hover:text-black hover:red-glow transition-all w-full md:w-auto active" style="transition-delay: 0.6s;">
-            Agendar Diagnóstico Ejecutivo
-        </button>
-</div>
 </section>
 <!-- Section 2: Chaos Signals (Bento Grid) -->
 <section class="px-container-padding-mobile py-stack-lg bg-black border-b border-primary/20">

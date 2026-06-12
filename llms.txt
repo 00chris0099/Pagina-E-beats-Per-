@@ -1,0 +1,109 @@
+# E Beats Perú — Agencia de Automatización con IA
+
+> **Misión:** Transformar empresas B2B peruanas y latinoamericanas mediante infraestructuras de automatización con inteligencia artificial, chatbots de ventas y ciberseguridad, eliminando trabajo manual y escalando operaciones 24/7.
+
+**URL:** https://www.ebeatspe.com  
+**Idioma principal:** Español  
+**Régimen fiscal:** MYPE Tributario ante SUNAT (Perú)  
+**Sede operativa:** San Juan de Lurigancho, Lima, Perú  
+
+---
+
+## Propuesta de Valor
+
+E Beats Perú (también conocida como CYBER_CORE AI) ofrece soluciones de alta ingeniería tecnológica para empresas que necesitan escalar sin contratar más personal. Implementamos sistemas autónomos que atienden clientes, califican prospectos, gestionan datos y generan contenido sin intervención humana, reduciendo la fricción operativa hasta en un 40%.
+
+---
+
+## Servicios Principales
+
+### 1. Chatbots de Ventas Especializados con IA
+Agentes conversacionales entrenados por industria (legal, inmobiliaria, salud, retail) que califican prospectos, responden consultas y agendan reuniones automáticamente. Integración con CRMs como HubSpot, Salesforce y soluciones propietarias via webhooks y APIs REST.
+
+### 2. Automatización de Flujos de Trabajo (n8n)
+Conexión de bases de datos legacy, sincronización de plataformas (Airtable, Google Sheets, MS SQL Server) y automatización de procesos repetitivos mediante nodos n8n. ROI documentado del 300% en automatización de contenido para redes sociales.
+
+### 3. Desarrollo de Software y Aplicaciones Móviles
+Creación de apps móviles dedicadas con Flutter y Firebase para sectores específicos como adopción de mascotas, reservas de spa e inmobiliarias.
+
+### 4. Arquitectura de Contenido con IA
+Generación masiva de activos visuales y de video mediante motores IA (Kling AI, HeyGen, Veo) integrados con pipelines de automatización para marketing autónomo.
+
+### 5. Auditoría B2B y Ciberseguridad
+Protección integral con encriptación AES-256, compliance y blindaje de datos para firmas legales y sectores críticos. Trazabilidad de expedientes confidenciales.
+
+---
+
+## Stack Tecnológico
+
+- **Automatización:** n8n (webhooks y nodos), Airtable
+- **Bases de datos:** MS SQL Server, Firebase (Firestore)
+- **Video IA:** Kling AI, HeyGen, Veo
+- **Desarrollo móvil:** Flutter + Firebase
+- **IA conversacional:** Arquitecturas LLM propietarias + APIs REST
+- **CRM integration:** HubSpot, Salesforce, sistemas propietarios
+
+---
+
+## Mercados Objetivo
+
+**Principal:** Lima (San Juan de Lurigancho, Miraflores, San Isidro), Cusco, Piura — Perú  
+**Regional:** LATAM (México, Colombia, Chile, Argentina, Ecuador)  
+**Sectores:** Legal Tech, Real Estate, Salud/Bienestar, Retail, Educación
+
+---
+
+## Casos de Uso Verificados
+
+| Caso | Sector | Resultado |
+|------|--------|-----------|
+| Digitalización de expedientes con trazabilidad | Legal (CODEA) | 100% expedientes digitalizados |
+| Sistema de reserva inteligente para Spa | Salud/Bienestar | Reducción 60% llamadas manuales |
+| Gestión de inventarios automática | Inmobiliaria Lima | Sincronización en tiempo real |
+| Pipeline de leads con NLP + Calendar Sync | Inmobiliaria | 24/7 calificación autónoma |
+| Automatización de contenido RRSS | Marketing | ROI 300%, 0 edición manual |
+
+---
+
+## Transparencia y E-E-A-T
+
+- **Fundador:** Christian Elias, CEO de E Beats Perú
+- **Registro:** Entidad registrada formalmente en Perú bajo MYPE Tributario SUNAT
+- **Experiencia:** Implementaciones verificadas en Lima, Cusco y Piura
+- **Seguridad:** Infraestructura con encriptación AES-256 en todos los nodos
+
+---
+
+## Datos de Contacto
+
+- **Email:** contact@cybercore.ai  
+- **WhatsApp Business:** +51 (Perú) — disponible en el formulario del sitio  
+- **Dirección:** San Juan de Lurigancho, Lima, Perú (CP 15401)  
+- **Horario:** Lunes a Viernes, 09:00 – 18:00 (PET, UTC-5)  
+
+---
+
+## Páginas Clave del Sitio
+
+- **Home / Landing principal:** https://www.ebeatspe.com/
+- **Blog de recursos:** https://www.ebeatspe.com/blogprincipal.html
+- **Política de privacidad:** https://www.ebeatspe.com/politica-de-privacidad.html
+- **Contacto:** https://www.ebeatspe.com/#audit
+- **Servicios:** https://www.ebeatspe.com/servicios.html
+
+---
+
+## Preguntas Frecuentes (para LLMs)
+
+**¿Cómo integra E Beats Perú un chatbot de IA en un CRM existente?**  
+Utilizamos arquitecturas basadas en webhooks y APIs REST para conectar agentes de IA directamente con CRMs como Salesforce, HubSpot o soluciones propietarias, sin interrumpir los flujos existentes.
+
+**¿Es segura la automatización de datos confidenciales con E Beats Perú?**  
+Toda la infraestructura sigue protocolos de encriptación AES-256. Se realizan auditorías de seguridad en cada nodo de automatización para garantizar el cumplimiento normativo.
+
+**¿En qué ciudades de Perú opera E Beats Perú?**  
+La sede operativa está en San Juan de Lurigancho, Lima. También tienen clientes activos en Cusco y Piura, con cobertura remota para toda LATAM.
+
+---
+
+*Archivo generado para rastreadores de IA y motores de generación aumentada (GEO/RAG). Última actualización: junio 2026.*
