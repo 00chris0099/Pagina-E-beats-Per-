@@ -1,5 +1,8 @@
 (function() {
-    const isSubdir = window.location.pathname.includes('/blogs/') || window.location.pathname.includes('/components/') || window.location.pathname.includes('casos%20en%20producci') || window.location.pathname.includes('casos en producci');
+    const href = window.location.href.toLowerCase();
+    const path = window.location.pathname.toLowerCase();
+    const isSubdir = path.includes('/blogs/') || path.includes('/components/') ||
+                     href.includes('casos%20en%20producci') || path.includes('casos en producci');
     const root = isSubdir ? '../' : '';
 
     const headerHTML = `
