@@ -3,7 +3,10 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
 
-  const WEBHOOK_URL = process.env.WEBHOOK_URL || 'https://aimachristian-n8n.ajcxjb.easypanel.host/webhook/formularioPGweb';
+  const WEBHOOK_URL = process.env.WEBHOOK_URL;
+  if (!WEBHOOK_URL) {
+    return { statusCode: 500, body: JSON.stringify({ error: 'WEBHOOK_URL not configured' }) };
+  }
 
   try {
     const payload = JSON.parse(event.body);
