@@ -15,9 +15,6 @@ Disallow: /?.gif
 # Sitemap
 Sitemap: https://www.ebeatspe.com/sitemap.xml
 
-# Archivo para rastreadores de IA
-llms.txt: https://www.ebeatspe.com/llms.txt
-
 # Información adicional para motores de búsqueda
 Host: https://www.ebeatspe.com
 

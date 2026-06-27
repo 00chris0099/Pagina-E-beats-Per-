@@ -86,10 +86,15 @@ Protección integral con encriptación AES-256, compliance y blindaje de datos p
 ## Páginas Clave del Sitio
 
 - **Home / Landing principal:** https://www.ebeatspe.com/
-- **Blog de recursos:** https://www.ebeatspe.com/blogprincipal.html
-- **Política de privacidad:** https://www.ebeatspe.com/politica-de-privacidad.html
-- **Contacto:** https://www.ebeatspe.com/#audit
-- **Servicios:** https://www.ebeatspe.com/servicios.html
+- **Catálogo de soluciones:** https://www.ebeatspe.com/pages/servicios.html
+- **Blog de recursos:** https://www.ebeatspe.com/pages/blog.html
+- **Contacto:** https://www.ebeatspe.com/pages/contacto.html
+- **Política de privacidad:** https://www.ebeatspe.com/pages/politica-de-privacidad.html
+- **Casos en producción:**
+  - Chatbots B2B: https://www.ebeatspe.com/pages/casos/chatbots-b2b.html
+  - Desarrollo de Software: https://www.ebeatspe.com/pages/casos/desarrollo-software.html
+  - Flujos de Trabajo: https://www.ebeatspe.com/pages/casos/flujos-trabajo.html
+  - Bases de Datos y Seguridad: https://www.ebeatspe.com/pages/casos/bases-datos-seguridad.html
 
 ---
 
