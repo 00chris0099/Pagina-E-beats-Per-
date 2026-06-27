@@ -1,5 +1,5 @@
 (function() {
-    const isSubdir = window.location.pathname.includes('/blogs/') || window.location.pathname.includes('/components/');
+    const isSubdir = window.location.pathname.includes('/blogs/') || window.location.pathname.includes('/components/') || window.location.pathname.includes('casos%20en%20producci') || window.location.pathname.includes('casos en producci');
     const root = isSubdir ? '../' : '';
 
     const footerHTML = `
@@ -22,10 +22,10 @@
                 <div class="flex flex-col gap-md">
                     <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-on-tertiary-container pl-base">Soluciones Tecnologicas</h4>
                     <nav class="flex flex-col gap-sm">
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}servicios.html">Desarrollo de Software y Ecosistemas Moviles</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}servicios.html">Ingenieria y Seguridad de Bases de Datos</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}servicios.html">Automatizacion de Workflows B2B</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}servicios.html">Chatbots de Ventas y Agentes IA</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}casos%20en%20producci%C3%B3n/Desarrollo%20de%20Software%20y%20Aplicaciones.html">Desarrollo de Software y Ecosistemas Moviles</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}casos%20en%20producci%C3%B3n/Administraci%C3%B3n%20de%20Bases%20de%20Datos%20y%20Seguridad.html">Ingenieria y Seguridad de Bases de Datos</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}casos%20en%20producci%C3%B3n/Ingenier%C3%ADa%20de%20Flujos%20de%20Trabajo%20(Workflows).html">Automatizacion de Workflows B2B</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}casos%20en%20producci%C3%B3n/Chatbots%20B2B%20y%20Agentes%20de%20Ventas.html">Chatbots de Ventas y Agentes IA</a>
                     </nav>
                 </div>
                 <div class="flex flex-col gap-md">

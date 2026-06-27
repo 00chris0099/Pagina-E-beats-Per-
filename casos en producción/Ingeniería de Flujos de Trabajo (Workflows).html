@@ -1,0 +1,240 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ingeniería de Flujos de Trabajo y Automatización</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "surface-container-low": "#f3f3f3",
+                        "on-primary-fixed-variant": "#474747",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-tint": "#5e5e5e",
+                        "secondary-container": "#dfe0e0",
+                        "tertiary-container": "#410000",
+                        "surface-bright": "#f9f9f9",
+                        "on-primary-container": "#848484",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "outline": "#7e7576",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-surface": "#2f3131",
+                        "secondary": "#5d5f5f",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-surface-variant": "#4c4546",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#cfc4c5",
+                        "on-tertiary-fixed-variant": "#930100",
+                        "on-tertiary-container": "#ff291a",
+                        "on-background": "#1a1c1c",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#410000",
+                        "on-surface": "#1a1c1c",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-secondary-container": "#616363",
+                        "tertiary": "#000000",
+                        "primary-container": "#1b1b1b",
+                        "on-secondary-fixed-variant": "#454747",
+                        "inverse-primary": "#c6c6c6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    spacing: {
+                        "sm": "12px",
+                        "md": "24px",
+                        "base": "8px",
+                        "margin-desktop": "64px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "margin-mobile": "16px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Hanken Grotesk", "sans-serif"],
+                        "subheading-md": ["Hanken Grotesk", "sans-serif"],
+                        "headline-lg-mobile": ["Hanken Grotesk", "sans-serif"],
+                        "label-sm": ["Hanken Grotesk", "sans-serif"],
+                        "body-lg": ["\"Source Serif 4\"", "serif"],
+                        "body-md": ["\"Source Serif 4\"", "serif"],
+                        "display-lg": ["Anton", "sans-serif"],
+                        "headline-xl": ["Anton", "sans-serif"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "subheading-md": ["20px", { "lineHeight": "1.5", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-sm": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .btn-red {
+            background-color: #ff291a;
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .btn-red:hover {
+            background-color: #000000;
+        }
+        .btn-black {
+            background-color: #000000;
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .btn-black:hover {
+            background-color: #ff291a;
+        }
+        .btn-outline-red {
+            background-color: transparent;
+            color: #000000;
+            border: 2px solid #ff291a;
+            transition: all 0.2s ease;
+        }
+        .btn-outline-red:hover {
+            background-color: #ff291a;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- Top Navigation bar from JSON -->
+<div id="site-header"></div>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-xl md:py-[160px] bg-surface-container-lowest border-b border-primary">
+<div class="max-w-7xl mx-auto flex flex-col items-start gap-lg">
+<h1 class="font-display-lg text-display-lg text-primary max-w-5xl uppercase leading-none">
+                    Ingeniería de Flujos de Trabajo (Workflows) y Orquestación B2B
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+                    Elimine cuellos de botella operativos mediante arquitecturas de automatización n8n de nivel empresarial. Interconectamos sus sistemas críticos, centralizamos sus datos y automatizamos decisiones para que su equipo técnico pueda concentrarse en la innovación pura.
+                </p>
+<div class="mt-md">
+<button class="btn-red px-xl py-md font-label-sm text-label-sm uppercase font-bold tracking-wider inline-flex items-center gap-sm">
+                        AUDITAR MIS PROCESOS OPERATIVOS
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Success Cases (MOFU/BOFU) -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-xl md:py-[120px] bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-[80px]">
+<div class="flex flex-col justify-center gap-lg pr-md border-r border-surface-variant">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase leading-tight">
+                        Cómo automatizamos el 100% de la facturación y cobranza
+                    </h2>
+<div class="space-y-md">
+<p class="font-body-md text-body-md text-on-surface-variant">
+<strong>El Problema Crítico:</strong> Los procesos manuales de conciliación bancaria y emisión de facturas generaban una latencia de 7 días en el ciclo de efectivo, con una tasa de error del 12% debido a la entrada de datos dispersa en múltiples plataformas (ERP, CRM, pasarelas de pago).
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+<strong>La Solución Orquestada:</strong> Desplegamos un flujo de trabajo asíncrono en n8n que intercepta webhooks de pagos, valida contra el inventario del ERP y emite facturas fiscales automáticamente.
+                        </p>
+</div>
+<div class="mt-md">
+<button class="btn-black px-xl py-md font-label-sm text-label-sm uppercase font-bold tracking-wider">
+                            SOLICITAR CONSULTORÍA DE INFRAESTRUCTURA
+                        </button>
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<div class="border border-primary bg-surface-container-lowest p-lg space-y-lg relative">
+<!-- Decorative brutalist corner -->
+<div class="absolute top-0 right-0 w-8 h-8 bg-primary"></div>
+<div class="border-b border-primary pb-sm flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Impacto Directo</span>
+<span class="material-symbols-outlined text-primary">data_exploration</span>
+</div>
+<div class="space-y-xl">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs">Tiempo ahorrado</div>
+<div class="font-display-lg text-[80px] leading-none text-primary">40 hrs/semana</div>
+</div>
+<div class="grid grid-cols-2 gap-md border-t border-surface-variant pt-md">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs">Tasa de Error</div>
+<div class="font-headline-lg text-headline-lg text-on-tertiary-container">0.0%</div>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs">Latencia Cobranza</div>
+<div class="font-headline-lg text-headline-lg text-primary">&lt; 2 seg</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Editorial/Multimedia Zone (TOFU) -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-xl md:py-[120px] bg-surface-container-low border-t border-primary border-b">
+<div class="max-w-5xl mx-auto flex flex-col items-center text-center gap-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary uppercase leading-tight max-w-4xl">
+                    El costo oculto de interconectar sistemas manualmente
+                </h2>
+<div class="w-full mt-md mb-lg relative group cursor-pointer">
+<!-- Video Placeholder -->
+<div class="w-full aspect-video border-2 border-primary bg-surface-container-lowest relative overflow-hidden flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 grayscale" data-alt="A highly detailed, stark, high-contrast black and white abstract digital representation of server racks and glowing data lines. The lighting is harsh and angular, emphasizing the Brutalist Minimalist tech-forward aesthetic. Deep black shadows contrast sharply with pure white highlights, while subtle crimson red data streams flow through the structural elements, symbolizing automated B2B workflows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAknjXCvY5EHhKO6dgrAYknSkBNulvdOrGEZrLpJLWN8kU1NSNvWj2VzGHClM4m_jqH10mWEgLCs_nHNLxmwKdIbHZKm5pJ31gTA4Gi0raj04ScrI331SiH7me8MbU3cV-9gNhNNdjCWinzMyS0EvRq0TQhlgR4DAtTzfRWf81yL7c7wENnGXUi9gH-z_ovN7z99uubkWDkKDvLmHUhEbcUbyMeXmUSGrzc0cwdJ0vX1gV0QvkCLzwxcVXPZcWmm1-bo2hDE_26pg">
+<!-- Play Button Overlay -->
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-all">
+<div class="w-[100px] h-[100px] bg-on-tertiary-container flex items-center justify-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+<span class="material-symbols-outlined text-white text-[48px] ml-2" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+<button class="btn-outline-red px-xl py-md font-label-sm text-label-sm uppercase font-bold tracking-wider inline-flex items-center gap-sm">
+<span class="material-symbols-outlined">download</span>
+                    DESCARGAR GUÍA DE INTEGRACIÓN DE APIs
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer from JSON -->
+<div id="site-footer"></div>
+<script src="../components/header.js"></script>
+<script src="../components/footer.js"></script>
+
+</body></html>

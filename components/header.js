@@ -1,5 +1,5 @@
 (function() {
-    const isSubdir = window.location.pathname.includes('/blogs/') || window.location.pathname.includes('/components/');
+    const isSubdir = window.location.pathname.includes('/blogs/') || window.location.pathname.includes('/components/') || window.location.pathname.includes('casos%20en%20producci') || window.location.pathname.includes('casos en producci');
     const root = isSubdir ? '../' : '';
 
     const headerHTML = `
@@ -25,28 +25,28 @@
                     </button>
                     <div class="absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
                         <div class="bg-white border border-on-surface/10 p-6 grid grid-cols-2 gap-4 min-w-[400px] shadow-xl">
-                            <a href="${root}servicios.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                            <a href="${root}casos%20en%20producci%C3%B3n/Desarrollo%20de%20Software%20y%20Aplicaciones.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
                                 <span class="material-symbols-outlined text-on-tertiary-container">code</span>
                                 <div>
                                     <span class="font-label-sm text-[13px] uppercase font-bold block">Desarrollo</span>
                                     <span class="text-[12px] text-secondary">Software y Apps</span>
                                 </div>
                             </a>
-                            <a href="${root}servicios.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                            <a href="${root}casos%20en%20producci%C3%B3n/Chatbots%20B2B%20y%20Agentes%20de%20Ventas.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
                                 <span class="material-symbols-outlined text-on-tertiary-container">smart_toy</span>
                                 <div>
                                     <span class="font-label-sm text-[13px] uppercase font-bold block">Agentes IA</span>
                                     <span class="text-[12px] text-secondary">Chatbots de venta</span>
                                 </div>
                             </a>
-                            <a href="${root}servicios.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                            <a href="${root}casos%20en%20producci%C3%B3n/Administraci%C3%B3n%20de%20Bases%20de%20Datos%20y%20Seguridad.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
                                 <span class="material-symbols-outlined text-on-tertiary-container">database</span>
                                 <div>
                                     <span class="font-label-sm text-[13px] uppercase font-bold block">SQL Engineering</span>
                                     <span class="text-[12px] text-secondary">Bases de datos</span>
                                 </div>
                             </a>
-                            <a href="${root}servicios.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                            <a href="${root}casos%20en%20producci%C3%B3n/Ingenier%C3%ADa%20de%20Flujos%20de%20Trabajo%20(Workflows).html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
                                 <span class="material-symbols-outlined text-on-tertiary-container">webhook</span>
                                 <div>
                                     <span class="font-label-sm text-[13px] uppercase font-bold block">Automatizacion</span>
