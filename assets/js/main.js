@@ -967,9 +967,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       // ── Enviar POST al webhook de n8n ──
-      const WEBHOOK_URL = 'https://aimachristian-n8n.ajcxjb.easypanel.host/webhook/ce321d03-b62e-4972-970d-d169776c9f8b';
-      
-      console.log('Enviando payload:', payload);
+      const WEBHOOK_URL = '/.netlify/functions/webhook-proxy';
 
       fetch(WEBHOOK_URL, { 
         method: 'POST',
@@ -988,7 +986,6 @@ document.addEventListener('DOMContentLoaded', () => {
           return res.json();
         })
         .then(result => {
-          console.log('Respuesta del webhook:', result);
           
           // Restaurar botón
           submitBtn.disabled = false;

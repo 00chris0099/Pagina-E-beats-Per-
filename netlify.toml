@@ -1,9 +1,46 @@
 [build]
   publish = "."
+  functions = "functions"
 
 [[redirects]]
   from = "/inicio.html"
   to = "/"
+  status = 301
+
+# ─── SEO: Redirecciones para preservar URLs antiguas ─────────────────────────
+[[redirects]]
+  from = "/servicios.html"
+  to = "/pages/servicios.html"
+  status = 301
+
+[[redirects]]
+  from = "/blogprincipal.html"
+  to = "/pages/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/contacto.html"
+  to = "/pages/contacto.html"
+  status = 301
+
+[[redirects]]
+  from = "/politica-de-privacidad.html"
+  to = "/pages/politica-de-privacidad.html"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/blog-ciberseguridad-mype.html"
+  to = "/pages/blogs/ciberseguridad-mype.html"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/blog-ia-conversacional.html"
+  to = "/pages/blogs/ia-conversacional.html"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/blog-automatizacion-n8n.html"
+  to = "/pages/blogs/automatizacion-n8n.html"
   status = 301
 
 # ─── Security Headers (todas las rutas) ───────────────────────────────────────
@@ -15,8 +52,15 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(self)"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://player.vimeo.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://aimachristian-n8n.ajcxjb.easypanel.host https://vimeo.com; frame-src https://player.vimeo.com https://www.youtube.com; media-src 'self' https://*.vimeo.com"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
 # ─── Cache: imágenes ───────────────────────────────────────────────────────────
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 [[headers]]
   for = "/image/*"
   [headers.values]
@@ -28,9 +72,19 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # ─── Cache: JavaScript ────────────────────────────────────────────────────────
 [[headers]]
   for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/js/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
@@ -57,3 +111,11 @@
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=86400"
+
+# ─── Functions: CORS para webhooks ────────────────────────────────────────────
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"

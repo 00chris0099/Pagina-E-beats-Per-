@@ -1,12 +1,41 @@
 # AGENTS.md - E Beats Perú Landing Page
 
 ## Project Overview
-This is a static landing page for E Beats Perú (AI/automation agency). The project consists of:
-- `index.html` - Main landing page with sections, forms, and embedded JSON-LD schemas
-- `main.js` - Vanilla JavaScript for animations, modals, form validation, and video controls
-- `styles.css` - CSS design system with custom properties and responsive styles
-- `politica-de-privacidad.html` - Privacy policy page
-- Static assets in `/image` folder
+This is a static landing page for E Beats Perú (AI/automation agency). The project structure:
+
+```
+/
+├── index.html                    # Main landing page
+├── assets/
+│   ├── css/styles.css            # CSS design system
+│   └── js/
+│       ├── main.js               # Core JS (animations, forms, modals)
+│       ├── header.js             # Reusable header component
+│       └── footer.js             # Reusable footer component
+├── pages/
+│   ├── servicios.html            # Services catalog
+│   ├── blog.html                 # Blog listing
+│   ├── contacto.html             # Contact page
+│   ├── politica-de-privacidad.html
+│   ├── casos/                    # Case studies (kebab-case)
+│   │   ├── chatbots-b2b.html
+│   │   ├── desarrollo-software.html
+│   │   ├── flujos-trabajo.html
+│   │   └── bases-datos-seguridad.html
+│   ├── blogs/                    # Blog posts
+│   │   ├── ciberseguridad-mype.html
+│   │   ├── ia-conversacional.html
+│   │   └── automatizacion-n8n.html
+│   └── landing-video/            # Video VSL landing
+├── assets/images/                # Images (logos, favicon, hero)
+├── functions/                    # Netlify serverless functions
+│   ├── webhook-proxy.js          # n8n webhook proxy
+│   └── webhook-form.js           # Form webhook proxy
+├── netlify.toml                  # Deploy config + security headers
+├── sitemap.xml                   # SEO sitemap
+├── robots.txt                    # Crawler directives
+└── llms.txt                      # AI-readable business profile
+```
 
 ## Build Commands
 This is a static website with no build system. No npm/node dependencies.
@@ -48,7 +77,7 @@ No automated tests exist. Manual testing checklist:
 - Include proper ARIA labels on interactive elements
 - JSON-LD schemas should be valid
 
-### CSS (styles.css)
+### CSS (assets/css/styles.css)
 - Use CSS custom properties (`:root`) for colors, fonts, spacing
 - Follow BEM-ish naming: `.block__element--modifier`
 - Use `clamp()` for responsive typography
@@ -56,7 +85,7 @@ No automated tests exist. Manual testing checklist:
 - Use CSS variables from `:root` instead of hardcoded values
 - Prefer `rem` over `px` for accessibility
 
-### JavaScript (main.js)
+### JavaScript (assets/js/main.js)
 - Wrap in `DOMContentLoaded` event listener
 - Use `const` and `let` - avoid `var`
 - Use arrow functions where appropriate
@@ -116,10 +145,12 @@ Phone rules vary by country (defined in `PHONE_RULES`). Each country has:
 - **Google Fonts**: Inter + Plus Jakarta Sans
 
 ### Webhook
-Form submissions POST to n8n webhook at:
+Form submissions POST to Netlify Function proxy at:
 ```
-https://aimachristian-n8n.ajcxjb.easypanel.host/webhook/ce321d03-b62e-4972-970d-d169776c9f8b
+/.netlify/functions/webhook-proxy   (diagnostic modal)
+/.netlify/functions/webhook-form    (contact form)
 ```
+The functions forward to n8n webhooks (URLs stored as environment variables, not in code).
 
 ## Common Tasks
 - **Add new section**: Copy existing section pattern, update IDs
