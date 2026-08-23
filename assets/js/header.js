@@ -61,6 +61,7 @@
                 </div>
                 <a href="${root}pages/servicios.html" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Casos en Produccion</a>
                 <a href="${root}pages/blog.html" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Centro de Recursos</a>
+                <a href="${root}pages/ayuda/" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Ayuda</a>
             </div>
             <div class="flex items-center gap-4">
                 <a href="${root}pages/contacto.html" class="hidden md:inline-flex bg-on-tertiary-container text-white px-5 py-2.5 font-label-sm text-[12px] uppercase tracking-widest hover:bg-primary transition-colors">
@@ -76,6 +77,7 @@
                 <a href="${root}index.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Inicio</a>
                 <a href="${root}pages/servicios.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Soluciones</a>
                 <a href="${root}pages/blog.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Centro de Recursos</a>
+                <a href="${root}pages/ayuda/" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Ayuda</a>
                 <a href="${root}pages/contacto.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Contacto</a>
                 <a href="${root}pages/contacto.html" class="block bg-on-tertiary-container text-white px-5 py-3 font-label-sm text-[12px] uppercase tracking-widest text-center mt-4">Agendar Auditoria</a>
             </div>

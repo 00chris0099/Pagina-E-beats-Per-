@@ -38,6 +38,16 @@
                     </nav>
                 </div>
                 <div class="flex flex-col gap-md">
+                    <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-primary pl-base">Soporte</h4>
+                    <nav class="flex flex-col gap-sm">
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/">Centro de Ayuda</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/seguir-pedido.html">Seguimiento de Pedidos</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/metodos-de-pago.html">Metodos de Pago</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/envios.html">Politica de Envios</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/contacto-soporte.html">Contactar Soporte</a>
+                    </nav>
+                </div>
+                <div class="flex flex-col gap-md">
                     <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-secondary pl-base">Infraestructura</h4>
                     <div class="flex flex-wrap gap-xs">
                         <span class="px-base py-xs border border-primary text-[10px] font-bold uppercase">KVM Tier 2</span>

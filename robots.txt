@@ -1,10 +1,7 @@
 # robots.txt para E Beats Perú
 # https://www.ebeatspe.com
 
-# Agentes permitidos
 User-agent: *
-
-# Permite el indexado de todas las páginas públicas
 Allow: /
 
 # Reglas específicas
@@ -12,13 +9,17 @@ Disallow: /image/*.mp4
 Disallow: /cgi-bin/
 Disallow: /?.gif
 
+# Portal de usuario (privado - no indexar)
+Disallow: /mi-cuenta/
+Disallow: /mi-cuenta/*
+Disallow: /checkout/
+Disallow: /checkout/*
+
 # Sitemap
 Sitemap: https://www.ebeatspe.com/sitemap.xml
 
 # Información adicional para motores de búsqueda
 Host: https://www.ebeatspe.com
-
-# Crawl-delay (opcional, para no sobrecargar el servidor)
 Crawl-delay: 1
 
 # ─── Rastreadores de IA ───────────────────────────────────────────────────────
@@ -26,10 +27,14 @@ Crawl-delay: 1
 # Google (Gemini / AI Overview)
 User-agent: Googlebot
 Allow: /
+Allow: /pages/ayuda/
+Allow: /pages/ayuda/*
 
 # OpenAI / ChatGPT
 User-agent: GPTBot
 Allow: /
+Allow: /pages/ayuda/
+Allow: /pages/ayuda/*
 
 # Anthropic / Claude
 User-agent: anthropic-ai
@@ -38,7 +43,7 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
-# Common Crawl (base de datos de muchos LLMs)
+# Common Crawl
 User-agent: CCBot
 Allow: /
 
