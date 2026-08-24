@@ -21,20 +21,21 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter py-xl border-t border-surface-variant">
                 <div class="flex flex-col gap-md">
-                    <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-on-tertiary-container pl-base">Soluciones Tecnologicas</h4>
+                    <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-on-tertiary-container pl-base">Servicios</h4>
                     <nav class="flex flex-col gap-sm">
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/desarrollo-software.html">Desarrollo de Software y Ecosistemas Moviles</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/bases-datos-seguridad.html">Ingenieria y Seguridad de Bases de Datos</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/flujos-trabajo.html">Automatizacion de Workflows B2B</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/chatbots-b2b.html">Chatbots de Ventas y Agentes IA</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/servicios/agente-ia-whatsapp.html">Agente IA para WhatsApp</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/servicios/paginas-web-baratas.html">Paginas Web Baratas</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/servicios/automatizacion-sunat.html">Automatizacion SUNAT</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/servicios/paquete-completo.html">Paquete Completo</a>
                     </nav>
                 </div>
                 <div class="flex flex-col gap-md">
-                    <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-primary pl-base">Centro de Recursos</h4>
+                    <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-primary pl-base">Casos de Uso</h4>
                     <nav class="flex flex-col gap-sm">
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/blog.html">Casos en Produccion y Despliegues</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/blog.html">Guias de Arquitectura y T-SQL</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/blog.html">Documentacion de Inteligencia Artificial</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/chatbots-b2b.html">Chatbots de Ventas IA</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/desarrollo-software.html">Desarrollo de Software</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/flujos-trabajo.html">Automatizacion n8n</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/bases-datos-seguridad.html">Ciberseguridad</a>
                     </nav>
                 </div>
                 <div class="flex flex-col gap-md">

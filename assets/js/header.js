@@ -31,33 +31,47 @@
                         <span class="material-symbols-outlined text-sm">expand_more</span>
                     </button>
                     <div class="absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
-                        <div class="bg-white border border-on-surface/10 p-6 grid grid-cols-2 gap-4 min-w-[400px] shadow-xl">
-                            <a href="${root}pages/casos/desarrollo-software.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">code</span>
+                        <div class="bg-white border border-on-surface/10 p-6 grid grid-cols-3 gap-4 min-w-[600px] shadow-xl">
+                            <a href="${root}pages/servicios/agente-ia-whatsapp.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                                <span class="material-symbols-outlined text-on-tertiary-container">chat</span>
                                 <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Desarrollo</span>
-                                    <span class="text-[12px] text-secondary">Software y Apps</span>
+                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Agente IA WhatsApp</span>
+                                    <span class="text-[12px] text-secondary">Bot de ventas 24/7</span>
+                                </div>
+                            </a>
+                            <a href="${root}pages/servicios/paginas-web-baratas.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                                <span class="material-symbols-outlined text-on-tertiary-container">language</span>
+                                <div>
+                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Paginas Web</span>
+                                    <span class="text-[12px] text-secondary">Desde S/300</span>
+                                </div>
+                            </a>
+                            <a href="${root}pages/servicios/automatizacion-sunat.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                                <span class="material-symbols-outlined text-on-tertiary-container">receipt_long</span>
+                                <div>
+                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Automatizacion SUNAT</span>
+                                    <span class="text-[12px] text-secondary">Facturacion electronica</span>
+                                </div>
+                            </a>
+                            <a href="${root}pages/servicios/paquete-completo.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                                <span class="material-symbols-outlined text-on-tertiary-container">inventory_2</span>
+                                <div>
+                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Combo PRO</span>
+                                    <span class="text-[12px] text-secondary">Web + Bot + n8n</span>
                                 </div>
                             </a>
                             <a href="${root}pages/casos/chatbots-b2b.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
                                 <span class="material-symbols-outlined text-on-tertiary-container">smart_toy</span>
                                 <div>
                                     <span class="font-label-sm text-[13px] uppercase font-bold block">Agentes IA</span>
-                                    <span class="text-[12px] text-secondary">Chatbots de venta</span>
+                                    <span class="text-[12px] text-secondary">Casos de uso</span>
                                 </div>
                             </a>
-                            <a href="${root}pages/casos/bases-datos-seguridad.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">database</span>
+                            <a href="${root}pages/casos/desarrollo-software.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
+                                <span class="material-symbols-outlined text-on-tertiary-container">code</span>
                                 <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">SQL Engineering</span>
-                                    <span class="text-[12px] text-secondary">Bases de datos</span>
-                                </div>
-                            </a>
-                            <a href="${root}pages/casos/flujos-trabajo.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">webhook</span>
-                                <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Automatizacion</span>
-                                    <span class="text-[12px] text-secondary">n8n y webhooks</span>
+                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Desarrollo</span>
+                                    <span class="text-[12px] text-secondary">Software y Apps</span>
                                 </div>
                             </a>
                         </div>
@@ -79,7 +93,11 @@
         <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-on-surface/10">
             <div class="px-4 py-6 space-y-4">
                 <a href="${root}index.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Inicio</a>
-                <a href="${root}pages/servicios.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Soluciones</a>
+                <a href="${root}pages/servicios.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Servicios</a>
+                <a href="${root}pages/servicios/agente-ia-whatsapp.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Agente IA WhatsApp</a>
+                <a href="${root}pages/servicios/paginas-web-baratas.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Paginas Web Baratas</a>
+                <a href="${root}pages/servicios/automatizacion-sunat.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Automatizacion SUNAT</a>
+                <a href="${root}pages/servicios/paquete-completo.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Paquete Completo</a>
                 <a href="${root}pages/blog.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Centro de Recursos</a>
                 <a href="${root}pages/ayuda/" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Ayuda</a>
                 <a href="${root}pages/contacto.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Contacto</a>

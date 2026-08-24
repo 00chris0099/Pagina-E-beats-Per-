@@ -17,19 +17,17 @@ E Beats Perú (también conocida como CYBER_CORE AI) ofrece soluciones de alta i
 
 ## Servicios Principales
 
-### 1. Chatbots de Ventas Especializados con IA
-Agentes conversacionales entrenados por industria (legal, inmobiliaria, salud, retail) que califican prospectos, responden consultas y agendan reuniones automáticamente. Integración con CRMs como HubSpot, Salesforce y soluciones propietarias via webhooks y APIs REST.
+### 1. Agente IA para WhatsApp - Bot de Atencion al Cliente 24/7
+Agentes conversacionales con Inteligencia Artificial para WhatsApp Business. Automatizan respuestas, agendan citas, califican leads y venden 24/7. Precio desde S/150 por instalacion unica. Integracion con CRMs, Google Sheets y sistemas propietarios via webhooks y APIs REST.
 
-### 2. Automatización de Flujos de Trabajo (n8n)
-Conexión de bases de datos legacy, sincronización de plataformas (Airtable, Google Sheets, MS SQL Server) y automatización de procesos repetitivos mediante nodos n8n. ROI documentado del 300% en automatización de contenido para redes sociales.
+### 2. Paginas Web Baratas - Diseno Economico para Pymes
+Diseno de paginas web economicas, landing pages y tiendas virtuales para emprendedores y pymes en Peru. Precio desde S/300. Incluye responsive, boton de WhatsApp, SEO basico y hosting por 1 ano. Creacion en 3-5 dias habiles.
 
-### 3. Desarrollo de Software y Aplicaciones Móviles
-Creación de apps móviles dedicadas con Flutter y Firebase para sectores específicos como adopción de mascotas, reservas de spa e inmobiliarias.
+### 3. Automatizacion SUNAT y Facturacion Electronica
+Automatizacion de facturacion SUNAT, integracion de tiendas virtuales con SUNAT, conexion de WhatsApp con Google Sheets y flujos de trabajo con n8n, Zapier y Make para empresas en Lima y todo Peru. Precio desde S/300.
 
-### 4. Arquitectura de Contenido con IA
-Generación masiva de activos visuales y de video mediante motores IA (Kling AI, HeyGen, Veo) integrados con pipelines de automatización para marketing autónomo.
-
-### 5. Auditoría B2B y Ciberseguridad
+### 4. Paquete Completo de Transformacion Digital
+Combo PRO: pagina web + chatbot WhatsApp + automatizacion n8n desde S/350 + S/80/mes. Transformacion digital completa para pymes peruanas. Incluye soporte continuo y capacitacion.
 Protección integral con encriptación AES-256, compliance y blindaje de datos para firmas legales y sectores críticos. Trazabilidad de expedientes confidenciales.
 
 ---
@@ -85,15 +83,20 @@ Protección integral con encriptación AES-256, compliance y blindaje de datos p
 
 ---
 
-## Páginas Clave del Sitio
+## Paginas Clave del Sitio
 
 - **Home / Landing principal:** https://www.ebeatspe.com/
-- **Catálogo de soluciones:** https://www.ebeatspe.com/pages/servicios.html
+- **Catalogo de soluciones:** https://www.ebeatspe.com/pages/servicios.html
 - **Blog de recursos:** https://www.ebeatspe.com/pages/blog.html
 - **Contacto:** https://www.ebeatspe.com/pages/contacto.html
 - **Centro de Ayuda:** https://www.ebeatspe.com/pages/ayuda/
-- **Política de privacidad:** https://www.ebeatspe.com/pages/politica-de-privacidad.html
-- **Casos en producción:**
+- **Politica de privacidad:** https://www.ebeatspe.com/pages/politica-de-privacidad.html
+- **Landing Pages de Servicios:**
+  - Agente IA WhatsApp: https://www.ebeatspe.com/pages/servicios/agente-ia-whatsapp.html
+  - Paginas Web Baratas: https://www.ebeatspe.com/pages/servicios/paginas-web-baratas.html
+  - Automatizacion SUNAT: https://www.ebeatspe.com/pages/servicios/automatizacion-sunat.html
+  - Paquete Completo: https://www.ebeatspe.com/pages/servicios/paquete-completo.html
+- **Casos en produccion:**
   - Chatbots B2B: https://www.ebeatspe.com/pages/casos/chatbots-b2b.html
   - Desarrollo de Software: https://www.ebeatspe.com/pages/casos/desarrollo-software.html
   - Flujos de Trabajo: https://www.ebeatspe.com/pages/casos/flujos-trabajo.html
