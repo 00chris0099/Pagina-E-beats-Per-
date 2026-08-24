@@ -2,3 +2,7 @@
 .gitignore
 node_modules
 *.md
+.github
+AUDITORIA-SEO-GEO.md
+Dockerfile
+docker-compose.yml
