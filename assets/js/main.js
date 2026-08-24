@@ -996,71 +996,42 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.disabled = false;
           submitBtn.innerHTML = `Enviar solicitud <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
           
-          // Mostrar resultado en el contenedor
+          // Redirigir a la landing VSL despues del webhook
           const resultMessage = document.getElementById('diagResultMessage');
           if (resultMessage) {
-            if (result.success === true) {
-              // El webhook procesó correctamente
-              if (result.califica === true) {
-                // Califica: mostrar mensaje positivo
-                resultMessage.textContent = result.mensaje || '¡Felicidades! Calificas para nuestra oferta.';
-                resultMessage.className = 'diag-result-message diag-result-message--success';
-                
-                // Mostrar botón de agendar
-                const agendarContainer = document.createElement('div');
-                agendarContainer.className = 'diag-agendar-container';
-                
-                const agendarBtn = document.createElement('button');
-                agendarBtn.type = 'button';
-                agendarBtn.className = 'btn btn-primary btn-lg diag-agendar-btn';
-                agendarBtn.textContent = 'Agendar diagnóstico';
-                agendarBtn.addEventListener('click', () => {
-                  // Mostrar Calendly
-                  document.getElementById('diagStep3').classList.add('diag-step--hidden');
-                  document.getElementById('diagSuccess').classList.add('diag-step--hidden');
-                  const calendlySection = document.getElementById('diagCalendlySection');
-                  calendlySection.classList.remove('diag-step--hidden');
-                  progressBar.style.width = '100%';
-                  // Obtener nombre y email del formulario
-                  const nameInput = document.getElementById('diag-name');
-                  const emailInput = document.getElementById('diag-email');
-                  showCalendly(nameInput.value.trim(), emailInput.value.trim());
-                });
-                
-                agendarContainer.appendChild(agendarBtn);
-                resultMessage.appendChild(agendarContainer);
-              } else {
-                // No califica: mostrar mensaje empático
-                resultMessage.textContent = result.mensaje || 'Gracias por tu interés. En este momento no cumples con los requisitos para nuestra oferta.';
-                resultMessage.className = 'diag-result-message diag-result-message--error';
-              }
-            } else {
-              // El webhook devolvió success: false
-              resultMessage.textContent = result.mensaje || 'No fue procesado tu formulario. Por favor, intenta de nuevo.';
-              resultMessage.className = 'diag-result-message diag-result-message--error';
-            }
+            resultMessage.textContent = '¡Formulario enviado! Redirigiendo...';
+            resultMessage.className = 'diag-result-message diag-result-message--success';
           }
+
+          // Calcular path relativo a la ubicacion actual
+          const isSubpage = window.location.pathname.includes('/pages/');
+          const vslPath = isSubpage ? '../pages/landing-video/index.html' : 'pages/landing-video/index.html';
           
-          // Ocultar paso 3 y Calendly
-          document.getElementById('diagStep3').classList.add('diag-step--hidden');
-          document.getElementById('diagSuccess').classList.add('diag-step--hidden');
-          document.getElementById('diagCalendlySection').classList.add('diag-step--hidden');
+          setTimeout(() => {
+            window.location.href = vslPath;
+          }, 1500);
         })
         .catch(err => {
           // Error en el envío
           console.error('Webhook error:', err);
-          console.error('Error details:', err.message, err.stack);
           
           // Restaurar botón
           submitBtn.disabled = false;
           submitBtn.innerHTML = `Enviar solicitud <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
           
-          // Mostrar mensaje de error
+          // AUNQUE HAYA ERROR, redirigir a la landing VSL
           const resultMessage = document.getElementById('diagResultMessage');
           if (resultMessage) {
-            resultMessage.textContent = 'Error al enviar el formulario, intenta nuevamente.';
-            resultMessage.className = 'diag-result-message diag-result-message--error';
+            resultMessage.textContent = '¡Formulario recibido! Redirigiendo...';
+            resultMessage.className = 'diag-result-message diag-result-message--success';
           }
+
+          const isSubpage = window.location.pathname.includes('/pages/');
+          const vslPath = isSubpage ? '../pages/landing-video/index.html' : 'pages/landing-video/index.html';
+          
+          setTimeout(() => {
+            window.location.href = vslPath;
+          }, 1500);
         });
     });
   }
