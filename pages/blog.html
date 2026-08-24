@@ -591,7 +591,7 @@
       const category = button.getAttribute('data-filter');
       filterButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
-      articleGrid.querySelectorAll('article').forEach(article => {
+      articleGrid.querySelectorAll('a[data-category]').forEach(article => {
         const artCat = article.getAttribute('data-category');
         if (category === 'ALL' || artCat === category) {
           article.style.display = 'flex';
@@ -605,7 +605,7 @@
   // Search
   function searchArticles() {
     const query = document.getElementById('searchInput').value.toLowerCase();
-    articleGrid.querySelectorAll('article').forEach(article => {
+    articleGrid.querySelectorAll('a[data-category]').forEach(article => {
       const text = article.textContent.toLowerCase();
       article.style.display = text.includes(query) ? 'flex' : 'none';
     });

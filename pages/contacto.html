@@ -181,26 +181,26 @@
 </div>
 </div>
 <div class="col-span-12 md:col-span-6 bg-white p-lg border-2 border-accent-red shadow-[10px_10px_0px_0px_rgba(255,49,28,0.1)]">
-<form class="space-y-lg" onsubmit="event.preventDefault(); alert('Iniciando despliegue de diagnóstico...');">
+<form id="contactForm" class="space-y-lg">
 <div>
 <label class="block font-label-sm text-label-sm text-primary uppercase mb-xs">Nombre Completo / Cargo</label>
-<input class="w-full minimal-input text-primary font-body-md" placeholder="Ej. Juan Pérez - Director TI" required="" type="text">
+<input class="w-full minimal-input text-primary font-body-md" placeholder="Ej. Juan Perez - Director TI" required="" type="text" id="ct-name">
 </div>
 <div>
-<label class="block font-label-sm text-label-sm text-primary uppercase mb-xs">Razón Social de la Empresa</label>
-<input class="w-full minimal-input text-primary font-body-md" placeholder="Corporación S.A.C." required="" type="text">
+<label class="block font-label-sm text-label-sm text-primary uppercase mb-xs">Razon Social de la Empresa</label>
+<input class="w-full minimal-input text-primary font-body-md" placeholder="Corporacion S.A.C." required="" type="text" id="ct-empresa">
 </div>
 <div>
 <label class="block font-label-sm text-label-sm text-primary uppercase mb-xs">WhatsApp Directo</label>
 <div class="flex">
 <span class="minimal-input flex items-center pr-base text-secondary font-body-md">+51</span>
-<input class="w-full minimal-input text-primary font-body-md" placeholder="999 999 999" required="" type="tel">
+<input class="w-full minimal-input text-primary font-body-md" placeholder="999 999 999" required="" type="tel" id="ct-phone">
 </div>
 </div>
-<button class="w-full red-btn py-md font-label-sm text-label-sm tracking-widest text-white" type="submit">
+<button class="w-full red-btn py-md font-label-sm text-label-sm tracking-widest text-white" type="submit" id="ct-submit">
                         [ Desplegar mi Ecosistema IA ]
                     </button>
-<p class="text-[10px] text-secondary text-center uppercase tracking-widest opacity-60">Sistemas verificados por Kinetic Security Logic Protocol</p>
+<p class="text-[10px] text-secondary text-center uppercase tracking-widest opacity-60">Sistemas verificados por E-Beats Peru Protocol</p>
 </form>
 </div>
 </div>
@@ -309,6 +309,41 @@
                 });
             });
         });
+
+        // Contact form submission
+        const form = document.getElementById('contactForm');
+        const btn = document.getElementById('ct-submit');
+        if(form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                btn.textContent = 'ENVIANDO...';
+                btn.disabled = true;
+                const data = {
+                    nombre: document.getElementById('ct-name').value,
+                    empresa: document.getElementById('ct-empresa').value,
+                    whatsapp: '+51' + document.getElementById('ct-phone').value,
+                    fuente: 'contacto',
+                    timestamp: new Date().toISOString()
+                };
+                try {
+                    const res = await fetch('/.netlify/functions/webhook-proxy', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                    if (res.ok) {
+                        btn.textContent = 'ENVIADO CON EXITO';
+                        btn.classList.add('!bg-green-600');
+                        form.reset();
+                        setTimeout(() => { btn.textContent = '[ Desplegar mi Ecosistema IA ]'; btn.classList.remove('!bg-green-600'); btn.disabled = false; }, 3000);
+                    } else { throw new Error('Server error'); }
+                } catch(err) {
+                    btn.textContent = 'ERROR - INTENTAR DE NUEVO';
+                    btn.classList.add('!bg-red-600');
+                    setTimeout(() => { btn.textContent = '[ Desplegar mi Ecosistema IA ]'; btn.classList.remove('!bg-red-600'); btn.disabled = false; }, 3000);
+                }
+            });
+        }
     </script>
 
 

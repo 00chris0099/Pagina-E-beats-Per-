@@ -677,7 +677,7 @@
             <span class="font-body-md text-sm group-hover:text-surface-variant">Tono de voz adaptado a tu negocio</span>
           </li>
         </ul>
-        <a href="pages/contacto.html" class="block w-full bg-on-tertiary-container text-white text-center py-md font-label-sm uppercase tracking-widest hover:bg-on-surface group-hover:bg-white group-hover:text-on-surface transition-all duration-300">
+        <a href="contacto.html" class="block w-full bg-on-tertiary-container text-white text-center py-md font-label-sm uppercase tracking-widest hover:bg-on-surface group-hover:bg-white group-hover:text-on-surface transition-all duration-300">
           Comenzar
         </a>
       </div>
@@ -710,7 +710,7 @@
             <span class="font-body-md text-sm group-hover:text-surface-variant">Boton de WhatsApp integrado</span>
           </li>
         </ul>
-        <a href="pages/contacto.html" class="block w-full bg-on-tertiary-container text-white text-center py-md font-label-sm uppercase tracking-widest hover:bg-on-surface group-hover:bg-white group-hover:text-on-surface transition-all duration-300">
+        <a href="contacto.html" class="block w-full bg-on-tertiary-container text-white text-center py-md font-label-sm uppercase tracking-widest hover:bg-on-surface group-hover:bg-white group-hover:text-on-surface transition-all duration-300">
           Comenzar
         </a>
       </div>
@@ -754,7 +754,7 @@
             <span class="font-body-md text-sm">Soporte tecnico prioritario</span>
           </li>
         </ul>
-        <a href="pages/contacto.html" class="block w-full bg-on-tertiary-container text-white text-center py-md font-label-sm uppercase tracking-widest hover:bg-surface hover:text-on-surface transition-all duration-300">
+        <a href="contacto.html" class="block w-full bg-on-tertiary-container text-white text-center py-md font-label-sm uppercase tracking-widest hover:bg-surface hover:text-on-surface transition-all duration-300">
           Comenzar
         </a>
       </div>
@@ -791,7 +791,7 @@
             <span class="font-body-md text-sm text-surface-variant">Hasta 5,000 interacciones de IA</span>
           </li>
         </ul>
-        <a href="pages/contacto.html" class="block w-full bg-on-tertiary-container text-white text-center py-md font-label-sm uppercase tracking-widest hover:bg-surface hover:text-surface transition-all duration-300">
+        <a href="contacto.html" class="block w-full bg-on-tertiary-container text-white text-center py-md font-label-sm uppercase tracking-widest hover:bg-surface hover:text-surface transition-all duration-300">
           Solicitar Cotizacion
         </a>
       </div>
@@ -857,24 +857,36 @@
       </div>
     </div>
     <div class="bg-surface p-lg border-t-8 border-on-tertiary-container">
-      <form class="space-y-lg text-on-surface">
+      <form id="serviciosForm" class="space-y-lg text-on-surface">
         <div class="space-y-xs">
           <label class="font-label-sm uppercase text-secondary">Nombre Completo</label>
-          <input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="Ej. Christian Elias" type="text"/>
+          <input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="Ej. Christian Elias" type="text" required id="svc-name"/>
         </div>
         <div class="space-y-xs">
           <label class="font-label-sm uppercase text-secondary">Dominio de la Empresa</label>
-          <input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="empresa.com.pe" type="url"/>
+          <input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="empresa.com.pe" type="url" id="svc-email"/>
         </div>
         <div class="space-y-xs">
           <label class="font-label-sm uppercase text-secondary">WhatsApp Operativo</label>
           <div class="flex items-center gap-base">
             <span class="font-label-sm text-secondary opacity-50">+51</span>
-            <input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="999 999 999" type="tel"/>
+            <input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors placeholder:opacity-30" placeholder="999 999 999" type="tel" id="svc-phone"/>
           </div>
         </div>
+        <div class="space-y-xs">
+          <label class="font-label-sm uppercase text-secondary">Servicio de Interes</label>
+          <select class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-on-tertiary-container focus:ring-0 px-0 py-sm transition-colors text-on-surface" id="svc-plan">
+            <option value="">Seleccionar plan...</option>
+            <option value="Agente IA Basico - S/150">Agente IA Basico - S/150</option>
+            <option value="Sitio Web Pro - S/300">Sitio Web Pro - S/300</option>
+            <option value="Combo E-Beats PRO - S/350 + S/80/mes">Combo E-Beats PRO - S/350 + S/80/mes</option>
+            <option value="E-Beats Elite 360 - S/850 + S/150/mes">E-Beats Elite 360 - S/850 + S/150/mes</option>
+            <option value="Auditoria IA">Auditoria IA</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
         <div class="pt-md">
-          <button class="w-full bg-primary text-surface py-md font-label-sm uppercase tracking-widest hover:bg-on-tertiary-container transition-colors duration-300" type="submit">
+          <button class="w-full bg-primary text-surface py-md font-label-sm uppercase tracking-widest hover:bg-on-tertiary-container transition-colors duration-300" type="submit" id="svc-submit">
             Desplegar mi Ecosistema Digital
           </button>
         </div>
@@ -889,5 +901,43 @@
 <div id="site-footer"></div>
 <script src="../assets/js/header.js"></script>
 <script src="../assets/js/footer.js"></script>
+<script>
+(function() {
+  const form = document.getElementById('serviciosForm');
+  const btn = document.getElementById('svc-submit');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'ENVIANDO...';
+    btn.disabled = true;
+    const data = {
+      nombre: document.getElementById('svc-name').value,
+      empresa: document.getElementById('svc-email').value,
+      whatsapp: '+51' + document.getElementById('svc-phone').value,
+      plan: document.getElementById('svc-plan').value,
+      fuente: 'servicios',
+      timestamp: new Date().toISOString()
+    };
+    try {
+      const res = await fetch('/.netlify/functions/webhook-proxy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        btn.textContent = 'ENVIADO CON EXITO';
+        btn.classList.add('!bg-green-600');
+        form.reset();
+        setTimeout(() => { btn.textContent = 'Desplegar mi Ecosistema Digital'; btn.classList.remove('!bg-green-600'); btn.disabled = false; }, 3000);
+      } else {
+        throw new Error('Server error');
+      }
+    } catch(err) {
+      btn.textContent = 'ERROR - INTENTAR DE NUEVO';
+      btn.classList.add('!bg-red-600');
+      setTimeout(() => { btn.textContent = 'Desplegar mi Ecosistema Digital'; btn.classList.remove('!bg-red-600'); btn.disabled = false; }, 3000);
+    }
+  });
+})();
+</script>
 </body>
 </html>
