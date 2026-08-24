@@ -4281,50 +4281,6 @@ details[open] .noinclude-chevron {
   }
 }
 
-.diag-calendly-header {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.diag-calendly-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--black);
-  margin-bottom: 8px;
-}
-
-.diag-calendly-subtitle {
-  font-size: 15px;
-  color: var(--gray-600);
-  line-height: 1.5;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.diag-calendly-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  min-height: 600px;
-  border: none;
-  border-radius: 12px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-}
-
-.diag-calendly-container iframe {
-  width: 100%;
-  height: 600px;
-  border: none;
-}
-
-.diag-calendly-footer {
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-}
-
 /* ─── Responsive ─── */
 @media (max-width: 680px) {
   .diag-modal-scroll {
@@ -4712,36 +4668,6 @@ details[open] .faq-chevron {
   height: 20px;
   background: rgba(255, 255, 255, 0.3);
   transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
-}
-
-.faq-question {
-  padding: 1.5rem;
-  background: var(--white);
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--gray-900);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-}
-
-.faq-question::-webkit-details-marker {
-  display: none;
-}
-
-.faq-chevron {
-  transition: transform 0.3s var(--ease);
-}
-
-details[open] .faq-chevron {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  padding: 0 1.5rem 1.5rem;
-  color: var(--gray-600);
-  line-height: 1.6;
 }
 
 .faq-answer p {

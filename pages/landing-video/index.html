@@ -1526,24 +1526,44 @@
     });
 
     // Submit handler
-    document.getElementById('fm-form').addEventListener('submit', function(e) {
+    document.getElementById('fm-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         const btn = document.getElementById('fm-btn-submit');
         const original = btn.innerHTML;
         btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-lg align-middle mr-2">sync</span> PROCESANDO...';
         btn.classList.add('opacity-80', 'cursor-not-allowed');
-        setTimeout(() => {
+
+        const fd = new FormData(this);
+        const data = {};
+        fd.forEach((v, k) => { data[k] = v; });
+
+        try {
+            const resp = await fetch('/.netlify/functions/webhook-proxy', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ origin: 'landing-video', ...data })
+            });
+            if (!resp.ok) throw new Error(resp.status);
             btn.innerHTML = '<span class="material-symbols-outlined text-lg align-middle mr-2">done_all</span> SOLICITUD ENVIADA';
             btn.classList.remove('bg-primary');
             btn.classList.add('bg-green-600');
             setTimeout(() => {
-                alert('Solicitud enviada correctamente al comando central.');
+                closeFormModal();
                 btn.innerHTML = original;
                 btn.classList.remove('bg-green-600', 'opacity-80', 'cursor-not-allowed');
                 btn.classList.add('bg-primary');
-                closeFormModal();
+                this.reset();
             }, 1500);
-        }, 2000);
+        } catch (err) {
+            btn.innerHTML = '<span class="material-symbols-outlined text-lg align-middle mr-2">error</span> ERROR, INTENTA DE NUEVO';
+            btn.classList.remove('bg-primary');
+            btn.classList.add('bg-red-600');
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.classList.remove('bg-red-600', 'opacity-80', 'cursor-not-allowed');
+                btn.classList.add('bg-primary');
+            }, 2500);
+        }
     });
 
     // Radio card scale effect

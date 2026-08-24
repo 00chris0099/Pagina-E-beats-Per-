@@ -50,6 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  document.querySelectorAll('details > summary').forEach(s => {
+    const text = s.textContent.trim();
+    if (text) s.setAttribute('aria-label', text);
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && sidebarNav?.classList.contains('sidebar-nav--open')) {
       toggleSidebar(false);
