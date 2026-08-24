@@ -11,7 +11,7 @@
             <div class="mb-xl">
                 <img src="${root}assets/images/logonormal.png" alt="E Beats Peru" class="h-14 w-14 object-cover rounded-sm mb-md" />
                 <p class="font-body-lg text-body-lg text-on-surface max-w-2xl">
-                    Inteligencia Artificial y Ciberseguridad B2B. Agencia de ingenieria tecnologica liderada por Christian Elias (CEO). Operamos formalmente bajo el regimen MYPE Tributario ante SUNAT. Disenamos, auditamos y blindamos infraestructura digital desde nuestra sede operativa en San Juan de Lurigancho para centros de especializacion, corporaciones y despachos en Lima, Cusco y Piura.
+                    Inteligencia Artificial y Ciberseguridad B2B. Agencia de ingenieria tecnologica liderada por Christian Elias (CEO). Operamos formalmente bajo el regimen MYPE Tributario ante SUNAT. Diseniamos, auditamos y blindamos infraestructura digital desde nuestra sede operativa en San Juan de Lurigancho para centros de especializacion, corporaciones y despachos en Lima, Cusco y Piura.
                 </p>
                 <div class="flex gap-sm items-center mt-sm">
                     <span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified_user</span>
@@ -48,20 +48,27 @@
                     </nav>
                 </div>
                 <div class="flex flex-col gap-md">
-                    <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-secondary pl-base">Infraestructura</h4>
-                    <div class="flex flex-wrap gap-xs">
+                    <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-secondary pl-base">Contacto Directo</h4>
+                    <div class="flex flex-col gap-sm font-body-md text-body-md text-secondary">
+                        <a href="mailto:anchillo00@gmail.com" class="flex items-center gap-xs hover:text-primary transition-colors w-fit">
+                            <span class="material-symbols-outlined text-[18px]">mail</span> anchillo00@gmail.com
+                        </a>
+                        <a href="https://wa.me/51955250185" target="_blank" rel="noopener" class="flex items-center gap-xs hover:text-primary transition-colors w-fit">
+                            <span class="material-symbols-outlined text-[18px]">chat</span> +51 955 250 185 (WhatsApp)
+                        </a>
+                        <a href="tel:+51955250185" class="flex items-center gap-xs hover:text-primary transition-colors w-fit">
+                            <span class="material-symbols-outlined text-[18px]">call</span> +51 955 250 185 (Llamar)
+                        </a>
+                        <a href="https://www.google.com/maps/place/Ebeats+Per%C3%BA/@-11.9406971,-76.9992447,19.54z" target="_blank" rel="noopener" class="flex items-center gap-xs hover:text-primary transition-colors w-fit">
+                            <span class="material-symbols-outlined text-[18px]">location_on</span> San Juan de Lurigancho, Lima
+                        </a>
+                        <p class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">support_agent</span> Soporte 24/7 Corporativo</p>
+                    </div>
+                    <div class="flex flex-wrap gap-xs mt-xs">
                         <span class="px-base py-xs border border-primary text-[10px] font-bold uppercase">KVM Tier 2</span>
                         <span class="px-base py-xs border border-primary text-[10px] font-bold uppercase">SQL Server</span>
                         <span class="px-base py-xs border border-primary text-[10px] font-bold uppercase">n8n Enterprise</span>
                         <span class="px-base py-xs border border-primary text-[10px] font-bold uppercase">SSL/AES-256</span>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-md">
-                    <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-secondary pl-base">Operaciones</h4>
-                    <div class="flex flex-col gap-xs font-body-md text-body-md text-secondary">
-                        <p class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">location_on</span> San Juan de Lurigancho, Lima</p>
-                        <p class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">mail</span> soporte@e-beats.pe</p>
-                        <p class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">support_agent</span> Soporte 24/7 Corporativo</p>
                     </div>
                 </div>
             </div>
@@ -78,11 +85,7 @@
                 </div>
             </div>
         </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.1/lib/anime.min.js"></script>
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script src="${root}assets/js/main.js"></script>`;
+    </footer>`;
 
     const placeholder = document.getElementById('site-footer');
     if (placeholder) {

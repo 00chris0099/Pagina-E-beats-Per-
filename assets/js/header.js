@@ -9,7 +9,11 @@
     <header id="navbar" class="navbar bg-white/95 border-b border-on-surface/10">
         <div class="bg-primary text-on-primary text-center py-1 px-4 overflow-hidden">
             <p class="font-label-sm text-[9px] sm:text-[11px] uppercase tracking-widest truncate">
-                Operaciones formales e infraestructura MYPE Tributario &nbsp;|&nbsp; Soporte 24/7
+                <a href="tel:+51955250185" class="hover:underline">+51 955 250 185</a>
+                &nbsp;|&nbsp;
+                <a href="https://wa.me/51955250185" target="_blank" rel="noopener" class="hover:underline">WhatsApp</a>
+                &nbsp;|&nbsp;
+                <a href="mailto:anchillo00@gmail.com" class="hover:underline">anchillo00@gmail.com</a>
                 <span class="inline-flex items-center gap-1 ml-2">
                     <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
                     SISTEMAS OPERATIVOS
