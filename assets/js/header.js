@@ -8,26 +8,30 @@
     const headerHTML = `
     <header id="navbar" class="navbar bg-white/95 border-b border-on-surface/10">
         <div class="bg-primary text-on-primary text-center py-1 px-4 overflow-hidden">
-            <p class="font-label-sm text-[9px] sm:text-[11px] uppercase tracking-widest truncate">
+            <p class="font-label-sm text-[9px] sm:text-[11px] uppercase tracking-widest truncate flex items-center justify-center flex-wrap gap-x-2">
                 <a href="tel:+51955250185" class="hover:underline">+51 955 250 185</a>
-                &nbsp;|&nbsp;
+                <span>|</span>
                 <a href="https://wa.me/51955250185" target="_blank" rel="noopener" class="hover:underline">WhatsApp</a>
-                &nbsp;|&nbsp;
-                <a href="mailto:anchillo00@gmail.com" class="hover:underline">anchillo00@gmail.com</a>
-                <span class="inline-flex items-center gap-1 ml-2">
+                <span>|</span>
+                <a href="https://www.tiktok.com/@agenciaiaperu" target="_blank" rel="noopener" class="hover:underline font-bold text-red-400">TikTok @agenciaiaperu</a>
+                <span>|</span>
+                <a href="https://www.instagram.com/christianeliasan/" target="_blank" rel="noopener" class="hover:underline font-bold text-pink-400">Instagram</a>
+                <span>|</span>
+                <span class="inline-flex items-center gap-1">
                     <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
                     SISTEMAS OPERATIVOS
                 </span>
             </p>
         </div>
         <nav class="max-w-7xl mx-auto px-4 md:px-16 h-16 flex items-center justify-between">
-            <a href="${root}index.html" class="flex items-center shrink-0">
+            <a href="${root}index.html" class="flex items-center shrink-0 gap-2">
                 <img src="${root}assets/images/logonormal.png" alt="E Beats Peru" class="h-10 w-10 object-cover rounded-sm" />
+                <span class="font-bold text-xs tracking-tighter hidden sm:inline-block text-primary">E-BEATS</span>
             </a>
-            <div class="hidden lg:flex items-center gap-8">
+            <div class="hidden lg:flex items-center gap-6">
                 <div class="relative group">
                     <button class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors flex items-center gap-1">
-                        Soluciones Tecnologicas
+                        Soluciones
                         <span class="material-symbols-outlined text-sm">expand_more</span>
                     </button>
                     <div class="absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
@@ -77,13 +81,18 @@
                         </div>
                     </div>
                 </div>
-                <a href="${root}pages/servicios.html" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Casos en Produccion</a>
-                <a href="${root}pages/blog.html" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Centro de Recursos</a>
+                <a href="${root}pages/landing-video/index.html#video-section" class="font-label-sm text-[12px] uppercase tracking-widest text-on-tertiary-container hover:text-primary transition-colors flex items-center gap-1.5 font-bold bg-red-50 hover:bg-red-100 border border-red-200 px-3 py-1 rounded-sm shadow-sm" title="Ver presentación en video">
+                    <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
+                    Masterclass VSL
+                </a>
+                <a href="${root}index.html#tiktok-hub" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">TikTok & Nutrición</a>
+                <a href="${root}pages/servicios.html" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Casos</a>
+                <a href="${root}pages/blog.html" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Recursos</a>
                 <a href="${root}pages/ayuda/" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Ayuda</a>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3">
                 <a href="${root}pages/contacto.html" class="hidden md:inline-flex bg-on-tertiary-container text-white px-5 py-2.5 font-label-sm text-[12px] uppercase tracking-widest hover:bg-primary transition-colors">
-                    Agendar Auditoria Ejecutiva
+                    Agendar Auditoria
                 </a>
                 <button id="mobileMenuBtn" class="lg:hidden p-2" aria-label="Abrir menu">
                     <span class="material-symbols-outlined text-2xl">menu</span>
@@ -91,8 +100,16 @@
             </div>
         </nav>
         <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-on-surface/10">
-            <div class="px-4 py-6 space-y-4">
+            <div class="px-4 py-6 space-y-3">
+                <a href="${root}pages/landing-video/index.html#video-section" class="flex items-center justify-between font-label-sm text-[13px] uppercase tracking-widest py-2.5 px-3 bg-red-50 text-on-tertiary-container border border-red-200 font-bold rounded-sm">
+                    <span class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
+                        🎥 Ver Masterclass VSL (10 min)
+                    </span>
+                    <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded">GRATIS</span>
+                </a>
                 <a href="${root}index.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Inicio</a>
+                <a href="${root}index.html#tiktok-hub" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10 text-on-tertiary-container font-semibold">📱 TikTok @agenciaiaperu & Nutrición</a>
                 <a href="${root}pages/servicios.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Servicios</a>
                 <a href="${root}pages/servicios/agente-ia-whatsapp.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Agente IA WhatsApp</a>
                 <a href="${root}pages/servicios/paginas-web-baratas.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Paginas Web Baratas</a>
@@ -101,7 +118,17 @@
                 <a href="${root}pages/blog.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Centro de Recursos</a>
                 <a href="${root}pages/ayuda/" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Ayuda</a>
                 <a href="${root}pages/contacto.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Contacto</a>
-                <a href="${root}pages/contacto.html" class="block bg-on-tertiary-container text-white px-5 py-3 font-label-sm text-[12px] uppercase tracking-widest text-center mt-4">Agendar Auditoria</a>
+
+                <div class="pt-2 pb-1 border-t border-on-surface/10 flex flex-col gap-2">
+                    <span class="text-[11px] uppercase tracking-wider text-secondary">Síguenos:</span>
+                    <div class="flex gap-2">
+                        <a href="https://www.tiktok.com/@agenciaiaperu" target="_blank" rel="noopener" class="px-3 py-1.5 bg-black text-white text-xs font-bold rounded-sm flex-1 text-center">TikTok</a>
+                        <a href="https://www.instagram.com/christianeliasan/" target="_blank" rel="noopener" class="px-3 py-1.5 bg-[#E1306C] text-white text-xs font-bold rounded-sm flex-1 text-center">Instagram</a>
+                        <a href="https://www.facebook.com/profile.php?id=61580617251411" target="_blank" rel="noopener" class="px-3 py-1.5 bg-[#1877F2] text-white text-xs font-bold rounded-sm flex-1 text-center">Facebook</a>
+                    </div>
+                </div>
+
+                <a href="${root}pages/contacto.html" class="block bg-on-tertiary-container text-white px-5 py-3 font-label-sm text-[12px] uppercase tracking-widest text-center mt-3">Agendar Auditoria</a>
             </div>
         </div>
     </header>`;
