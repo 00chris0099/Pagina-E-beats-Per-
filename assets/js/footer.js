@@ -1,15 +1,9 @@
 (function() {
-    const path = window.location.pathname;
-    const depth = path.split('/').filter(Boolean).length;
-    let root = '';
-    if (depth >= 3) root = '../../';
-    else if (depth >= 2) root = '../';
-
     const footerHTML = `
     <footer class="w-full bg-surface-container-lowest border-t-2 border-primary py-xl px-margin-mobile md:px-margin-desktop">
         <div class="max-w-[1440px] mx-auto">
             <div class="mb-xl">
-                <img src="${root}assets/images/logonormal.png" alt="E Beats Peru" class="h-14 w-14 object-cover rounded-sm mb-md" />
+                <img src="/assets/images/logonormal.png" alt="E Beats Peru" class="h-14 w-14 object-cover rounded-sm mb-md" />
                 <p class="font-body-lg text-body-lg text-on-surface max-w-2xl">
                     Inteligencia Artificial y Ciberseguridad B2B. Agencia de ingenieria tecnologica liderada por Christian Elias (CEO). Operamos formalmente bajo el regimen MYPE Tributario ante SUNAT. Diseniamos, auditamos y blindamos infraestructura digital desde nuestra sede operativa en San Juan de Lurigancho para centros de especializacion, corporaciones y despachos en Lima, Cusco y Piura.
                 </p>
@@ -19,7 +13,7 @@
                 </div>
                 <div class="flex flex-wrap gap-2 items-center mt-md pt-base border-t border-surface-variant max-w-xl">
                     <span class="font-label-sm text-[11px] uppercase tracking-wider text-secondary mr-2">Comunidad & Redes:</span>
-                    <a href="https://www.tiktok.com/@agenciaiaperu" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1 bg-black text-white hover:bg-on-tertiary-container transition-colors text-xs font-bold rounded-sm" title="TikTok de E Beats Perú">
+                    <a href="https://www.tiktok.com/@agenciaiaperu" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1 bg-black text-white hover:bg-on-tertiary-container transition-colors text-xs font-bold rounded-sm" title="TikTok de E Beats Peru">
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.86 4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.04-4.52z"/></svg>
                         TikTok @agenciaiaperu
                     </a>
@@ -38,33 +32,33 @@
                 <div class="flex flex-col gap-md">
                     <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-on-tertiary-container pl-base">Servicios</h4>
                     <nav class="flex flex-col gap-sm">
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/servicios/agente-ia-whatsapp.html">Agente IA para WhatsApp</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/servicios/paginas-web-baratas.html">Paginas Web Baratas</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/servicios/automatizacion-sunat.html">Automatizacion SUNAT</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/servicios/paquete-completo.html">Paquete Completo</a>
-                        <a class="font-body-md text-body-md text-on-tertiary-container font-bold hover:underline transition-colors w-fit flex items-center gap-1.5" href="${root}pages/landing-video/index.html#video-section">
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/servicios/agente-ia-whatsapp.html">Agente IA para WhatsApp</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/servicios/paginas-web-baratas.html">Paginas Web Baratas</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/servicios/automatizacion-sunat.html">Automatizacion SUNAT</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/servicios/paquete-completo.html">Paquete Completo</a>
+                        <a class="font-body-md text-body-md text-on-tertiary-container font-bold hover:underline transition-colors w-fit flex items-center gap-1.5" href="/pages/landing-video/index.html#video-section">
                             <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
-                            Demostración VSL (10 min)
+                            Demostracion VSL (10 min)
                         </a>
                     </nav>
                 </div>
                 <div class="flex flex-col gap-md">
                     <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-primary pl-base">Casos de Uso</h4>
                     <nav class="flex flex-col gap-sm">
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/chatbots-b2b.html">Chatbots de Ventas IA</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/desarrollo-software.html">Desarrollo de Software</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/flujos-trabajo.html">Automatizacion n8n</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/casos/bases-datos-seguridad.html">Ciberseguridad</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/casos/chatbots-b2b.html">Chatbots de Ventas IA</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/casos/desarrollo-software.html">Desarrollo de Software</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/casos/flujos-trabajo.html">Automatizacion n8n</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/casos/bases-datos-seguridad.html">Ciberseguridad</a>
                     </nav>
                 </div>
                 <div class="flex flex-col gap-md">
                     <h4 class="font-label-sm text-label-sm uppercase text-primary border-l-4 border-primary pl-base">Soporte</h4>
                     <nav class="flex flex-col gap-sm">
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/">Centro de Ayuda</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/seguir-pedido.html">Seguimiento de Pedidos</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/metodos-de-pago.html">Metodos de Pago</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/envios.html">Politica de Envios</a>
-                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="${root}pages/ayuda/contacto-soporte.html">Contactar Soporte</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/ayuda/">Centro de Ayuda</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/ayuda/seguir-pedido.html">Seguimiento de Pedidos</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/ayuda/metodos-de-pago.html">Metodos de Pago</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/ayuda/envios.html">Politica de Envios</a>
+                        <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors w-fit" href="/pages/ayuda/contacto-soporte.html">Contactar Soporte</a>
                     </nav>
                 </div>
                 <div class="flex flex-col gap-md">
@@ -100,9 +94,9 @@
 
             <div class="pt-lg border-t-2 border-primary flex flex-col md:flex-row justify-between items-center gap-md">
                 <div class="flex flex-wrap justify-center md:justify-start gap-md">
-                    <a class="font-label-sm text-label-sm text-secondary hover:text-primary uppercase tracking-tight" href="${root}pages/politica-de-privacidad.html">Politicas de Privacidad y Tratamiento de Datos</a>
-                    <a class="font-label-sm text-label-sm text-secondary hover:text-primary uppercase tracking-tight" href="${root}pages/politica-de-privacidad.html">Terminos de Servicio Corporativo</a>
-                    <a class="font-label-sm text-label-sm text-secondary hover:text-primary uppercase tracking-tight" href="${root}pages/politica-de-privacidad.html">Politicas de Cookies</a>
+                    <a class="font-label-sm text-label-sm text-secondary hover:text-primary uppercase tracking-tight" href="/pages/politica-de-privacidad.html">Politicas de Privacidad y Tratamiento de Datos</a>
+                    <a class="font-label-sm text-label-sm text-secondary hover:text-primary uppercase tracking-tight" href="/pages/politica-de-privacidad.html">Terminos de Servicio Corporativo</a>
+                    <a class="font-label-sm text-label-sm text-secondary hover:text-primary uppercase tracking-tight" href="/pages/politica-de-privacidad.html">Politicas de Cookies</a>
                 </div>
                 <div class="flex flex-col items-center md:items-end gap-xs">
                     <p class="font-label-sm text-label-sm text-primary font-bold uppercase">&copy; 2026 E-Beats Peru</p>
