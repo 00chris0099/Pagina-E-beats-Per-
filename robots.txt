@@ -1,5 +1,5 @@
 # robots.txt para E Beats Perú
-# https://www.ebeatspe.com
+# https://ebeatsper%C3%BA.tech
 
 User-agent: *
 Allow: /
@@ -16,10 +16,10 @@ Disallow: /checkout/
 Disallow: /checkout/*
 
 # Sitemap
-Sitemap: https://www.ebeatspe.com/sitemap.xml
+Sitemap: https://ebeatsper%C3%BA.tech/sitemap.xml
 
 # Información adicional para motores de búsqueda
-Host: https://www.ebeatspe.com
+Host: https://ebeatsper%C3%BA.tech
 Crawl-delay: 1
 
 # ─── Rastreadores de IA ───────────────────────────────────────────────────────
