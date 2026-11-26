@@ -1,163 +1,39 @@
 # AGENTS.md - E Beats Perú Landing Page
 
 ## Project Overview
-This is a static landing page for E Beats Perú (AI/automation agency). The project structure:
 
-```
-/
-├── index.html                    # Main landing page
-├── assets/
-│   ├── css/styles.css            # CSS design system
-│   └── js/
-│       ├── main.js               # Core JS (animations, forms, modals)
-│       ├── header.js             # Reusable header component
-│       └── footer.js             # Reusable footer component
-├── pages/
-│   ├── servicios.html            # Services catalog
-│   ├── blog.html                 # Blog listing
-│   ├── contacto.html             # Contact page
-│   ├── politica-de-privacidad.html
-│   ├── casos/                    # Case studies (kebab-case)
-│   │   ├── chatbots-b2b.html
-│   │   ├── desarrollo-software.html
-│   │   ├── flujos-trabajo.html
-│   │   └── bases-datos-seguridad.html
-│   ├── blogs/                    # Blog posts
-│   │   ├── ciberseguridad-mype.html
-│   │   ├── ia-conversacional.html
-│   │   └── automatizacion-n8n.html
-│   └── landing-video/            # Video VSL landing
-├── assets/images/                # Images (logos, favicon, hero)
-├── functions/                    # Netlify serverless functions
-│   ├── webhook-proxy.js          # n8n webhook proxy
-│   └── webhook-form.js           # Form webhook proxy
-├── netlify.toml                  # Deploy config + security headers
-├── sitemap.xml                   # SEO sitemap
-├── robots.txt                    # Crawler directives
-└── llms.txt                      # AI-readable business profile
+This is a static website for the E Beats Perú real estate automation offering.
+
+- `index.html` contains the landing and the diagnostic quiz markup.
+- `config.js` contains the public brand, WhatsApp, booking and offer settings.
+- `assets/inmobiliarias/` contains the landing stylesheet, browser script and media.
+- `assets/js/header.js` and `assets/js/footer.js` serve the archived articles.
+- `pages/` contains the legal pages, nutrition page, editorial index and articles.
+- `nginx.conf`, `Caddyfile.example` and `netlify.toml` define hosting and legacy redirects.
+- `README.md` documents local preview, quiz behavior and deployment.
+
+## Development and verification
+
+The landing uses vanilla HTML, CSS and JavaScript, with no build step. From the project root, run:
+
+```bash
+python -m http.server 3000 --bind 127.0.0.1
 ```
 
-## Build Commands
-This is a static website with no build system. No npm/node dependencies.
+- Verify the mockups and layout at 360 px and on desktop.
+- Test the quiz with all result paths and check that going back retains answers.
+- Verify the WhatsApp message and marketing attribution from the quiz result.
+- Test links, keyboard navigation, the animated demo and reduced motion.
+- Check legacy redirects on the hosting server when editing routing rules.
 
-- **Preview locally**: Open `index.html` directly in browser, or serve with any static server:
-  ```bash
-  # Using Python
-  python -m http.server 8000
-  # Using Node (if available)
-  npx serve
-  ```
-- **Deploy**: Push to any static host (Netlify, Vercel, GitHub Pages, etc.)
+## Code style
 
-## Testing
-No automated tests exist. Manual testing checklist:
-- [ ] Form validation works for all 3 steps
-- [ ] Phone validation respects country-specific rules (PHONE_RULES in main.js)
-- [ ] Modal opens/closes correctly
-- [ ] Scroll animations trigger properly
-- [ ] Mobile hamburger menu works
-- [ ] Smooth scroll to anchors works
-- [ ] Video player controls function correctly
-- [ ] Accessibility: keyboard navigation, ARIA labels
-
-## Code Style Guidelines
-
-### General
-- This is a vanilla HTML/CSS/JS project - no frameworks
-- Use semantic HTML5 elements
-- Keep CSS organized with comment headers (see existing pattern)
-- JavaScript uses ES6+ (const, let, arrow functions, template literals)
-
-### HTML (index.html)
-- Use 2-space indentation
-- All attributes in double quotes
-- Self-closing tags for void elements
-- Keep attributes sorted logically (lang, charset, viewport, title, meta, link, style, script)
-- Use data attributes for JS hooks (`data-aos`, `data-hero-delay`)
-- Include proper ARIA labels on interactive elements
-- JSON-LD schemas should be valid
-
-### CSS (assets/css/styles.css)
-- Use CSS custom properties (`:root`) for colors, fonts, spacing
-- Follow BEM-ish naming: `.block__element--modifier`
-- Use `clamp()` for responsive typography
-- Keep responsive breakpoints in media queries
-- Use CSS variables from `:root` instead of hardcoded values
-- Prefer `rem` over `px` for accessibility
-
-### JavaScript (assets/js/main.js)
-- Wrap in `DOMContentLoaded` event listener
-- Use `const` and `let` - avoid `var`
-- Use arrow functions where appropriate
-- Use template literals for string interpolation
-- Add `{ passive: true }` to scroll event listeners
-- Handle `prefers-reduced-motion` for accessibility
-- Validate phone numbers against PHONE_RULES object
-- Use `fetch` with proper error handling for form submissions
-- Clear form state on modal open
-
-### Naming Conventions
-- Classes: kebab-case (`.btn-primary`, `.hero-content`)
-- IDs: camelCase where needed (`#hero-cta`, `#diagModal`)
-- Functions: camelCase (`initHeroEntrance()`, `goToStep()`)
-- Constants: UPPER_SNAKE_CASE for configuration objects (`PHONE_RULES`, `WEBHOOK_URL`)
-- CSS variables: kebab-case (`--red`, `--ease`)
-
-### Accessibility
-- Include `alt` text on all images
-- Use semantic heading hierarchy (h1 → h2 → h3)
-- Ensure color contrast meets WCAG AA
-- Support keyboard navigation
-- Use `aria-label` on icon-only buttons
-- Implement focus management for modals
-
-### Error Handling
-- Form validation should show inline errors
-- Use `try/catch` for async operations (fetch)
-- Log errors to console with descriptive messages
-- Provide user-friendly error messages in UI
-
-### Performance
-- Lazy load images with `loading="lazy"`
-- Use `preconnect` for external resources
-- Defer non-critical scripts
-- Avoid layout shifts by specifying dimensions
-- Use `will-change` sparingly for animated elements
-
-## Project-Specific Notes
-
-### Form Validation
-The diagnostic modal (3-step form) validates:
-- Step 1: Country, name, email, phone (country-specific regex)
-- Step 2: Ventas, facturación, problemas (checkboxes), herramientas (checkboxes)
-- Step 3: Etapa, implementar, tiempo (radio), privacy checkbox
-
-### Phone Validation
-Phone rules vary by country (defined in `PHONE_RULES`). Each country has:
-- `regex`: Validation pattern
-- `placeholder`: Input hint
-- `hint`: Error message
-
-### External Dependencies
-- **anime.js**: Loaded via CDN for animations
-- **Vimeo Player API**: For custom video controls
-- **Calendly**: Lazy-loaded on demand for scheduling
-- **Google Fonts**: Inter + Plus Jakarta Sans
-
-### Webhook
-Form submissions POST to Netlify Function proxy at:
-```
-/.netlify/functions/webhook-proxy   (diagnostic modal)
-/.netlify/functions/webhook-form    (contact form)
-```
-The functions forward to n8n webhooks (URLs stored as environment variables, not in code).
-
-## Common Tasks
-- **Add new section**: Copy existing section pattern, update IDs
-- **Modify form fields**: Update validation in main.js + HTML
-- **Change colors**: Update CSS custom properties in `:root`
-- **Add animation**: Use IntersectionObserver pattern like existing code
-- **Debug form**: Check browser console + network tab for webhook responses
+- Use semantic HTML5, two-space indentation and double-quoted attributes.
+- Use descriptive alternative text for meaningful images and accessible names for icon-only controls.
+- Keep styling in `assets/inmobiliarias/landing.css`. Use CSS custom properties and responsive units.
+- Use data attributes for JavaScript hooks and preserve keyboard focus while changing quiz steps.
+- Specify image dimensions and reserve lazy loading for images below the initial viewport.
+- Keep credentials out of browser-facing configuration. The diagnostic is requested through WhatsApp or the optional calendar.
 
 # Available Skills
 

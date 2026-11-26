@@ -1,6 +1,6 @@
 FROM nginx:alpine
-RUN rm -rf /usr/share/nginx/html/*
-RUN rm -f /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY . /usr/share/nginx/html
+COPY index.html config.js robots.txt sitemap.xml llms.txt favicon.ico google0fba4ef6d49804d8.html /usr/share/nginx/html/
+COPY assets/ /usr/share/nginx/html/assets/
+COPY pages/ /usr/share/nginx/html/pages/
 EXPOSE 80

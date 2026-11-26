@@ -1,0 +1,32 @@
+xn--ebeatsper-e9a.tech {
+	root * /var/www/ebeats
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+	@config path /config.js
+	header @config Cache-Control "no-cache"
+	@assets path /assets/*
+	header @assets Cache-Control "public, max-age=3600"
+	@captions path /assets/inmobiliarias/video-apoyo.es.vtt
+	header @captions Content-Type "text/vtt; charset=utf-8"
+
+	@oldPlans path /servicios.html /pages/servicios /pages/servicios.html /pages/servicios/*
+	redir @oldPlans "/#planes" permanent
+	@oldDemo path /pages/casos /pages/casos/* /pages/landing-video /pages/landing-video/ /pages/landing-video/index.html
+	redir @oldDemo "/#demo" permanent
+	@oldContact path /contacto.html /pages/contacto.html /pages/ayuda /pages/ayuda/* /pages/landing-video/formulario-1.html /pages/landing-video/formulario-2.html /pages/landing-video/formulario-3.html /gracias /gracias/ /gracias/index.html
+	redir @oldContact "/#contacto" permanent
+
+	redir /inicio.html / permanent
+	redir /blogprincipal.html /pages/blog.html permanent
+	redir /politica-de-privacidad.html /pages/politica-de-privacidad.html permanent
+	redir /blogs/blog-ciberseguridad-mype.html /pages/blogs/ciberseguridad-mype.html permanent
+	redir /blogs/blog-ia-conversacional.html /pages/blogs/ia-conversacional.html permanent
+	redir /blogs/blog-automatizacion-n8n.html /pages/blogs/automatizacion-n8n.html permanent
+
+	file_server
+}

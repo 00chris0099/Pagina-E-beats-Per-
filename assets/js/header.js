@@ -1,142 +1,16 @@
-(function() {
-    const headerHTML = `
-    <header id="navbar" class="navbar bg-white/95 border-b border-on-surface/10">
-        <div class="bg-primary text-on-primary text-center py-1 px-4 overflow-hidden">
-            <p class="font-label-sm text-[9px] sm:text-[11px] uppercase tracking-widest truncate flex items-center justify-center flex-wrap gap-x-2">
-                <a href="tel:+51955250185" class="hover:underline">+51 955 250 185</a>
-                <span>|</span>
-                <a href="https://wa.me/51955250185" target="_blank" rel="noopener" class="hover:underline">WhatsApp</a>
-                <span>|</span>
-                <a href="https://www.tiktok.com/@agenciaiaperu" target="_blank" rel="noopener" class="hover:underline font-bold text-red-400">TikTok @agenciaiaperu</a>
-                <span>|</span>
-                <a href="https://www.instagram.com/christianeliasan/" target="_blank" rel="noopener" class="hover:underline font-bold text-pink-400">Instagram</a>
-                <span>|</span>
-                <span class="inline-flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
-                    SISTEMAS OPERATIVOS
-                </span>
-            </p>
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+
+  header.innerHTML = `
+    <header class="bg-surface border-b border-outline-variant">
+      <nav class="max-w-7xl mx-auto px-4 md:px-16 min-h-16 flex flex-wrap items-center justify-between gap-3 py-3" aria-label="Principal">
+        <a class="font-headline-lg font-bold text-primary" href="/">E Beats Perú</a>
+        <div class="flex flex-wrap gap-4">
+          <a class="underline" href="/pages/blog.html">Artículos</a>
+          <a class="underline" href="/#contacto">Contacto</a>
         </div>
-        <nav class="max-w-7xl mx-auto px-4 md:px-16 h-16 flex items-center justify-between">
-            <a href="/" class="flex items-center shrink-0 gap-2">
-                <img src="/assets/images/logonormal.png" alt="E Beats Peru" class="h-10 w-10 object-cover rounded-sm" />
-                <span class="font-bold text-xs tracking-tighter hidden sm:inline-block text-primary">E-BEATS</span>
-            </a>
-            <div class="hidden lg:flex items-center gap-6">
-                <div class="relative group">
-                    <button class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors flex items-center gap-1">
-                        Soluciones
-                        <span class="material-symbols-outlined text-sm">expand_more</span>
-                    </button>
-                    <div class="absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
-                        <div class="bg-white border border-on-surface/10 p-6 grid grid-cols-3 gap-4 min-w-[600px] shadow-xl">
-                            <a href="/pages/servicios/agente-ia-whatsapp.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">chat</span>
-                                <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Agente IA WhatsApp</span>
-                                    <span class="text-[12px] text-secondary">Bot de ventas 24/7</span>
-                                </div>
-                            </a>
-                            <a href="/pages/servicios/paginas-web-baratas.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">language</span>
-                                <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Paginas Web</span>
-                                    <span class="text-[12px] text-secondary">Desde S/300</span>
-                                </div>
-                            </a>
-                            <a href="/pages/servicios/automatizacion-sunat.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">receipt_long</span>
-                                <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Automatizacion SUNAT</span>
-                                    <span class="text-[12px] text-secondary">Facturacion electronica</span>
-                                </div>
-                            </a>
-                            <a href="/pages/servicios/paquete-completo.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">inventory_2</span>
-                                <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Combo PRO</span>
-                                    <span class="text-[12px] text-secondary">Web + Bot + n8n</span>
-                                </div>
-                            </a>
-                            <a href="/pages/casos/chatbots-b2b.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">smart_toy</span>
-                                <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Agentes IA</span>
-                                    <span class="text-[12px] text-secondary">Casos de uso</span>
-                                </div>
-                            </a>
-                            <a href="/pages/casos/desarrollo-software.html" class="flex items-start gap-3 p-3 hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-on-tertiary-container">code</span>
-                                <div>
-                                    <span class="font-label-sm text-[13px] uppercase font-bold block">Desarrollo</span>
-                                    <span class="text-[12px] text-secondary">Software y Apps</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <a href="/pages/landing-video/index.html#video-section" class="font-label-sm text-[12px] uppercase tracking-widest text-on-tertiary-container hover:text-primary transition-colors flex items-center gap-1.5 font-bold bg-red-50 hover:bg-red-100 border border-red-200 px-3 py-1 rounded-sm shadow-sm" title="Ver presentacion en video">
-                    <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
-                    Masterclass VSL
-                </a>
-                <a href="/#tiktok-hub" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">TikTok & Nutricion</a>
-                <a href="/pages/servicios.html" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Casos</a>
-                <a href="/pages/blog.html" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Recursos</a>
-                <a href="/pages/ayuda/" class="font-label-sm text-[13px] uppercase tracking-widest text-on-surface hover:text-on-tertiary-container transition-colors">Ayuda</a>
-            </div>
-            <div class="flex items-center gap-3">
-                <a href="/pages/contacto.html" class="hidden md:inline-flex bg-on-tertiary-container text-white px-5 py-2.5 font-label-sm text-[12px] uppercase tracking-widest hover:bg-primary transition-colors">
-                    Agendar Auditoria
-                </a>
-                <button id="mobileMenuBtn" class="lg:hidden p-2" aria-label="Abrir menu">
-                    <span class="material-symbols-outlined text-2xl">menu</span>
-                </button>
-            </div>
-        </nav>
-        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-on-surface/10">
-            <div class="px-4 py-6 space-y-3">
-                <a href="/pages/landing-video/index.html#video-section" class="flex items-center justify-between font-label-sm text-[13px] uppercase tracking-widest py-2.5 px-3 bg-red-50 text-on-tertiary-container border border-red-200 font-bold rounded-sm">
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
-                        Ver Masterclass VSL (10 min)
-                    </span>
-                    <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded">GRATIS</span>
-                </a>
-                <a href="/" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Inicio</a>
-                <a href="/#tiktok-hub" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10 text-on-tertiary-container font-semibold">TikTok @agenciaiaperu & Nutricion</a>
-                <a href="/pages/servicios.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Servicios</a>
-                <a href="/pages/servicios/agente-ia-whatsapp.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Agente IA WhatsApp</a>
-                <a href="/pages/servicios/paginas-web-baratas.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Paginas Web Baratas</a>
-                <a href="/pages/servicios/automatizacion-sunat.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Automatizacion SUNAT</a>
-                <a href="/pages/servicios/paquete-completo.html" class="block font-label-sm text-[11px] uppercase tracking-widest py-1.5 pl-4 border-b border-on-surface/5">Paquete Completo</a>
-                <a href="/pages/blog.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Centro de Recursos</a>
-                <a href="/pages/ayuda/" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Ayuda</a>
-                <a href="/pages/contacto.html" class="block font-label-sm text-[13px] uppercase tracking-widest py-2 border-b border-on-surface/10">Contacto</a>
-
-                <div class="pt-2 pb-1 border-t border-on-surface/10 flex flex-col gap-2">
-                    <span class="text-[11px] uppercase tracking-wider text-secondary">Siguenos:</span>
-                    <div class="flex gap-2">
-                        <a href="https://www.tiktok.com/@agenciaiaperu" target="_blank" rel="noopener" class="px-3 py-1.5 bg-black text-white text-xs font-bold rounded-sm flex-1 text-center">TikTok</a>
-                        <a href="https://www.instagram.com/christianeliasan/" target="_blank" rel="noopener" class="px-3 py-1.5 bg-[#E1306C] text-white text-xs font-bold rounded-sm flex-1 text-center">Instagram</a>
-                        <a href="https://www.facebook.com/profile.php?id=61580617251411" target="_blank" rel="noopener" class="px-3 py-1.5 bg-[#1877F2] text-white text-xs font-bold rounded-sm flex-1 text-center">Facebook</a>
-                    </div>
-                </div>
-
-                <a href="/pages/contacto.html" class="block bg-on-tertiary-container text-white px-5 py-3 font-label-sm text-[12px] uppercase tracking-widest text-center mt-3">Agendar Auditoria</a>
-            </div>
-        </div>
-    </header>`;
-
-    const placeholder = document.getElementById('site-header');
-    if (placeholder) {
-        placeholder.innerHTML = headerHTML;
-    }
-
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-})();
+      </nav>
+    </header>
+  `;
+});

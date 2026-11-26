@@ -1,121 +1,173 @@
+"$schema" = "https://open-api.netlify.com/netlify.schema.json"
+
 [build]
   publish = "."
-  functions = "functions"
+
+[[redirects]]
+  from = "/gracias"
+  to = "/#contacto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gracias/index.html"
+  to = "/#contacto"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/inicio.html"
   to = "/"
   status = 301
+  force = true
 
-# ─── SEO: Redirecciones para preservar URLs antiguas ─────────────────────────
 [[redirects]]
   from = "/servicios.html"
-  to = "/pages/servicios.html"
+  to = "/#planes"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/servicios.html"
+  to = "/#planes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/servicios"
+  to = "/#planes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/servicios/*"
+  to = "/#planes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/casos/*"
+  to = "/#demo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/casos"
+  to = "/#demo"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/blogprincipal.html"
   to = "/pages/blog.html"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/contacto.html"
-  to = "/pages/contacto.html"
+  to = "/#contacto"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/contacto.html"
+  to = "/#contacto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/ayuda"
+  to = "/#contacto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/ayuda/*"
+  to = "/#contacto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/landing-video"
+  to = "/#demo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/landing-video/index.html"
+  to = "/#demo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/landing-video/formulario-1.html"
+  to = "/#contacto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/landing-video/formulario-2.html"
+  to = "/#contacto"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/landing-video/formulario-3.html"
+  to = "/#contacto"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/politica-de-privacidad.html"
   to = "/pages/politica-de-privacidad.html"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/blogs/blog-ciberseguridad-mype.html"
   to = "/pages/blogs/ciberseguridad-mype.html"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/blogs/blog-ia-conversacional.html"
   to = "/pages/blogs/ia-conversacional.html"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/blogs/blog-automatizacion-n8n.html"
   to = "/pages/blogs/automatizacion-n8n.html"
   status = 301
+  force = true
 
-# ─── Security Headers (todas las rutas) ───────────────────────────────────────
 [[headers]]
   for = "/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(self)"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://player.vimeo.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://aimachristian-n8n.ajcxjb.easypanel.host https://vimeo.com; frame-src https://player.vimeo.com https://www.youtube.com; media-src 'self' https://*.vimeo.com"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-
-# ─── Cache: imágenes ───────────────────────────────────────────────────────────
-[[headers]]
-  for = "/assets/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://player.vimeo.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src https://player.vimeo.com https://www.youtube.com; media-src 'self' https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+    Strict-Transport-Security = "max-age=31536000"
 
 [[headers]]
-  for = "/image/*"
+  for = "/config.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# ─── Cache: CSS ───────────────────────────────────────────────────────────────
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "no-cache"
 
 [[headers]]
-  for = "/assets/css/*"
+  for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# ─── Cache: JavaScript ────────────────────────────────────────────────────────
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600"
 
 [[headers]]
-  for = "/assets/js/*"
+  for = "/assets/inmobiliarias/video-apoyo.es.vtt"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/vtt; charset=utf-8"
 
-# ─── Cache: fuentes web ───────────────────────────────────────────────────────
-[[headers]]
-  for = "/*.woff2"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.woff"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# ─── Cache: HTML (sin caché agresivo para permitir actualizaciones) ─────────
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# ─── llms.txt accesible para rastreadores IA ──────────────────────────────────
 [[headers]]
   for = "/llms.txt"
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=86400"
-
-# ─── Functions: CORS para webhooks ────────────────────────────────────────────
-[[headers]]
-  for = "/.netlify/functions/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Methods = "POST, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type"

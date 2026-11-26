@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+  <symbol id="diagonal" viewBox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10"/></symbol>
+  <symbol id="down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24"><path d="M20.5 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.7-3.3A7.5 7.5 0 1 1 20.5 11.5Z"/><path d="M9 11.5h.01m3.5 0h.01m3.5 0h.01" stroke-width="2.4"/></symbol>
+  <symbol id="people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2m3-15a3 3 0 0 1 0 6m0 3a4 4 0 0 1 3 4v2"/></symbol>
+  <symbol id="calendar" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M8 4v4m8-4v4M4 11h16m-11 5 2 2 4-4"/></symbol>
+  <symbol id="building" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10h5M10 21V4h9v17m-6-13h3m-3 4h3m-3 4h3"/></symbol>
+  <symbol id="flow" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="18" cy="19" r="2"/><path d="M7 12h3a2 2 0 0 0 2-2V7a2 2 0 0 1 2-2h2m-6 7a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h2"/></symbol>
+  <symbol id="chart" viewBox="0 0 24 24"><path d="M4 4v16h16M8 15l4-5 3 2 4-5"/></symbol>
+  <symbol id="catalog" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4m8-4v4M7 11h3m-3 4h3m3-4h4m-4 4h4"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="double" viewBox="0 0 24 24"><path d="m2 12 4 4L16 6m-5 10 2 2L23 8"/></symbol>
+  <symbol id="replay" viewBox="0 0 24 24"><path d="M5 10a7.5 7.5 0 1 1 .5 6M5 5v5h5"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+  <symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></symbol>
+  <symbol id="document" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h4m-9 4h6m-6 4h6"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4m-4 4v2"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.7 7.4L4 20l.9-3.8a8.5 8.5 0 1 1 15.6-4.5Z"/><path d="M9 8.1c-.6 0-1 .6-1 1.3 0 1.9 2.6 4.9 4.9 5.7.8.3 1.8.2 2.2-.5l.4-.7-2.2-1.1-.6.8c-1.3-.5-2.4-1.6-2.9-2.8l.7-.6-.9-2.1Z" fill="currentColor" stroke="none"/></symbol>
+</svg>
